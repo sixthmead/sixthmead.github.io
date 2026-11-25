@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Good Neighbors — Atomik</title>
+  <meta name="description" content="굿네이버스 마스터 브랜드 가이드 웹사이트 아트디렉션 · 웹디자인 — UI/UX Designer Yi Jinkwang">
+  <!-- Pretendard 웹폰트 (메인 페이지와 동일) -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <!-- 굿네이버스 가이드 사이트의 실제 서체: 영문 디스플레이 Montserrat · 국문 지정 서체 Noto Sans KR(본고딕) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap">
+  <!-- 공통 스타일 먼저, 상세 페이지 전용 스타일을 그 뒤에 (뒤에 온 규칙이 덮어씀) -->
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/work.css">
+  <link rel="stylesheet" href="../css/work-gut.css">
+  <link rel="stylesheet" href="../css/work-gn.css">
+  <link rel="stylesheet" href="../css/work-dock.css">
+  <link rel="stylesheet" href="../css/device-phone.css"> <!-- 스마트폰 디바이스 프레임 (공통) -->
+  <!-- JS 가 켜져 있으면 html 에 .js 클래스를 붙임
+       - .js : 제목을 글자로 나누기 전엔 잠깐 숨겨 둠 (work.css 1번) -->
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="work-page gm-theme gn-theme">
+
+  <!-- ========== 본문 전체 묶음 ==========
+       페이지에 들어올 때·나갈 때 이 상자 전체가 위로 슬라이드됨 -->
+  <div class="page">
+
+  <!-- ========== 헤더 (메인과 같음, 링크만 ../index.html 로) ========== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="header-left">
+        <a href="../index.html" class="logo">Yi Jinkwang</a>
+        <p class="header-greeting">Hi! Nice to meet you :)</p>
+      </div>
+
+      <nav class="desktop-nav" aria-label="주요 메뉴">
+        <ul>
+          <li><a href="index.html" class="text-link text-link--reversed"><span class="text-link-label">Works</span></a></li>
+          <li><a href="../about.html" class="text-link text-link--reversed"><span class="text-link-label">About</span></a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="../index.html#contact" class="text-link header-cta">
+          <span class="text-link-label">Let's talk</span>
+          <span class="text-link-icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+            <svg viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+          </span>
+        </a>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="site-menu" aria-label="메뉴 열기">
+          <span class="menu-toggle-line"></span>
+          <span class="menu-toggle-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== 전체 화면 메뉴 (모바일) ========== -->
+  <div class="site-menu" id="site-menu" aria-hidden="true">
+    <div class="container site-menu-inner">
+      <nav aria-label="모바일 메뉴">
+        <ul class="menu-list">
+          <li style="--i: 0"><a href="index.html"><span class="num">01</span> Works</a></li>
+          <li style="--i: 1"><a href="../about.html"><span class="num">02</span> About</a></li>
+          <!-- Contact 메뉴는 잠시 숨김 (다시 보이려면 아래 li 의 hidden 을 지우면 됨) -->
+          <li style="--i: 2" hidden><a href="../index.html#contact"><span class="num">03</span> Contact</a></li>
+        </ul>
+      </nav>
+      <div class="menu-footer" style="--i: 3">
+        <a href="../index.html#contact" class="arrow-link">
+          <span class="arrow-link-text">Start a project</span>
+          <span class="arrow-link-circle" aria-hidden="true">
+            <svg class="arrow-link-icon" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+            <svg class="arrow-link-icon arrow-link-icon--next" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+          </span>
+        </a>
+        <div class="menu-meta">
+          <a href="mailto:sixthmead@me.com" class="text-link"><span class="text-link-label">sixthmead@me.com</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="top">
+
+    <!-- =========================================================
+         이미지: images/work/project-05/
+         - cover.jpg / thumb.jpg      : 커버 · 썸네일 (js/works-data.js)
+         - *-full.jpg                 : Figma(Good-Neighbors) 데스크톱 1680 원본 페이지를 1440 폭으로 저장
+         - m-*.jpg / t-main.jpg       : 모바일 360 · 태블릿 768 원본
+         - ci-structure · ci-dont · brand-image · branded-items : 위 페이지에서 잘라 낸 부분
+         스타일: work-gut.css(공통 gm-* 레이아웃) + work-gn.css(굿네이버스 색 · 전용 블록)
+         ========================================================= -->
+
+    <!-- ========== 01. 히어로 ========== -->
+    <section class="case-hero">
+      <div class="container case-hero-head">
+        <p class="case-eyebrow">Good Neighbors — Master Brand Guide Website</p>
+        <h1 class="case-title" data-split>Good Neighbors</h1>
+        <p class="case-summary">
+          글로벌 아동권리 NGO 굿네이버스의 마스터 브랜드 가이드를, 문서에서 웹으로.
+          직원 · 협력업체 · 해외 지부 누구나 필요한 규칙을 찾아 바로 적용할 수 있도록
+          정보 구조와 규칙의 시각 언어를 설계했습니다.
+        </p>
+      </div>
+      <figure class="case-cover">
+        <img data-work-img="project-05:cover" src="../images/work/project-05/cover.jpg" alt="굿네이버스 브랜드 가이드 메인 — 웃으며 달려오는 아이들 사진 위 '굿네이버스는 전 세계 곳곳에서 좋은 이웃과 함께 세상을 위한 좋은 변화를 만듭니다' 문구" onerror="this.remove()">
+      </figure>
+      <div class="container case-meta">
+        <p class="section-label">About</p>
+        <dl class="case-facts">
+          <div><dt>Client</dt><dd>Good Neighbors (굿네이버스)</dd></div>
+          <div><dt>Role</dt><dd>Art Direction · Web Design</dd></div>
+          <div><dt>Team</dt><dd>Designer 4 · 아트디렉션 리드</dd></div>
+          <div><dt>Platform</dt><dd>Responsive Web · Kor / Eng</dd></div>
+          <div><dt>Year</dt><dd>2022</dd></div>
+        </dl>
+        <div class="case-services">
+          <p class="case-services-title">Services</p>
+          <ul>
+            <li>Art Direction</li>
+            <li>Information Architecture</li>
+            <li>Rule Visualization</li>
+            <li>Responsive · Bilingual</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 02. 개요 ========== -->
+    <section class="gm-section" id="overview" data-chapter="Overview">
+      <div class="container gm-split">
+        <h4 class="section-label sec-title"><span class="num">01</span> <span class="sec-dash">—</span> Overview</h4>
+        <div class="gm-body">
+          <p class="gm-statement" data-scrub>
+            가이드는 끝까지 읽는 문서가 아니라, 필요한 순간에 펼쳐 보는 도구여야 했습니다.
+          </p>
+          <div class="gm-columns" data-reveal>
+            <div>
+              <h3 class="gm-col-title">Context</h3>
+              <p>굿네이버스는 1991년 한국에서 시작해 전 세계에서 활동하는 아동권리 전문 NGO입니다. 미션 · 핵심가치 · CI · 슬로건 · 컬러 · 사진 원칙까지 브랜드의 모든 기준을 정리한 마스터 브랜드 가이드가 있었지만, 문서 형태로는 필요한 규칙 하나를 찾기 위해 수십 페이지를 넘겨야 했습니다. 브랜드를 쓰는 사람은 디자이너만이 아니라 현장 직원, 협력업체, 해외 지부까지 다양했습니다.</p>
+            </div>
+            <div>
+              <h3 class="gm-col-title">My Part</h3>
+              <p>4명 디자인팀의 아트디렉터로서 가이드 웹사이트의 정보 구조와 비주얼 방향을 정하고, 메인과 Brand Elements · Communication 주요 페이지를 직접 디자인했습니다. 규칙을 ‘설명’이 아닌 ‘보여 주기’로 바꾸는 Do / Don’t 시각 체계를 세우고, 1680부터 360까지 5단계 반응형과 국 · 영문 두 언어를 하나의 그리드로 정리했습니다.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 03. 문제 → 답 ========== -->
+    <section class="gm-section gm-section--tint" id="problem" data-chapter="Problem">
+      <div class="container">
+        <header class="gm-head gm-head--row">
+          <div>
+            <h4 class="section-label sec-title"><span class="num">02</span> <span class="sec-dash">—</span> Problem → Answer</h4>
+            <h2 class="gm-h2" data-reveal>기준은 있었다.<br><span class="gm-green">쓰이지 않았을 뿐.</span></h2>
+          </div>
+          <p class="gm-text" data-reveal>
+            브랜드가 흔들리는 이유는 규칙이 없어서가 아니라, 규칙에 닿기까지가 멀고 읽어도 헷갈리기 때문이었습니다.
+            그래서 ‘무엇을 담을까’보다 ‘어떻게 찾고, 어떻게 틀리지 않게 할까’를 먼저 정의했습니다.
+          </p>
+        </header>
+        <ol class="gn-matrix" data-reveal>
+          <li>
+            <p class="gn-q"><span class="gm-mono">01 · Findability</span>필요한 규칙 하나를 찾기 위해 문서 전체를 넘겨야 한다</p>
+            <svg class="gn-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg>
+            <p class="gn-a"><b>4개의 문, 16개의 방.</b> 가이드를 Brand Story · Brand Elements · Communication · Downloads 네 개의 GNB로 나누고, 모든 하위 페이지를 같은 위치의 3depth LNB로 연결했습니다. 어느 페이지에 있든 지금 위치와 옆 규칙이 한눈에 보입니다.</p>
+          </li>
+          <li>
+            <p class="gn-q"><span class="gm-mono">02 · Misuse</span>글로 읽은 규칙은 해석이 갈리고, 결국 잘못 쓰인다</p>
+            <svg class="gn-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg>
+            <p class="gn-a"><b>설명 대신, 틀린 예시를 보여 준다.</b> 초록 ✓ · 빨강 ✕ 라벨을 하나의 컴포넌트로 만들어 CI · 슬로건 · 배경 · 사진 규칙 전체에 같은 문법으로 적용했습니다. 실제 오용 사례를 이미지로 나란히 두어, 읽기 전에 먼저 보이게 했습니다.</p>
+          </li>
+          <li>
+            <p class="gn-q"><span class="gm-mono">03 · Access</span>브랜드를 쓰는 사람과 환경이 제각각이다</p>
+            <svg class="gn-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg>
+            <p class="gn-a"><b>어디서든, 바로 가져다 쓰게.</b> 1680 · 1280 · 1024 · 768 · 360 다섯 단계 반응형과 국 · 영문 전환을 기본으로 두고, 컬러칩은 클릭 한 번에 코드가 복사되게, CI와 가이드 원본은 각 페이지에서 바로 내려받게 했습니다.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ========== 04. 정보 구조 ========== -->
+    <section class="gm-section" id="structure" data-chapter="Structure">
+      <div class="container">
+        <header class="gm-head gm-head--row">
+          <div>
+            <h4 class="section-label sec-title"><span class="num">03</span> <span class="sec-dash">—</span> Information Architecture</h4>
+            <h2 class="gm-h2" data-reveal>4개의 문,<br><span class="gm-green">16개의 방.</span></h2>
+          </div>
+          <p class="gm-text" data-reveal>
+            가이드의 목차를 그대로 메뉴로 옮기지 않았습니다. 사용 빈도가 가장 높은 Brand Elements와
+            Communication을 중심에 두고, 브랜드의 배경(Brand Story)과 원본 파일(Downloads)을 양 끝에 배치해
+            ‘이해 → 규칙 → 적용 → 다운로드’의 순서로 흐르게 했습니다.
+          </p>
+        </header>
+
+        <ol class="gn-ia" data-reveal>
+          <li>
+            <span class="gn-ia-num gm-mono">GNB 01</span>
+            <h3>Brand Story <small>2</small></h3>
+            <ol>
+              <li>About Good Neighbors<em>미션 · 핵심가치 · 비전2030</em></li>
+              <li>30th Anniversary<em>30주년 엠블럼</em></li>
+            </ol>
+          </li>
+          <li class="is-core">
+            <span class="gn-ia-num gm-mono">GNB 02</span>
+            <h3>Brand Elements <small>7</small></h3>
+            <ol>
+              <li>CI<em>심볼 · 구성 · 오용</em></li>
+              <li>Master Brand CI<em>국문 · 영문</em></li>
+              <li>Group Brand CI<em>5개 법인</em></li>
+              <li>Office Brand CI<em>지부 · 간판</em></li>
+              <li>Slogan<em>국문 · 영문 조합형</em></li>
+              <li>Typography<em>지정 서체</em></li>
+              <li>Color<em>메인 · 서브 · 배경</em></li>
+            </ol>
+          </li>
+          <li class="is-core">
+            <span class="gn-ia-num gm-mono">GNB 03</span>
+            <h3>Communication <small>6</small></h3>
+            <ol>
+              <li>CI Application<em>모티브 · 아이콘 · 아이템</em></li>
+              <li>Photo<em>아동권리 · 지역사회</em></li>
+              <li>Copyright</li>
+              <li>Interview</li>
+              <li>Videos</li>
+              <li>Ceremony</li>
+            </ol>
+          </li>
+          <li>
+            <span class="gn-ia-num gm-mono">GNB 04</span>
+            <h3>Downloads <small>1</small></h3>
+            <ol>
+              <li>Brand CI Download<em>Master · Group · Office</em></li>
+              <li>Brand Guide Download<em>직원 전용 원본</em></li>
+            </ol>
+          </li>
+        </ol>
+        <p class="gn-ia-legend gm-mono"><span><i class="is-core"></i>가장 자주 찾는 규칙 영역</span><span><i></i>배경 · 원본 파일</span></p>
+
+        <!-- 모든 페이지의 같은 뼈대 -->
+        <div class="gn-skeleton">
+          <div class="gn-skeleton-frame" data-reveal aria-hidden="true">
+            <div class="gn-sk-gnb"><span>_&amp; 굿네이버스</span><span>Brand Story · <b>Brand Elements</b> · Communication · Downloads</span><span>Kor ▾</span></div>
+            <div class="gn-sk-body">
+              <div class="gn-sk-lnb"><span></span><span class="on"></span><span></span><span></span><span></span></div>
+              <div class="gn-sk-main"><span></span><span></span><span style="width:80%"></span><span class="box"></span><span style="width:60%"></span></div>
+            </div>
+            <div class="gn-sk-next"><span>Brand Elements<br>Next Section</span><i></i></div>
+            <div class="gn-sk-foot"><span>문의 · pr@gni.kr</span></div>
+          </div>
+          <ol class="gn-skeleton-notes" data-reveal style="--d: .08s">
+            <li><span class="gm-mono">GNB</span><p><b>현재 영역은 굵은 초록 밑줄로.</b>네 개의 영문 메뉴는 Montserrat로 통일하고, 활성 메뉴만 GN Green 밑줄로 표시해 위치를 잃지 않게 했습니다.</p></li>
+            <li><span class="gm-mono">LNB</span><p><b>옆 규칙까지 함께 보이는 3depth.</b>왼쪽 고정 LNB에 같은 영역의 모든 페이지를 펼쳐 두고, 현재 페이지의 하위 목차만 초록 세로선으로 열었습니다.</p></li>
+            <li><span class="gm-mono">NEXT</span><p><b>끝에서 다음 규칙으로.</b>모든 페이지 하단에 다음 섹션으로 넘어가는 민트 배너를 두어, 처음 보는 사람도 가이드를 순서대로 훑을 수 있게 했습니다.</p></li>
+          </ol>
+        </div>
+
+        <figure class="gn-figure" style="margin-top: 56px" data-reveal>
+          <div class="gn-figure-frame"><img src="../images/work/project-05/lnb.jpg" alt="Brand Elements LNB 활성 상태 — CI, Master, Group, Office 각각 활성 시 하위 목차가 열린 모습" loading="lazy"></div>
+          <figcaption class="gn-cap gm-mono"><span><b>02_LNB</b>활성 상태 — 같은 위치, 같은 문법</span><span>1680 × 1592 중 일부</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ========== 05. 메인 페이지 ========== -->
+    <section class="gm-section gm-section--mint" id="main" data-chapter="Main Page">
+      <div class="container gm-feature">
+        <div class="gm-feature-text">
+          <h4 class="section-label sec-title"><span class="num">04</span> <span class="sec-dash">—</span> Main Page</h4>
+          <h2 class="gm-h2" data-reveal>목차가 아니라,<br><span class="gm-green">브랜드의 첫인상.</span></h2>
+          <p class="gm-text" data-reveal>
+            가이드 사이트의 메인은 흔히 메뉴판이 됩니다. 저는 메인 자체가 브랜드 가이드의 ‘첫 번째 적용 사례’가 되길 바랐습니다.
+            아이들의 사진과 미션 문장으로 시작해, 네 개의 GNB를 각각 하나의 장면으로 펼치고,
+            마지막엔 원본 다운로드로 끝나는 한 장의 흐름으로 구성했습니다.
+          </p>
+          <ol class="gn-flow" data-reveal>
+            <li><span class="gm-mono">01</span>Hero<em>미션 한 문장</em></li>
+            <li><span class="gm-mono">02</span>Brand Story<em>함께 걷는 사람들</em></li>
+            <li><span class="gm-mono">03</span>Brand Elements<em>CI · Slogan · Color 미리보기</em></li>
+            <li><span class="gm-mono">04</span>Communication<em>사진 톤 그리드</em></li>
+            <li><span class="gm-mono">05</span>Downloads<em>가이드 · CI 3종</em></li>
+          </ol>
+        </div>
+        <div class="gm-feature-stage">
+          <figure class="gn-figure" style="width: 100%" data-reveal>
+            <div class="gn-browser gn-browser--tall" data-autoscroll="80">
+              <div class="gn-browser-bar" aria-hidden="true">
+                <span class="gn-browser-dots"><i></i><i></i><i></i></span>
+                <span class="gn-browser-url gm-mono">brandassets.goodneighbors.kr</span>
+                <span class="gn-browser-meta gm-mono">Kor</span>
+              </div>
+              <div class="gn-browser-screen"><img src="../images/work/project-05/main-full.jpg" alt="메인 페이지 전체 — 히어로, Brand Story, Brand Elements 카드, Communication 사진 그리드, 다운로드 영역" loading="lazy"></div>
+            </div>
+            <figcaption class="gn-cap gm-mono"><span><b>00_Main</b>마우스를 올리면 멈춤</span><span>1680 × 4560</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 06. 규칙 시각화 — CI ========== -->
+    <section class="gm-section" id="rules" data-chapter="Show, Don't Tell">
+      <div class="container gm-feature gm-feature--rev">
+        <div class="gm-feature-text">
+          <h4 class="section-label sec-title"><span class="num">05</span> <span class="sec-dash">—</span> Show, Don’t Tell</h4>
+          <h2 class="gm-h2" data-reveal>맞는 예보다<br><span class="gm-green">틀린 예를 먼저.</span></h2>
+          <p class="gm-text" data-reveal>
+            “심볼과 로고의 비율을 임의로 변경하지 않는다”는 문장은 모두가 이해하지만, 모두가 지키지는 않습니다.
+            그래서 규칙 페이지마다 구조도(Symbol · Logo · Clear Space)로 기준을 먼저 보여 주고,
+            바로 아래에 실제로 자주 일어나는 오용을 빨간 ✕ 라벨과 함께 나란히 배치했습니다.
+          </p>
+          <ul class="gm-notes" data-reveal>
+            <li><span class="gm-mono">A</span><p>오용 예시는 <em>전체 변형 · 슬로건 조합 변형 · 배경 규정</em> 세 묶음으로 분류하고, 묶음마다 캐러셀로 넘겨 보게 해 페이지 길이를 억제</p></li>
+            <li><span class="gm-mono">B</span><p>✓ · ✕ 라벨은 PC 40px / Mobile 24px 두 사이즈의 단일 컴포넌트로 만들어 CI부터 사진 원칙까지 같은 문법으로</p></li>
+            <li><span class="gm-mono">C</span><p>치수 표기(A, 0.75A, 2.5mm)는 본문과 다른 시안 컬러로 분리해, 장식이 아닌 ‘측정 정보’로 읽히게</p></li>
+            <li><span class="gm-mono">D</span><p>가로 · 세로 조합처럼 버전이 갈리는 규칙은 하단 토글로 한 프레임 안에서 전환</p></li>
+          </ul>
+        </div>
+        <div class="gm-feature-stage" style="display: block">
+          <figure class="gn-figure" data-reveal>
+            <div class="gn-figure-frame"><img src="../images/work/project-05/ci-structure.jpg" alt="CI 구성 — 심볼과 로고 영역 표시" loading="lazy"></div>
+            <figcaption class="gn-cap gm-mono"><span><b><span class="gn-label">✓</span>Structure</b>심볼 + 로고</span><span>02-01_CI</span></figcaption>
+          </figure>
+          <figure class="gn-figure" data-reveal style="--d: .08s">
+            <div class="gn-figure-frame"><img src="../images/work/project-05/ci-dont.jpg" alt="부적절한 사용 예시 — 간격 · 비율 변형, 라인 처리, 슬로건 서체 · 크기 변형, 지정 외 배경 사용" loading="lazy"></div>
+            <figcaption class="gn-cap gm-mono"><span><b><span class="gn-label gn-label--bad">✕</span>Don’t</b>3묶음 · 캐러셀</span><span>02-01_CI</span></figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- 같은 문법이 적용된 규칙 페이지 3종 -->
+      <div class="container">
+        <div class="gn-trio">
+          <figure class="gn-figure" data-reveal>
+            <div class="gn-browser" data-autoscroll="90">
+              <div class="gn-browser-bar" aria-hidden="true"><span class="gn-browser-dots"><i></i><i></i><i></i></span><span class="gn-browser-url gm-mono">/elements/ci</span><span></span></div>
+              <div class="gn-browser-screen"><img src="../images/work/project-05/ci-full.jpg" alt="CI 페이지 전체" loading="lazy"></div>
+            </div>
+            <figcaption class="gn-cap gm-mono"><span><b>02-01</b>CI</span><span>Story · 구성 · 협력업체 · 오용</span></figcaption>
+          </figure>
+          <figure class="gn-figure" data-reveal style="--d: .08s">
+            <div class="gn-browser" data-autoscroll="90" style="--delay: 1.2s">
+              <div class="gn-browser-bar" aria-hidden="true"><span class="gn-browser-dots"><i></i><i></i><i></i></span><span class="gn-browser-url gm-mono">/elements/group</span><span></span></div>
+              <div class="gn-browser-screen"><img src="../images/work/project-05/group-full.jpg" alt="Group Brand CI 페이지 전체 — 5개 법인의 가로형 · 세로형 CI" loading="lazy"></div>
+            </div>
+            <figcaption class="gn-cap gm-mono"><span><b>02-03</b>Group Brand CI</span><span>5 법인 × 가로 · 세로</span></figcaption>
+          </figure>
+          <figure class="gn-figure" data-reveal style="--d: .16s">
+            <div class="gn-browser" data-autoscroll="90" style="--delay: 2.4s">
+              <div class="gn-browser-bar" aria-hidden="true"><span class="gn-browser-dots"><i></i><i></i><i></i></span><span class="gn-browser-url gm-mono">/elements/slogan</span><span></span></div>
+              <div class="gn-browser-screen"><img src="../images/work/project-05/slogan-full.jpg" alt="Slogan 페이지 전체 — 국문 · 영문 기본형과 모티브 조합" loading="lazy"></div>
+            </div>
+            <figcaption class="gn-cap gm-mono"><span><b>02-05</b>Slogan</span><span>국 · 영문 × 기본 · 모티브</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 07. 컬러 · 타이포 ========== -->
+    <section class="gm-section gm-ink" id="system" data-chapter="Color · Type" data-dark>
+      <div class="container">
+        <header class="gm-head gm-head--row">
+          <div>
+            <h4 class="section-label sec-title"><span class="num">06</span> <span class="sec-dash">—</span> Color · Typography</h4>
+            <h2 class="gm-h2" data-reveal>보는 순간,<br><span class="gm-green-l">가져다 쓰게.</span></h2>
+          </div>
+          <p class="gm-text" data-reveal>
+            컬러 페이지의 목적은 ‘감상’이 아니라 ‘정확한 값의 전달’입니다. 메인 · 모노 스펙트럼 · 서브 컬러를 위계별 카드로 나누고,
+            각 카드에 Pantone · CMYK · HEX를 함께 표기한 뒤 클릭 한 번에 코드가 복사되게 했습니다.
+            아래 칩은 실제 가이드의 값과 동작을 그대로 옮긴 것입니다. 눌러 보세요.
+          </p>
+        </header>
+
+        <div class="gn-system">
+          <!-- 컬러 -->
+          <div class="gn-card gn-card--color" data-reveal>
+            <p class="gn-card-label gm-mono"><span>Main Color</span></p>
+            <div class="gn-main-colors">
+              <div class="gn-chip" style="--c:#89A230">
+                <b>GN Green</b>
+                <dl><div><dt>Pantone</dt><dd>377 C</dd></div><div><dt>CMYK</dt><dd>42/10/100/17</dd></div><div><dt>HEX</dt><dd>#89A230</dd></div></dl>
+              </div>
+              <div class="gn-chip" style="--c:#685A55">
+                <b>GN Dark Brown</b>
+                <dl><div><dt>Pantone</dt><dd>Warm Gray 11 C</dd></div><div><dt>CMYK</dt><dd>0/15/17/72</dd></div><div><dt>HEX</dt><dd>#685A55</dd></div></dl>
+              </div>
+            </div>
+            <div class="gn-spectrum">
+              <p class="gn-sub-title gm-mono">Main Color Mono Spectrum — 메인 컬러 보조 · 같은 계열 확장</p>
+              <div class="gn-spectrum-row">
+                <div class="gn-sw" style="--c:#E9EADE; --t:#556A1F">Green #1</div>
+                <div class="gn-sw" style="--c:#D5DAB4; --t:#556A1F">Green #2</div>
+                <div class="gn-sw" style="--c:#718B29">Green #3</div>
+                <div class="gn-sw" style="--c:#556A1F">Green #4</div>
+              </div>
+              <div class="gn-spectrum-row">
+                <div class="gn-sw" style="--c:#F2EFED; --t:#57463D">Brown #1</div>
+                <div class="gn-sw" style="--c:#CDC4BF; --t:#57463D">Brown #2</div>
+                <div class="gn-sw" style="--c:#8B7F79">Brown #3</div>
+                <div class="gn-sw" style="--c:#57463D">Brown #4</div>
+              </div>
+            </div>
+            <p class="gn-sub-title gm-mono">Sub Color — 콘텐츠 강조 · 인쇄물의 표지 · 전면 사용 금지</p>
+            <div class="gn-sub">
+              <div class="gn-sw" style="--c:#F16521">Orange</div>
+              <div class="gn-sw" style="--c:#5DC6CF">Skyblue</div>
+              <div class="gn-sw" style="--c:#FFD55B; --t:#57463D">Yellow</div>
+              <div class="gn-sw" style="--c:#C2B49A; --t:#57463D">Beige</div>
+              <div class="gn-sw" style="--c:#9A5F9B">Purple</div>
+            </div>
+            <p class="gn-color-note">메인 2색은 큰 카드로, 모노 스펙트럼 8색은 아코디언으로 접어 위계를 나눴습니다. 서브 컬러는 ‘바탕에 쓰지 않는다’는 제한을 카드 설명에 함께 붙여, 값과 사용 조건이 분리되지 않게 했습니다.</p>
+          </div>
+
+          <!-- 타이포 -->
+          <div class="gn-card gn-card--type" data-reveal style="--d: .08s">
+            <p class="gn-card-label gm-mono"><span>Typography — 국문 지정 서체</span><span>Noto Sans KR</span></p>
+            <div class="gn-type-stage" id="gnTypeStage">
+              <p>굿네이버스의 국문 지정 서체입니다.</p>
+              <p>굿네이버스의 국문 지정 서체입니다.</p>
+              <p>굿네이버스의 국문 지정 서체입니다.</p>
+              <p>굿네이버스의 국문 지정 서체입니다.</p>
+            </div>
+            <div class="gn-weights" role="group" aria-label="서체 굵기" data-weights="#gnTypeStage">
+              <button type="button" data-wt="300" aria-pressed="true">Light</button>
+              <button type="button" data-wt="400" aria-pressed="false">Regular</button>
+              <button type="button" data-wt="500" aria-pressed="false">Medium</button>
+              <button type="button" data-wt="700" aria-pressed="false">Bold</button>
+            </div>
+            <div class="gn-type-pair">
+              <div><strong style="font-family: var(--font-noto)">본고딕 가나다</strong><span class="gm-mono">Content · Noto Sans KR<br>비영리 목적 무료</span></div>
+              <div><strong style="font-family: var(--font-display)">Brand Story</strong><span class="gm-mono">UI Display · Montserrat<br>GNB · 섹션 타이틀</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 08. 사진 원칙 ========== -->
+    <section class="gm-section" id="photo" data-chapter="Photo">
+      <div class="container">
+        <header class="gm-head gm-head--row">
+          <div>
+            <h4 class="section-label sec-title"><span class="num">07</span> <span class="sec-dash">—</span> Photo Principles</h4>
+            <h2 class="gm-h2" data-reveal>동정이 아니라,<br><span class="gm-green">존엄과 가능성으로.</span></h2>
+          </div>
+          <p class="gm-text" data-reveal>
+            아동권리 NGO에게 사진은 가장 강력하면서 가장 위험한 브랜드 요소입니다. ‘불쌍해 보이는 아이’는 모금에는 효과적일 수 있지만,
+            아동의 존엄을 해칩니다. 굿네이버스 아동보호정책을 근거로 아동 · 지역사회 두 영역의 Must / Don’t를
+            숫자 목록으로 대칭 배치(아동 7 · 7, 지역사회 6 · 6)해, 사진을 고르는 사람이 판단 기준을 그대로 체크리스트로 쓰게 했습니다.
+          </p>
+        </header>
+
+        <div class="gn-rules" data-reveal>
+          <div class="gn-rule-set">
+            <h3>아동 권리 보호 <small>Child Rights</small></h3>
+            <div class="gn-rule-cols">
+              <div>
+                <p class="gn-rule-head"><span class="gn-label">✓</span>Must</p>
+                <ol>
+                  <li>밝은 희망이 보이는 아동</li>
+                  <li>옷을 갖춰 입은 아동</li>
+                  <li>자연스럽고 꾸밈없는 아동</li>
+                  <li>밝은 표정을 짓고 있는 아동</li>
+                  <li>웃고 있는 표정의 아동</li>
+                  <li>성적으로 오해가 없는 사진</li>
+                  <li>역동적인 에너지가 느껴지는 사진</li>
+                </ol>
+              </div>
+              <div>
+                <p class="gn-rule-head"><span class="gn-label gn-label--bad">✕</span>Don’t</p>
+                <ol class="is-bad">
+                  <li>불쌍해 보이는 아동</li>
+                  <li>나체 / 반나체의 아동</li>
+                  <li>페이스페인팅을 과하게 한 아동</li>
+                  <li>억지 표정을 짓고 있는 아동</li>
+                  <li>울고 있는 표정의 아동</li>
+                  <li>성적인 자극을 줄 수 있는 사진</li>
+                  <li>무기력함이 느껴지는 사진</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <div class="gn-rule-set">
+            <h3>지역사회 존중 <small>Community</small></h3>
+            <div class="gn-rule-cols">
+              <div>
+                <p class="gn-rule-head"><span class="gn-label">✓</span>Must</p>
+                <ol>
+                  <li>자립적인 주민의 모습</li>
+                  <li>능동적인 주민의 모습</li>
+                  <li>희망찬 풍경</li>
+                  <li>역동적인 지역사회</li>
+                  <li>협동적인 지역사회</li>
+                  <li>지속가능한 개발</li>
+                </ol>
+              </div>
+              <div>
+                <p class="gn-rule-head"><span class="gn-label gn-label--bad">✕</span>Don’t</p>
+                <ol class="is-bad">
+                  <li>의존적인 주민의 모습</li>
+                  <li>수동적인 주민의 모습</li>
+                  <li>황폐한 풍경</li>
+                  <li>정체된 지역사회</li>
+                  <li>경쟁적인 지역사회</li>
+                  <li>무분별한 개발</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 72px">
+          <figure class="gn-figure" data-reveal>
+            <div class="gn-browser" data-autoscroll="70">
+              <div class="gn-browser-bar" aria-hidden="true"><span class="gn-browser-dots"><i></i><i></i><i></i></span><span class="gn-browser-url gm-mono">/communication/photo</span><span class="gn-browser-meta gm-mono">03-02</span></div>
+              <div class="gn-browser-screen"><img src="../images/work/project-05/photo-full.jpg" alt="Photo 페이지 — 아동 권리 보호와 지역사회 존중의 Must / Don't 목록과 예시 사진" loading="lazy"></div>
+            </div>
+            <figcaption class="gn-cap gm-mono"><span><b>03-02</b>Photo — 목록과 예시 사진을 한 시선에</span><span>1680 × 2904</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 09. 커뮤니케이션 적용 ========== -->
+    <section class="gm-section gm-section--tint" id="application" data-chapter="Application">
+      <div class="container">
+        <header class="gm-head gm-head--row">
+          <div>
+            <h4 class="section-label sec-title"><span class="num">08</span> <span class="sec-dash">—</span> CI Application</h4>
+            <h2 class="gm-h2" data-reveal>규칙이 실제가 되는<br><span class="gm-green">장면까지.</span></h2>
+          </div>
+          <p class="gm-text" data-reveal>
+            CI의 언더바 ‘Inviting Line’은 ‘나눔으로 당신을 초대합니다’라는 의미를 가집니다. 이 선을 그대로 늘려 쓰는
+            모티브 확장 규칙과 사업 아이콘을 정리하고, 명함 · 사원증 · 머그 · 배지 · 택배 박스 · 조끼까지 실제 아이템에 적용된
+            모습으로 페이지를 마무리해, 규칙이 어디에 쓰이는지 상상하지 않아도 되게 했습니다.
+          </p>
+        </header>
+        <div class="gn-apply">
+          <figure class="gn-figure" data-reveal>
+            <div class="gn-browser gn-browser--tall" data-autoscroll="110">
+              <div class="gn-browser-bar" aria-hidden="true"><span class="gn-browser-dots"><i></i><i></i><i></i></span><span class="gn-browser-url gm-mono">/communication/ci-application</span><span></span></div>
+              <div class="gn-browser-screen"><img src="../images/work/project-05/comm-full.jpg" alt="CI Application 페이지 전체 — Motif Concept, 모티브 확장성, 예외 규정, 아이콘, Branded Items" loading="lazy"></div>
+            </div>
+            <figcaption class="gn-cap gm-mono"><span><b>03-01</b>Motif · Icon · Branded Items</span><span>1680 × 7504</span></figcaption>
+          </figure>
+          <figure class="gn-figure" data-reveal style="--d: .08s">
+            <div class="gn-apply-items"><img src="../images/work/project-05/branded-items.jpg" alt="브랜디드 아이템 — 서식류, 사원증, 명함, 머그컵, 배지, 박스 테이프, 조끼, 후원 물품 박스" loading="lazy"></div>
+            <figcaption class="gn-cap gm-mono"><span><b>Branded Items</b>서식 · 사원증 · 명함 · 머그 · 배지 · 박스</span></figcaption>
+          </figure>
+        </div>
+
+        <div class="gn-brand-image" data-reveal>
+          <p class="gm-col-title">Brand Image — 브랜드 이미지 아이콘</p>
+          <p class="gm-text" style="margin-top: 0">Brand Story의 여섯 가지 브랜드 이미지(선도적인 · 전문적인 · 믿을 수 있는 · 투명한 · 친근한 · 글로벌한)도 같은 라인 굵기와 GN Green 포인트의 아이콘 세트로 그려, 추상적인 가치가 사이트 전체의 시각 언어와 이어지게 했습니다.</p>
+          <img src="../images/work/project-05/brand-image.jpg" alt="브랜드 이미지 아이콘 6종 — 선도적인, 전문적인, 믿을 수 있는, 투명한, 친근한, 글로벌한" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 10. 반응형 ========== -->
+    <section class="gm-section gm-green-bg" id="responsive" data-chapter="Responsive" data-dark>
+      <div class="container">
+        <header class="gm-head gm-head--row">
+          <div>
+            <h4 class="section-label sec-title"><span class="num">09</span> <span class="sec-dash">—</span> Responsive · Bilingual</h4>
+            <h2 class="gm-h2" data-reveal>현장에서 꺼내 보는<br><span class="gm-green-l">가이드.</span></h2>
+          </div>
+          <p class="gm-text" data-reveal>
+            가이드가 가장 필요한 순간은 인쇄소 앞, 행사장, 해외 사업장처럼 책상 밖인 경우가 많습니다.
+            1680부터 360까지 다섯 단계 브레이크포인트를 설계하고, 모바일에서는 LNB를 페이지 타이틀로 접고
+            Do / Don’t 예시는 가로 스와이프로, 컬러 스펙트럼은 아코디언으로 바꿔 한 손으로 규칙을 확인할 수 있게 했습니다.
+            국 · 영문은 같은 그리드를 공유해 해외 지부에서도 동일한 경험을 갖습니다.
+          </p>
+        </header>
+
+        <div class="gn-bp" data-reveal aria-label="브레이크포인트 1680, 1280, 1024, 768, 360">
+          <div class="gn-bp-track" aria-hidden="true">
+            <i style="--w:1680; --i:0"></i><i style="--w:1280; --i:1"></i><i style="--w:1024; --i:2"></i><i style="--w:768; --i:3"></i><i style="--w:360; --i:4"></i>
+          </div>
+          <div class="gn-bp-labels gm-mono" aria-hidden="true">
+            <span style="--w:360"><b>360</b>Mobile</span>
+            <span style="--w:768"><b>768</b>Tablet</span>
+            <span style="--w:1024"><b>1024</b>Laptop</span>
+            <span style="--w:1280"><b>1280</b>Desktop</span>
+            <span style="--w:1680"><b>1680</b>Wide</span>
+          </div>
+        </div>
+
+        <div class="gn-devices" data-reveal>
+          <figure class="gm-phone gm-phone--scroll" data-autoscroll="70">
+            <div class="gm-phone-screen"><img src="../images/work/project-05/m-main.jpg" alt="모바일 메인" loading="lazy"></div>
+            <figcaption class="gm-cap gm-mono"><b>m00</b>Main</figcaption>
+          </figure>
+          <figure class="gn-tablet" data-autoscroll="80" style="--delay: .6s">
+            <div class="gn-tablet-screen"><img src="../images/work/project-05/t-main.jpg" alt="태블릿 768 메인" loading="lazy"></div>
+            <figcaption class="gm-cap gm-mono"><b>768</b>Main</figcaption>
+          </figure>
+          <figure class="gm-phone gm-phone--scroll" data-autoscroll="70" style="--delay: 1.2s">
+            <div class="gm-phone-screen"><img src="../images/work/project-05/m-ci.jpg" alt="모바일 CI 페이지" loading="lazy"></div>
+            <figcaption class="gm-cap gm-mono"><b>m02-01</b>CI</figcaption>
+          </figure>
+          <figure class="gm-phone gm-phone--scroll" data-autoscroll="70" style="--delay: 1.8s">
+            <div class="gm-phone-screen"><img src="../images/work/project-05/m-color.jpg" alt="모바일 Color 페이지 — 아코디언 스펙트럼" loading="lazy"></div>
+            <figcaption class="gm-cap gm-mono"><b>m02-07</b>Color</figcaption>
+          </figure>
+          <figure class="gm-phone gm-phone--scroll" data-autoscroll="70" style="--delay: 2.4s">
+            <div class="gm-phone-screen"><img src="../images/work/project-05/m-photo.jpg" alt="모바일 Photo 페이지" loading="lazy"></div>
+            <figcaption class="gm-cap gm-mono"><b>m03-02</b>Photo</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 11. 결과 ========== -->
+    <section class="gm-section" id="outcome" data-chapter="Outcome">
+      <div class="container gm-split">
+        <h4 class="section-label sec-title"><span class="num">10</span> <span class="sec-dash">—</span> Outcome</h4>
+        <div>
+          <ol class="gm-outcome">
+            <li data-reveal>
+              <strong><span data-count="16">16</span><small>pages</small></strong>
+              <h3>One Source of Truth</h3>
+              <p>흩어져 있던 미션 · CI · 슬로건 · 컬러 · 사진 원칙을 4개 GNB, 16개 페이지의 한 사이트로 모았습니다. 직원 전용 원본 가이드와 CI 3종 파일도 같은 곳에서 내려받습니다.</p>
+            </li>
+            <li data-reveal style="--d: .08s">
+              <strong><span data-count="5">5</span><small>breakpoints</small></strong>
+              <h3>Anywhere, Any Device</h3>
+              <p>1680 · 1280 · 1024 · 768 · 360 다섯 단계 반응형과 국 · 영문 버전으로, 책상 밖 현장과 해외 지부에서도 같은 규칙을 확인할 수 있게 했습니다.</p>
+            </li>
+            <li data-reveal style="--d: .16s">
+              <strong><span data-count="15">15</span><small>colors</small></strong>
+              <h3>Copy-ready Values</h3>
+              <p>메인 2 · 모노 스펙트럼 8 · 서브 5색을 Pantone · CMYK · HEX와 함께 정리하고 클릭 복사를 붙여, 값을 옮겨 적다 틀리는 일을 없앴습니다.</p>
+            </li>
+          </ol>
+          <p class="work-visit" style="margin-top: 48px">
+            <a href="https://brandassets.goodneighbors.kr/" class="arrow-link" target="_blank" rel="noopener">
+              <span class="arrow-link-text">brandassets.goodneighbors.kr</span>
+              <span class="arrow-link-circle" aria-hidden="true">
+                <svg class="arrow-link-icon" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+                <svg class="arrow-link-icon arrow-link-icon--next" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+              </span>
+            </a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 12. 회고 ========== -->
+
+    <!-- ========== 다음 작업 ========== -->
+    <section class="section work-next">
+      <div class="container">
+        <h4 class="section-label sec-title">Next project</h4>
+        <a href="project-07.html" class="work-next-link">
+          <span class="work-next-title">Hyundaitel 안면인식 도어폰</span>
+          <span class="arrow-link-circle" aria-hidden="true">
+            <svg class="arrow-link-icon" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+            <svg class="arrow-link-icon arrow-link-icon--next" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+          </span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Atomik 6ixthmead</p>
+    </div>
+  </footer>
+
+  </div>
+  <!-- /.page -->
+
+  <script src="../js/works-data.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/work-gn.js"></script>
+  <script src="../js/work-dock.js"></script>
+</body>
+</html>

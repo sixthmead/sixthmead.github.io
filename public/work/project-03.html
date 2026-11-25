@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GUT Morning — Atomik</title>
+  <meta name="description" content="Amway GUT Morning 장 건강 습관 챌린지 모바일 서비스 GUI 디자인 — Yi Jinkwang">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <!-- Montserrat 웹폰트: 사이트 영문 글꼴 (한글은 Pretendard) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+  <!-- 공통 → 상세 공통 → 이 작업 전용 순서 (뒤에 온 규칙이 덮어씀) -->
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/work.css">
+  <link rel="stylesheet" href="../css/work-gut.css">
+  <link rel="stylesheet" href="../css/work-dock.css">
+  <link rel="stylesheet" href="../css/device-phone.css"> <!-- 스마트폰 디바이스 프레임 (공통) -->
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="work-page gm-theme">
+
+  <div class="page">
+
+  <!-- ========== 헤더 (메인과 같음, 링크만 ../index.html 로) ========== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="header-left">
+        <a href="../index.html" class="logo">Yi Jinkwang</a>
+        <p class="header-greeting">Hi! Nice to meet you :)</p>
+      </div>
+
+      <nav class="desktop-nav" aria-label="주요 메뉴">
+        <ul>
+          <li><a href="index.html" class="text-link text-link--reversed"><span class="text-link-label">Works</span></a></li>
+          <li><a href="../index.html#about" class="text-link text-link--reversed"><span class="text-link-label">About</span></a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="../index.html#contact" class="text-link header-cta">
+          <span class="text-link-label">Let's talk</span>
+          <span class="text-link-icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+            <svg viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+          </span>
+        </a>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="site-menu" aria-label="메뉴 열기">
+          <span class="menu-toggle-line"></span>
+          <span class="menu-toggle-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== 전체 화면 메뉴 (모바일) ========== -->
+  <div class="site-menu" id="site-menu" aria-hidden="true">
+    <div class="container site-menu-inner">
+      <nav aria-label="모바일 메뉴">
+        <ul class="menu-list">
+          <li style="--i: 0"><a href="index.html"><span class="num">01</span> Works</a></li>
+          <li style="--i: 1"><a href="../index.html#about"><span class="num">02</span> About</a></li>
+          <li style="--i: 2" hidden><a href="../index.html#contact"><span class="num">03</span> Contact</a></li>
+        </ul>
+      </nav>
+      <div class="menu-footer" style="--i: 3">
+        <a href="../index.html#contact" class="arrow-link">
+          <span class="arrow-link-text">Start a project</span>
+          <span class="arrow-link-circle" aria-hidden="true">
+            <svg class="arrow-link-icon" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+            <svg class="arrow-link-icon arrow-link-icon--next" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+          </span>
+        </a>
+        <div class="menu-meta">
+          <a href="mailto:sixthmead@me.com" class="text-link"><span class="text-link-label">sixthmead@me.com</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="top">
+
+    <!-- =========================================================
+         이미지: images/work/project-03/
+         - cover.jpg / thumb.jpg : 커버 · 썸네일 (js/works-data.js)
+         - screens/*.png         : Figma(Design_Works › Design_Final) 화면 360px 원본
+           → 더 선명하게 하려면 Figma 에서 같은 이름으로 2x PNG 를 내보내 덮어쓰면 됨
+         ========================================================= -->
+
+    <!-- ========== 01. 히어로 (공통 case-hero 구조 · work.css) ========== -->
+    <section class="case-hero">
+      <div class="container case-hero-head">
+        <p class="case-eyebrow">Amway Korea — Mobile Service GUI</p>
+        <h1 class="case-title" data-split>GUT Morning</h1>
+        <p class="case-summary case-summary--wide">
+          매일 아침 장 건강 습관을 팀과 함께 인증하는 암웨이의 챌린지 서비스.<br>
+          ‘오늘의 인증’ 한 번의 탭에서 시작해 팀 랭킹, 자녀 계정까지 이어지는 모바일 화면 전체의 GUI를 설계했습니다.
+        </p>
+      </div>
+
+      <figure class="case-cover">
+        <img data-work-img="project-03:cover" src="../images/work/project-03/cover.jpg" alt="GUT Morning 인트로, 홈, 챌린지, 나의 팀, 마이 화면" onerror="this.remove()">
+      </figure>
+
+      <div class="container case-meta">
+        <p class="section-label">About</p>
+        <dl class="case-facts">
+          <div><dt>Client</dt><dd>Amway Korea</dd></div>
+          <div><dt>Role</dt><dd>Mobile GUI Design</dd></div>
+          <div><dt>Platform</dt><dd>Mobile Web · 360 × 800</dd></div>
+          <div><dt>Scope</dt><dd><strong data-count="113">113</strong> Screens · 7 Sections</dd></div>
+          <div><dt>Year</dt><dd>2024</dd></div>
+        </dl>
+        <div class="case-services">
+          <p class="case-services-title">Services</p>
+          <ul>
+            <li>Mobile GUI</li>
+            <li>Design System</li>
+            <li>Gamification</li>
+            <li>360 Base Grid</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 02. 개요 ========== -->
+    <section class="gm-section" id="overview" data-chapter="Overview">
+      <div class="container gm-split">
+        <h4 class="section-label sec-title"><span class="num">01</span> <span class="sec-dash">—</span> Overview</h4>
+        <div class="gm-body">
+          <p class="gm-statement" data-scrub>
+            건강 습관은 정보가 아니라 매일의 작은 성취로 만들어진다. 그래서 모든 화면을 ‘오늘 인증했는가’ 하나의 질문을 중심으로 설계했습니다.
+          </p>
+          <div class="gm-columns" data-reveal>
+            <div>
+              <h3 class="gm-col-title">Service</h3>
+              <p>참여자는 매일 아침 미션을 사진으로 인증하고, 팀의 인증률이 목표치에 도달하면 챌린지에 성공합니다. 챌린지 팀과 상시 팀, 부모가 관리하는 자녀 계정까지 사용자 유형이 다양한 서비스입니다.</p>
+            </div>
+            <div>
+              <h3 class="gm-col-title">My Part</h3>
+              <p>인트로·로그인부터 홈, 챌린지, 나의 팀, 마이, 예외 화면까지 7개 섹션 113개 화면의 GUI를 디자인하고, 버튼·칩·진행 바·캘린더 같은 반복 요소를 컴포넌트로 정리했습니다.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 03. 스크린 맵 ========== -->
+    <section class="gm-section gm-section--tint" id="map" data-chapter="Screen Map">
+      <div class="container">
+        <header class="gm-head">
+          <h4 class="section-label sec-title"><span class="num">02</span> <span class="sec-dash">—</span> Screen Map</h4>
+          <h2 class="gm-h2" data-reveal>7개 섹션, <span class="gm-green">113개의 화면.</span></h2>
+        </header>
+
+        <div class="gm-map" data-reveal>
+          <ol class="gm-map-scale" aria-hidden="true">
+            <li style="--at: 0">0%</li><li style="--at: 25">25%</li><li style="--at: 50">50%</li><li style="--at: 75">75%</li><li style="--at: 100">100%</li>
+          </ol>
+          <ol class="gm-map-rows">
+            <li style="--s: 0.0; --w: 22.1; --i: 0">
+              <div class="gm-map-pill"><strong>인트로 · 로그인</strong><em>25</em></div>
+              <div class="gm-map-meta"><span class="gm-mono">01 · 22%</span><span class="gm-map-name">인트로 · 로그인 <i>25</i></span><p>카카오 로그인, 자녀 계정 로그인·등록, 약관 동의, 팀 가입</p></div>
+            </li>
+            <li style="--s: 22.1; --w: 17.7; --i: 1">
+              <div class="gm-map-pill"><strong>홈</strong><em>20</em></div>
+              <div class="gm-map-meta"><span class="gm-mono">02 · 18%</span><span class="gm-map-name">홈 <i>20</i></span><p>오늘의 인증, 주간 스탬프, 인증 방법 선택, 공지사항</p></div>
+            </li>
+            <li class="is-narrow" style="--s: 39.8; --w: 9.7; --i: 2">
+              <div class="gm-map-pill"><strong>챌린지</strong><em>11</em></div>
+              <div class="gm-map-meta"><span class="gm-mono">03 · 10%</span><span class="gm-map-name">챌린지 <i>11</i></span><p>챌린지 현황, 참여 캘린더, 인증 공유, 이력 보기</p></div>
+            </li>
+            <li style="--s: 49.6; --w: 19.5; --i: 3">
+              <div class="gm-map-pill"><strong>나의 팀</strong><em>22</em></div>
+              <div class="gm-map-meta"><span class="gm-mono">04 · 19%</span><span class="gm-map-name">나의 팀 <i>22</i></span><p>팀 목록, 팀 정보, 팀 랭킹, 팀 관리·만들기</p></div>
+            </li>
+            <li class="is-end" style="--s: 69.0; --w: 23.9; --i: 4">
+              <div class="gm-map-pill"><strong>마이</strong><em>27</em></div>
+              <div class="gm-map-meta"><span class="gm-mono">05 · 24%</span><span class="gm-map-name">마이 <i>27</i></span><p>회원 인증, 자녀 계정 관리·활동, FAQ, 이용 안내</p></div>
+            </li>
+            <li class="is-narrow is-end" style="--s: 92.9; --w: 1.8; --i: 5">
+              <div class="gm-map-pill"><strong>Footer</strong><em>2</em></div>
+              <div class="gm-map-meta"><span class="gm-mono">06 · 2%</span><span class="gm-map-name">Footer <i>2</i></span><p>이용약관, 개인정보 처리방침</p></div>
+            </li>
+            <li class="is-narrow is-end" style="--s: 94.7; --w: 5.3; --i: 6">
+              <div class="gm-map-pill"><strong>ETC</strong><em>6</em></div>
+              <div class="gm-map-meta"><span class="gm-mono">07 · 5%</span><span class="gm-map-name">ETC <i>6</i></span><p>시스템 점검, 로딩, 500·404 에러, 팝업 템플릿</p></div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 04. 인트로 — 카피 시스템 ========== -->
+    <section class="gm-section" id="intro" data-chapter="Intro">
+      <div class="container gm-feature">
+        <div class="gm-feature-text">
+          <h4 class="section-label sec-title"><span class="num">03</span> <span class="sec-dash">—</span> Intro</h4>
+          <h2 class="gm-h2" data-reveal>한 글자로 이어지는<br><span class="gm-green">‘것’모닝.</span></h2>
+          <p class="gm-text" data-reveal>
+            서비스 이름의 ‘것(GUT)’을 인트로의 주인공으로 삼았습니다. 좋은 물, 유산균, 단백질을 먹는다는 ‘것’이
+            차례로 바뀌다가 마지막에 “것모닝 하세요”로 닫히는 4장의 인트로. 3D 오브젝트와 굵은 한글 타이포를
+            같은 위치에 고정해, 넘겨도 리듬이 흔들리지 않게 했습니다.
+          </p>
+          <div class="gm-switch" role="tablist" aria-label="인트로 화면 선택" data-reveal>
+            <button role="tab" aria-selected="true" data-intro="0">물</button>
+            <button role="tab" aria-selected="false" data-intro="1">유산균</button>
+            <button role="tab" aria-selected="false" data-intro="2">단백질</button>
+            <button role="tab" aria-selected="false" data-intro="3">것모닝</button>
+          </div>
+        </div>
+
+        <div class="gm-feature-stage">
+          <figure class="gm-phone gm-phone--xl gm-intro" data-reveal data-intro-phone>
+            <div class="gm-phone-screen">
+              <img class="is-on" src="../images/work/project-03/screens/intro-01.png" alt="인트로 1 — 매일아침 좋은 물을 먹는다는 것">
+              <img src="../images/work/project-03/screens/intro-02.png" alt="인트로 2 — 좋은 유산균을 먹는다는 것" loading="lazy">
+              <img src="../images/work/project-03/screens/intro-03.png" alt="인트로 3 — 좋은 단백질을 먹는다는 것" loading="lazy">
+              <img src="../images/work/project-03/screens/intro-04.png" alt="인트로 4 — 나의 건강과 미래를 바꾸기 시작하는 것모닝 하세요" loading="lazy">
+            </div>
+          </figure>
+          <figure class="gm-phone gm-phone--side" data-reveal style="--d: .15s" data-speed="-0.06">
+            <div class="gm-phone-screen"><img src="../images/work/project-03/screens/login-child.png" alt="자녀계정 로그인 화면" loading="lazy"></div>
+            <figcaption class="gm-cap gm-mono">Child Login</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 05. 홈 — 오늘의 인증 ========== -->
+    <section class="gm-section gm-green-bg" id="home" data-chapter="Home" data-dark>
+      <div class="container">
+        <header class="gm-head gm-head--row">
+          <div>
+            <h4 class="section-label sec-title"><span class="num">04</span> <span class="sec-dash">—</span> Home</h4>
+            <h2 class="gm-h2" data-reveal>하루의 시작은<br>버튼 하나로.</h2>
+          </div>
+          <p class="gm-text" data-reveal>
+            홈 첫 화면에는 오늘 날짜와 점선 카드의 ‘오늘의 인증하기’만 남겼습니다. 인증 전에는 비어 있는 점선 카드가,
+            인증 후에는 사진과 ‘인증 완료’ 스탬프가 같은 자리를 채우며 상태 변화를 한눈에 보여 줍니다.
+            요일 스탬프와 팀 인증률 바는 그 아래에서 진행 상황을 이어 받습니다.
+          </p>
+        </header>
+
+        <div class="gm-ba" data-reveal>
+          <figure class="gm-phone gm-phone--l gm-phone--scroll">
+            <div class="gm-phone-screen"><img src="../images/work/project-03/screens/home-full-before.png" alt="홈 전체 — 챌린지 인증 전" loading="lazy"></div>
+            <figcaption class="gm-cap gm-mono"><b>Before</b> 인증 전</figcaption>
+          </figure>
+          <span class="gm-ba-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+          <figure class="gm-phone gm-phone--l gm-phone--scroll" style="--delay: .6s">
+            <div class="gm-phone-screen"><img src="../images/work/project-03/screens/home-full-after.png" alt="홈 전체 — 챌린지 인증 후" loading="lazy"></div>
+            <figcaption class="gm-cap gm-mono"><b>After</b> 인증 완료</figcaption>
+          </figure>
+        </div>
+
+        <div class="gm-rail" data-reveal>
+          <figure class="gm-phone"><div class="gm-phone-screen"><img src="../images/work/project-03/screens/home-popup-method.png" alt="인증 방법 선택 팝업" loading="lazy"></div><figcaption class="gm-cap gm-mono">01 · 인증 방법 선택</figcaption></figure>
+          <figure class="gm-phone"><div class="gm-phone-screen"><img src="../images/work/project-03/screens/home-popup-done.png" alt="인증 완료 팝업" loading="lazy"></div><figcaption class="gm-cap gm-mono">02 · 인증 완료</figcaption></figure>
+          <figure class="gm-phone"><div class="gm-phone-screen"><img src="../images/work/project-03/screens/home-weekly.png" alt="나의 인증 현황 캘린더" loading="lazy"></div><figcaption class="gm-cap gm-mono">03 · 나의 인증 현황</figcaption></figure>
+          <figure class="gm-phone gm-phone--scroll" style="--delay: .3s"><div class="gm-phone-screen"><img src="../images/work/project-03/screens/home-full-always.png" alt="홈 — 상시팀" loading="lazy"></div><figcaption class="gm-cap gm-mono">04 · 상시팀 홈</figcaption></figure>
+          <figure class="gm-phone"><div class="gm-phone-screen"><img src="../images/work/project-03/screens/home-notice.png" alt="공지사항 목록" loading="lazy"></div><figcaption class="gm-cap gm-mono">05 · 공지사항</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 06. 챌린지 ========== -->
+    <section class="gm-section" id="challenge" data-chapter="Challenge">
+      <div class="container gm-feature gm-feature--rev">
+        <div class="gm-feature-text">
+          <h4 class="section-label sec-title"><span class="num">05</span> <span class="sec-dash">—</span> Challenge</h4>
+          <h2 class="gm-h2" data-reveal>목표까지 남은 거리를<br><span class="gm-orange">눈으로 보이게.</span></h2>
+          <p class="gm-text" data-reveal>
+            팀 인증률은 오렌지 바, 성공 기준은 바 끝의 ‘목표치’ 표시와 초록 ‘성공!’ 배지로 나눴습니다.
+            숫자를 읽지 않아도 얼마나 남았는지 보이도록요. 아래의 참여 캘린더는 인증한 날을 오렌지 원으로,
+            오늘을 링으로 표시해 홈의 요일 스탬프와 같은 언어로 이어집니다.
+          </p>
+          <ul class="gm-notes" data-reveal>
+            <li><span class="gm-mono">A</span>회차가 여러 번이면 ‘1차 미션 성공’ 배너를 위에 쌓아 진행 단계를 구분</li>
+            <li><span class="gm-mono">B</span>인증 카드는 그대로 공유 이미지가 되도록 스탬프·횟수를 카드 안에 배치</li>
+            <li><span class="gm-mono">C</span>지난 챌린지는 나의·팀 인증률과 결과 배지(성공·실패)로 요약</li>
+          </ul>
+        </div>
+        <div class="gm-feature-stage gm-stack">
+          <figure class="gm-phone gm-phone--l gm-phone--scroll" data-reveal>
+            <div class="gm-phone-screen"><img src="../images/work/project-03/screens/challenge-multi.png" alt="챌린지 — 다건 진행" loading="lazy"></div>
+            <figcaption class="gm-cap gm-mono">Challenge · Multi round</figcaption>
+          </figure>
+          <figure class="gm-phone" data-reveal style="--d: .1s" data-speed="-0.05">
+            <div class="gm-phone-screen"><img src="../images/work/project-03/screens/challenge-share.png" alt="미션 인증 공유" loading="lazy"></div>
+            <figcaption class="gm-cap gm-mono">Share card</figcaption>
+          </figure>
+          <figure class="gm-phone" data-reveal style="--d: .2s" data-speed="0.04">
+            <div class="gm-phone-screen"><img src="../images/work/project-03/screens/challenge-history.png" alt="챌린지 이력보기" loading="lazy"></div>
+            <figcaption class="gm-cap gm-mono">History</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 07. 나의 팀 ========== -->
+    <section class="gm-section gm-section--tint" id="team" data-chapter="My Team">
+      <div class="container">
+        <header class="gm-head gm-head--row">
+          <div>
+            <h4 class="section-label sec-title"><span class="num">06</span> <span class="sec-dash">—</span> My Team</h4>
+            <h2 class="gm-h2" data-reveal>혼자가 아니라<br><span class="gm-green">팀으로 이어지게.</span></h2>
+          </div>
+          <p class="gm-text" data-reveal>
+            팀 카드는 상태(진행중·진행대기·진행종료), 팀 구분(챌린지·상시), 인원, 인증률을 같은 순서로 쌓은
+            하나의 템플릿입니다. 랭킹에서는 내 팀을 화면 아래에 고정해 순위가 멀어져도 놓치지 않게 했고,
+            팀 정보에는 팀원 인증률 순위를 막대 그래프로 넣어 서로를 응원하는 동기를 만들었습니다.
+          </p>
+        </header>
+
+        <div class="gm-team">
+          <figure class="gm-phone gm-phone--l gm-phone--scroll" data-reveal>
+            <div class="gm-phone-screen"><img src="../images/work/project-03/screens/team-list.png" alt="나의 팀 목록" loading="lazy"></div>
+            <figcaption class="gm-cap gm-mono">Team list</figcaption>
+          </figure>
+          <figure class="gm-phone gm-phone--l gm-phone--scroll" data-reveal style="--d: .08s; --delay: .4s">
+            <div class="gm-phone-screen"><img src="../images/work/project-03/screens/team-detail.png" alt="팀 정보 — 챌린지 상세" loading="lazy"></div>
+            <figcaption class="gm-cap gm-mono">Team detail</figcaption>
+          </figure>
+          <figure class="gm-phone gm-phone--l gm-phone--scroll" data-reveal style="--d: .16s; --delay: .8s">
+            <div class="gm-phone-screen"><img src="../images/work/project-03/screens/team-ranking.png" alt="챌린지 팀 랭킹" loading="lazy"></div>
+            <figcaption class="gm-cap gm-mono">Ranking</figcaption>
+          </figure>
+          <figure class="gm-phone gm-phone--l gm-phone--scroll" data-reveal style="--d: .24s; --delay: 1.2s">
+            <div class="gm-phone-screen"><img src="../images/work/project-03/screens/team-create.png" alt="팀 만들기" loading="lazy"></div>
+            <figcaption class="gm-cap gm-mono">Create team</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 08. 마이 · 자녀 계정 ========== -->
+    <section class="gm-section" id="family" data-chapter="My &amp; Family">
+      <div class="container gm-feature">
+        <div class="gm-feature-text">
+          <h4 class="section-label sec-title"><span class="num">07</span> <span class="sec-dash">—</span> My &amp; Family</h4>
+          <h2 class="gm-h2" data-reveal>부모가 만들고,<br><span class="gm-orange">아이가 참여하는</span> 계정.</h2>
+          <p class="gm-text" data-reveal>
+            만 14세 미만 자녀는 부모 계정 인증을 거쳐야 하는 가장 복잡한 흐름이었습니다. 자녀 계정마다
+            컬러 아바타를 주어 여러 명을 한 화면에서도 구분하게 했고, ‘미완료 계정’과 ‘탈퇴 진행 중’은
+            회색 아바타와 핑크 라벨로 정상 계정과 분리했습니다. 입력 오류는 같은 핑크 톤 하나로 통일했습니다.
+          </p>
+          <div class="gm-mini" data-reveal>
+            <figure class="gm-phone gm-phone--s"><div class="gm-phone-screen"><img src="../images/work/project-03/screens/my-before.png" alt="마이 — 인증 전" loading="lazy"></div><figcaption class="gm-cap gm-mono">My · Before</figcaption></figure>
+            <figure class="gm-phone gm-phone--s"><div class="gm-phone-screen"><img src="../images/work/project-03/screens/my-after.png" alt="마이 — 인증 후" loading="lazy"></div><figcaption class="gm-cap gm-mono">My · After</figcaption></figure>
+          </div>
+        </div>
+        <div class="gm-feature-stage gm-stack">
+          <figure class="gm-phone gm-phone--l gm-phone--scroll" data-reveal>
+            <div class="gm-phone-screen"><img src="../images/work/project-03/screens/my-child-list.png" alt="자녀계정 등록/관리" loading="lazy"></div>
+            <figcaption class="gm-cap gm-mono">Child accounts</figcaption>
+          </figure>
+          <figure class="gm-phone gm-phone--scroll" data-reveal style="--d: .1s; --delay: .5s" data-speed="-0.05">
+            <div class="gm-phone-screen"><img src="../images/work/project-03/screens/my-child-activity.png" alt="자녀활동 정보" loading="lazy"></div>
+            <figcaption class="gm-cap gm-mono">Child activity</figcaption>
+          </figure>
+          <figure class="gm-phone gm-phone--scroll" data-reveal style="--d: .2s; --delay: 1s" data-speed="0.04">
+            <div class="gm-phone-screen"><img src="../images/work/project-03/screens/login-child-register.png" alt="자녀계정 등록 — 입력 오류 상태" loading="lazy"></div>
+            <figcaption class="gm-cap gm-mono">Register · Error</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 09. 디자인 시스템 ========== -->
+    <section class="gm-section gm-ink" id="system" data-chapter="Design System" data-dark>
+      <div class="container">
+        <header class="gm-head gm-head--row">
+          <div>
+            <h4 class="section-label sec-title"><span class="num">08</span> <span class="sec-dash">—</span> Design System</h4>
+            <h2 class="gm-h2" data-reveal>113개 화면을 묶는<br><span class="gm-green-l">작은 규칙들.</span></h2>
+          </div>
+          <p class="gm-text" data-reveal>
+            360 × 800 기준, 좌우 20px 여백과 320px 콘텐츠 폭. 초록은 행동과 성공, 오렌지는 진행과 기록,
+            핑크는 오류에만 쓰도록 역할을 나눴습니다. 아래 요소는 실제 화면의 컴포넌트를 코드로 다시 그린 것입니다.
+          </p>
+        </header>
+
+        <div class="gm-ds">
+          <!-- 컬러 -->
+          <div class="gm-ds-card gm-ds-color" data-reveal>
+            <p class="gm-ds-label gm-mono">Color</p>
+            <ul class="gm-swatches">
+              <li style="--c:#169E4A"><i></i><b>Primary Green</b><span class="gm-mono">#169E4A</span><em>CTA · 성공 · 선택</em></li>
+              <li style="--c:#F79C22"><i></i><b>Progress Orange</b><span class="gm-mono">#F79C22</span><em>인증률 · 스탬프</em></li>
+              <li style="--c:#FDE500"><i></i><b>Kakao Yellow</b><span class="gm-mono">#FDE500</span><em>소셜 로그인</em></li>
+              <li style="--c:#E42864"><i></i><b>Alert Pink</b><span class="gm-mono">#E42864</span><em>오류 · 알림</em></li>
+              <li style="--c:#111111"><i></i><b>Ink</b><span class="gm-mono">#111111</span><em>텍스트 · 탭바</em></li>
+              <li style="--c:#F5F5F5"><i></i><b>Surface</b><span class="gm-mono">#F5F5F5</span><em>배경 · 정보 박스</em></li>
+            </ul>
+          </div>
+
+          <!-- 타이포 -->
+          <div class="gm-ds-card gm-ds-type" data-reveal style="--d: .06s">
+            <p class="gm-ds-label gm-mono">Typography — Pretendard</p>
+            <ul class="gm-type">
+              <li><span class="gm-mono">Display</span><p style="font-size:2.25rem;font-weight:800;letter-spacing:-0.5px">매일아침 것</p></li>
+              <li><span class="gm-mono">Title</span><p style="font-size:1.75rem;font-weight:500;letter-spacing:-0.5px">GUT Morning Korea Challenge</p></li>
+              <li><span class="gm-mono">Heading</span><p style="font-size:1.25rem;font-weight:700">챌린지 팀 랭킹</p></li>
+              <li><span class="gm-mono">Body</span><p style="font-size:1rem">팀명: 아침마다 오 마이 GUT Morning</p></li>
+              <li><span class="gm-mono">Caption</span><p style="font-size:.8125rem;opacity:.6">2025.09.17 10:49:00 기준</p></li>
+            </ul>
+          </div>
+
+          <!-- 버튼 · 입력 -->
+          <div class="gm-ds-card gm-ds-ui" data-reveal style="--d: .1s">
+            <p class="gm-ds-label gm-mono">Button · Input</p>
+            <div class="gm-ui">
+              <button class="gm-btn gm-btn--kakao" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4C7 4 3 7.2 3 11.1c0 2.5 1.6 4.6 4.1 5.9l-.9 3.4 3.9-2.6c.6.1 1.3.1 1.9.1 5 0 9-3.2 9-7.1S17 4 12 4z"/></svg>카카오톡 로그인/회원가입</button>
+              <button class="gm-btn" type="button">챌린지 인증 공유하기</button>
+              <div class="gm-btn-row">
+                <button class="gm-btn gm-btn--gray" type="button">동의하지 않음</button>
+                <button class="gm-btn" type="button">동의</button>
+              </div>
+              <label class="gm-input"><span>자녀계정 아이디</span></label>
+              <label class="gm-input gm-input--error"><span>자녀계정 비밀번호 확인</span></label>
+              <p class="gm-input-msg">비밀번호가 불일치 합니다.</p>
+            </div>
+          </div>
+
+          <!-- 상태 · 칩 · 진행 -->
+          <div class="gm-ds-card gm-ds-state" data-reveal style="--d: .14s">
+            <p class="gm-ds-label gm-mono">Badge · Progress · Stamp</p>
+            <div class="gm-chips">
+              <span class="gm-badge">진행중</span>
+              <span class="gm-badge gm-badge--wait">진행대기</span>
+              <span class="gm-badge gm-badge--end">진행종료</span>
+              <span class="gm-chip">챌린지</span>
+              <span class="gm-chip gm-chip--o">상시</span>
+              <span class="gm-chip gm-chip--g"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="6" cy="5" r="2.4"/><circle cx="11" cy="5.5" r="2"/><path d="M1.5 13c0-2.5 2-4 4.5-4s4.5 1.5 4.5 4zM10 13c0-1.4-.4-2.5-1.1-3.3 2.6-.4 5.6.6 5.6 3.3z"/></svg>64명</span>
+            </div>
+
+            <div class="gm-progress" data-progress>
+              <div class="gm-progress-head"><span>팀 인증률</span><span class="gm-progress-target">▼ 목표치</span></div>
+              <div class="gm-progress-row">
+                <strong class="gm-progress-val"><span data-count="40">40</span><small>%</small></strong>
+                <div class="gm-progress-bar"><i></i><b>성공!</b></div>
+              </div>
+            </div>
+
+            <ol class="gm-week" aria-label="주간 인증 스탬프">
+              <li class="on">일</li><li class="on">월</li><li>화</li><li class="on">수</li><li class="on">목</li><li class="today">금<small>Today</small></li><li>토</li>
+            </ol>
+          </div>
+
+          <!-- 그리드 -->
+          <div class="gm-ds-card gm-ds-grid" data-reveal style="--d: .18s">
+            <p class="gm-ds-label gm-mono">Layout</p>
+            <div class="gm-grid-demo" aria-hidden="true">
+              <div class="gm-grid-phone">
+                <span class="gm-grid-m l">20</span><span class="gm-grid-m r">20</span>
+                <i></i><i class="t"></i><i></i><i class="s"></i>
+                <span class="gm-grid-w">320</span>
+              </div>
+            </div>
+            <ul class="gm-grid-spec gm-mono">
+              <li><b>360 × 800</b>Base frame</li>
+              <li><b>20 / 320</b>Margin / Content</li>
+              <li><b>24 · 12 · 8</b>Card · Button · Chip radius</li>
+              <li><b>4</b>Tab bar items</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 10. 예외 상태 ========== -->
+    <section class="gm-section" id="states" data-chapter="States">
+      <div class="container">
+        <header class="gm-head gm-head--row">
+          <div>
+            <h4 class="section-label sec-title"><span class="num">09</span> <span class="sec-dash">—</span> States</h4>
+            <h2 class="gm-h2" data-reveal>잘 안 될 때의 화면도<br>같은 목소리로.</h2>
+          </div>
+          <p class="gm-text" data-reveal>
+            시스템 점검, 로딩, 500·404 에러에도 3D 일러스트와 초록 헤드라인, 하단 고정 버튼이라는 같은 구조를 썼습니다.
+            팝업은 제목·본문·버튼 위치를 하나의 템플릿으로 고정해 약관 동의부터 팀 가입 완료까지 재사용했습니다.
+          </p>
+        </header>
+
+        <div class="gm-states" data-reveal>
+          <figure class="gm-phone"><div class="gm-phone-screen"><img src="../images/work/project-03/screens/etc-maintenance.png" alt="시스템 점검 안내" loading="lazy"></div><figcaption class="gm-cap gm-mono">Maintenance</figcaption></figure>
+          <figure class="gm-phone"><div class="gm-phone-screen"><img src="../images/work/project-03/screens/etc-loading.png" alt="로딩" loading="lazy"></div><figcaption class="gm-cap gm-mono">Loading</figcaption></figure>
+          <figure class="gm-phone"><div class="gm-phone-screen"><img src="../images/work/project-03/screens/etc-500.png" alt="500 에러" loading="lazy"></div><figcaption class="gm-cap gm-mono">500 Error</figcaption></figure>
+          <figure class="gm-phone"><div class="gm-phone-screen"><img src="../images/work/project-03/screens/etc-404.png" alt="404 에러" loading="lazy"></div><figcaption class="gm-cap gm-mono">404 Error</figcaption></figure>
+          <figure class="gm-phone"><div class="gm-phone-screen"><img src="../images/work/project-03/screens/login-terms.png" alt="개인정보 제3자 정보제공 동의 팝업" loading="lazy"></div><figcaption class="gm-cap gm-mono">Popup · Terms</figcaption></figure>
+          <figure class="gm-phone"><div class="gm-phone-screen"><img src="../images/work/project-03/screens/login-team-joined.png" alt="팀 참여 완료 팝업" loading="lazy"></div><figcaption class="gm-cap gm-mono">Popup · Joined</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 11. 이용 안내 ========== -->
+    <section class="gm-section gm-section--tint" id="guide" data-chapter="Guide">
+      <div class="container gm-feature gm-feature--rev">
+        <div class="gm-feature-text">
+          <h4 class="section-label sec-title"><span class="num">10</span> <span class="sec-dash">—</span> Guide</h4>
+          <h2 class="gm-h2" data-reveal>처음 온 사람도<br><span class="gm-green">세 단계면 충분하게.</span></h2>
+          <p class="gm-text" data-reveal>
+            인증 방법 안내는 실제 화면을 축소해 넣고, 눌러야 할 곳에 손가락 커서를 얹어 설명했습니다.
+            모바일 웹과 PC 웹의 업로드 차이, iPhone Safari의 이미지 저장 방법처럼 문의가 많을 부분은
+            별도 블록으로 분리했습니다.
+          </p>
+          <ol class="gm-steps" data-reveal>
+            <li><span class="gm-mono">01</span>오늘의 인증하기 버튼 선택</li>
+            <li><span class="gm-mono">02</span>사진 촬영 · 보관함 · 파일 선택</li>
+            <li><span class="gm-mono">03</span>인증 내역 확인 및 공유</li>
+          </ol>
+        </div>
+        <div class="gm-feature-stage">
+          <figure class="gm-phone gm-phone--xl gm-phone--scroll gm-phone--slow" data-reveal>
+            <div class="gm-phone-screen"><img src="../images/work/project-03/screens/guide-cert.png" alt="서비스 이용 안내 — 것모닝 인증 방법" loading="lazy"></div>
+            <figcaption class="gm-cap gm-mono">Service guide · 360 × 3100</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 12. 전체 화면 띠 ========== -->
+    <section class="gm-wall" aria-label="GUT Morning 화면 모음">
+      <div class="gm-wall-row" data-wall></div>
+      <div class="gm-wall-row gm-wall-row--rev" data-wall></div>
+    </section>
+
+    <!-- ========== 13. 회고 ========== -->
+    <section class="gm-section" id="outcome" data-chapter="Outcome">
+      <div class="container gm-split">
+        <h4 class="section-label sec-title"><span class="num">11</span> <span class="sec-dash">—</span> Outcome</h4>
+        <ol class="gm-outcome">
+          <li data-reveal>
+            <strong><span data-count="113">113</span></strong>
+            <h3>Screens</h3>
+            <p>7개 섹션의 기본 화면과 상태 변형을 하나의 360 기준 그리드 위에서 완성했습니다.</p>
+          </li>
+          <li data-reveal style="--d: .08s">
+            <strong>3<small>colors</small></strong>
+            <h3>Clear Roles</h3>
+            <p>초록·오렌지·핑크에 각각 하나의 역할만 주어, 색만 보고도 행동·진행·오류를 구분하도록 했습니다.</p>
+          </li>
+          <li data-reveal style="--d: .16s">
+            <strong>1<small>template</small></strong>
+            <h3>Reusable Cards</h3>
+            <p>팀·챌린지·자녀 활동이 같은 카드 템플릿을 공유해, 새 화면도 조합만으로 만들 수 있게 정리했습니다.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ========== 다음 작업 ========== -->
+    <section class="section work-next">
+      <div class="container">
+        <h4 class="section-label sec-title">Next project</h4>
+        <a href="project-04.html" class="work-next-link">
+          <span class="work-next-title">Goodiez</span>
+          <span class="arrow-link-circle" aria-hidden="true">
+            <svg class="arrow-link-icon" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+            <svg class="arrow-link-icon arrow-link-icon--next" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+          </span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Atomik 6ixthmead</p>
+    </div>
+  </footer>
+
+  </div>
+  <!-- /.page -->
+
+  <script src="../js/works-data.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/work-gut.js"></script>
+  <script src="../js/work-dock.js"></script>
+</body>
+</html>

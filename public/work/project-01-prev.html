@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LG 에너지솔루션 — Atomik</title>
+  <meta name="description" content="LG에너지솔루션 기업 웹사이트 리뉴얼 — Design PL · UI/UX · 생성형 AI 비주얼. 웹어워드코리아 2025 제품브랜드 혁신대상.">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <!-- Montserrat 웹폰트: 사이트 영문 글꼴 (한글은 Pretendard) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+  <!-- 공통 → 상세 공통 → 이 작업 전용(맨 뒤가 덮어씀) -->
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/work.css">
+  <link rel="stylesheet" href="../css/work-lges.css">
+  <link rel="stylesheet" href="../css/device-phone.css"> <!-- 스마트폰 디바이스 프레임 (공통) -->
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="work-page lg-theme">
+
+  <!--
+  =====================================================================
+   LG Energy Solution — Case Study (v2 리디자인)
+   이미지는 images/work/project-01/ 에 아래 이름으로 넣으면 자동으로 보임
+   (없으면 이름이 적힌 자리 표시가 보임)
+   (Figma 'LGES_디자인 산출물(영문)' 파일에서 추출)
+   - cover.jpg               : 히어로 커버 (js/works-data.js 에 이미 등록)
+   - site-main-full.jpg      : 메인 페이지 전체 1920×8711 (브라우저 프레임 안에서 스크롤)
+   - gallery-02~03.jpg  4:5  : 회사소개 · 제품(ESS) 서브 페이지
+   - ai-01.jpg               : 메인 히어로 비주얼 1920×980
+   - ai-02~03.jpg       4:1  : 제품(Passenger EV · ESS) 서브 비주얼
+   - screen-01~03.jpg        : 모바일 메인 화면 3컷 (360×780)
+   - icon-01~02.jpg          : 제품 Features 아이콘 (iconVISION) 가로 띠
+  =====================================================================
+  -->
+
+  <div class="page">
+
+  <!-- ========== 헤더 (메인과 같음, 링크만 ../index.html 로) ========== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="header-left">
+        <a href="../index.html" class="logo">Yi Jinkwang</a>
+        <p class="header-greeting">Hi! Nice to meet you :)</p>
+      </div>
+      <nav class="desktop-nav" aria-label="주요 메뉴">
+        <ul>
+          <li><a href="index.html" class="text-link text-link--reversed"><span class="text-link-label">Works</span></a></li>
+          <li><a href="../about.html" class="text-link text-link--reversed"><span class="text-link-label">About</span></a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="../index.html#contact" class="text-link header-cta">
+          <span class="text-link-label">Let's talk</span>
+          <span class="text-link-icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+            <svg viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+          </span>
+        </a>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="site-menu" aria-label="메뉴 열기">
+          <span class="menu-toggle-line"></span>
+          <span class="menu-toggle-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== 전체 화면 메뉴 (모바일) ========== -->
+  <div class="site-menu" id="site-menu" aria-hidden="true">
+    <div class="container site-menu-inner">
+      <nav aria-label="모바일 메뉴">
+        <ul class="menu-list">
+          <li style="--i: 0"><a href="index.html"><span class="num">01</span> Works</a></li>
+          <li style="--i: 1"><a href="../about.html"><span class="num">02</span> About</a></li>
+          <!-- Contact 메뉴는 잠시 숨김 (다시 보이려면 아래 li 의 hidden 을 지우면 됨) -->
+          <li style="--i: 2" hidden><a href="../index.html#contact"><span class="num">03</span> Contact</a></li>
+        </ul>
+      </nav>
+      <div class="menu-footer" style="--i: 3">
+        <a href="../index.html#contact" class="arrow-link">
+          <span class="arrow-link-text">Start a project</span>
+          <span class="arrow-link-circle" aria-hidden="true">
+            <svg class="arrow-link-icon" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+            <svg class="arrow-link-icon arrow-link-icon--next" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+          </span>
+        </a>
+        <div class="menu-meta">
+          <a href="mailto:sixthmead@me.com" class="text-link"><span class="text-link-label">sixthmead@me.com</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="top" class="lg">
+
+    <!-- =========================================================
+         HERO (상세 페이지 공통 구조 · 스타일은 work.css 12번)
+         머리말 + 제목 + 한 줄 요약 → 화면 폭 가득한 커버 → (About) 정보 표
+         ========================================================= -->
+    <section class="case-hero" data-chapter="Intro">
+      <div class="container case-hero-head">
+        <p class="case-eyebrow">Case 01 — Corporate Website Renewal</p>
+        <h1 class="case-title" data-split>LG Energy Solution</h1>
+        <p class="case-summary">
+          글로벌 배터리 선도 기업의 기술력과 미래 비전을
+          하나의 디지털 브랜드 경험으로. 디자인 PL로서 콘셉트 수립부터
+          생성형 AI 비주얼, 최종 품질 관리까지 전 과정을 이끌었습니다.
+        </p>
+      </div>
+
+      <figure class="case-cover">
+        <img data-work-img="project-01:cover" alt="LG에너지솔루션 웹사이트 메인 화면이 띄워진 노트북" onerror="this.remove()">
+      </figure>
+
+      <div class="container">
+        <p class="case-cover-caption">Main Hero — Empower Every Possibility</p>
+      </div>
+
+      <div class="container case-meta">
+        <p class="section-label">About</p>
+        <dl class="case-facts">
+          <div><dt>Client</dt><dd>LG Energy Solution</dd></div>
+          <div><dt>Role</dt><dd>Design PL · UI/UX</dd></div>
+          <div><dt>Scope</dt><dd>7 GNB · 30 Pages · PC/MO</dd></div>
+          <div><dt>Live</dt><dd><a href="https://www.lgensol.com/" target="_blank" rel="noopener" class="lg-ext">lgensol.com <span aria-hidden="true">↗</span></a></dd></div>
+          <div><dt>Year</dt><dd>2025.04 — 2026.02</dd></div>
+          <div><dt>Award</dt><dd><a href="#outcome">Web Award Korea 2025</a><br>제품브랜드 혁신대상</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- 흐르는 키워드 띠 -->
+    <div class="lg-marquee" aria-hidden="true">
+      <div class="lg-marquee-track">
+        <span>Design Direction</span><i>✦</i><span>UI/UX System</span><i>✦</i><span>Generative AI Visual</span><i>✦</i><span>Quality Control</span><i>✦</i><span>Global Brand Experience</span><i>✦</i>
+        <span>Design Direction</span><i>✦</i><span>UI/UX System</span><i>✦</i><span>Generative AI Visual</span><i>✦</i><span>Quality Control</span><i>✦</i><span>Global Brand Experience</span><i>✦</i>
+      </div>
+    </div>
+
+    <!-- =========================================================
+         01 OVERVIEW
+         ========================================================= -->
+    <section class="lg-section" id="overview" data-chapter="Overview">
+      <div class="container lg-grid">
+        <header class="lg-head">
+          <p class="section-label lg-index"><span class="num">01</span> — Overview</p>
+        </header>
+        <div class="lg-body">
+          <p class="lg-statement" data-scrub>
+            흩어진 콘텐츠와 서비스를, 글로벌 배터리 기업의 기술력과 미래 비전이 담긴 하나의 브랜드 경험으로 연결했습니다.
+          </p>
+          <div class="lg-columns" data-reveal>
+            <p>LG에너지솔루션 웹사이트 리뉴얼은 글로벌 배터리 선도 기업으로서의 브랜드 가치와 기술 경쟁력을 효과적으로 전달하고, 다양한 고객과 이해관계자에게 일관된 디지털 브랜드 경험을 제공하기 위해 추진되었습니다.</p>
+            <p>디자인 PL로서 웹사이트 전반의 디자인 방향과 핵심 비주얼 전략을 수립하고, 브랜드 아이덴티티를 기반으로 Visual Design · UI · Service 전 영역의 완성도를 관리했습니다.</p>
+          </div>
+
+          <!-- 사이트맵: Figma 산출물 페이지 구조 기준 -->
+          <div class="lg-map" data-reveal>
+            <div class="lg-map-head">
+              <p class="lg-mono">Information Architecture</p>
+              <p class="lg-map-total"><strong>7</strong> GNB <span>/</span> <strong>30</strong> Sub pages <span>/</span> Desktop 1920 · Mobile 360</p>
+            </div>
+            <ol class="lg-map-cols">
+              <li><h4>Product</h4><ul><li>Applications</li><li>Form Factor</li><li>Materials</li></ul></li>
+              <li><h4>Service</h4><ul><li>VPP</li><li>B.around</li><li>B-Lifecare</li><li>B.once</li><li>KooRoo</li><li>ESS SI</li></ul></li>
+              <li><h4>Company</h4><ul><li>Overview</li><li>Ethics</li><li>Global Network</li><li>R&amp;D</li><li>Newsroom</li></ul></li>
+              <li><h4>Sustainability</h4><ul><li>Framework</li><li>Environment</li><li>Social</li><li>Governance</li><li>Reports</li></ul></li>
+              <li><h4>IR</h4><ul><li>Financial</li><li>Stock</li><li>IR Info</li><li>IR Materials</li></ul></li>
+              <li><h4>Career</h4><ul><li>Talent</li><li>HR System</li><li>Recruit</li><li>Openings</li></ul></li>
+              <li><h4>Support</h4><ul><li>Download</li><li>Contact</li><li>FAQ</li></ul></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         02 ROLE — 벤토 그리드
+         ========================================================= -->
+    <section class="lg-section" id="role" data-chapter="Role">
+      <div class="container">
+        <header class="lg-head lg-head--row">
+          <p class="section-label lg-index"><span class="num">02</span> — Role</p>
+          <h2 class="lg-h2" data-reveal>네 개의 역할, <span class="lg-grad">하나의 기준.</span></h2>
+        </header>
+
+        <ul class="lg-bento">
+          <li class="lg-card lg-card--a" data-reveal>
+            <div class="lg-card-top"><span class="lg-mono">R—01</span><span class="lg-card-kr">콘셉트 · 전략 수립</span></div>
+            <h3 class="lg-card-title">Direction</h3>
+            <p>글로벌 기업 이미지와 사업 방향성을 반영해 웹사이트 전반의 UX/UI 디자인 콘셉트와 핵심 비주얼 전략을 수립했습니다.</p>
+            <div class="lg-card-art lg-card-art--rings" aria-hidden="true"><i></i><i></i><i></i></div>
+          </li>
+          <li class="lg-card lg-card--b lg-card--dark" data-reveal style="--d: .08s">
+            <div class="lg-card-top"><span class="lg-mono">R—02</span><span class="lg-card-kr">생성형 AI 이미지 · 영상</span></div>
+            <h3 class="lg-card-title">AI Visual</h3>
+            <p>메인 히어로와 제품 · 사업소개 콘텐츠의 이미지와 영상을 생성형 AI로 기획하고 제작했습니다.</p>
+            <div class="lg-card-art lg-card-art--aurora" aria-hidden="true"></div>
+          </li>
+          <li class="lg-card lg-card--c" data-reveal style="--d: .12s">
+            <div class="lg-card-top"><span class="lg-mono">R—03</span><span class="lg-card-kr">메인 · 주요 서브 페이지</span></div>
+            <h3 class="lg-card-title">Design</h3>
+            <p>메인 페이지와 주요 서브 페이지의 UX/UI 디자인을 직접 수행했습니다.</p>
+            <div class="lg-card-art lg-card-art--grid" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </li>
+          <li class="lg-card lg-card--d" data-reveal style="--d: .16s">
+            <div class="lg-card-top"><span class="lg-mono">R—04</span><span class="lg-card-kr">팀 운영 · 고객사 커뮤니케이션</span></div>
+            <h3 class="lg-card-title">Leadership</h3>
+            <p>디자인팀 업무 배분과 일정 · 리소스를 관리하고, 고객사와 요구사항을 조율하며 최종 산출물의 품질을 검수했습니다.</p>
+            <div class="lg-team" aria-label="디자이너 6명">
+              <i></i><i></i><i></i><i></i><i></i><i></i>
+              <span class="lg-mono">×6 Designers</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 갤러리: 메인 페이지 (브라우저 프레임) + 서브 2장 -->
+    <section class="lg-showcase" aria-label="웹사이트 화면">
+      <div class="container">
+        <!-- 스크롤하는 동안 메인 페이지 전체가 프레임 안에서 위로 흘러감 -->
+        <div class="lg-stage" data-stage>
+          <div class="lg-stage-sticky">
+            <div class="lg-browser">
+              <div class="lg-browser-bar" aria-hidden="true">
+                <span class="lg-browser-dots"><i></i><i></i><i></i></span>
+                <span class="lg-browser-url lg-mono">lgensol.com/en</span>
+                <span class="lg-browser-meta lg-mono" data-stage-pct>Main — 0%</span>
+              </div>
+              <figure class="lg-media lg-media--wide lg-scroller" data-ph="site-main-full.jpg · Main">
+                <img src="../images/work/project-01/site-main-full.jpg" alt="LG에너지솔루션 메인 페이지 전체 화면" data-stage-img onerror="this.remove()">
+              </figure>
+            </div>
+            <ol class="lg-stage-legend lg-mono" aria-hidden="true">
+              <li>Hero</li><li>Solution</li><li>Product</li><li>Materials</li><li>Global</li><li>Next-gen</li><li>Newsroom</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="lg-pair">
+          <figure class="lg-media lg-media--tall lg-media--top" data-ph="gallery-02.jpg · 4:5 · Company" data-reveal>
+            <img src="../images/work/project-01/gallery-02.jpg" alt="LG에너지솔루션 회사소개 페이지" onerror="this.remove()">
+            <figcaption class="lg-badge lg-glass lg-mono">Company — Overview</figcaption>
+          </figure>
+          <figure class="lg-media lg-media--tall lg-media--top lg-pair-offset" data-ph="gallery-03.jpg · 4:5 · Product" data-reveal data-speed="-0.08">
+            <img src="../images/work/project-01/gallery-03.jpg" alt="LG에너지솔루션 제품 ESS 페이지" onerror="this.remove()">
+            <figcaption class="lg-badge lg-glass lg-mono">Product — ESS</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         03 PROCESS
+         ========================================================= -->
+    <section class="lg-section" id="process" data-chapter="Process">
+      <div class="container">
+        <header class="lg-head lg-head--row">
+          <p class="section-label lg-index"><span class="num">03</span> — Process</p>
+          <h2 class="lg-h2" data-reveal>문제를 정의하고, <span class="lg-grad">체계로 풀었습니다.</span></h2>
+        </header>
+
+        <ol class="lg-steps" data-steps>
+          <li class="lg-step" data-reveal>
+            <span class="lg-step-num" aria-hidden="true">01</span>
+            <p class="lg-mono lg-step-label">Challenge</p>
+            <h3>서로 다른 이해관계자, 하나의 브랜드</h3>
+            <p>고객 · 투자자 · 파트너 등 다양한 이해관계자에게 브랜드 가치와 기술 경쟁력을 일관되게 전달해야 했습니다. 방대한 콘텐츠가 흩어지지 않고 하나의 브랜드로 읽히는 것이 관건이었습니다.</p>
+          </li>
+          <li class="lg-step" data-reveal style="--d: .1s">
+            <span class="lg-step-num" aria-hidden="true">02</span>
+            <p class="lg-mono lg-step-label">Approach</p>
+            <h3>전 영역을 잇는 디자인 체계</h3>
+            <p>브랜드 아이덴티티를 바탕으로 디자인 콘셉트를 구체화하고, Visual Design · UI · Service 전 영역에 공통으로 적용되는 디자인 체계를 구축했습니다.</p>
+          </li>
+          <li class="lg-step" data-reveal style="--d: .2s">
+            <span class="lg-step-num" aria-hidden="true">03</span>
+            <p class="lg-mono lg-step-label">Solution</p>
+            <h3>직관적이고 세련된 미래 에너지 경험</h3>
+            <p>미래 에너지 생태계와 기술 혁신의 가치를 직관적인 디지털 경험으로 풀어내, 전문성과 미래지향적인 이미지를 강화했습니다.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         04 DESIGN SYSTEM — Figma 변수(Variables) 기준 실제 값
+         ========================================================= -->
+    <section class="lg-section" id="system" data-chapter="Design System">
+      <div class="container">
+        <header class="lg-head lg-head--row">
+          <p class="section-label lg-index"><span class="num">04</span> — Design System</p>
+          <div>
+            <h2 class="lg-h2" data-reveal>30개 페이지를 <span class="lg-grad">하나의 토큰 체계로.</span></h2>
+            <p class="lg-text" data-reveal>컬러 · 타이포그래피 · 라운드 값을 Figma 변수로 정의하고 Desktop(LGES-D)과 Mobile(LGES-M) 스타일을 분리해, 6명의 디자이너가 같은 기준으로 화면을 만들 수 있게 했습니다.</p>
+          </div>
+        </header>
+
+        <div class="lg-ds">
+          <!-- 컬러 -->
+          <div class="lg-ds-card lg-ds-color" data-reveal>
+            <p class="lg-mono lg-ds-label">Color tokens</p>
+            <ul class="lg-swatches">
+              <li style="--c:#33B0C6" class="is-lg"><i></i><b>Primary</b><code>fill/fill-primary</code><span>#33B0C6</span></li>
+              <li style="--c:#13BD99" class="is-lg"><i></i><b>Diagram</b><code>diagram/diagram-02</code><span>#13BD99</span></li>
+              <li style="--c:#171819" class="is-lg"><i></i><b>Text</b><code>text/text-default-01</code><span>#171819</span></li>
+              <li style="--c:#555758"><i></i><b>Stroke 01</b><code>stroke/default-01</code><span>#555758</span></li>
+              <li style="--c:#C9CED1"><i></i><b>Stroke 03</b><code>stroke/default-03</code><span>#C9CED1</span></li>
+              <li style="--c:#E1E7EA"><i></i><b>Stroke 04</b><code>stroke/default-04</code><span>#E1E7EA</span></li>
+            </ul>
+            <div class="lg-ci">
+              <span class="lg-mono">Brand CI</span>
+              <span class="lg-ci-chip" style="--c:#A50034">LG Red <em>R165 G0 B52</em></span>
+              <span class="lg-ci-chip" style="--c:#6B6B6B">LG Gray <em>R107 G107 B107</em></span>
+            </div>
+          </div>
+
+          <!-- 타이포 -->
+          <div class="lg-ds-card lg-ds-type" data-reveal style="--d:.08s">
+            <p class="lg-mono lg-ds-label">Typography — Pretendard</p>
+            <ol class="lg-typescale">
+              <li><span class="lg-mono">LT1</span><b style="--s:72px;font-weight:700;letter-spacing:-.5px">Empower</b><em class="lg-mono">72 / 100.8 · Bold</em></li>
+              <li><span class="lg-mono">H1</span><b style="--s:44px;font-weight:700">Every possibility</b><em class="lg-mono">44 / 61.6 · Bold</em></li>
+              <li><span class="lg-mono">H2</span><b style="--s:32px;font-weight:700">Energy ecosystem</b><em class="lg-mono">32 / 48 · Bold</em></li>
+              <li><span class="lg-mono">H3</span><b style="--s:24px;font-weight:400">Advanced Automotive Battery</b><em class="lg-mono">24 / 38 · Regular</em></li>
+              <li><span class="lg-mono">H4</span><b style="--s:20px;font-weight:600">Cylindrical Battery</b><em class="lg-mono">20 / 32 · SemiBold</em></li>
+              <li><span class="lg-mono">B1–B3</span><b style="--s:16px;font-weight:500">High energy density and performance</b><em class="lg-mono">18 · 16 · 14 / ×1.6</em></li>
+            </ol>
+          </div>
+
+          <!-- 라운드 · 컴포넌트 -->
+          <div class="lg-ds-card lg-ds-radius" data-reveal style="--d:.12s">
+            <p class="lg-mono lg-ds-label">Radius</p>
+            <ul class="lg-radii">
+              <li><i style="--r:4px"></i><span class="lg-mono">02 · 4</span></li>
+              <li><i style="--r:8px"></i><span class="lg-mono">03 · 8</span></li>
+              <li><i style="--r:24px"></i><span class="lg-mono">05 · 24</span></li>
+              <li><i style="--r:999px"></i><span class="lg-mono">Capsule</span></li>
+            </ul>
+          </div>
+
+          <div class="lg-ds-card lg-ds-comp" data-reveal style="--d:.16s">
+            <p class="lg-mono lg-ds-label">Components</p>
+            <div class="lg-comp-row">
+              <span class="lg-btn lg-btn--line">View more <i aria-hidden="true">→</i></span>
+              <span class="lg-btn lg-btn--fill"><i class="lg-btn-ic" aria-hidden="true"></i>Pouch Battery <i aria-hidden="true">›</i></span>
+              <span class="lg-btn lg-btn--chip">#Sodium-ion</span>
+              <span class="lg-btn lg-btn--chip">#All-solid-state</span>
+            </div>
+            <p class="lg-ds-note">GNB · Footer · Dialog · Tab · Card 를 Desktop / Mobile 컴포넌트로 분리 운영</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         05 GENERATIVE AI — 다크 챕터
+         ========================================================= -->
+    <section class="lg-dark" id="ai" data-chapter="Generative AI" data-dark>
+      <div class="lg-aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="lg-noise" aria-hidden="true"></div>
+
+      <div class="container lg-dark-inner">
+        <p class="section-label lg-index"><span class="num">05</span> — Generative AI</p>
+        <h2 class="lg-display" data-reveal>
+          Invisible energy,<br><span class="lg-grad">made visible.</span>
+        </h2>
+        <div class="lg-dark-intro" data-reveal>
+          <p class="lg-dark-lead">눈에 보이지 않는 에너지 기술을, 생성형 AI로 보이게 했습니다.</p>
+          <p>메인 히어로와 제품 · 사업소개 콘텐츠의 이미지와 영상을 생성형 AI로 직접 기획하고 제작했습니다. 브랜드 톤을 기준으로 장면을 설계해, 미래 에너지라는 추상적인 메시지를 한눈에 읽히는 비주얼로 바꿨습니다.</p>
+        </div>
+
+        <figure class="lg-media lg-media--wide lg-media--dark" data-ph="ai-01.jpg · 16:9 · Main Hero" data-reveal>
+          <img src="../images/work/project-01/ai-01.jpg" alt="생성형 AI로 제작한 메인 히어로 비주얼" onerror="this.remove()">
+          <span class="lg-badge lg-glass lg-mono"><span class="lg-dot" aria-hidden="true"></span>Main Hero — Empower Every Possibility</span>
+        </figure>
+
+        <div class="lg-strips">
+          <figure class="lg-media lg-media--strip lg-media--dark" data-ph="ai-02.jpg · 4:1 · Passenger EV" data-reveal>
+            <img src="../images/work/project-01/ai-02.jpg" alt="제품 Passenger EV 서브 비주얼" onerror="this.remove()">
+            <span class="lg-badge lg-glass lg-mono">Product — Passenger EV</span>
+          </figure>
+          <figure class="lg-media lg-media--strip lg-media--dark" data-ph="ai-03.jpg · 4:1 · ESS" data-reveal style="--d:.08s">
+            <img src="../images/work/project-01/ai-03.jpg" alt="제품 ESS 서브 비주얼" onerror="this.remove()">
+            <span class="lg-badge lg-glass lg-mono">Product — ESS</span>
+          </figure>
+        </div>
+
+        <dl class="lg-spec" data-reveal>
+          <div><dt class="lg-mono">Applied to</dt><dd>Main Hero · Product sub visuals</dd></div>
+          <div><dt class="lg-mono">Format</dt><dd>Image · Motion Video</dd></div>
+          <div><dt class="lg-mono">Direction</dt><dd>Brand tone 기반 장면 설계</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         05 MOBILE
+         ========================================================= -->
+    <section class="lg-section lg-section--tint" id="mobile" data-chapter="Mobile">
+      <div class="container lg-grid">
+        <header class="lg-head">
+          <p class="section-label lg-index"><span class="num">06</span> — Mobile</p>
+        </header>
+        <div class="lg-body">
+          <h2 class="lg-h2" data-reveal>어떤 화면에서 만나도 <span class="lg-grad">같은 브랜드로.</span></h2>
+          <p class="lg-text" data-reveal>데스크톱에서 정의한 디자인 체계를 모바일까지 그대로 확장해, 다양한 콘텐츠와 서비스가 작은 화면에서도 하나의 브랜드 경험으로 이어지도록 설계했습니다.</p>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="lg-phones">
+          <figure class="lg-phone" data-ph="screen-01.jpg" data-speed="0.05">
+            <img src="../images/work/project-01/screen-01.jpg" alt="LG에너지솔루션 모바일 메인" onerror="this.remove()">
+          </figure>
+          <figure class="lg-phone lg-phone--center" data-ph="screen-02.jpg">
+            <img src="../images/work/project-01/screen-02.jpg" alt="LG에너지솔루션 모바일 서브" onerror="this.remove()">
+          </figure>
+          <figure class="lg-phone" data-ph="screen-03.jpg" data-speed="0.05">
+            <img src="../images/work/project-01/screen-03.jpg" alt="LG에너지솔루션 모바일 서브" onerror="this.remove()">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         06 ICONVISION
+         ========================================================= -->
+    <section class="lg-section" id="icon" data-chapter="iconVISION">
+      <div class="container lg-grid">
+        <header class="lg-head">
+          <p class="section-label lg-index"><span class="num">07</span> — iconVISION</p>
+        </header>
+        <div class="lg-body">
+          <h2 class="lg-h2" data-reveal>기술적 신뢰와 <span class="lg-grad">감성적 친근함</span> 사이의 균형.</h2>
+          <p class="lg-text" data-reveal>Abstract Icon Style을 바탕으로 파스텔 톤을 기본 컬러로 쓰되, 디지털 환경에서도 선명하게 전달되도록 조도와 채도를 세밀하게 조정했습니다. 아이콘 하나에도 기술 기업의 신뢰감과 브랜드 고유의 따뜻함이 함께 담기도록.</p>
+
+          <!-- 아이콘 3단 톤 (Figma 화면에서 추출한 값) -->
+          <div class="lg-tone" data-reveal>
+            <ol class="lg-tone-steps">
+              <li style="--c:#B3A6EB"><i></i><b>Pastel</b><span class="lg-mono">#B3A6EB</span><em>면 · 배경</em></li>
+              <li style="--c:#7362BB"><i></i><b>Mid</b><span class="lg-mono">#7362BB</span><em>포인트 · 디테일</em></li>
+              <li style="--c:#554596"><i></i><b>Deep</b><span class="lg-mono">#554596</span><em>라인 · 라벨</em></li>
+            </ol>
+            <p class="lg-tone-note lg-mono">Abstract shape × 3-step tone — 파스텔 위에 깊은 톤을 얹어 작은 크기에서도 선명하게</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container lg-icons">
+        <figure class="lg-icon-row" data-reveal>
+          <figcaption class="lg-mono">Passenger EV — Features</figcaption>
+          <div class="lg-icon-img" data-ph="icon-01.jpg"><img src="../images/work/project-01/icon-01.jpg" alt="Passenger EV 특징 아이콘: High energy density, Safety, Fast-charging performance, Long lifespan, Lightweight design" onerror="this.remove()"></div>
+        </figure>
+        <figure class="lg-icon-row" data-reveal style="--d:.1s">
+          <figcaption class="lg-mono">ESS — Features</figcaption>
+          <div class="lg-icon-img" data-ph="icon-02.jpg"><img src="../images/work/project-01/icon-02.jpg" alt="ESS 특징 아이콘: Safety, Long lifespan, High energy efficiency, High energy density, Reliability" onerror="this.remove()"></div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         07 OUTCOME
+         ========================================================= -->
+    <section class="lg-section" id="outcome" data-chapter="Outcome">
+      <div class="container">
+        <header class="lg-head lg-head--row">
+          <p class="section-label lg-index"><span class="num">08</span> — Outcome</p>
+        </header>
+
+        <div class="lg-outcome">
+          <div class="lg-award" data-reveal>
+            <div class="lg-award-glow" aria-hidden="true"></div>
+            <p class="lg-mono lg-award-kicker">Web Award Korea 2025</p>
+            <p class="lg-award-title">제품브랜드<br>혁신대상</p>
+            <p class="lg-award-foot lg-mono">LG Energy Solution — Corporate Website</p>
+            <svg class="lg-award-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"/></svg>
+          </div>
+
+          <ul class="lg-stats">
+            <li data-reveal>
+              <strong><span data-count="11">11</span><small>mo</small></strong>
+              <span>프로젝트 리딩 기간<br><em class="lg-mono">2025.04 — 2026.02</em></span>
+            </li>
+            <li data-reveal style="--d: .08s">
+              <strong><span data-count="6">6</span><small>ppl</small></strong>
+              <span>디자인팀 리딩 규모</span>
+            </li>
+            <li data-reveal style="--d: .16s">
+              <strong>PL</strong>
+              <span>디자인 프로젝트 리더<br>전략 · UX/UI · AI 비주얼 · 품질 검수</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 다음 작업 -->
+    <section class="section work-next lg-next">
+      <div class="container">
+        <p class="section-label lg-index">Next project</p>
+        <a href="project-02.html" class="work-next-link">
+          <span class="work-next-title">Noul</span>
+          <span class="arrow-link-circle" aria-hidden="true">
+            <svg class="arrow-link-icon" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+            <svg class="arrow-link-icon arrow-link-icon--next" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+          </span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Atomik 6ixthmead</p>
+    </div>
+  </footer>
+
+  </div>
+
+  <!-- 하단 플로팅 챕터 표시 (현재 위치 + 진행률) -->
+  <nav class="lg-dock" aria-label="챕터 이동">
+    <span class="lg-dock-label lg-mono" data-dock-label>Intro</span>
+    <span class="lg-dock-bar" aria-hidden="true"><i data-dock-progress></i></span>
+    <ol class="lg-dock-dots">
+      <li><a href="#overview" aria-label="01 Overview"></a></li>
+      <li><a href="#role" aria-label="02 Role"></a></li>
+      <li><a href="#process" aria-label="03 Process"></a></li>
+      <li><a href="#system" aria-label="04 Design System"></a></li>
+      <li><a href="#ai" aria-label="05 Generative AI"></a></li>
+      <li><a href="#mobile" aria-label="06 Mobile"></a></li>
+      <li><a href="#icon" aria-label="07 iconVISION"></a></li>
+      <li><a href="#outcome" aria-label="08 Outcome"></a></li>
+    </ol>
+  </nav>
+
+  <script src="../js/works-data.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/work-lges.js"></script>
+</body>
+</html>

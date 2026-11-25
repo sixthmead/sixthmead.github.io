@@ -1,0 +1,84 @@
+/* =========================================================
+   스마트폰 디바이스 프레임 (프로젝트 상세 페이지 공통)
+   - 프레임 그림: images/device/phone-frame.svg
+   - 적용 대상
+       .lg-phone  (project-01)
+       .nl-phone  (project-02)
+       .gm-phone  (project-03 · 04 · 05)
+   - 각 페이지 CSS 뒤에 불러와서 기존 검은 테두리를 덮어씀
+
+   SVG 숫자 → CSS 비율 (본체 폭 360, 높이 780 기준)
+     베젤 11      → 폭의 3.0556% / 높이의 1.4103%
+     바깥 모서리 54 → 폭의 15%   / 높이의 6.9231%
+     화면 모서리 43 → 화면 폭의 12.72% / 화면 높이의 5.673%
+     버튼 자리 6   → 폭의 1.6667% (양옆으로 튀어나옴)
+     상태 표시줄 끝 59 (베젤 11 + 상태 표시줄 48)
+                  → 폭의 16.389% / 높이의 7.5641%
+       스크린샷은 이 아래부터 보여서 카메라 영역에 디자인이 가려지지 않음
+   ========================================================= */
+
+/* ---------- 공통: 프레임 그림 덮기 ----------
+   폰 상자(본체) 맨 위에 SVG 를 얹음. 버튼 때문에 좌우로 조금 더 넓음 */
+.lg-phone::after,
+.nl-phone::after,
+.gm-phone::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -1.6667%;
+  width: 103.3333%;
+  aspect-ratio: 372 / 780;
+  background: url("../images/device/phone-frame.svg") center / 100% 100% no-repeat;
+  pointer-events: none; /* 마우스는 화면(스크린샷)으로 통과 */
+  z-index: 3;
+}
+
+/* ---------- project-01 : .lg-phone ----------
+   figure 자체가 폰 상자. 버튼이 밖으로 보이도록 잘라내기를 끄고,
+   스크린샷은 베젤 안쪽(화면 자리)에만 놓음 */
+.lg-phone {
+  overflow: visible;
+  align-self: flex-start; /* 가운데 폰(위로 올라간 폰)이 아래로 늘어나지 않게 9:19.5 유지 */
+  border: 0;
+  border-radius: 15% / 6.9231%;
+  background: #0b0b0c;
+}
+
+.lg-phone img {
+  inset: 7.5641% 3.0556% 1.4103%; /* 위: 상태 표시줄 아래 · 좌우/아래: 베젤 두께 */
+  width: 93.8888%;         /* 100% - 좌우 베젤 */
+  height: 91.0256%;        /* 100% - 위(상태 표시줄) - 아래 베젤 */
+  border-radius: 0 0 12.722% 12.722% / 0 0 6.056% 6.056%; /* 아래 모서리만 둥글게 */
+}
+
+/* ---------- project-02 : .nl-phone ----------
+   figure 안의 .nl-tall-frame 이 폰 상자.
+   투명한 테두리(= 베젤 두께)로 스크린샷을 안쪽으로 밀어 넣음 */
+.nl-phone {
+  position: relative;
+  container-type: inline-size; /* 아래 cqw = 폰 폭의 1% */
+}
+
+.nl-phone .nl-tall-frame {
+  aspect-ratio: 360 / 780;
+  border: 3.0556cqw solid transparent;
+  border-top-width: 16.389cqw; /* 위쪽은 상태 표시줄까지 비워 둠 */
+  border-radius: 15cqw;
+  background-clip: padding-box;
+}
+
+/* ---------- project-03 · 04 · 05 : .gm-phone ----------
+   figure 안의 .gm-phone-screen 이 폰 상자. --w = 폰 폭 */
+.gm-phone .gm-phone-screen {
+  aspect-ratio: 360 / 780;
+  border: calc(var(--w) * 0.030556) solid transparent;
+  border-top-width: calc(var(--w) * 0.16389); /* 위쪽은 상태 표시줄까지 비워 둠 */
+  border-radius: calc(var(--w) * 0.15);
+  background-clip: padding-box;
+}
+
+/* ---------- Goodiez(project-04) 전용: 상태 표시줄을 앱 상단 색(#6432af)으로 ----------
+   앱 화면 상단이 보라라서, 흰 상태 표시줄이면 화면과 끊겨 보임 → 보라 바탕 + 흰 시계 · 아이콘 */
+.gdz-theme .gm-phone::after {
+  background-image: url("../images/device/phone-frame-goodiez.svg");
+}

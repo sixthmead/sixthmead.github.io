@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LG 에너지솔루션 — Atomik</title>
+  <meta name="description" content="LG에너지솔루션 기업 웹사이트 리뉴얼 — Design PL · UI/UX · 생성형 AI 비주얼. 웹어워드코리아 2025 제품브랜드 혁신대상.">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <!-- Montserrat 웹폰트: 사이트 영문 글꼴 (한글은 Pretendard) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+  <!-- 공통 → 상세 공통 → 이 작업 전용(맨 뒤가 덮어씀) -->
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/work.css">
+  <link rel="stylesheet" href="../css/work-dock.css">
+  <link rel="stylesheet" href="../css/work-lges.css">
+  <link rel="stylesheet" href="../css/device-phone.css"> <!-- 스마트폰 디바이스 프레임 (공통) -->
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="work-page lg-theme">
+
+  <!--
+  =====================================================================
+   LG Energy Solution — Case Study
+   방향: 깔끔 · 명료 · 정돈 — 큰 단색 패널 + 라벨 + 짧은 글 (Hello Monday 톤)
+   이미지 (images/work/project-01/, Figma 'LGES_디자인 산출물(영문)'에서 추출)
+   - cover.jpg            : 히어로 커버 (js/works-data.js)
+   - site-main-full.jpg   : 메인 페이지 전체 1920×8711 (01 브라우저 목업)
+   - sub-*.jpg            : 서브 페이지 4장 (02)
+   - ai-01~03.jpg         : 생성형 AI 비주얼 (04)
+   - screen-01~03.jpg     : 모바일 360 (05)
+   - icon-*.png           : iconVISION 아이콘 3종 · 컬러 세트 · 적용 예시 (06)
+   스타일: work-lges.css · 인터랙션: work-lges.js · 하단 챕터 독: work-dock.js
+  =====================================================================
+  -->
+
+  <div class="page">
+
+  <!-- ========== 헤더 (메인과 같음, 링크만 ../index.html 로) ========== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="header-left">
+        <a href="../index.html" class="logo">Yi Jinkwang</a>
+        <p class="header-greeting">Hi! Nice to meet you :)</p>
+      </div>
+      <nav class="desktop-nav" aria-label="주요 메뉴">
+        <ul>
+          <li><a href="index.html" class="text-link text-link--reversed"><span class="text-link-label">Works</span></a></li>
+          <li><a href="../about.html" class="text-link text-link--reversed"><span class="text-link-label">About</span></a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="../index.html#contact" class="text-link header-cta">
+          <span class="text-link-label">Let's talk</span>
+          <span class="text-link-icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+            <svg viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+          </span>
+        </a>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="site-menu" aria-label="메뉴 열기">
+          <span class="menu-toggle-line"></span>
+          <span class="menu-toggle-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== 전체 화면 메뉴 (모바일) ========== -->
+  <div class="site-menu" id="site-menu" aria-hidden="true">
+    <div class="container site-menu-inner">
+      <nav aria-label="모바일 메뉴">
+        <ul class="menu-list">
+          <li style="--i: 0"><a href="index.html"><span class="num">01</span> Works</a></li>
+          <li style="--i: 1"><a href="../about.html"><span class="num">02</span> About</a></li>
+          <!-- Contact 메뉴는 잠시 숨김 (다시 보이려면 아래 li 의 hidden 을 지우면 됨) -->
+          <li style="--i: 2" hidden><a href="../index.html#contact"><span class="num">03</span> Contact</a></li>
+        </ul>
+      </nav>
+      <div class="menu-footer" style="--i: 3">
+        <a href="../index.html#contact" class="arrow-link">
+          <span class="arrow-link-text">Start a project</span>
+          <span class="arrow-link-circle" aria-hidden="true">
+            <svg class="arrow-link-icon" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+            <svg class="arrow-link-icon arrow-link-icon--next" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+          </span>
+        </a>
+        <div class="menu-meta">
+          <a href="mailto:sixthmead@me.com" class="text-link"><span class="text-link-label">sixthmead@me.com</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="top" class="lg">
+
+    <!-- =========================================================
+         HERO (상세 페이지 공통 구조 · 스타일은 work.css)
+         ========================================================= -->
+    <section class="case-hero" data-chapter="Intro">
+      <div class="container case-hero-head">
+        <p class="case-eyebrow">Case 01 — Corporate Website Renewal</p>
+        <h1 class="case-title" data-split>LG Energy Solution</h1>
+        <p class="case-summary case-summary--wide">글로벌 배터리 선도 기업의 기술력과 미래 비전을, 하나의 디지털 브랜드 경험으로.<br>디자인 PL로서 콘셉트 수립부터 생성형 AI 비주얼, 최종 품질 관리까지 전 과정을 이끌었습니다.</p>
+      </div>
+
+      <figure class="case-cover">
+        <img data-work-img="project-01:cover" alt="LG에너지솔루션 웹사이트 메인 화면이 띄워진 노트북" onerror="this.remove()">
+      </figure>
+
+      <div class="container case-meta">
+        <p class="section-label">About</p>
+        <dl class="case-facts">
+          <div><dt>Client</dt><dd>LG Energy Solution</dd></div>
+          <div><dt>Role</dt><dd>Design PL · UI/UX</dd></div>
+          <div><dt>Team</dt><dd>6 Designers · 50%</dd></div>
+          <div><dt>Scope</dt><dd>7 GNB · 30 Pages · PC / MO</dd></div>
+          <div><dt>Live</dt><dd><a href="https://www.lgensol.com/" target="_blank" rel="noopener">lgensol.com ↗</a></dd></div>
+          <div><dt>Year</dt><dd>2025.04 — 2026.02</dd></div>
+        </dl>
+        <div class="case-services">
+          <p class="case-services-title">Services</p>
+          <ul>
+            <li>Design Direction</li>
+            <li>UI/UX Design</li>
+            <li>Design System</li>
+            <li>Generative AI Visual</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         01 OVERVIEW — 다른 상세 페이지와 같은 형식
+         라벨 | 큰 문장(스크롤에 따라 진해짐) + Context / My Part + 사이트 구조
+         ========================================================= -->
+    <section class="lg-overview" id="overview" data-chapter="Overview">
+      <div class="container lg-split">
+        <h4 class="section-label sec-title"><span class="num">01</span> <span class="sec-dash">—</span> Overview</h4>
+        <div class="lg-ov-body">
+          <p class="lg-statement" data-scrub>
+            흩어진 콘텐츠와 서비스를, 글로벌 배터리 기업의 기술력과 미래 비전이 담긴 하나의 브랜드 경험으로 연결했습니다.
+          </p>
+          <div class="lg-columns" data-reveal>
+            <div>
+              <h3 class="lg-col-title">Context</h3>
+              <p>LG에너지솔루션은 글로벌 배터리 선도 기업입니다. 제품 · 서비스 · 투자 · 채용까지 30개 페이지에 흩어진 이야기를, 고객과 투자자 누구에게나 같은 브랜드로 읽히게 하는 것이 과제였습니다. 브랜드 아이덴티티를 바탕으로 Visual Design · UI · Service 전 영역에 공통으로 적용되는 디자인 체계를 만들었습니다.</p>
+            </div>
+            <div>
+              <h3 class="lg-col-title">My Part</h3>
+              <p>디자인 PL로서 콘셉트와 디자인 체계를 세우고, 메인과 주요 서브 페이지를 직접 디자인했습니다. 메인 히어로와 제품 비주얼은 생성형 AI로 제작했습니다. 6명의 디자이너에게 업무를 나누고 일정과 리소스를 관리하며, 고객사와 요구사항을 조율해 최종 산출물의 품질을 검수했습니다.</p>
+            </div>
+          </div>
+
+          <!-- 사이트 구조: GNB 7개 + 하위 메뉴 -->
+          <div class="lg-map" data-reveal>
+            <div class="lg-map-head">
+              <p class="lg-map-kicker">Information Architecture</p>
+              <p class="lg-map-total"><strong>7</strong> GNB <span>/</span> <strong>30</strong> Sub pages <span>/</span> Desktop 1920 · Mobile 360</p>
+            </div>
+            <ol class="lg-map-cols">
+              <li><span>G01</span><h4>Product</h4><ul><li>Applications</li><li>Form Factor</li><li>Materials</li></ul></li>
+              <li><span>G02</span><h4>Service</h4><ul><li>VPP</li><li>B.around</li><li>B-Lifecare</li><li>B.once</li><li>KooRoo</li><li>ESS SI</li></ul></li>
+              <li><span>G03</span><h4>Company</h4><ul><li>Overview</li><li>Ethics</li><li>Global Network</li><li>R&amp;D</li><li>Newsroom</li></ul></li>
+              <li><span>G04</span><h4>Sustainability</h4><ul><li>Framework</li><li>Environment</li><li>Social</li><li>Governance</li><li>Reports</li></ul></li>
+              <li><span>G05</span><h4>IR</h4><ul><li>Financial</li><li>Stock</li><li>IR Info</li><li>IR Materials</li></ul></li>
+              <li><span>G06</span><h4>Career</h4><ul><li>Talent</li><li>HR System</li><li>Recruit</li><li>Openings</li></ul></li>
+              <li><span>G07</span><h4>Support</h4><ul><li>Download</li><li>Contact</li><li>FAQ</li></ul></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="lg-paper">
+
+      <!-- =========================================================
+           01 MAIN PAGE
+           ========================================================= -->
+      <section class="lg-chapter" id="main" data-chapter="Main Page">
+        <div class="container">
+          <!-- 머리: 라벨 | 큰 제목 + 설명 (Noul 메인 구성과 같은 형식) -->
+          <header class="lg-head">
+            <h4 class="section-label sec-title"><span class="num">02</span> <span class="sec-dash">—</span> Main Page</h4>
+            <div>
+              <h2 class="lg-h2" data-reveal>스크롤 한 번에, <span class="lg-grad">회사 전체를.</span></h2>
+              <p class="lg-head-text" data-reveal>메인은 한 번의 스크롤로 회사 전체를 소개합니다. 히어로 · 솔루션 · 제품 · 소재 · 글로벌 · 차세대 기술 · 뉴스룸, 일곱 장면이 같은 여백과 리듬으로 이어지도록 섹션 순서를 짰습니다.</p>
+            </div>
+          </header>
+
+          <!-- 스크롤 무대: 무대 높이만큼 스크롤하는 동안 브라우저가 고정되고, 안에서 메인 페이지가 흐름
+               data-marks = 원본 이미지(높이 6858px)에서 각 장면이 시작하는 위치 -->
+          <div class="lg-stage" data-stage data-marks="0,1080,2166,2963,3842,4654,5451" data-total="6858">
+            <div class="lg-stage-sticky">
+              <div class="lg-browser lg-browser--stage">
+                <div class="lg-browser-bar" aria-hidden="true">
+                  <span class="lg-browser-dots"><i></i><i></i><i></i></span>
+                  <span class="lg-browser-url">lgensol.com/en</span>
+                  <span class="lg-browser-meta" data-stage-pct>Main — 0%</span>
+                </div>
+                <div class="lg-browser-view">
+                  <img src="../images/work/project-01/site-main-full.jpg" alt="LG에너지솔루션 메인 페이지 전체 화면" data-stage-img loading="lazy">
+                </div>
+              </div>
+              <ul class="lg-notes"> <!-- 브라우저 바로 아래 · 고정 영역 안: 스크롤하는 동안 처음부터 함께 보임 -->
+                <li><span>A</span><p><b>첫 장면은 한 문장으로.</b> 생성형 AI로 만든 히어로 비주얼 위에 “Empower Every Possibility” 한 문장만 올려, 브랜드 메시지를 가장 먼저 읽히게 했습니다.</p></li>
+                <li><span>B</span><p><b>둘로 나눠 고르게.</b> 솔루션 · 제품 · 소재는 화면을 두 칸으로 나눠(산업별 솔루션 / 서비스, 원통형 / 파우치형, NCM / LFP) 나란히 비교하며 고를 수 있게 했습니다.</p></li>
+                <li><span>C</span><p><b>배경색으로 장면 전환.</b> 화이트 → 시안 · 그린 → 블랙 → 네이비로 배경을 바꿔, 긴 페이지에서도 지금 어떤 이야기를 읽고 있는지 색으로 구분되게 했습니다.</p></li>
+              </ul>
+              <ol class="lg-stage-legend">
+                <li><b>Hero</b><span>생성형 AI 키 비주얼</span></li>
+                <li><b>Solution</b><span>산업별 솔루션 · 서비스</span></li>
+                <li><b>Product</b><span>원통형 · 파우치형</span></li>
+                <li><b>Materials</b><span>NCM · LFP</span></li>
+                <li><b>Global</b><span>6개국 생산 거점</span></li>
+                <li><b>Next-gen</b><span>차세대 배터리 기술</span></li>
+                <li><b>Newsroom</b><span>최신 소식 카드 4</span></li>
+              </ol>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- =========================================================
+           02 SUB PAGES — 페이지마다 PC + 모바일을 한 패널에
+           - 두 화면 모두 지나가는 동안 페이지 전체가 위로 흐름 (data-autoscroll)
+           - 이미지 파일: sub-○○-pc.jpg (PC 전체 길이) / sub-○○-mo.jpg (모바일 전체 길이)
+             같은 이름으로 덮어쓰면 바로 바뀜
+           ========================================================= -->
+      <section class="lg-chapter" id="sub" data-chapter="Sub Pages">
+        <div class="container">
+          <figure class="lg-pair" data-reveal>
+            <div class="lg-panel lg-panel--mist lg-pair-stage">
+              <div class="lg-browser" data-autoscroll>
+                <div class="lg-browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>lgensol.com/en/company</span></div>
+                <div class="lg-browser-view">
+                  <img src="../images/work/project-01/sub-company-pc.jpg" alt="회사소개 페이지 PC 전체 화면" loading="lazy">
+                </div>
+              </div>
+              <div class="lg-phone lg-phone--scroll" data-autoscroll>
+                <div class="lg-phone-view">
+                  <img src="../images/work/project-01/sub-company-mo.jpg" alt="회사소개 페이지 모바일 전체 화면" loading="lazy">
+                </div>
+              </div>
+            </div>
+            <figcaption>Company — About us · PC / Mobile</figcaption>
+          </figure>
+
+          <div class="lg-text" data-reveal>
+            <h4 class="lg-label lg-text-title"><span class="num">03</span> <span class="lg-dash">—</span> Sub Pages</h4>
+            <p>서브 페이지는 상단 비주얼, 탭 내비게이션, 본문 그리드를 하나의 템플릿으로 통일했습니다.<br>콘텐츠는 달라도 같은 자리에서 같은 방식으로 읽힙니다.</p>
+          </div>
+
+          <figure class="lg-pair lg-pair--flip" data-reveal>
+            <div class="lg-panel lg-panel--ice lg-pair-stage">
+              <div class="lg-browser" data-autoscroll>
+                <div class="lg-browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>lgensol.com/en/product</span></div>
+                <div class="lg-browser-view">
+                  <img src="../images/work/project-01/sub-cylindrical-pc.jpg" alt="원통형 배터리 46시리즈 페이지 PC 전체 화면" loading="lazy">
+                </div>
+              </div>
+              <div class="lg-phone lg-phone--scroll" data-autoscroll>
+                <div class="lg-phone-view">
+                  <img src="../images/work/project-01/sub-cylindrical-mo.jpg" alt="원통형 배터리 46시리즈 페이지 모바일 전체 화면" loading="lazy">
+                </div>
+              </div>
+            </div>
+            <figcaption>Product — Cylindrical 46-Series · PC / Mobile</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           03 DESIGN SYSTEM — Figma 변수 값
+           ========================================================= -->
+      <section class="lg-chapter" id="system" data-chapter="Design System">
+        <div class="container">
+          <div class="lg-panel lg-panel--white lg-sheet" data-reveal>
+            <div class="lg-sheet-col">
+              <p class="lg-label">Color</p>
+              <ul class="lg-chips">
+                <li style="--c:#33B0C6"><i></i><span>Primary</span><code>#33B0C6</code></li>
+                <li style="--c:#13BD99"><i></i><span>Diagram</span><code>#13BD99</code></li>
+                <li style="--c:#171819"><i></i><span>Text</span><code>#171819</code></li>
+                <li style="--c:#555758"><i></i><span>Stroke 01</span><code>#555758</code></li>
+                <li style="--c:#C9CED1"><i></i><span>Stroke 03</span><code>#C9CED1</code></li>
+                <li style="--c:#E1E7EA"><i></i><span>Stroke 04</span><code>#E1E7EA</code></li>
+              </ul>
+            </div>
+            <div class="lg-sheet-col">
+              <p class="lg-label">Typography — Pretendard</p>
+              <ol class="lg-type">
+                <li><span>LT1</span><b style="--s:72">Empower</b><em>72 / 100.8 · Bold</em></li>
+                <li><span>H1</span><b style="--s:44">Every possibility</b><em>44 / 61.6 · Bold</em></li>
+                <li><span>H2</span><b style="--s:32">Energy ecosystem</b><em>32 / 48 · Bold</em></li>
+                <li><span>H3</span><b style="--s:24" class="is-regular">Advanced Automotive Battery</b><em>24 / 38 · Regular</em></li>
+                <li><span>H4</span><b style="--s:20">Cylindrical Battery</b><em>20 / 32 · SemiBold</em></li>
+                <li><span>B1–B3</span><b style="--s:16">High energy density and performance</b><em>18 · 16 · 14 / ×1.6</em></li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="lg-text" data-reveal>
+            <h4 class="lg-label lg-text-title"><span class="num">04</span> <span class="lg-dash">—</span> Design System</h4>
+            <p>컬러 · 타이포그래피 · 라운드 값을 Figma 변수로 정의했습니다.<br>스타일은 Desktop(LGES-D)과 Mobile(LGES-M)으로 나눴습니다.<br>GNB · Footer · Dialog · Tab · Card도 PC와 모바일 컴포넌트로 따로 운영했습니다.<br>6명의 디자이너가 30개 페이지를 같은 기준으로 만들 수 있었습니다.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           04 GENERATIVE AI
+           ========================================================= -->
+      <section class="lg-chapter" id="ai" data-chapter="Generative AI">
+        <div class="container">
+          <figure class="lg-wide" data-reveal>
+            <img src="../images/work/project-01/ai-01.jpg" alt="생성형 AI로 제작한 메인 히어로 비주얼" loading="lazy">
+          </figure>
+          <div class="lg-strips">
+            <figure class="lg-shot" data-reveal><img src="../images/work/project-01/ai-02.jpg" alt="Passenger EV 서브 비주얼" loading="lazy"><figcaption>Product — Passenger EV</figcaption></figure>
+            <figure class="lg-shot" data-reveal style="--d:.1s"><img src="../images/work/project-01/ai-03.jpg" alt="ESS 서브 비주얼" loading="lazy"><figcaption>Product — ESS</figcaption></figure>
+            <figure class="lg-shot" data-reveal><img src="../images/work/project-01/ai-04.jpg" alt="회사소개 서브 비주얼 — 빛 줄기가 지나는 도시" loading="lazy"><figcaption>Company — About us</figcaption></figure>
+            <figure class="lg-shot" data-reveal style="--d:.1s"><img src="../images/work/project-01/ai-05.jpg" alt="원통형 배터리 서브 비주얼 — 로봇 · 드론 · 트럭이 있는 공간" loading="lazy"><figcaption>Product — Cylindrical Battery</figcaption></figure>
+            <figure class="lg-shot" data-reveal><img src="../images/work/project-01/ai-06.jpg" alt="메인 글로벌 섹션 비주얼 — 밤의 지구와 도시 불빛" loading="lazy"><figcaption>Main — Global Network</figcaption></figure>
+            <figure class="lg-shot" data-reveal style="--d:.1s"><img src="../images/work/project-01/ai-07.jpg" alt="메인 차세대 기술 섹션 비주얼 — 흐르는 빛의 곡면" loading="lazy"><figcaption>Main — Next-gen Battery</figcaption></figure>
+          </div>
+
+          <div class="lg-text" data-reveal>
+            <h4 class="lg-label lg-text-title"><span class="num">05</span> <span class="lg-dash">—</span> Generative AI</h4>
+            <p>눈에 보이지 않는 배터리 기술을 한 장면으로 보여 주고 싶었습니다.<br>메인 히어로와 제품 비주얼의 이미지 · 영상을 생성형 AI로 기획하고 제작했습니다.<br>브랜드 톤에 맞춰 장면을 설계해, 추상적인 미래 에너지를 한눈에 보이게 했습니다.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           05 MOBILE
+           ========================================================= -->
+      <section class="lg-chapter" id="mobile" data-chapter="Mobile">
+        <div class="container">
+          <div class="lg-panel lg-panel--ice lg-phones" data-reveal>
+            <figure class="lg-phone"><img src="../images/work/project-01/screen-01.jpg" alt="모바일 메인 히어로" loading="lazy"></figure>
+            <figure class="lg-phone"><img src="../images/work/project-01/screen-02.jpg" alt="모바일 제품 소개" loading="lazy"></figure>
+            <figure class="lg-phone"><img src="../images/work/project-01/screen-03.jpg" alt="모바일 소재 · 글로벌" loading="lazy"></figure>
+          </div>
+
+          <div class="lg-text" data-reveal>
+            <h4 class="lg-label lg-text-title"><span class="num">06</span> <span class="lg-dash">—</span> Mobile</h4>
+            <p>PC에서 정한 체계를 360px 화면까지 그대로 옮겼습니다.<br>다양한 콘텐츠와 서비스가 작은 화면에서도 하나의 흐름으로 이어지도록 설계했습니다.<br>어떤 기기에서 만나도 같은 브랜드로 느껴지도록.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           06 ICONOGRAPHY — iconVISION 3종 (Figma 'Icon_01' 기준)
+           - 컬러 버튼을 누르면 같은 아이콘이 다른 색 세트로 바뀜 (work-lges.js 3번)
+           ========================================================= -->
+      <section class="lg-chapter" id="icon" data-chapter="Iconography">
+        <div class="container">
+
+          <!-- 0. 설계 판 — 아이콘 하나를 키라인 그리드 위에 펼쳐 구조를 보여 줌
+               (아이콘: Figma 'Icon_01' Abstract V02 · 숫자는 Figma 실제 값) -->
+          <div class="lg-construct" data-reveal>
+            <figure class="lg-construct-board">
+              <figcaption class="lg-construct-cap"><span>Construction — V02</span><span>120 × 120</span></figcaption>
+              <svg class="lg-cx" viewBox="-24 -24 168 168" role="img" aria-label="Abstract 아이콘 V02를 120 그리드, 원 키라인, 45도 대각선 위에 올린 설계도">
+                <!-- 아이콘 본체 -->
+                <g class="lg-cx-icon">
+                  <g style="mix-blend-mode:multiply"><path d="M60 0C26.86 0 0 26.86 0 60L120 60C120 26.86 93.14 0 60 0Z" fill="#E1E7EA"/></g>
+                  <path d="M60 21.25C38.6 21.25 21.25 38.6 21.25 60L98.75 60C98.75 38.6 81.4 21.25 60 21.25Z" fill="#fff"/>
+                  <g style="mix-blend-mode:darken"><path d="M79.45 79.45L60 60V98.89Z" fill="#9988DF"/></g>
+                  <circle cx="60" cy="60" r="27.5" fill="#33B0C6"/>
+                  <circle cx="60" cy="60" r="12.5" fill="#fff"/>
+                  <circle cx="109.38" cy="60" r="10.63" fill="#E1E7EA"/>
+                  <circle cx="10.63" cy="60" r="10.63" fill="#E1E7EA"/>
+                  <circle cx="109.38" cy="60" r="6.25" fill="#fff"/>
+                </g>
+                <!-- 보조선: 30 단위 격자 + 45° 대각선 -->
+                <g class="lg-cx-grid">
+                  <path d="M0 -24V144M30 -24V144M60 -24V144M90 -24V144M120 -24V144"/>
+                  <path d="M-24 0H144M-24 30H144M-24 60H144M-24 90H144M-24 120H144"/>
+                  <path d="M-24 -24L144 144M144 -24L-24 144"/>
+                </g>
+                <!-- 키라인: 사각 120 · 원 Ø120 / Ø77.5 / Ø55 / Ø25 · 점 Ø21.25 -->
+                <g class="lg-cx-key">
+                  <rect x="0" y="0" width="120" height="120"/>
+                  <circle cx="60" cy="60" r="60"/>
+                  <circle cx="60" cy="60" r="38.75"/>
+                  <circle cx="60" cy="60" r="27.5"/>
+                  <circle cx="60" cy="60" r="12.5"/>
+                  <circle cx="10.63" cy="60" r="10.63"/>
+                  <circle cx="109.38" cy="60" r="10.63"/>
+                </g>
+                <!-- 치수 -->
+                <g class="lg-cx-note">
+                  <!-- 원마다 아래 끝점 → 왼쪽 바깥까지 지시선, 숫자는 그림 밖에 -->
+                  <path class="lg-cx-lead" d="M60 72.5H-3M60 87.5H-3M60 98.75H-3"/>
+                  <circle cx="60" cy="72.5" r="1"/><circle cx="60" cy="87.5" r="1"/><circle cx="60" cy="98.75" r="1"/><circle cx="60" cy="120" r="1"/>
+                  <text x="-5" y="73.8">Ø25</text>
+                  <text x="-5" y="88.8">Ø55</text>
+                  <text x="-5" y="100">Ø77.5</text>
+                  <text x="-5" y="121.3">Ø120</text>
+                  <text x="84" y="80" class="is-start">45°</text>
+                  <text x="109.38" y="78" class="is-mid">Ø21.25</text>
+                  <text x="0" y="-8" class="is-mid">0</text><text x="60" y="-8" class="is-mid">60</text><text x="120" y="-8" class="is-mid">120</text>
+                </g>
+              </svg>
+            </figure>
+
+            <div class="lg-construct-spec">
+              <p class="lg-label">Construction</p>
+              <h3 class="lg-iconset-title">One grid,<br>five shapes.</h3>
+              <p class="lg-construct-lead">모든 아이콘은 120 그리드 위에서 다섯 가지 도형만으로 그렸습니다. 캡슐 두께와 점 크기를 고정해, 28개가 한 가족으로 보이도록.</p>
+
+              <ul class="lg-prims" aria-label="기본 도형">
+                <li><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18"/></svg><span>Circle</span></li>
+                <li><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M2 29A18 18 0 0 1 38 29Z"/></svg><span>Half</span></li>
+                <li><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 36V4A32 32 0 0 1 36 36Z"/></svg><span>Quarter</span></li>
+                <li><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="2" y="13" width="36" height="14" rx="7"/></svg><span>Capsule</span></li>
+                <li><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 36V4L36 36Z"/></svg><span>Triangle</span></li>
+              </ul>
+
+              <dl class="lg-cx-specs">
+                <div><dt>Grid</dt><dd>120 × 120 · 30 unit</dd></div>
+                <div><dt>Capsule</dt><dd>30 · 32.5</dd></div>
+                <div><dt>Ring</dt><dd>Ø55 · Ø25</dd></div>
+                <div><dt>Point</dt><dd>Ø16.25 · Ø8.13</dd></div>
+                <div><dt>Angle</dt><dd>45°</dd></div>
+              </dl>
+
+              <ul class="lg-tones" aria-label="3단계 톤">
+                <li><i style="--c:#33B0C6"></i><i style="--c:#5AD1DC"></i><i style="--c:#82DCE5"></i><span>Cyan</span></li>
+                <li><i style="--c:#7362BB"></i><i style="--c:#9988DF"></i><i style="--c:#B3A6EB"></i><span>Violet</span></li>
+                <li><i style="--c:#A6CE39"></i><i style="--c:#BEE15F"></i><i style="--c:#D0EB86"></i><span>Lime</span></li>
+                <li><i style="--c:#B4B8BA"></i><i style="--c:#E1E7EA"></i><i style="--c:#F3F5F7"></i><span>Neutral</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- A. Abstract — 28개를 칸마다 하나씩 (Figma에서 내보낸 SVG) -->
+          <div class="lg-iconset" data-reveal>
+            <header class="lg-iconset-head">
+              <p class="lg-label">Vision</p>
+              <h3 class="lg-iconset-title">Abstract Icon</h3>
+              <p class="lg-iconset-meta">28 icons</p>
+            </header>
+            <ul class="lg-icongrid" aria-label="Abstract 아이콘 28종: 원 · 반원 · 삼각형 · 캡슐 도형을 겹쳐 만든 추상 아이콘">
+                <li><img src="../images/work/project-01/icons/abstract-01.svg" alt="" loading="lazy"><span>V01</span></li>
+                <li><img src="../images/work/project-01/icons/abstract-02.svg" alt="" loading="lazy"><span>V02</span></li>
+                <li><img src="../images/work/project-01/icons/abstract-03.svg" alt="" loading="lazy"><span>V03</span></li>
+                <li><img src="../images/work/project-01/icons/abstract-04.svg" alt="" loading="lazy"><span>V04</span></li>
+                <li><img src="../images/work/project-01/icons/abstract-05.svg" alt="" loading="lazy"><span>V05</span></li>
+                <li><img src="../images/work/project-01/icons/abstract-06.svg" alt="" loading="lazy"><span>V06</span></li>
+                <li><img src="../images/work/project-01/icons/abstract-07.svg" alt="" loading="lazy"><span>V07</span></li>
+                <li><img src="../images/work/project-01/icons/abstract-08.svg" alt="" loading="lazy"><span>V08</span></li>
+                <li><img src="../images/work/project-01/icons/abstract-09.svg" alt="" loading="lazy"><span>V09</span></li>
+                <li><img src="../images/work/project-01/icons/abstract-10.svg" alt="" loading="lazy"><span>V10</span></li>
+                <li><img src="../images/work/project-01/icons/abstract-11.svg" alt="" loading="lazy"><span>V11</span></li>
+                <li><img src="../images/work/project-01/icons/abstract-12.svg" alt="" loading="lazy"><span>V12</span></li>
+                <li><img src="../images/work/project-01/icons/abstract-13.svg" alt="" loading="lazy"><span>V13</span></li>
+                <li><img src="../images/work/project-01/icons/abstract-14.svg" alt="" loading="lazy"><span>V14</span></li>
+                <li><img src="../images/work/project-01/icons/abstract-15.svg" alt="" loading="lazy"><span>V15</span></li>
+                <li><img src="../images/work/project-01/icons/abstract-16.svg" alt="" loading="lazy"><span>V16</span></li>
+                <li><img src="../images/work/project-01/icons/abstract-17.svg" alt="" loading="lazy"><span>V17</span></li>
+                <li><img src="../images/work/project-01/icons/abstract-18.svg" alt="" loading="lazy"><span>V18</span></li>
+                <li><img src="../images/work/project-01/icons/abstract-19.svg" alt="" loading="lazy"><span>V19</span></li>
+                <li><img src="../images/work/project-01/icons/abstract-20.svg" alt="" loading="lazy"><span>V20</span></li>
+                <li><img src="../images/work/project-01/icons/abstract-21.svg" alt="" loading="lazy"><span>V21</span></li>
+                <li><img src="../images/work/project-01/icons/abstract-22.svg" alt="" loading="lazy"><span>V22</span></li>
+                <li><img src="../images/work/project-01/icons/abstract-23.svg" alt="" loading="lazy"><span>V23</span></li>
+                <li><img src="../images/work/project-01/icons/abstract-24.svg" alt="" loading="lazy"><span>V24</span></li>
+                <li><img src="../images/work/project-01/icons/abstract-25.svg" alt="" loading="lazy"><span>V25</span></li>
+                <li><img src="../images/work/project-01/icons/abstract-26.svg" alt="" loading="lazy"><span>V26</span></li>
+                <li><img src="../images/work/project-01/icons/abstract-27.svg" alt="" loading="lazy"><span>V27</span></li>
+                <li><img src="../images/work/project-01/icons/abstract-28.svg" alt="" loading="lazy"><span>V28</span></li>
+            </ul>
+          </div>
+
+          <!-- B. Explanation -->
+          <div class="lg-iconset" data-reveal data-swatch>
+            <header class="lg-iconset-head">
+              <p class="lg-label">Business</p>
+              <h3 class="lg-iconset-title">Explanation Icon</h3>
+              <p class="lg-iconset-meta">13 icons × 4 colors</p>
+              <div class="lg-swatch" role="tablist" aria-label="Explanation 아이콘 컬러">
+                <button type="button" role="tab" aria-selected="true" style="--c:#A6CE39">Lime</button>
+                <button type="button" role="tab" aria-selected="false" style="--c:#7B6CD9">Violet</button>
+                <button type="button" role="tab" aria-selected="false" style="--c:#33B0C6">Cyan</button>
+                <button type="button" role="tab" aria-selected="false" style="--c:conic-gradient(#A6CE39 0 33%, #7B6CD9 0 66%, #33B0C6 0)">Mix</button>
+              </div>
+            </header>
+            <div class="lg-iconboard lg-iconboard--row">
+              <div class="lg-iconboard-stack">
+                <img class="is-on" src="../images/work/project-01/icon-explain-lime.png" alt="Explanation 아이콘 13종 — Lime" loading="lazy">
+                <img src="../images/work/project-01/icon-explain-violet.png" alt="Explanation 아이콘 13종 — Violet" loading="lazy">
+                <img src="../images/work/project-01/icon-explain-cyan.png" alt="Explanation 아이콘 13종 — Cyan" loading="lazy">
+                <img src="../images/work/project-01/icon-explain-mix.png" alt="Explanation 아이콘 13종 — Mix" loading="lazy">
+              </div>
+            </div>
+          </div>
+
+          <!-- C. Flat / Simple -->
+          <div class="lg-iconset" data-reveal data-swatch>
+            <header class="lg-iconset-head">
+              <p class="lg-label">Service</p>
+              <h3 class="lg-iconset-title">Flat / Simple Icon</h3>
+              <p class="lg-iconset-meta">11 icons × 3 colors</p>
+              <div class="lg-swatch" role="tablist" aria-label="Flat 아이콘 컬러">
+                <button type="button" role="tab" aria-selected="true" style="--c:#33B0C6">Cyan</button>
+                <button type="button" role="tab" aria-selected="false" style="--c:#7B6CD9">Violet</button>
+                <button type="button" role="tab" aria-selected="false" style="--c:#8DBB1F">Lime</button>
+              </div>
+            </header>
+            <div class="lg-iconboard lg-iconboard--row">
+              <div class="lg-iconboard-stack">
+                <img class="is-on" src="../images/work/project-01/icon-flat-cyan.png" alt="Flat 아이콘 11종 — Cyan" loading="lazy">
+                <img src="../images/work/project-01/icon-flat-violet.png" alt="Flat 아이콘 11종 — Violet" loading="lazy">
+                <img src="../images/work/project-01/icon-flat-lime.png" alt="Flat 아이콘 11종 — Lime" loading="lazy">
+              </div>
+            </div>
+          </div>
+
+          <div class="lg-text" data-reveal>
+            <h4 class="lg-label lg-text-title"><span class="num">07</span> <span class="lg-dash">—</span> Iconography</h4>
+            <p>원 · 반원 · 캡슐 같은 기본 도형과 파스텔 톤으로 세 가지 아이콘 체계를 만들었습니다.<br>파스텔 톤은 디지털 화면에서도 선명하도록 조도와 채도를 세밀하게 조정했습니다.<br>비전은 추상적으로, 사업은 설명적으로, 서비스는 단순하게.<br>아이콘 하나에도 기술 기업의 신뢰감과 브랜드의 따뜻함이 함께 담기도록.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           AWARDS · CREDITS
+           ========================================================= -->
+      <section class="lg-chapter lg-end" id="outcome" data-chapter="Awards">
+        <div class="container">
+          <div class="lg-end-grid">
+            <div data-reveal>
+              <p class="lg-label">Awards</p>
+              <ul class="lg-list">
+                <li><b>Web Award Korea 2025</b><span>제품브랜드 혁신대상</span></li>
+              </ul>
+            </div>
+            <div data-reveal style="--d:.08s">
+              <p class="lg-label">Credits</p>
+              <ul class="lg-list">
+                <li><b>Design PL</b><span>Yi Jinkwang</span></li>
+                <li><b>Design Team</b><span>6 Designers</span></li>
+                <li><b>Period</b><span>2025.04 — 2026.02</span></li>
+              </ul>
+            </div>
+          </div>
+          <a href="https://www.lgensol.com/" class="lg-launch" target="_blank" rel="noopener" data-reveal>
+            <span class="lg-launch-dot" aria-hidden="true"></span>Launch project
+          </a>
+        </div>
+      </section>
+
+    </div>
+    <!-- /.lg-paper -->
+
+    <!-- 다음 작업 -->
+    <section class="section work-next">
+      <div class="container">
+        <h4 class="section-label sec-title">Next project</h4>
+        <a href="project-02.html" class="work-next-link">
+          <span class="work-next-title">Noul</span>
+          <span class="arrow-link-circle" aria-hidden="true">
+            <svg class="arrow-link-icon" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+            <svg class="arrow-link-icon arrow-link-icon--next" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+          </span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Atomik 6ixthmead</p>
+    </div>
+  </footer>
+
+  </div>
+
+  <script src="../js/works-data.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/work-lges.js"></script>
+  <script src="../js/work-dock.js"></script>
+</body>
+</html>

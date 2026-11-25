@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atomik — UI/UX Player</title>
+  <meta name="description" content="공감으로 시작해 소통으로 완성하는 UI/UX Designer Yi Jinkwang의 포트폴리오. 다양한 대기업 프로젝트의 구축과 운영 경험.">
+  <!-- Pretendard 웹폰트 (가변 폰트 · 화면에 쓰인 글자만 내려받는 dynamic subset 버전) -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <!-- Montserrat 웹폰트: 사이트 영문 글꼴 (한글은 Pretendard) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- 인트로를 보여줄지 결정
+       - 인트로(.is-intro) : 이 탭에서 사이트에 처음 들어왔을 때 딱 한 번
+                             (본 적이 있다는 표시를 sessionStorage 에 남김 → 탭을 닫으면 초기화)
+       - 그 외(작업 페이지에서 돌아옴·새로고침·로고 클릭 등) : 인트로 없이 바로 보여줌
+       - CSS 를 그리기 전에 클래스를 붙여서 화면이 번쩍이지 않게 함
+       - JS 가 꺼져 있으면 클래스가 안 붙으므로 인트로 없이 바로 사이트가 보임 -->
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var fromSameSite = false;
+      try {
+        fromSameSite = !!document.referrer && new URL(document.referrer).origin === location.origin;
+      } catch (e) {}
+
+      var seen = true;   // 저장소를 못 쓰는 환경이면 인트로를 생략 (매번 뜨는 것보다 안전)
+      try {
+        seen = sessionStorage.getItem('introSeen') === '1';
+        if (!seen) sessionStorage.setItem('introSeen', '1');   // 시작하자마자 표시 → 인트로 도중 새로고침해도 다시 안 뜸
+      } catch (e) {}
+
+      if (!seen && !fromSameSite) root.classList.add('is-intro');
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- ========== 인트로 (이 탭에서 처음 들어왔을 때만) ========== -->
+  <!-- 흐름 (main.js 4번이 html 에 단계 클래스를 붙임)
+       1) 검정 화면 가운데에 "Atomik PLAY" 와 아래 문구가 올라옴
+       2) .intro-open : 가운데 이미지가 좌우로 열리며 컷컷 바뀌고, 두 단어가 양 끝으로 밀려남
+       3) .intro-exit : 인트로 전체가 작아지고, 본문(.page)이 아래에서 위로 슬라이드되며 덮음 -->
+  <div class="intro" aria-hidden="true">
+    <div class="intro-stage">
+
+      <!-- ▼ 컷 이미지 교체 방법 ▼
+           - public/images/intro/ 폴더에 intro-01.jpg ~ intro-06.jpg 이름으로 사진을 넣으면 자동 교체
+           - 정사각형(1:1) 사진이 가장 잘 맞음, 다른 비율은 가운데 기준으로 잘림
+           - 사진이 없는 칸은 img 가 지워지고, 칸마다 방향·톤이 다른 보라~핑크 그라데이션이 대신 보임
+           - 컷 수를 늘리거나 줄이려면 .intro-cut 줄을 복사하거나 지우면 됨 (JS 가 개수를 알아서 셈) -->
+      <span class="intro-frame">
+        <span class="intro-cut is-active" style="--angle: 135deg; --tone: 0deg"><img src="images/intro/intro-01.jpg" alt="" onerror="this.remove()"></span>
+        <span class="intro-cut" style="--angle: 45deg; --tone: -20deg"><img src="images/intro/intro-02.jpg" alt="" onerror="this.remove()"></span>
+        <span class="intro-cut" style="--angle: 225deg; --tone: 15deg"><img src="images/intro/intro-03.jpg" alt="" onerror="this.remove()"></span>
+        <span class="intro-cut" style="--angle: 315deg; --tone: -35deg"><img src="images/intro/intro-04.jpg" alt="" onerror="this.remove()"></span>
+        <span class="intro-cut" style="--angle: 90deg; --tone: 25deg"><img src="images/intro/intro-05.jpg" alt="" onerror="this.remove()"></span>
+        <span class="intro-cut" style="--angle: 180deg; --tone: -10deg"><img src="images/intro/intro-06.jpg" alt="" onerror="this.remove()"></span>
+      </span>
+
+      <!-- 이름: 처음엔 가운데에 나란히, 이미지가 열리면 양 끝으로 밀려남
+           .intro-word 가 마스크 역할, 안쪽 span 이 아래에서 올라옴 -->
+      <p class="intro-names">
+        <span class="intro-word intro-word--left"><span style="--i: 0">Atomik</span></span>
+        <span class="intro-word intro-word--right"><span style="--i: 1">PLAY</span></span>
+      </p>
+
+      <!-- 아래쪽 작은 문구 -->
+      <p class="intro-caption">
+        <span class="intro-word"><span style="--i: 2">©2026 · Portfolio</span></span>
+      </p>
+    </div>
+  </div>
+
+  <!-- ========== 본문 전체 묶음 ==========
+       인트로가 끝날 때, 그리고 페이지를 이동할 때 이 상자 전체가 아래에서 위로 슬라이드됨 -->
+  <div class="page">
+
+  <!-- ========== 헤더 / 내비게이션 ========== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <!-- 왼쪽: 로고 + (데스크톱) 도시와 현재 시각 -->
+      <div class="header-left">
+        <a href="#top" class="logo">Yi Jinkwang</a>
+        <!-- 시각은 main.js 가 1분마다 서울 시간으로 채워 넣음 -->
+        <p class="header-greeting">Hi! Nice to meet you :)</p>
+      </div>
+
+      <!-- 가운데: 데스크톱 전용 가로 메뉴 (밑줄이 기본으로 보이는 reversed 스타일) -->
+      <nav class="desktop-nav" aria-label="주요 메뉴">
+        <ul>
+          <!-- Services: 잠시 숨김. 다시 쓰려면 hidden 속성만 지우면 됨 -->
+          <li hidden><a href="#services" class="text-link text-link--reversed"><span class="text-link-label">Services</span></a></li>
+          <!-- Works: 작업 목록 페이지(work/index.html)로 이동. 메인의 Works 섹션은 히어로 버튼·스크롤로 이동 -->
+          <li><a href="work/index.html" class="text-link text-link--reversed"><span class="text-link-label">Works</span></a></li>
+          <li><a href="about.html" class="text-link text-link--reversed"><span class="text-link-label">About</span></a></li>
+          <!-- Contact: 오른쪽 "Let's talk" 버튼이 같은 곳으로 가서 GNB 에서만 숨김 (섹션은 그대로). 다시 쓰려면 hidden 을 지우면 됨 -->
+          <li hidden><a href="#contact" class="text-link text-link--reversed"><span class="text-link-label">Contact</span></a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- 짧은 텍스트 링크: 컨택트 섹션으로 이동 (↗ 화살표 교체 인터랙션) -->
+        <a href="#contact" class="text-link header-cta">
+          <span class="text-link-label">Let's talk</span>
+          <span class="text-link-icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+            <svg viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+          </span>
+        </a>
+
+        <!-- 동그란 메뉴 버튼: 두 줄 → 열리면 X 모양 (main.js 에서 열고 닫음) -->
+        <button class="menu-toggle" aria-expanded="false" aria-controls="site-menu" aria-label="메뉴 열기">
+          <span class="menu-toggle-line"></span>
+          <span class="menu-toggle-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== 전체 화면 메뉴 ========== -->
+  <!-- 평소엔 숨어 있다가, 메뉴 버튼을 누르면 body 에 .menu-open 이 붙으며 나타남 -->
+  <div class="site-menu" id="site-menu" aria-hidden="true">
+    <div class="container site-menu-inner">
+      <nav aria-label="모바일 메뉴">
+        <ul class="menu-list">
+          <!-- --i : 순서대로 하나씩 올라오게 하는 지연 순번 -->
+          <!-- Services: 잠시 숨김. 다시 쓰려면 hidden 을 지우고
+               번호와 --i 를 원래대로 되돌리면 됨 (Services 01, Works 02, About 03, Contact 04 / --i 0~3) -->
+          <li style="--i: 0" hidden><a href="#services"><span class="num">01</span> Services</a></li>
+          <li style="--i: 0"><a href="work/index.html"><span class="num">01</span> Works</a></li>
+          <li style="--i: 1"><a href="about.html"><span class="num">02</span> About</a></li>
+          <!-- Contact 메뉴는 잠시 숨김 (다시 보이려면 아래 li 의 hidden 을 지우면 됨) -->
+          <li style="--i: 2" hidden><a href="#contact"><span class="num">03</span> Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="menu-footer" style="--i: 3">
+        <a href="#contact" class="arrow-link">
+          <span class="arrow-link-text">Start a project</span>
+          <span class="arrow-link-circle" aria-hidden="true">
+            <svg class="arrow-link-icon" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+            <svg class="arrow-link-icon arrow-link-icon--next" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+          </span>
+        </a>
+        <div class="menu-meta">
+          <a href="mailto:sixthmead@me.com" class="text-link"><span class="text-link-label">sixthmead@me.com</span></a>
+          <ul class="menu-sns">
+            <li><a href="#" target="_blank" rel="noopener" class="text-link"><span class="text-link-label">Instagram</span></a></li>
+            <li><a href="#" target="_blank" rel="noopener" class="text-link"><span class="text-link-label">LinkedIn</span></a></li>
+            <li><a href="#" target="_blank" rel="noopener" class="text-link"><span class="text-link-label">GitHub</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="top">
+
+    <!-- ========== (01) 히어로 ========== -->
+    <section class="section hero" id="hero">
+      <div class="container hero-inner">
+
+        <!-- 위쪽: 섹션 라벨 -->
+        <div class="hero-top">
+          <p class="section-label"><span class="num">01</span> — Hello</p>
+        </div>
+
+        <!-- 헤드라인 영역: 왼쪽(헤드라인 + 버튼) · 오른쪽(소개 문단)
+             모바일에선 위에서부터 순서대로 쌓이고, 데스크톱(1200px~)에선 2단 -->
+        <div class="hero-main">
+        <div class="hero-heading">
+        <h1 class="hero-title">
+          공감으로 시작해
+          <br class="hero-br"> <!-- 태블릿 이상에서만 줄바꿈 -->
+          소통으로 완성하는
+          <br class="hero-br">
+          <span class="hero-title-serif">UI/UX Designer</span> <!-- 마지막 줄: Times New Roman 이탤릭 -->
+        </h1>
+
+        <!-- 화살표 버튼: 마우스를 올리면 화살표가 빠져나가고 새 화살표가 들어옴
+             누르면 작업 목록 페이지(work/index.html)로 이동 -->
+        <a href="work/index.html" class="arrow-link hero-cta">
+          <span class="arrow-link-text">Explore Works</span>
+          <span class="arrow-link-circle" aria-hidden="true">
+            <svg class="arrow-link-icon" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+            <svg class="arrow-link-icon arrow-link-icon--next" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+          </span>
+        </a>
+        </div>
+
+        <!-- 소개 문단 -->
+        <p class="hero-desc">
+          20년 동안 다양한 대기업 프로젝트의 구축부터 운영까지 경험했습니다.
+          기획·개발·운영 팀과 같은 언어로 이야기하며, 출시 이후까지 책임지는 디자인을 합니다.
+        </p>
+        </div>
+
+        <!-- 아래쪽: 짧은 안내 정보 -->
+        <div class="hero-bottom">
+          <span>Based in Korea</span>
+          <!-- ↓ 화살표: 마우스를 올리면 아래로 빠져나가고 위에서 새 화살표가 들어옴 -->
+          <!-- 서비스 섹션을 숨겨서 바로 아래 섹션(Works)으로 이동. 서비스를 다시 켜면 #services 로 되돌리기 -->
+          <a href="#works" class="text-link hero-scroll">
+            <span class="text-link-label">Scroll down</span>
+            <span class="text-link-icon text-link-icon--down" aria-hidden="true">
+              <svg viewBox="0 0 16 16"><path d="M8 3v10M4 9l4 4 4-4" /></svg>
+              <svg viewBox="0 0 16 16"><path d="M8 3v10M4 9l4 4 4-4" /></svg>
+            </span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========== (02) 서비스 3개 ========== -->
+    <!-- 잠시 숨김: 내용은 그대로 두고 hidden 속성으로만 가림. 다시 쓰려면 hidden 을 지우면 됨 -->
+    <section class="section services" id="services" hidden>
+      <div class="container">
+        <p class="section-label"><span class="num">02</span> — Services</p>
+        <ul class="service-list">
+          <li class="service-item">
+            <span class="num">01</span>
+            <h3>서비스 이름 1</h3>
+            <p>서비스에 대한 짧은 임시 설명입니다.</p>
+          </li>
+          <li class="service-item">
+            <span class="num">02</span>
+            <h3>서비스 이름 2</h3>
+            <p>서비스에 대한 짧은 임시 설명입니다.</p>
+          </li>
+          <li class="service-item">
+            <span class="num">03</span>
+            <h3>서비스 이름 3</h3>
+            <p>서비스에 대한 짧은 임시 설명입니다.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== (03) 대표 작업 4개 ========== -->
+    <!-- 카드 클릭 시 work/ 폴더의 상세 페이지로 이동 (work/project-01~07.html, 스타일은 css/work.css)
+         썸네일: js/works-data.js 에 적힌 thumb 이미지가 들어감 (작업 목록 페이지와 같은 이미지) -->
+    <section class="section works" id="works">
+      <div class="container">
+        <!-- 서비스 섹션을 숨겨서 화면 번호를 하나씩 당김 (Works~Contact: 02~06). 서비스를 다시 켜면 03~07 로 되돌리기 -->
+        <p class="section-label"><span class="num">02</span> — Works</p>
+        <div class="work-grid">
+          <a class="work-card" href="work/project-01.html">
+            <div class="work-thumb"><img data-work-img="project-01:thumb" alt="" onerror="this.remove()"></div>
+            <div class="work-meta">
+              <span class="num">01</span>
+              <h3>LG 에너지솔루션</h3>
+              <p>Corporate Website · 2025</p>
+            </div>
+          </a>
+          <a class="work-card" href="work/project-02.html">
+            <div class="work-thumb"><img data-work-img="project-02:thumb" alt="" onerror="this.remove()"></div>
+            <div class="work-meta">
+              <span class="num">02</span>
+              <h3>Noul</h3>
+              <p>Corporate Website · 2021</p>
+            </div>
+          </a>
+          <a class="work-card" href="work/project-03.html">
+            <div class="work-thumb"><img data-work-img="project-03:thumb" alt="" onerror="this.remove()"></div>
+            <div class="work-meta">
+              <span class="num">03</span>
+              <h3>GUT Morning</h3>
+              <p>Mobile Web · 2024</p>
+            </div>
+          </a>
+          <a class="work-card" href="work/project-04.html">
+            <div class="work-thumb"><img data-work-img="project-04:thumb" alt="" onerror="this.remove()"></div>
+            <div class="work-meta">
+              <span class="num">04</span>
+              <h3>Goodiez</h3>
+              <p>Mobile App · 2023</p>
+            </div>
+          </a>
+          <a class="work-card" href="work/project-05.html">
+            <div class="work-thumb"><img data-work-img="project-05:thumb" alt="" onerror="this.remove()"></div>
+            <div class="work-meta">
+              <span class="num">05</span>
+              <h3>Good Neighbors</h3>
+              <p>Brand Guide Website · 2022</p>
+            </div>
+          </a>
+          <a class="work-card" href="work/project-07.html">
+            <div class="work-thumb"><img data-work-img="project-07:thumb" alt="" onerror="this.remove()"></div>
+            <div class="work-meta">
+              <span class="num">07</span>
+              <h3>Hyundaitel Face ID</h3>
+              <p>Doorphone GUI · 2023</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== (04) 미션 ========== -->
+    <section class="section mission" id="mission" hidden> <!-- 지금은 숨김: hidden 을 지우면 다시 보임 -->
+      <div class="container">
+        <p class="section-label"><span class="num">03</span> — Mission</p>
+        <p class="mission-text">
+          내가 일하는 이유와 지향하는 가치를 담은 <em>임시 미션 문장</em>이 들어갑니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- ========== (05) 강점 3개 ========== -->
+    <section class="section strengths" id="strengths" hidden> <!-- 지금은 숨김: hidden 을 지우면 다시 보임 -->
+      <div class="container">
+        <p class="section-label"><span class="num">04</span> — Strengths</p>
+        <ul class="strength-list">
+          <li class="strength-item">
+            <span class="num">01</span>
+            <h3>강점 1</h3>
+            <p>강점에 대한 임시 설명입니다.</p>
+          </li>
+          <li class="strength-item">
+            <span class="num">02</span>
+            <h3>강점 2</h3>
+            <p>강점에 대한 임시 설명입니다.</p>
+          </li>
+          <li class="strength-item">
+            <span class="num">03</span>
+            <h3>강점 3</h3>
+            <p>강점에 대한 임시 설명입니다.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== (06) 소개 ==========
+         About 페이지(about.html)로 분리해서 메인에서는 숨김. 다시 쓰려면 hidden 을 지우고
+         컨택트 번호를 (06) 으로 되돌리면 됨 -->
+    <section class="section about" id="about" hidden>
+      <div class="container about-inner">
+        <p class="section-label"><span class="num">05</span> — About</p>
+        <div class="about-photo"></div>
+        <div class="about-text">
+          <h2>안녕하세요, 임시 이름입니다.</h2>
+          <p>경력과 관심사, 일하는 방식을 소개하는 임시 문단입니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== (07) 컨택트 / SNS ========== -->
+    <section class="section contact" id="contact">
+      <div class="container contact-inner">
+        <!-- 라벨: 데스크톱에선 큰 문장 첫 줄의 들여쓴 자리에 겹쳐 놓임 -->
+        <p class="section-label contact-label">Contact</p>
+
+        <!-- 큰 문장: 첫 줄만 들여쓰기, 중간중간 선 아이콘 -->
+        <!-- 문장 아이콘 세트 (한 번만 정의 → 아래에서 <use> 로 불러 씀)
+             48×48 격자 · 포인트 그라데이션 면 · 왼쪽 위 빛 반사 -->
+        <svg class="sr-defs" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="ct-grad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#A747F6"/>
+              <stop offset="1" stop-color="#E05EA0"/>
+            </linearGradient>
+            <linearGradient id="ct-shine" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#fff" stop-opacity=".55"/>
+              <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+            </linearGradient>
+            <!-- 스마일 -->
+            <symbol id="ct-smile" viewBox="0 0 48 48">
+              <circle cx="24" cy="24" r="21" fill="url(#ct-grad)"/>
+              <path d="M10.5 17.5A15 15 0 0 1 24 8" fill="none" stroke="url(#ct-shine)" stroke-width="3" stroke-linecap="round"/>
+              <rect x="15.5" y="16" width="4" height="7" rx="2" fill="#fff"/>
+              <rect x="28.5" y="16" width="4" height="7" rx="2" fill="#fff"/>
+              <path d="M14.5 28.5c2.4 4.2 5.6 6.3 9.5 6.3s7.1-2.1 9.5-6.3" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round"/>
+            </symbol>
+            <!-- 행성: 고리 뒤쪽 → 행성 → 고리 앞쪽 순서로 겹쳐 입체감 -->
+            <symbol id="ct-planet" viewBox="0 0 48 48">
+              <g transform="rotate(-22 24 24)">
+                <path d="M1 24A23 7 0 0 1 47 24" fill="none" stroke="url(#ct-grad)" stroke-width="3" stroke-linecap="round" opacity=".55"/>
+              </g>
+              <circle cx="24" cy="24" r="15.5" fill="url(#ct-grad)"/>
+              <path d="M12.8 20A12 12 0 0 1 21.5 11" fill="none" stroke="url(#ct-shine)" stroke-width="2.6" stroke-linecap="round"/>
+              <g transform="rotate(-22 24 24)">
+                <path d="M1 24A23 7 0 0 0 47 24" fill="none" stroke="url(#ct-grad)" stroke-width="3" stroke-linecap="round"/>
+              </g>
+              <circle cx="41.5" cy="7" r="3" fill="url(#ct-grad)"/>
+            </symbol>
+            <!-- 하트 -->
+            <symbol id="ct-heart" viewBox="0 0 48 48">
+              <path d="M24 42.5C21.6 40.9 5.5 30.6 5.5 17.8 5.5 11.5 10.4 6.5 16.6 6.5c3.3 0 6 1.6 7.4 4.1 1.4-2.5 4.1-4.1 7.4-4.1 6.2 0 11.1 5 11.1 11.3 0 12.8-16.1 23.1-18.5 24.7z" fill="url(#ct-grad)"/>
+              <path d="M10.5 18.5c0-3.9 2.6-6.7 6-7" fill="none" stroke="url(#ct-shine)" stroke-width="3" stroke-linecap="round"/>
+            </symbol>
+          </defs>
+        </svg>
+        <h2 class="contact-title">
+          사용자의 마음을 움직이는 <span class="nw">디자인<svg class="contact-icon contact-icon--smile" style="--i:0" aria-hidden="true"><use href="#ct-smile"/></svg>으로</span>
+          브랜드와 사람<svg class="contact-icon contact-icon--planet" style="--i:1" aria-hidden="true"><use href="#ct-planet"/></svg> 사이를
+          자연스럽게 <span class="nw">이어 드립니다<svg class="contact-icon contact-icon--heart" style="--i:2" aria-hidden="true"><use href="#ct-heart"/></svg></span>
+        </h2>
+
+        <!-- 아래 오른쪽: 설명 + 문의 버튼 + 메일·SNS -->
+        <div class="contact-body">
+          <p class="contact-desc">
+            새 프로젝트, 협업 제안, 가벼운 질문 모두 환영합니다.<br>
+            브랜드의 가치가 사용자에게 그대로 전해지는 디지털 경험을 함께 만들어요.
+          </p>
+
+          <!-- 1) 메일: 이 영역의 주인공. 크게 + 옆에 복사 버튼
+                  (메일 앱이 없는 사람도 주소를 바로 가져갈 수 있게) -->
+          <div class="contact-mail">
+            <a href="mailto:sixthmead@me.com" class="text-link contact-mail-link"><span class="text-link-label">sixthmead@me.com</span></a>
+            <button type="button" class="contact-copy" data-copy="sixthmead@me.com" aria-label="메일 주소 복사">
+              <span class="contact-copy-text">Copy</span>
+            </button>
+            <!-- 복사 결과를 화면 읽기 프로그램에 알려 주는 자리 (눈에는 안 보임) -->
+            <span class="sr-only" aria-live="polite" data-copy-status></span>
+          </div>
+
+          <!-- 2) 지금 상태: 의뢰 가능 시기 + 답장 속도 (날짜·문구는 여기서 바꾸면 됨) -->
+          <ul class="contact-status">
+            <li><span class="contact-status-dot" aria-hidden="true"></span>2027년 1월부터 새 프로젝트 가능</li>
+            <li>보통 24시간 안에 답장드려요</li>
+          </ul>
+
+          <!-- 3) SNS: 목적별로 묶음 (왼쪽 작은 라벨 + 링크). 주소는 href="#" 를 실제 주소로 바꾸기 -->
+          <dl class="contact-sns">
+            <div class="contact-sns-row">
+              <dt>Work</dt>
+              <dd><a href="#" target="_blank" rel="noopener" class="text-link"><span class="text-link-label">Behance</span></a></dd>
+            </div>
+            <div class="contact-sns-row">
+              <dt>Career</dt>
+              <dd><a href="#" target="_blank" rel="noopener" class="text-link"><span class="text-link-label">LinkedIn</span></a></dd>
+            </div>
+            <div class="contact-sns-row">
+              <dt>Daily</dt>
+              <dd><a href="#" target="_blank" rel="noopener" class="text-link"><span class="text-link-label">Instagram</span></a></dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== 푸터 ========== -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Atomik 6ixthmead</p>
+    </div>
+  </footer>
+
+  </div>
+  <!-- /.page -->
+
+  <!-- 작업 이미지 목록을 먼저 불러온 뒤 main.js 가 이미지를 채움 -->
+  <script src="js/works-data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

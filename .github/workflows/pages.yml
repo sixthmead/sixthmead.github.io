@@ -1,0 +1,49 @@
+# GitHub Pages 자동 배포 설정
+# main 브랜치에 push할 때마다 public/ 폴더를 사이트로 게시해요.
+# 처음 한 번은 GitHub 저장소의 Settings → Pages → Source 를 "GitHub Actions"로 골라야 해요.
+
+name: Deploy portfolio to GitHub Pages
+
+on:
+  # main 브랜치에 새 내용이 올라오면 실행
+  push:
+    branches: [main]
+  # GitHub 웹의 Actions 탭에서 손으로 다시 실행할 수도 있게
+  workflow_dispatch:
+
+# Pages에 게시하는 데 필요한 권한
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 배포가 겹치면 먼저 시작한 것을 끝까지 마치고 다음 것을 실행
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      # 1) 저장소 파일 가져오기
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2) Pages 사용 설정 확인
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      # 3) public/ 폴더만 묶어서 올리기
+      - name: Upload public folder
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+      # 4) 사이트로 게시
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

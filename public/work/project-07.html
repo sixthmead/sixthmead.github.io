@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hyundaitel Face ID Doorphone — Atomik</title>
+  <meta name="description" content="현대통신 안면인식 도어폰 GUI · UX 플로우 디자인 — UI/UX Designer Yi Jinkwang">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <!-- Montserrat 웹폰트: 사이트 영문 글꼴 (한글은 Pretendard) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+  <!-- 공통 → 상세 공통 → 이 작업 전용 순서 (뒤에 온 규칙이 덮어씀) -->
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/work.css">
+  <link rel="stylesheet" href="../css/work-hdt.css">
+  <link rel="stylesheet" href="../css/work-dock.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="work-page ht-theme">
+
+  <div class="page">
+
+  <!-- ========== 헤더 (메인과 같음, 링크만 ../index.html 로) ========== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="header-left">
+        <a href="../index.html" class="logo">Yi Jinkwang</a>
+        <p class="header-greeting">Hi! Nice to meet you :)</p>
+      </div>
+
+      <nav class="desktop-nav" aria-label="주요 메뉴">
+        <ul>
+          <li><a href="index.html" class="text-link text-link--reversed"><span class="text-link-label">Works</span></a></li>
+          <li><a href="../about.html" class="text-link text-link--reversed"><span class="text-link-label">About</span></a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="../index.html#contact" class="text-link header-cta">
+          <span class="text-link-label">Let's talk</span>
+          <span class="text-link-icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+            <svg viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+          </span>
+        </a>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="site-menu" aria-label="메뉴 열기">
+          <span class="menu-toggle-line"></span>
+          <span class="menu-toggle-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== 전체 화면 메뉴 (모바일) ========== -->
+  <div class="site-menu" id="site-menu" aria-hidden="true">
+    <div class="container site-menu-inner">
+      <nav aria-label="모바일 메뉴">
+        <ul class="menu-list">
+          <li style="--i: 0"><a href="index.html"><span class="num">01</span> Works</a></li>
+          <li style="--i: 1"><a href="../about.html"><span class="num">02</span> About</a></li>
+          <li style="--i: 2" hidden><a href="../index.html#contact"><span class="num">03</span> Contact</a></li>
+        </ul>
+      </nav>
+      <div class="menu-footer" style="--i: 3">
+        <a href="../index.html#contact" class="arrow-link">
+          <span class="arrow-link-text">Start a project</span>
+          <span class="arrow-link-circle" aria-hidden="true">
+            <svg class="arrow-link-icon" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+            <svg class="arrow-link-icon arrow-link-icon--next" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+          </span>
+        </a>
+        <div class="menu-meta">
+          <a href="mailto:sixthmead@me.com" class="text-link"><span class="text-link-label">sixthmead@me.com</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="top">
+
+    <!-- =========================================================
+         Hyundaitel 안면인식 도어폰 — 이미지 (images/work/project-07/)
+         - cover.jpg / thumb.jpg : 커버 · 썸네일 (js/works-data.js)
+         - visual.jpg            : 메시지 아이콘 + 얼굴인식 비주얼 (원칙 섹션)
+         - process-map.jpg       : Figma '도어폰 얼굴 등록 (프로세스)' 전체 맵
+         - screens/*.jpg         : 도어폰 LCD 상태 화면 (678×384, 등록 스텝 · 상태 언어)
+         - msg/a-·b-·c-*.jpg     : 안내 · 출입 · 기타 메시지 카드
+         원본: Figma POSCO › PDF-2 (node 340-2865) → 더 선명하게 하려면 같은 이름으로 2x 내보내 덮어쓰기
+         ========================================================= -->
+
+    <!-- ========== 01. 히어로 (상세 페이지 공통 구조 · 스타일은 work.css 12번) ==========
+         머리말 + 제목 + 한 줄 요약 → 화면 폭 가득한 커버 → (About) 정보 표 · 맡은 일 목록 -->
+    <section class="case-hero">
+      <div class="container case-hero-head">
+        <p class="case-eyebrow">Hyundai Telecom — Doorphone GUI</p>
+        <h1 class="case-title" data-split>Face ID Doorphone</h1>
+        <p class="case-summary">
+          버튼을 누르는 대신 얼굴을 비추면 열리는 문.
+          현대통신 안면인식 도어폰의 얼굴 등록·인증 플로우와 상태 화면,
+          현관 앞에서 건네는 메시지 아이콘까지 도어폰 GUI 전체를 설계했습니다.
+        </p>
+      </div>
+
+      <figure class="case-cover">
+        <img data-work-img="project-07:cover" src="../images/work/project-07/cover.jpg" alt="아파트 복도를 배경으로 한 현대통신 안면인식 도어폰과 메시지 아이콘 화면들">
+      </figure>
+
+      <div class="container case-meta">
+        <p class="section-label">About</p>
+        <dl class="case-facts">
+          <div><dt>Client</dt><dd>현대통신 Hyundaitel</dd></div>
+          <div><dt>Role</dt><dd>GUI · UX Flow · Illustration</dd></div>
+          <div><dt>Display</dt><dd>Doorphone LCD · 480 × 272</dd></div>
+          <div><dt>Scope</dt><dd><strong data-count="16">16</strong> States · <strong data-count="33">33</strong> Messages</dd></div>
+          <div><dt>Year</dt><dd>2023</dd></div>
+        </dl>
+        <div class="case-services">
+          <p class="case-services-title">Services</p>
+          <ul>
+            <li>GUI Design</li>
+            <li>UX Flow</li>
+            <li>State Design</li>
+            <li>Iconography</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 02. 개요 ========== -->
+    <section class="ht-section" id="overview" data-chapter="Overview">
+      <div class="container ht-split">
+        <h4 class="section-label sec-title"><span class="num">01</span> <span class="sec-dash">—</span> Overview</h4>
+        <div>
+          <p class="ht-statement" data-scrub>
+            현관 앞의 사용자는 화면을 오래 보지 않습니다. 그래서 모든 화면이 한눈에 지금 무엇을 해야 하는지 말하도록 설계했습니다.
+          </p>
+          <div class="ht-columns" data-reveal>
+            <div>
+              <h3 class="ht-col-title">Background</h3>
+              <p>안면인식 도어폰은 현대통신만의 IoT 기술을 적용해 아파트의 가치와 입주자 만족도를 높이기 위해 개발된 제품입니다. 현대건설과 포스코 아파트에 들어가는 만큼, 각 브랜드의 아이덴티티가 작은 도어폰 화면에서도 살아 있어야 했습니다.</p>
+            </div>
+            <div>
+              <h3 class="ht-col-title">My Part</h3>
+              <p>방문자 감지부터 출입·방범까지의 서비스 플로우를 정리하고, 얼굴 등록·인증 과정의 16개 상태 화면과 안내·출입·기타 3개 카테고리 33개 메시지 화면의 GUI와 아이콘 일러스트레이션을 디자인했습니다.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 03. 디자인 원칙 ========== -->
+    <section class="ht-section ht-section--tint" id="principles" data-chapter="Principles">
+      <div class="container ht-feature">
+        <div class="ht-feature-text">
+          <h4 class="section-label sec-title"><span class="num">02</span> <span class="sec-dash">—</span> Challenge</h4>
+          <h2 class="ht-h2" data-reveal>터치에서 <span class="ht-accent">안면인식으로</span></h2>
+          <p class="ht-text" data-reveal>
+            스마트홈 애플리케이션 GUI는 늘 사용자의 터치에 반응하는 방식이었습니다.
+            안면인식 도어폰에서는 사용자가 기기를 만지지 않습니다. 화면이 먼저 사람을 찾고,
+            상태를 알리고, 다음 행동을 안내해야 했습니다.
+          </p>
+          <ol class="ht-principles" data-reveal>
+            <li>
+              <span class="ht-mono">01</span>
+              <div><h3>Touchless</h3><p>얼굴을 비추는 것만으로 작동하도록, 사용자의 행동을 화면 안내 한 줄로 이끕니다.</p></div>
+            </li>
+            <li>
+              <span class="ht-mono">02</span>
+              <div><h3>State Clarity</h3><p>인식 영역·촬영·처리·완료를 색과 형태로 구분해 글을 읽지 않아도 상태가 보이게 했습니다.</p></div>
+            </li>
+            <li>
+              <span class="ht-mono">03</span>
+              <div><h3>Brand Identity</h3><p>현대건설과 포스코 아파트의 브랜드 컬러를 지키면서, 메시지 내용이 먼저 읽히는 일러스트를 그렸습니다.</p></div>
+            </li>
+          </ol>
+        </div>
+        <figure class="ht-visual" data-reveal style="--d: .15s">
+          <img src="../images/work/project-07/visual.jpg" alt="기울어진 메시지 아이콘 카드들 위로 얼굴인식 링이 표시된 비주얼" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ========== 04. 서비스 플로우 ========== -->
+    <section class="ht-section" id="flow" data-chapter="Flow">
+      <div class="container">
+        <header class="ht-head ht-head--row">
+          <div>
+            <h4 class="section-label sec-title"><span class="num">03</span> <span class="sec-dash">—</span> Flow</h4>
+            <h2 class="ht-h2" data-reveal>방문자 감지에서<br><span class="ht-accent">출입까지.</span></h2>
+          </div>
+          <p class="ht-text" data-reveal>
+            도어폰이 사람을 감지한 순간부터 흐름이 시작됩니다. 집주인이 안내 메시지를 설정해 두었다면 2초간 먼저 보여 주고,
+            얼굴 인증에 성공하면 출입 메시지로, 세 번 실패하면 방범 메시지로 넘어갑니다.
+          </p>
+        </header>
+
+        <div class="ht-flow" data-reveal>
+          <div class="ht-flow-scroll">
+            <svg class="ht-flow-svg" viewBox="140 180 1000 420" role="img" aria-labelledby="ht-flow-title">
+              <title id="ht-flow-title">방문자 감지 → (안내 메시지 설정 시) 안내 메시지 2초 → 얼굴인증 → 인증 성공 시 출입메시지, 3회 실패 시 방범메시지. 안내 메시지 미설정 시 얼굴인식 가이드를 거쳐 출입메시지.</title>
+              <defs>
+                <marker id="ht-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                  <path d="M1 1 L9 5 L1 9" fill="none" stroke="#7F8FB0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </marker>
+                <!-- 경고 선(3회 실패)용 화살촉: 선과 같은 경고색 -->
+                <marker id="ht-arrow-alert" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                  <path d="M1 1 L9 5 L1 9" fill="none" stroke="#FF6B6B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </marker>
+              </defs>
+
+              <g class="ht-flow-lines" marker-end="url(#ht-arrow)">
+                <path pathLength="1" d="M640 256 V286"/>
+                <path pathLength="1" d="M504 228 H324 Q304 228 304 248 V406"/>
+                <path pathLength="1" d="M504 316 H388 Q368 316 368 336 V406"/>
+                <path pathLength="1" d="M640 344 V374"/>
+                <path pathLength="1" d="M640 496 V526"/>
+                <path pathLength="1" class="is-alert" marker-end="url(#ht-arrow-alert)" d="M776 436 H956 Q976 436 976 456 V526"/>
+                <path pathLength="1" d="M304 464 V536 Q304 556 324 556 H502"/>
+              </g>
+
+              <g class="ht-flow-labels">
+                <text x="296" y="276" text-anchor="end">안내 메시지 미설정 시</text>
+                <text x="654" y="276">설정 시</text>
+                <text x="654" y="518">인증 성공</text>
+                <text x="880" y="424" class="is-alert">3회 인증 실패</text>
+              </g>
+
+              <g class="ht-flow-nodes">
+                <g class="ht-node ht-node--start"><rect x="504" y="200" width="272" height="56" rx="14"/><text x="640" y="234">방문자 감지</text></g>
+                <g class="ht-node"><rect x="504" y="288" width="272" height="56" rx="14"/><text x="640" y="322">안내 메시지 <tspan class="ht-node-sub">2초간</tspan></text></g>
+                <g class="ht-node"><rect x="168" y="408" width="272" height="56" rx="14"/><text x="304" y="442">얼굴인식 가이드</text></g>
+                <g class="ht-node ht-node--core"><rect x="504" y="376" width="272" height="120" rx="22"/><circle cx="640" cy="420" r="15"/><text x="640" y="470">얼굴인증</text></g>
+                <g class="ht-node"><rect x="504" y="528" width="272" height="56" rx="14"/><text x="640" y="562">출입 메시지</text></g>
+                <g class="ht-node ht-node--alert"><rect x="840" y="528" width="272" height="56" rx="14"/><text x="976" y="562">방범 메시지</text></g>
+              </g>
+            </svg>
+          </div>
+          <p class="ht-flow-hint ht-mono" aria-hidden="true">← Scroll →</p>
+        </div>
+
+        <figure class="ht-map" data-reveal>
+          <img src="../images/work/project-07/process-map.jpg" alt="도어폰 얼굴 등록 프로세스 전체 맵: 호출, 촬영 준비, 촬영, 등록, 완료와 얼굴인식 가이드, 안경 착용 분기, 인식 중·방범 녹화 화면" loading="lazy">
+          <figcaption class="ht-cap"><b>Process Map</b>얼굴 등록 · 인식 가이드 · 안경 분기 · 방범 녹화까지 한 장에 정리한 상태 전이도</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ========== 05. 얼굴 등록 — 인터랙티브 스텝 ========== -->
+    <section class="ht-section ht-navy" id="register" data-chapter="Registration" data-dark>
+      <div class="container">
+        <header class="ht-head ht-head--row">
+          <div>
+            <h4 class="section-label sec-title"><span class="num">04</span> <span class="sec-dash">—</span> Face Registration</h4>
+            <h2 class="ht-h2" data-reveal>안경 하나로 달라지는<br><span class="ht-cyan">두 갈래의 등록.</span></h2>
+          </div>
+          <p class="ht-text" data-reveal>
+            안경을 쓰는 사용자는 안경을 쓴 얼굴과 벗은 얼굴을 모두 등록해야 인식률이 안정됩니다.
+            같은 촬영 루프를 두 번 반복하되, 시작 전에 ‘두 번 촬영합니다’를 먼저 알려 과정이 길어져도 길을 잃지 않게 했습니다.
+          </p>
+        </header>
+
+        <div class="ht-reg" data-reg>
+          <div class="ht-reg-tabs" role="tablist" aria-label="등록 유형">
+            <button type="button" role="tab" aria-selected="true" data-reg-tab="plain">안경 미착용 <span class="ht-mono">6 steps</span></button>
+            <button type="button" role="tab" aria-selected="false" data-reg-tab="glasses">안경 착용 <span class="ht-mono">11 steps</span></button>
+          </div>
+
+          <div class="ht-reg-body">
+            <!-- 도어폰 기기 -->
+            <figure class="ht-device" aria-live="polite">
+              <div class="ht-device-screen">
+                <img data-reg-img src="../images/work/project-07/screens/n-01.jpg" alt="호출 버튼을 눌러주세요.">
+                <span class="ht-device-count ht-mono" data-reg-count>01 / 06</span>
+              </div>
+              <div class="ht-device-pad" aria-hidden="true">
+                <svg class="ht-pad-ico ht-pad-ico--t" viewBox="0 0 24 24"><path d="M5 9v6h3l4 4V5L8 9H5zM15.5 9.5a3.5 3.5 0 0 1 0 5M17.5 7.5a6.5 6.5 0 0 1 0 9"/></svg>
+                <svg class="ht-pad-ico ht-pad-ico--l" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7M6 10v10h12V10"/></svg>
+                <svg class="ht-pad-ico ht-pad-ico--r" viewBox="0 0 24 24"><path d="M5 7h14M5 12h14M5 17h14"/></svg>
+                <svg class="ht-pad-ico ht-pad-ico--b" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
+                <span class="ht-pad-call"><svg viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0-6 6v5l-2 3h16l-2-3V9a6 6 0 0 0-6-6zM10 20a2 2 0 0 0 4 0"/></svg></span>
+              </div>
+              <span class="ht-device-grill" aria-hidden="true"></span>
+            </figure>
+
+            <!-- 스텝 목록 -->
+            <div class="ht-reg-side">
+              <ol class="ht-steps" data-reg-list></ol>
+              <div class="ht-reg-ctrl">
+                <button type="button" class="ht-ctrl" data-reg-prev aria-label="이전 단계"><svg viewBox="0 0 16 16"><path d="M10 3L5 8l5 5"/></svg></button>
+                <button type="button" class="ht-ctrl" data-reg-play aria-label="자동 재생 멈춤" aria-pressed="true"><svg class="i-pause" viewBox="0 0 16 16"><path d="M5 3v10M11 3v10"/></svg><svg class="i-play" viewBox="0 0 16 16"><path d="M5 3l8 5-8 5z"/></svg></button>
+                <button type="button" class="ht-ctrl" data-reg-next aria-label="다음 단계"><svg viewBox="0 0 16 16"><path d="M6 3l5 5-5 5"/></svg></button>
+                <span class="ht-reg-bar" aria-hidden="true"><i data-reg-bar></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 06. 상태 언어 ========== -->
+    <section class="ht-section" id="states" data-chapter="States">
+      <div class="container">
+        <header class="ht-head ht-head--row">
+          <div>
+            <h4 class="section-label sec-title"><span class="num">05</span> <span class="sec-dash">—</span> State Language</h4>
+            <h2 class="ht-h2" data-reveal>글보다 먼저 읽히는<br><span class="ht-accent">색과 형태.</span></h2>
+          </div>
+          <p class="ht-text" data-reveal>
+            도어폰 앞에서는 한 줄의 문구도 다 읽히지 않을 때가 많습니다. 그래서 프레임의 모양과 색만으로 단계를 구분하는 규칙을 먼저 정하고,
+            모든 등록·인증 화면에 똑같이 적용했습니다.
+          </p>
+        </header>
+
+        <ol class="ht-states">
+          <li data-reveal>
+            <figure><img src="../images/work/project-07/screens/guide-01.jpg" alt="얼굴을 찾고 있습니다." loading="lazy"></figure>
+            <div class="ht-state-key"><i class="k k--bracket"></i><span class="ht-mono">Searching</span></div>
+            <h3>청록 브래킷</h3><p>인식 영역을 표시하고 얼굴을 기다리는 상태</p>
+          </li>
+          <li data-reveal style="--d: .06s">
+            <figure><img src="../images/work/project-07/screens/g-02.jpg" alt="촬영 준비가 되었습니다." loading="lazy"></figure>
+            <div class="ht-state-key"><i class="k k--bracket"></i><span class="ht-mono">Ready</span></div>
+            <h3>얼굴이 영역 안에</h3><p>같은 브래킷 안에 얼굴이 들어오면 촬영 준비 완료</p>
+          </li>
+          <li data-reveal style="--d: .12s">
+            <figure><img src="../images/work/project-07/screens/g-03.jpg" alt="촬영 중입니다." loading="lazy"></figure>
+            <div class="ht-state-key"><i class="k k--bracket-w"></i><span class="ht-mono">Capturing</span></div>
+            <h3>흰색 브래킷 + REC</h3><p>색이 흰색으로 바뀌고 녹화 표시가 켜지며 촬영 중임을 알림</p>
+          </li>
+          <li data-reveal style="--d: .18s">
+            <figure><img src="../images/work/project-07/screens/g-04.jpg" alt="등록 중입니다." loading="lazy"></figure>
+            <div class="ht-state-key"><i class="k k--dash"></i><span class="ht-mono">Processing</span></div>
+            <h3>점선 링</h3><p>브래킷이 원형으로 바뀌고 점선이 돌며 처리 중임을 표시</p>
+          </li>
+          <li data-reveal style="--d: .24s">
+            <figure><img src="../images/work/project-07/screens/g-05.jpg" alt="등록을 완료했습니다." loading="lazy"></figure>
+            <div class="ht-state-key"><i class="k k--ring"></i><span class="ht-mono">Done</span></div>
+            <h3>청록 실선 링</h3><p>점선이 닫힌 실선이 되며 결과 확정, 하단 바도 흰색으로 반전</p>
+          </li>
+          <li data-reveal style="--d: .3s">
+            <figure><img src="../images/work/project-07/screens/recog.jpg" alt="인식 중입니다." loading="lazy"></figure>
+            <div class="ht-state-key"><i class="k k--ring-w"></i><span class="ht-mono">Recognizing</span></div>
+            <h3>흰색 실선 링</h3><p>등록된 얼굴을 대조하는 인증 단계, 등록과 구분되는 흰색</p>
+          </li>
+        </ol>
+
+        <div class="ht-guide" data-reveal>
+          <div class="ht-guide-text">
+            <h3 class="ht-col-title">User Guide</h3>
+            <p>인식에 실패하는 이유는 대부분 거리와 각도입니다. 막연한 ‘다시 시도해 주세요’ 대신, 얼굴과 브래킷의 관계를 보여 주며 무엇을 고치면 되는지 한 문장으로 안내합니다.</p>
+          </div>
+          <ul class="ht-guide-list">
+            <li><img src="../images/work/project-07/screens/guide-01.jpg" alt="얼굴을 찾고 있습니다." loading="lazy"></li>
+            <li><img src="../images/work/project-07/screens/guide-02.jpg" alt="가까이 와주세요." loading="lazy"></li>
+            <li><img src="../images/work/project-07/screens/guide-03.jpg" alt="얼굴을 화면 중앙에 맞춰주세요." loading="lazy"></li>
+            <li><img src="../images/work/project-07/screens/guide-04.jpg" alt="정면을 바라보세요." loading="lazy"></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 07. 메시지 시스템 ========== -->
+    <section class="ht-section ht-navy" id="messages" data-chapter="Messages" data-dark>
+      <div class="container">
+        <header class="ht-head ht-head--row">
+          <div>
+            <h4 class="section-label sec-title"><span class="num">06</span> <span class="sec-dash">—</span> Message System</h4>
+            <h2 class="ht-h2" data-reveal>문 앞에서 건네는<br><span class="ht-cyan">한마디.</span></h2>
+          </div>
+          <p class="ht-text" data-reveal>
+            도어폰 화면은 방문자에게 집주인의 말을 대신 전하기도 합니다. 외출 중 안내, 가족을 맞는 출입 인사, 명절·모임 메시지까지
+            세 가지 상황으로 나누고, 흰색 라인과 청록 포인트의 두 색 일러스트로 한 세트처럼 보이게 그렸습니다.
+          </p>
+        </header>
+
+        <div class="ht-msg" data-msg>
+          <div class="ht-msg-tabs" role="tablist" aria-label="메시지 카테고리">
+            <button type="button" role="tab" aria-selected="true" data-msg-tab="a">안내 메시지 <span class="ht-mono">11</span></button>
+            <button type="button" role="tab" aria-selected="false" data-msg-tab="b">출입 메시지 <span class="ht-mono">11</span></button>
+            <button type="button" role="tab" aria-selected="false" data-msg-tab="c">기타 메시지 <span class="ht-mono">11</span></button>
+          </div>
+          <p class="ht-msg-desc" data-msg-desc>집을 비웠거나 방해받고 싶지 않을 때, 초인종 대신 방문자에게 먼저 보여 주는 메시지</p>
+          <ul class="ht-msg-grid" data-msg-grid role="tabpanel"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 08. 결과 ========== -->
+    <section class="ht-section" id="outcome" data-chapter="Outcome">
+      <div class="container ht-split">
+        <h4 class="section-label sec-title"><span class="num">07</span> <span class="sec-dash">—</span> Outcome</h4>
+        <ol class="ht-outcome">
+          <li data-reveal>
+            <span class="ht-mono">01</span>
+            <h3>Touchless Entry</h3>
+            <p>버튼과 화면 터치 없이 얼굴만으로 출입하는 경험을, 사람을 찾고 안내하고 결과를 알리는 화면 흐름으로 구체화했습니다.</p>
+          </li>
+          <li data-reveal style="--d: .08s">
+            <span class="ht-mono">02</span>
+            <h3>One Visual Language</h3>
+            <p>브래킷·링·색으로 이루어진 상태 규칙 하나로 등록, 인증, 가이드 화면 전체를 일관되게 묶었습니다.</p>
+          </li>
+          <li data-reveal style="--d: .16s">
+            <span class="ht-mono">03</span>
+            <h3>Scalable Messages</h3>
+            <p>같은 그리드와 일러스트 문법으로 33개 메시지를 정리해, 새 메시지가 생겨도 같은 방식으로 늘려 갈 수 있게 했습니다.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ========== 다음 작업 (마지막 작업 → 01 로 돌아감) ========== -->
+    <section class="section work-next">
+      <div class="container">
+        <h4 class="section-label sec-title">Next project</h4>
+        <a href="project-01.html" class="work-next-link">
+          <span class="work-next-title">LG 에너지솔루션</span>
+          <span class="arrow-link-circle" aria-hidden="true">
+            <svg class="arrow-link-icon" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+            <svg class="arrow-link-icon arrow-link-icon--next" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+          </span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Atomik 6ixthmead</p>
+    </div>
+  </footer>
+
+  </div>
+  <!-- /.page -->
+
+  <script src="../js/works-data.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/work-hdt.js"></script>
+  <script src="../js/work-dock.js"></script>
+</body>
+</html>

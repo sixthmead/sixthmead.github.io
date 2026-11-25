@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GUT Morning — Atomik</title>
+  <meta name="description" content="Amway GUT Morning 캠페인 모바일 마이크로 웹 UX/UI 디자인 — UI/UX Designer Yi Jinkwang">
+  <!-- Pretendard 웹폰트 (메인 페이지와 동일) -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <!-- Montserrat 웹폰트: 사이트 영문 글꼴 (한글은 Pretendard) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+  <!-- 공통 스타일 먼저, 상세 페이지 전용 스타일을 그 뒤에 (뒤에 온 규칙이 덮어씀) -->
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/work.css">
+  <!-- JS 가 켜져 있으면 html 에 .js 클래스를 붙임
+       - .js : 제목을 글자로 나누기 전엔 잠깐 숨겨 둠 (work.css 1번) -->
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="work-page">
+
+
+  <!-- ========== 본문 전체 묶음 ==========
+       페이지에 들어올 때·나갈 때 이 상자 전체가 위로 슬라이드됨 -->
+  <div class="page">
+
+  <!-- ========== 헤더 (메인과 같음, 링크만 ../index.html 로) ========== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="header-left">
+        <a href="../index.html" class="logo">Yi Jinkwang</a>
+        <p class="header-greeting">Hi! Nice to meet you :)</p>
+      </div>
+
+      <nav class="desktop-nav" aria-label="주요 메뉴">
+        <ul>
+          <li><a href="index.html" class="text-link text-link--reversed"><span class="text-link-label">Works</span></a></li>
+          <li><a href="../about.html" class="text-link text-link--reversed"><span class="text-link-label">About</span></a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="../index.html#contact" class="text-link header-cta">
+          <span class="text-link-label">Let's talk</span>
+          <span class="text-link-icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+            <svg viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+          </span>
+        </a>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="site-menu" aria-label="메뉴 열기">
+          <span class="menu-toggle-line"></span>
+          <span class="menu-toggle-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== 전체 화면 메뉴 (모바일) ========== -->
+  <div class="site-menu" id="site-menu" aria-hidden="true">
+    <div class="container site-menu-inner">
+      <nav aria-label="모바일 메뉴">
+        <ul class="menu-list">
+          <li style="--i: 0"><a href="index.html"><span class="num">(01)</span> Works</a></li>
+          <li style="--i: 1"><a href="../about.html"><span class="num">(02)</span> About</a></li>
+          <!-- Contact 메뉴는 잠시 숨김 (다시 보이려면 아래 li 의 hidden 을 지우면 됨) -->
+          <li style="--i: 2" hidden><a href="../index.html#contact"><span class="num">(03)</span> Contact</a></li>
+        </ul>
+      </nav>
+      <div class="menu-footer" style="--i: 3">
+        <a href="../index.html#contact" class="arrow-link">
+          <span class="arrow-link-text">Start a project</span>
+          <span class="arrow-link-circle" aria-hidden="true">
+            <svg class="arrow-link-icon" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+            <svg class="arrow-link-icon arrow-link-icon--next" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+          </span>
+        </a>
+        <div class="menu-meta">
+          <a href="mailto:sixthmead@me.com" class="text-link"><span class="text-link-label">sixthmead@me.com</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="top">
+
+    <!-- =========================================================
+         GUT Morning — 이미지 자리 (images/work/project-03/ 에 아래 이름으로 넣으면 자동으로 보임)
+         - thumb.jpg / cover.jpg   : 썸네일 · 커버 (js/works-data.js)
+         - screen-01~03.jpg        : 모바일 화면 3장 (세로 9:19.5, 권장 1080×2340)
+         - gallery-01.jpg          : 넓은 이미지 (16:9, 권장 2560×1440) — 키 비주얼 · 전체 화면 흐름
+         - gallery-02~03.jpg       : 나란히 2장 (4:5, 권장 1600×2000) — 디테일 컷
+         ========================================================= -->
+
+    <!-- ========== 타이틀 ========== -->
+    <section class="work-hero">
+      <div class="container">
+        <div class="work-hero-top">
+          <figure class="work-preview">
+            <img data-work-img="project-03:cover" alt="" onerror="this.remove()">
+          </figure>
+          <h1 class="work-title" data-split>GUT Morning</h1>
+        </div>
+
+        <div class="work-info">
+          <p class="section-label work-info-label">(About)</p>
+          <ul class="work-tags">
+            <li class="work-tag">Mobile Web</li>
+            <li class="work-tag">UX/UI Design</li>
+            <li class="work-tag">Campaign Site</li>
+            <li class="work-tag">Brand Experience</li>
+          </ul>
+          <p class="work-desc">
+            암웨이 GUT Morning 캠페인의 ‘매일 아침 건강한 습관 만들기’라는 메시지를,
+            모바일에 최적화된 마이크로 웹 경험으로 풀어낸 프로젝트입니다.
+          </p>
+          <p class="work-year">2024</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 커버 이미지 ========== -->
+    <div class="container">
+      <figure class="work-media work-media--cover">
+        <img data-work-img="project-03:cover" alt="GUT Morning 모바일 웹 대표 화면" onerror="this.remove()">
+      </figure>
+    </div>
+
+    <!-- ========== (02) 개요 + 프로젝트 정보 ========== -->
+    <section class="section work-section">
+      <div class="container work-split">
+        <p class="section-label"><span class="num">(02)</span> (Overview)</p>
+        <div>
+          <p class="work-lead">
+            제품을 설명하는 대신, <em>매일 아침의 루틴을 경험하게</em> 하는 것.
+            GUT Morning 마이크로 웹의 출발점이었습니다.
+          </p>
+          <!-- 참여 인원 · 본인 참여도를 넣으려면 아래에 <div><dt>Contribution</dt><dd>UX/UI 00%</dd></div> 추가 -->
+          <dl class="work-facts">
+            <div><dt>Client</dt><dd>Amway</dd></div>
+            <div><dt>Project</dt><dd>GUT Morning 캠페인 마이크로 웹</dd></div>
+            <div><dt>Role</dt><dd>UX/UI Design</dd></div>
+            <div><dt>Platform</dt><dd>Mobile Web</dd></div>
+            <div><dt>Year</dt><dd>2024</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== (03) 과정: 문제 → 접근 → 해결 ========== -->
+    <section class="section work-section">
+      <div class="container work-split">
+        <p class="section-label"><span class="num">(03)</span> (Process)</p>
+        <ol class="work-steps">
+          <li class="work-step">
+            <span class="num">(01)</span>
+            <h3>Challenge</h3>
+            <p>캠페인 사이트는 짧은 방문 시간 안에 메시지를 전달해야 합니다. 제품과 정보를 나열하는 방식으로는 ‘건강한 습관’이라는 메시지가 사용자의 일상에 닿기 어렵다고 판단했습니다.</p>
+          </li>
+          <li class="work-step">
+            <span class="num">(02)</span>
+            <h3>Approach</h3>
+            <p>모바일 사용 환경을 기준으로 콘텐츠 구조를 다시 설계하고, 핵심 건강 루틴을 중심으로 캠페인 콘텐츠를 직관적으로 탐색할 수 있는 흐름을 만들었습니다.</p>
+          </li>
+          <li class="work-step">
+            <span class="num">(03)</span>
+            <h3>Solution</h3>
+            <p>브랜드 메시지와 비주얼 아이덴티티를 모바일 화면 전반에 일관되게 적용해, 핵심 메시지를 빠르게 이해하고 콘텐츠를 자연스럽게 이어 보는 몰입형 마이크로 웹을 완성했습니다.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ========== 모바일 화면 3장 ========== -->
+    <div class="container">
+      <div class="work-screens">
+        <figure class="work-screen"><img src="../images/work/project-03/screen-01.jpg" alt="GUT Morning 메인 화면" onerror="this.remove()"></figure>
+        <figure class="work-screen"><img src="../images/work/project-03/screen-02.jpg" alt="GUT Morning 건강 루틴 화면" onerror="this.remove()"></figure>
+        <figure class="work-screen"><img src="../images/work/project-03/screen-03.jpg" alt="GUT Morning 콘텐츠 화면" onerror="this.remove()"></figure>
+      </div>
+    </div>
+
+    <!-- ========== (04) 디자인 원칙 ========== -->
+    <section class="section work-section">
+      <div class="container work-split">
+        <p class="section-label"><span class="num">(04)</span> (Principles)</p>
+        <ul class="work-points work-points--3">
+          <li class="work-point">
+            <span class="num">(01)</span>
+            <h3 class="work-point-title">Mobile First</h3>
+            <p class="work-point-sub">한 손, 한 화면 안에서 읽히는 구조</p>
+            <p>모바일 화면 단위로 콘텐츠를 나누고, 스크롤 흐름만으로 캠페인 전체를 이해할 수 있도록 정보의 순서와 밀도를 설계했습니다.</p>
+          </li>
+          <li class="work-point">
+            <span class="num">(02)</span>
+            <h3 class="work-point-title">Lifestyle, not Product</h3>
+            <p class="work-point-sub">제품이 아닌 일상의 장면</p>
+            <p>제품·정보 중심의 소개에서 벗어나, 실제 생활 속 아침 루틴을 떠올릴 수 있는 라이프스타일 중심의 콘텐츠로 경험을 구성했습니다.</p>
+          </li>
+          <li class="work-point">
+            <span class="num">(03)</span>
+            <h3 class="work-point-title">One Brand Tone</h3>
+            <p class="work-point-sub">캠페인과 같은 온도의 화면</p>
+            <p>GUT Morning의 메시지와 비주얼 아이덴티티를 디지털 환경에 맞게 옮겨, 캠페인의 분위기가 모바일에서도 그대로 이어지도록 했습니다.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== 갤러리: 넓은 1장 + 나란히 2장 ========== -->
+    <div class="container work-gallery">
+      <figure class="work-media work-media--wide">
+        <img src="../images/work/project-03/gallery-01.jpg" alt="GUT Morning 키 비주얼과 화면 흐름" onerror="this.remove()">
+      </figure>
+      <figure class="work-media">
+        <img src="../images/work/project-03/gallery-02.jpg" alt="" onerror="this.remove()">
+      </figure>
+      <figure class="work-media">
+        <img src="../images/work/project-03/gallery-03.jpg" alt="" onerror="this.remove()">
+      </figure>
+    </div>
+
+    <!-- ========== (05) 결과 ==========
+         실제 지표(방문 수 · 체류 시간 등)가 있으면 work-steps 대신 work-stats 블록으로 바꿔도 됨 -->
+    <section class="section work-section">
+      <div class="container work-split">
+        <p class="section-label"><span class="num">(05)</span> (Outcome)</p>
+        <ol class="work-steps">
+          <li class="work-step">
+            <span class="num">(01)</span>
+            <h3>Clear Message</h3>
+            <p>짧은 방문 안에서도 ‘매일 아침 건강한 습관’이라는 핵심 메시지가 한눈에 전달되는 구조를 만들었습니다.</p>
+          </li>
+          <li class="work-step">
+            <span class="num">(02)</span>
+            <h3>Seamless Flow</h3>
+            <p>건강 루틴과 캠페인 콘텐츠를 끊김 없이 이어 보는 직관적인 모바일 탐색 경험을 구현했습니다.</p>
+          </li>
+          <li class="work-step">
+            <span class="num">(03)</span>
+            <h3>Consistent Brand</h3>
+            <p>캠페인 아이덴티티를 모바일 접점까지 확장해, 어디서 만나도 같은 브랜드로 느껴지는 경험을 완성했습니다.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ========== 다음 작업 ========== -->
+    <section class="section work-next">
+      <div class="container">
+        <p class="section-label">(Next project)</p>
+        <a href="project-04.html" class="work-next-link">
+          <span class="work-next-title">Goodiez</span>
+          <span class="arrow-link-circle" aria-hidden="true">
+            <svg class="arrow-link-icon" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+            <svg class="arrow-link-icon arrow-link-icon--next" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+          </span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Atomik 6ixthmead</p>
+    </div>
+  </footer>
+
+  </div>
+  <!-- /.page -->
+
+  <script src="../js/works-data.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

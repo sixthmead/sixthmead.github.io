@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Atomik</title>
+  <meta name="description" content="21년차 UX·UI 디자이너 Yi Jinkwang 소개 — 할 수 있는 일, 함께한 클라이언트, 걸어온 경력.">
+  <!-- Pretendard 웹폰트 (메인 페이지와 동일) -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <!-- Montserrat 웹폰트: 사이트 영문 글꼴 (한글은 Pretendard) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+  <!-- 공통 스타일 먼저, About 전용 스타일을 그 뒤에 -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/about.css">
+  <!-- JS 가 켜져 있으면 html 에 .js 클래스를 붙임
+       - 제목을 글자로 나누기 전 잠깐 숨김, 스크롤 등장 연출 준비 (about.css) -->
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="about-page">
+
+  <!-- =========================================================
+       About 페이지 (메인의 About 메뉴를 누르면 오는 곳)
+       구성 참고: clay.global/services
+       (01) Hero      : 아주 큰 한 문장 + 짧은 소개
+       (02) Services  : 할 수 있는 일 5가지, 카드마다 이미지 · 제목 · 설명 · 세부 항목
+       (03) Clients   : 분야별 클라이언트 이름 (작업 페이지가 있으면 링크)
+       (04) Experience: 경력 · 도구 · 수상
+       (05) Contact   : 메인과 같은 컨택트 섹션
+
+       [이미지]
+       - 서비스 카드 이미지는 js/works-data.js 의 작업 썸네일을 그대로 씀
+         (data-work-img="project-02:thumb" 처럼 작업 이름만 바꾸면 다른 이미지로 교체)
+       - 파일이 없으면 보라~핑크 그라데이션이 대신 보임
+       ========================================================= -->
+
+  <div class="page">
+
+  <!-- ========== 헤더 ========== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="header-left">
+        <a href="index.html" class="logo">Yi Jinkwang</a>
+        <p class="header-greeting">Hi! Nice to meet you :)</p>
+      </div>
+
+      <nav class="desktop-nav" aria-label="주요 메뉴">
+        <ul>
+          <li><a href="work/index.html" class="text-link text-link--reversed"><span class="text-link-label">Works</span></a></li>
+          <li><a href="about.html" class="text-link text-link--reversed" aria-current="page"><span class="text-link-label">About</span></a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="#contact" class="text-link header-cta">
+          <span class="text-link-label">Let's talk</span>
+          <span class="text-link-icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+            <svg viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+          </span>
+        </a>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="site-menu" aria-label="메뉴 열기">
+          <span class="menu-toggle-line"></span>
+          <span class="menu-toggle-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== 전체 화면 메뉴 (모바일) ========== -->
+  <div class="site-menu" id="site-menu" aria-hidden="true">
+    <div class="container site-menu-inner">
+      <nav aria-label="모바일 메뉴">
+        <ul class="menu-list">
+          <li style="--i: 0"><a href="work/index.html"><span class="num">01</span> Works</a></li>
+          <li style="--i: 1"><a href="about.html" aria-current="page"><span class="num">02</span> About</a></li>
+        </ul>
+      </nav>
+      <div class="menu-footer" style="--i: 3">
+        <a href="#contact" class="arrow-link">
+          <span class="arrow-link-text">Start a project</span>
+          <span class="arrow-link-circle" aria-hidden="true">
+            <svg class="arrow-link-icon" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+            <svg class="arrow-link-icon arrow-link-icon--next" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+          </span>
+        </a>
+        <div class="menu-meta">
+          <a href="mailto:sixthmead@me.com" class="text-link"><span class="text-link-label">sixthmead@me.com</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="top">
+
+    <!-- ========== (01) 히어로 ==========
+         Clay 의 "A full-service digital innovation partner" 자리
+         - 큰 제목은 data-split 으로 글자마다 아래에서 올라옴 (main.js 5번)
+         - 아래쪽: 왼쪽 숫자 정보 · 오른쪽 소개 문단 -->
+    <section class="ab-hero">
+      <div class="container">
+        <p class="section-label"><span class="num">01</span> — About</p>
+
+        <h1 class="ab-hero-title" data-split>기획부터 운영까지 함께 완성하는 <span class="hero-title-serif">Design Partner</span></h1>
+
+        <div class="ab-hero-bottom">
+          <ul class="ab-hero-facts">
+            <li><span>Years of experience</span><strong>21+</strong></li>
+            <li><span>Platforms</span><strong>Web · iOS · Android</strong></li>
+            <li><span>Based in</span><strong>Seoul, Korea</strong></li>
+          </ul>
+
+          <div class="ab-hero-desc" data-reveal>
+            <p>
+              2001년 디지털 에이전시에서 시작해 대기업 웹사이트, 모바일 앱, 브랜드 가이드,
+              생성형 AI 비주얼까지 다양한 프로젝트를 구축하고 운영해 왔습니다.
+            </p>
+            <p>
+              말하기 전에 한 번 더 생각하고, 어제보다 나은 오늘을 위해 새로운 것을 배우는 데 적극적입니다.
+              어려운 상황에서도 웃으며 동료들과 즐겁게 일하는 방법을 찾습니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== (02) 서비스 ==========
+         Clay 의 Services list 자리: 카드가 위아래로 쌓임
+         - 모바일: 이미지 → 번호·제목 → 설명 → 세부 항목
+         - 데스크톱(1200px~): 왼쪽 이미지 | 오른쪽 내용 (세부 항목은 2열)
+         - 카드 추가: <article class="ab-service"> 한 덩어리를 복사 -->
+    <section class="section ab-services" id="services">
+      <div class="container">
+        <div class="ab-section-head">
+          <p class="section-label"><span class="num">02</span> — Work</p>
+          <h2 class="ab-section-title" data-reveal>할 수 있는 일</h2>
+        </div>
+
+        <div class="ab-service-list">
+
+          <article class="ab-service" data-reveal>
+            <a class="ab-service-media" href="work/project-02.html" style="--angle: 45deg; --tone: -25deg" aria-label="관련 작업: Noul">
+              <img data-work-img="project-02:thumb" alt="" onerror="this.remove()">
+            </a>
+            <div class="ab-service-body">
+              <h3 class="ab-service-title">Websites</h3>
+              <p class="ab-service-desc">
+                기업의 브랜드 가치와 메시지가 한눈에 전해지도록 정보 구조부터 화면 디자인까지 설계합니다.
+                국·영문 글로벌 사이트와 반응형 구축 경험이 많습니다.
+              </p>
+              <ul class="ab-service-items">
+                <li>Content Strategy</li>
+                <li>Information Architecture</li>
+                <li>Web Design</li>
+                <li>Responsive Design</li>
+                <li>Interaction Design</li>
+                <li>Global Website</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="ab-service" data-reveal>
+            <a class="ab-service-media" href="work/project-04.html" style="--angle: 315deg; --tone: -40deg" aria-label="관련 작업: Goodiez">
+              <img data-work-img="project-04:thumb" alt="" onerror="this.remove()">
+            </a>
+            <div class="ab-service-body">
+              <h3 class="ab-service-title">Digital Products</h3>
+              <p class="ab-service-desc">
+                이미 서비스 중인 앱의 구조적 문제를 찾아 정보 구조와 사용자 흐름을 다시 짜고,
+                프로토타입으로 검증하며 사용성을 단계적으로 높입니다.
+              </p>
+              <ul class="ab-service-items">
+                <li>UX Audit</li>
+                <li>User Flow &amp; IA</li>
+                <li>Prototyping</li>
+                <li>iOS &amp; Android UI</li>
+                <li>GUI · Embedded Screen</li>
+                <li>Iconography</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="ab-service" data-reveal>
+            <a class="ab-service-media" href="work/project-05.html" style="--angle: 180deg; --tone: 30deg" aria-label="관련 작업: Good Neighbors">
+              <img data-work-img="project-05:thumb" alt="" onerror="this.remove()">
+            </a>
+            <div class="ab-service-body">
+              <h3 class="ab-service-title">Design Systems</h3>
+              <p class="ab-service-desc">
+                화면마다 흔들리는 기준을 시스템으로 정리해, 디자이너와 개발자가 같은 언어로 일하고
+                이후 리뉴얼도 빠르게 확장할 수 있는 기반을 만듭니다.
+              </p>
+              <ul class="ab-service-items">
+                <li>Style Guide</li>
+                <li>Figma Components</li>
+                <li>Design Tokens</li>
+                <li>Brand Guide Website</li>
+                <li>Dev Handoff</li>
+                <li>Documentation</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="ab-service" data-reveal>
+            <a class="ab-service-media" href="work/project-01.html" style="--angle: 135deg; --tone: 0deg" aria-label="관련 작업: LG 에너지솔루션">
+              <img data-work-img="project-01:thumb" alt="" onerror="this.remove()">
+            </a>
+            <div class="ab-service-body">
+              <h3 class="ab-service-title">Generative AI Visuals</h3>
+              <p class="ab-service-desc">
+                제품의 형태와 비율은 정확히 지키면서 공간·인물·조명을 AI 로 연출해,
+                기능 설명을 실제 생활 속 경험으로 바꾸는 이미지와 영상을 만듭니다.
+              </p>
+              <ul class="ab-service-items">
+                <li>Hero Visual</li>
+                <li>AI Image &amp; Video</li>
+                <li>Lifestyle Scene</li>
+                <li>PDP · USP Content</li>
+                <li>Art Direction</li>
+                <li>Prompt Workflow</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="ab-service" data-reveal>
+            <a class="ab-service-media" href="work/project-03.html" style="--angle: 225deg; --tone: 18deg" aria-label="관련 작업: GUT Morning">
+              <img data-work-img="project-03:thumb" alt="" onerror="this.remove()">
+            </a>
+            <div class="ab-service-body">
+              <h3 class="ab-service-title">Design Leadership</h3>
+              <p class="ab-service-desc">
+                최대 8명 규모의 디자인팀을 리딩하며 방향 설정, 업무 배분, 일정·리소스 관리,
+                최종 품질 검수와 고객사 커뮤니케이션까지 프로젝트 전반을 책임집니다.
+              </p>
+              <ul class="ab-service-items">
+                <li>Design PL</li>
+                <li>Concept &amp; Strategy</li>
+                <li>Team Management</li>
+                <li>Quality Assurance</li>
+                <li>Client Communication</li>
+                <li>Workshop</li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== (03) 클라이언트 ==========
+         Clay 의 Industries 자리: 분야 이름(h3) + 클라이언트 이름을 쉼표로 이어 씀
+         - 작업 페이지가 있는 이름은 링크(밑줄) -->
+    <section class="section ab-clients" id="clients">
+      <div class="container">
+        <div class="ab-section-head">
+          <p class="section-label"><span class="num">03</span> — Clients</p>
+          <h2 class="ab-section-title" data-reveal>함께한 브랜드</h2>
+          <p class="ab-section-desc" data-reveal>대기업부터 스타트업, 비영리 단체까지 다양한 분야의 파트너와 함께 일했습니다.</p>
+        </div>
+
+        <ul class="ab-client-list">
+          <li class="ab-client" data-reveal>
+            <h3>Energy &amp; Electronics</h3>
+            <!-- 클라이언트마다 캡슐 하나 (↗ = 상세 페이지 링크) -->
+            <ul class="ab-caps">
+              <li><a href="work/project-01.html" class="ab-cap ab-cap--link">LG에너지솔루션<span aria-hidden="true">↗</span></a></li>
+              <li><span class="ab-cap">LG전자</span></li>
+              <li><a href="work/project-07.html" class="ab-cap ab-cap--link">현대통신<span aria-hidden="true">↗</span></a></li>
+            </ul>
+          </li>
+          <li class="ab-client" data-reveal>
+            <h3>Healthcare &amp; Life Sciences</h3>
+            <!-- 클라이언트마다 캡슐 하나 (↗ = 상세 페이지 링크) -->
+            <ul class="ab-caps">
+              <li><a href="work/project-02.html" class="ab-cap ab-cap--link">노을 Noul<span aria-hidden="true">↗</span></a></li>
+              <li><a href="work/project-03.html" class="ab-cap ab-cap--link">암웨이 GUT Morning<span aria-hidden="true">↗</span></a></li>
+            </ul>
+          </li>
+          <li class="ab-client" data-reveal>
+            <h3>Nonprofit &amp; Public</h3>
+            <!-- 클라이언트마다 캡슐 하나 (↗ = 상세 페이지 링크) -->
+            <ul class="ab-caps">
+              <li><a href="work/project-05.html" class="ab-cap ab-cap--link">굿네이버스<span aria-hidden="true">↗</span></a></li>
+              <li><span class="ab-cap">한국여성재단</span></li>
+            </ul>
+          </li>
+          <li class="ab-client" data-reveal>
+            <h3>Platform &amp; Commerce</h3>
+            <!-- 클라이언트마다 캡슐 하나 (↗ = 상세 페이지 링크) -->
+            <ul class="ab-caps">
+              <li><a href="work/project-04.html" class="ab-cap ab-cap--link">Goodiez<span aria-hidden="true">↗</span></a></li>
+              <li><span class="ab-cap">AUD 소통</span></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== (04) 경력 ==========
+         Clay 의 Offices 자리: 한 줄에 기간 · 회사 · 직책 · 설명
+         - 모바일은 위아래로 쌓이고, 데스크톱(1024px~)은 4열 표처럼 정렬
+         - 아래: 도구(알약) · 수상 -->
+    <section class="section ab-career" id="experience">
+      <div class="container">
+        <div class="ab-section-head">
+          <p class="section-label"><span class="num">04</span> — Experience</p>
+          <h2 class="ab-section-title" data-reveal>History</h2>
+        </div>
+
+        <ol class="ab-career-list">
+          <li class="ab-career-item" data-reveal>
+            <p class="ab-career-period">2024.05 — 2026.11</p>
+            <h3 class="ab-career-company">(주)더피프티원</h3>
+            <p class="ab-career-role">책임 디자이너 · 미디어센터 크리에이티브 팀장</p>
+            <p class="ab-career-desc">웹사이트 구축과 AI 를 활용한 LG전자 전략제품 PDP 디자인을 이끌었습니다.</p>
+          </li>
+          <li class="ab-career-item" data-reveal>
+            <p class="ab-career-period">2023.05 — 2024.04</p>
+            <h3 class="ab-career-company">Goodiez</h3>
+            <p class="ab-career-role">프로덕트 디자이너 · 프리랜서</p>
+            <p class="ab-career-desc">수집품 거래 커뮤니티 앱의 UX 개선과 디자인 시스템 구축을 맡았습니다.</p>
+          </li>
+          <li class="ab-career-item" data-reveal>
+            <p class="ab-career-period">2022.10 — 2023.04</p>
+            <h3 class="ab-career-company">(주)스튜디오산책</h3>
+            <p class="ab-career-role">디자인 총괄 · 창립 멤버</p>
+            <p class="ab-career-desc">웹빌더 기반 비영리 단체 커스텀 웹사이트 제작을 총괄했습니다.</p>
+          </li>
+          <li class="ab-career-item" data-reveal>
+            <p class="ab-career-period">2019.02 — 2022.08</p>
+            <h3 class="ab-career-company">(주)슬로워크</h3>
+            <p class="ab-career-role">Digital eXperience Team Leader</p>
+            <p class="ab-career-desc">웹 디자인 시스템·컴포넌트 제작과 반응형 웹사이트 디자인으로 팀을 리드했습니다.</p>
+          </li>
+          <li class="ab-career-item" data-reveal>
+            <p class="ab-career-period">2015.12 — 2018.10</p>
+            <h3 class="ab-career-company">(주)다츠커뮤니케이션</h3>
+            <p class="ab-career-role">디자인팀 부장</p>
+            <p class="ab-career-desc">반응형 웹사이트와 소셜커머스 콘텐츠 제작을 관리했습니다.</p>
+          </li>
+          <li class="ab-career-item" data-reveal>
+            <p class="ab-career-period">2001.06 — 2015.11</p>
+            <h3 class="ab-career-company">(주)엘에이치</h3>
+            <p class="ab-career-role">디자인팀장</p>
+            <p class="ab-career-desc">웹·모바일 앱 디자인을 하며 사원에서 팀장까지 성장했습니다.</p>
+          </li>
+        </ol>
+
+        <div class="ab-extra">
+          <div class="ab-extra-block" data-reveal>
+            <h3 class="ab-extra-title">Tools</h3>
+            <ul class="ab-tools">
+              <li>Figma</li>
+              <li>ProtoPie</li>
+              <li>Sketch</li>
+              <li>Photoshop</li>
+              <li>Illustrator</li>
+              <li>Zeplin</li>
+              <li>Generative AI</li>
+              <li>Slack</li>
+            </ul>
+          </div>
+          <div class="ab-extra-block" data-reveal>
+            <h3 class="ab-extra-title">Recognition</h3>
+            <ul class="ab-awards">
+              <li>
+                <span class="ab-award-year">2025</span>
+                <span class="ab-award-name">웹어워드코리아 제품브랜드 혁신대상</span>
+                <span class="ab-award-project">LG에너지솔루션</span>
+              </li>
+              <li>
+                <span class="ab-award-year">2017</span>
+                <span class="ab-award-name">DESIGN AWARD ASIA Design of the day</span>
+                <span class="ab-award-project">Goldendrop Illuma3 웹사이트</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== (05) 컨택트 (메인과 같은 모양, 스타일은 style.css) ========== -->
+    <section class="section contact" id="contact">
+      <div class="container contact-inner">
+        <p class="section-label contact-label"><span class="num">05</span> — Contact</p>
+
+        <!-- 문장 아이콘 세트 (한 번만 정의 → 아래에서 <use> 로 불러 씀)
+             48×48 격자 · 포인트 그라데이션 면 · 왼쪽 위 빛 반사 -->
+        <svg class="sr-defs" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="ct-grad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#A747F6"/>
+              <stop offset="1" stop-color="#E05EA0"/>
+            </linearGradient>
+            <linearGradient id="ct-shine" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#fff" stop-opacity=".55"/>
+              <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+            </linearGradient>
+            <!-- 스마일 -->
+            <symbol id="ct-smile" viewBox="0 0 48 48">
+              <circle cx="24" cy="24" r="21" fill="url(#ct-grad)"/>
+              <path d="M10.5 17.5A15 15 0 0 1 24 8" fill="none" stroke="url(#ct-shine)" stroke-width="3" stroke-linecap="round"/>
+              <rect x="15.5" y="16" width="4" height="7" rx="2" fill="#fff"/>
+              <rect x="28.5" y="16" width="4" height="7" rx="2" fill="#fff"/>
+              <path d="M14.5 28.5c2.4 4.2 5.6 6.3 9.5 6.3s7.1-2.1 9.5-6.3" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round"/>
+            </symbol>
+            <!-- 행성: 고리 뒤쪽 → 행성 → 고리 앞쪽 순서로 겹쳐 입체감 -->
+            <symbol id="ct-planet" viewBox="0 0 48 48">
+              <g transform="rotate(-22 24 24)">
+                <path d="M1 24A23 7 0 0 1 47 24" fill="none" stroke="url(#ct-grad)" stroke-width="3" stroke-linecap="round" opacity=".55"/>
+              </g>
+              <circle cx="24" cy="24" r="15.5" fill="url(#ct-grad)"/>
+              <path d="M12.8 20A12 12 0 0 1 21.5 11" fill="none" stroke="url(#ct-shine)" stroke-width="2.6" stroke-linecap="round"/>
+              <g transform="rotate(-22 24 24)">
+                <path d="M1 24A23 7 0 0 0 47 24" fill="none" stroke="url(#ct-grad)" stroke-width="3" stroke-linecap="round"/>
+              </g>
+              <circle cx="41.5" cy="7" r="3" fill="url(#ct-grad)"/>
+            </symbol>
+            <!-- 하트 -->
+            <symbol id="ct-heart" viewBox="0 0 48 48">
+              <path d="M24 42.5C21.6 40.9 5.5 30.6 5.5 17.8 5.5 11.5 10.4 6.5 16.6 6.5c3.3 0 6 1.6 7.4 4.1 1.4-2.5 4.1-4.1 7.4-4.1 6.2 0 11.1 5 11.1 11.3 0 12.8-16.1 23.1-18.5 24.7z" fill="url(#ct-grad)"/>
+              <path d="M10.5 18.5c0-3.9 2.6-6.7 6-7" fill="none" stroke="url(#ct-shine)" stroke-width="3" stroke-linecap="round"/>
+            </symbol>
+          </defs>
+        </svg>
+        <h2 class="contact-title">
+          사용자의 마음을 움직이는 <span class="nw">디자인<svg class="contact-icon contact-icon--smile" style="--i:0" aria-hidden="true"><use href="#ct-smile"/></svg>으로</span>
+          브랜드와 사람<svg class="contact-icon contact-icon--planet" style="--i:1" aria-hidden="true"><use href="#ct-planet"/></svg> 사이를
+          자연스럽게 <span class="nw">이어 드립니다<svg class="contact-icon contact-icon--heart" style="--i:2" aria-hidden="true"><use href="#ct-heart"/></svg></span>
+        </h2>
+
+        <div class="contact-body">
+          <p class="contact-desc">
+            새 프로젝트, 협업 제안, 가벼운 질문 모두 환영합니다.<br>
+            브랜드의 가치가 사용자에게 그대로 전해지는 디지털 경험을 함께 만들어요.
+          </p>
+
+          <ul class="contact-links">
+            <li><a href="mailto:sixthmead@me.com" class="text-link"><span class="text-link-label">sixthmead@me.com</span></a></li>
+            <li><a href="#" target="_blank" rel="noopener" class="text-link"><span class="text-link-label">Instagram</span></a></li>
+            <li><a href="#" target="_blank" rel="noopener" class="text-link"><span class="text-link-label">LinkedIn</span></a></li>
+            <li><a href="#" target="_blank" rel="noopener" class="text-link"><span class="text-link-label">GitHub</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Atomik 6ixthmead</p>
+    </div>
+  </footer>
+
+  </div>
+  <!-- /.page -->
+
+  <script src="js/works-data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/about.js"></script>
+</body>
+</html>

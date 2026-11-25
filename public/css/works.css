@@ -1,0 +1,246 @@
+/* =========================================================
+   작업 목록 페이지 (work/index.html) 전용 스타일
+   - style.css 를 먼저 불러온 뒤 이 파일을 불러옴
+   - 모바일 우선: 기본은 카드 목록, 1200px 부터 3D 카드 스택으로 바뀜
+   ========================================================= */
+
+/* ---------- 1. 카드 공통: 사진 자리 ----------
+   - 사진·영상(js/works-data.js 의 thumb)이 있으면 카드를 꽉 채움
+   - 없으면 카드마다 방향(--angle)·색조(--tone)가 다른 보라~핑크 그라데이션 */
+.works-card,
+.works-item {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  isolation: isolate;   /* 안쪽 ::before·img 순서를 카드 안에서만 정리 */
+}
+
+.works-card::before,
+.works-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(var(--angle, 135deg), var(--color-accent-start) 0%, var(--color-accent-end) 100%);
+  filter: hue-rotate(var(--tone, 0deg));
+}
+
+/* 사진·영상이 들어간 카드는 그라데이션을 숨김
+   (둥근 모서리 가장자리에 그라데이션 색이 살짝 비쳐 지저분해 보이는 것 방지)
+   - 사진이 없어서 img 가 지워지면 다시 그라데이션이 보임 */
+.works-card:has(img, video)::before,
+.works-item:has(img, video)::before {
+  display: none;
+}
+
+.works-card img,
+.works-item img,
+.works-card video,
+.works-item video {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- 2. 모바일·태블릿: 카드 목록 ---------- */
+
+/* 데스크톱 스택은 모바일에서 숨김 */
+.works-stage {
+  display: none;
+}
+
+.works-mobile {
+  padding-top: 104px;     /* 고정 헤더(72px) 피하기 */
+}
+
+.works-mobile-header {
+  margin-bottom: 40px;
+}
+
+.works-mobile-header .section-label {
+  margin-bottom: 20px;
+}
+
+.works-mobile-title {
+  font-size: var(--t-h1);   /* 375px 에서 약 33px */
+  font-weight: 700; /* 큰 제목 굵기 통일 */
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  margin-bottom: 16px;
+}
+
+.works-mobile-desc {
+  font-size: var(--t-body-lg-r);
+  line-height: 1.45;
+  max-width: 20em;
+  word-break: keep-all;
+}
+
+/* 카드 목록: 화면 폭 가득, 카드끼리 붙어 있음 */
+.works-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.works-item {
+  display: flex;
+  align-items: flex-end;            /* 이름·태그를 카드 아래쪽에 */
+  aspect-ratio: 375 / 346;
+  padding: var(--space-gutter);
+  color: #FFFFFF;
+}
+
+/* 아래쪽을 살짝 어둡게 → 밝은 사진 위에서도 흰 글씨가 읽힘 */
+.works-item::after {
+  content: "";
+  position: absolute;
+  inset: 40% 0 0 0;
+  z-index: -1;
+  background: linear-gradient(to bottom, rgba(10, 10, 10, 0), rgba(10, 10, 10, 0.45));
+  pointer-events: none;
+}
+
+/* 이름(왼쪽) + 태그(오른쪽) */
+.works-item-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 12px;
+  width: 100%;
+}
+
+.works-item-name {
+  font-size: var(--t-h3);   /* 375px 에서 약 23px */
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  word-break: keep-all;
+}
+
+/* 태그: 흰 테두리 알약 */
+.works-item-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+  max-width: 58%;
+}
+
+.works-item-tags li {
+  padding: 7px 10px;
+  border: 1px solid #FFFFFF;
+  border-radius: 999px;
+  font-size: var(--t-caption-r);
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+/* 목록 아래 컨택트 */
+.works-mobile-contact {
+  display: grid;
+  gap: 32px;
+  justify-items: start;
+  padding-top: var(--space-section);
+  padding-bottom: var(--space-section);
+}
+
+.works-mobile-contact-title {
+  font-size: var(--fs-h2);
+  font-weight: 700; /* 큰 제목 굵기 통일 */
+  letter-spacing: -0.5px;
+}
+
+/* 태블릿: 카드를 조금 더 가로로 길게 */
+@media (min-width: 768px) {
+  .works-item {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+/* ---------- 3. 데스크톱 (1200px~): 3D 카드 스택 ----------
+   무대(.works-stage)가 헤더 아래 화면을 꽉 채우고, 페이지는 스크롤되지 않음
+
+   [원리]
+   - 카드들의 부모(.works-stack)에 원근(perspective)을 주고, 시점은 화면 아래 가운데
+   - 카드를 앞으로(translateZ) 당길수록 크게 보이고, 아래로(translateY) 내려감
+   - 카드 위치·움직임은 main.js 6번이 카드마다 transform 을 직접 넣어 줌
+   - 겹치는 순서는 HTML 순서를 따름 (뒤에 있는 카드일수록 위에 그려짐)
+   - 아래 기본값은 "모든 카드가 한 자리에 겹쳐 있는" 시작 상태 */
+@media (min-width: 1200px) {
+  /* 모바일용 목록·푸터는 숨기고, 페이지 스크롤을 막음 */
+  .works-mobile,
+  .works-footer {
+    display: none;
+  }
+
+  .works-page {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .works-stage {
+    display: block;
+    position: fixed;
+    inset: 72px 0 0 0;               /* 헤더 아래부터 화면 끝까지 */
+    overflow: hidden;
+  }
+
+  /* 원근은 카드의 바로 위 부모에 줘야 적용됨 */
+  .works-stack {
+    position: absolute;
+    inset: 0;
+    perspective: 200px;
+    perspective-origin: 50% 100%;    /* 시점: 무대 아래 가운데 */
+  }
+
+  /* 카드: 화면 폭의 58%, 무대 아래쪽에 붙여 둠 */
+  .works-card {
+    position: absolute;
+    left: 50%;
+    bottom: 5%;
+    width: 58%;
+    max-width: 1200px;
+    max-height: 70vh;
+    aspect-ratio: 835 / 529;
+    border-radius: 16px;
+    transform: translate3d(-50%, 0, 0);   /* 시작: 모두 같은 자리 */
+  }
+
+  /* 큰 화면(1500px~)에서는 조금 더 위로 */
+  @media (min-width: 1500px) {
+    .works-card {
+      bottom: 7%;
+    }
+  }
+
+  /* 키보드로 이동했을 때 위치 표시 */
+  .works-card:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+  }
+
+  /* 화면 맨 아래 작은 줄 (카드 위에 겹쳐 보임) */
+  .works-stage-bottom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 25px;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 var(--space-gutter);
+    font-size: var(--t-body-r);
+    line-height: 1.5;
+    pointer-events: none;           /* 아래 카드 클릭을 막지 않게 */
+  }
+
+  .works-stage-dash {
+    color: var(--color-accent);
+  }
+}
+
+/* ---------- 4. 동작 줄이기 ----------
+   main.js 가 움직임 없이 카드를 펼친 자리에 바로 놓아 줌 (여기서 따로 할 일 없음) */

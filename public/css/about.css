@@ -1,0 +1,556 @@
+/* =========================================================
+   About 페이지 (about.html) 전용 스타일
+   - style.css 를 먼저 불러온 뒤 이 파일을 불러옴
+   - 구성 참고: clay.global/services
+     큰 히어로 문장 → 서비스 카드 목록 → 분야별 클라이언트 → 경력 목록 → 컨택트
+   - 모바일 우선: 기본은 한 줄로 쌓이고, 768px · 1024px · 1200px 에서 단을 나눔
+   - 1441px 이상은 style.css 7-1 처럼 rem 기준으로 비례 확대됨
+   ========================================================= */
+
+/* ---------- 1. 공통: 섹션 머리 ---------- */
+.ab-section-head {
+  display: grid;
+  gap: 20px;
+  margin-bottom: clamp(48px, 7vw, 6rem);
+}
+
+.ab-section-head .section-label {
+  margin-bottom: 0;
+}
+
+.ab-section-title {
+  font-size: var(--fs-h2);
+  font-weight: 700; /* 큰 제목 굵기 통일 */
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+}
+
+.ab-section-desc {
+  /* 폭 제한 없음: 데스크톱에서 한 줄로 */
+  font-size: var(--t-body-lg-r);
+  line-height: 1.55;
+  color: var(--color-muted);
+}
+
+/* ---------- 2. (01) 히어로 ---------- */
+.ab-hero {
+  padding: calc(var(--header-h) + 48px) 0 clamp(64px, 8vw, 8rem);
+}
+
+.ab-hero .section-label {
+  margin-bottom: clamp(32px, 5vw, 4rem);
+}
+
+/* Clay 처럼 화면을 가득 채우는 큰 문장 */
+.ab-hero-title {
+  max-width: 13em;
+  font-size: var(--t-display);
+  font-weight: 700; /* 큰 제목 굵기 통일 */
+  line-height: 1.04;
+  letter-spacing: -0.5px;
+  word-break: keep-all;
+}
+
+/* 아래쪽: 숫자 정보 | 소개 문단 */
+.ab-hero-bottom {
+  display: grid;
+  gap: 48px;
+  margin-top: clamp(56px, 9vw, 9rem);
+  padding-top: 24px;
+  border-top: 1px solid var(--color-line);
+}
+
+.ab-hero-facts {
+  display: grid;
+  gap: 20px;
+}
+
+.ab-hero-facts li {
+  display: grid;
+  gap: 4px;
+}
+
+.ab-hero-facts strong {
+  font-size: var(--t-h4); /* H4 단계 (24) */
+  font-weight: 700; /* 강조 굵기 통일 */
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+}
+
+/* 첫 숫자(21+)만 포인트 그라데이션 */
+
+.ab-hero-facts span {
+  font-family: var(--font-serif); font-weight: 300;
+  font-size: var(--fs-small);
+  letter-spacing: -0.5px;
+  color: var(--color-muted);
+}
+
+.ab-hero-desc {
+  display: grid;
+  gap: 1em;
+  max-width: 34em;
+  font-size: var(--t-body-lg-r);
+  line-height: 1.6;
+}
+
+.ab-hero-desc p + p {
+  color: var(--color-muted);
+}
+
+/* 큰 제목 글자 등장 (main.js 5번이 [단어 > 글자] 로 나눔) */
+.ab-hero-title .work-title-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  white-space: nowrap;
+  padding: 0.08em 0 0.12em;
+  margin: -0.08em 0 -0.12em;
+}
+
+.ab-hero-title .work-title-char {
+  display: inline-block;
+}
+
+/* "Design Partner": 포인트 그라데이션 (보라 → 핑크)
+   - 글자가 하나씩 움직이므로 그라데이션은 글자마다 칠하고,
+     main.js 가 넣어 주는 --gw(구간 전체 폭) · --gx(글자 위치)로 전체가 하나로 이어지게 맞춤 */
+.ab-hero-title .hero-title-serif .work-title-char {
+  background-image: var(--gradient-accent);
+  background-size: var(--gw, 100%) 100%;
+  background-position: var(--gx, 0) 0;
+  background-repeat: no-repeat;
+  /* 이탤릭 글자는 칸 밖으로 기울어 나가므로, 칠하는 영역을 양옆 · 아래로 넓히고
+     같은 만큼 바깥 여백을 줄여 글자 간격은 그대로 */
+  padding: 0 0.14em 0.1em;
+  margin: 0 -0.14em -0.1em;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 단어 묶음이 넘치는 부분을 가리므로, 이탤릭 끝(마지막 r)이 잘리지 않게 오른쪽에 여유 */
+.ab-hero-title .work-title-word.hero-title-serif {
+  padding-right: 0.2em;
+  margin-right: -0.2em;
+}
+
+.ab-hero-title.is-split .work-title-char {
+  transform: translateY(110%);
+  animation: ab-char-rise 1.1s var(--ease-out) forwards;
+  animation-delay: calc(0.2s + var(--i) * 0.03s);
+}
+
+@keyframes ab-char-rise {
+  to { transform: translateY(0); }
+}
+
+/* 나누기 전 한순간 원래 제목이 번쩍이지 않게 */
+.js .ab-hero-title:not(.is-split) {
+  visibility: hidden;
+}
+
+/* ---------- 3. (02) 서비스 카드 ---------- */
+.ab-service-list {
+  display: grid;
+}
+
+.ab-service {
+  display: grid;
+  gap: 28px;
+  padding: 40px 0;
+  border-top: 1px solid var(--color-line);
+}
+
+.ab-service:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+/* 이미지: 사진이 없으면 보라~핑크 그라데이션 (works.css 와 같은 방식) */
+.ab-service-media {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;   /* 서비스 썸네일 비율 (이미지·영상은 꽉 채우고 넘치는 부분은 잘림) */
+  border-radius: 8px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.ab-service-media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(var(--angle, 135deg), var(--color-accent-start) 0%, var(--color-accent-end) 100%);
+  filter: hue-rotate(var(--tone, 0deg));
+}
+
+.ab-service-media:has(img, video)::before {
+  display: none;
+}
+
+.ab-service-media img,
+.ab-service-media video {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease-out);
+}
+
+.ab-service-media:hover img,
+.ab-service-media:hover video {
+  transform: scale(1.04);
+}
+
+.ab-service-body {
+  display: grid;
+  align-content: start;
+  gap: 16px;
+}
+
+.ab-service-title {
+  font-size: var(--t-h1);
+  font-weight: 700; /* 큰 제목 굵기 통일 */
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+}
+
+.ab-service-desc {
+  max-width: 32em;
+  font-size: var(--t-body-lg-r);
+  line-height: 1.6;
+  color: var(--color-muted);
+}
+
+/* 세부 항목: 줄마다 얇은 구분선 (Clay 의 bullet list 자리) */
+.ab-service-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;   /* 모바일부터 2열 (목록이 너무 길어지지 않게) */
+  column-gap: 16px;
+  margin-top: 16px;
+  border-top: 1px solid var(--color-line);
+}
+
+.ab-service-items li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-line);
+  font-size: var(--fs-caption);
+  font-weight: 500;
+}
+
+.ab-service-items li::before {
+  content: "";
+  flex: none;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gradient-accent);
+}
+
+/* ---------- 4. (03) 클라이언트 ---------- */
+.ab-client-list {
+  display: grid;
+  border-top: 1px solid var(--color-line);
+}
+
+.ab-client {
+  display: grid;
+  gap: 10px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.ab-client h3 {
+  font-family: var(--font-serif); font-weight: 700; /* 강조 굵기 통일 */
+  font-size: var(--fs-small);
+  letter-spacing: -0.5px;
+  color: var(--color-muted);
+}
+
+.ab-client p {
+  font-size: var(--t-h4);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.5px;
+}
+
+/* 클라이언트 이름: 하나씩 캡슐 (도구 알약과 같은 모양)
+   글자 크기는 예전 큰 글자의 75% */
+.ab-caps {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: var(--t-lead); /* 75% */
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.ab-cap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  padding: 0.45em 0.95em;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* 링크 캡슐: 테두리 진하게 + 작은 ↗, 올리면 검정 바탕 */
+.ab-cap--link {
+  border-color: rgba(10, 10, 10, 0.35);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+.ab-cap--link span { font-size: 0.7em; opacity: 0.6; }
+.ab-cap--link:hover,
+.ab-cap--link:focus-visible {
+  background: var(--color-text, #0A0A0A);
+  border-color: var(--color-text, #0A0A0A);
+  color: #fff;
+}
+
+/* ---------- 5. (04) 경력 ---------- */
+.ab-career-list {
+  list-style: none;
+  border-top: 1px solid var(--color-line);
+}
+
+.ab-career-item {
+  display: grid;
+  gap: 6px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.ab-career-period {
+  font-family: var(--font-serif); font-weight: 300;
+  font-size: var(--t-body);   /* 연도: 18 → 16 */
+  letter-spacing: -0.5px;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-accent);
+}
+
+.ab-career-company {
+  font-size: var(--t-h4);
+  font-weight: 700; /* 강조 굵기 통일 */
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+}
+
+.ab-career-role {
+  font-size: var(--t-sm);     /* 직책: 12.8 → 14 */
+  font-weight: 500;
+}
+
+.ab-career-desc {
+  color: var(--color-muted);
+  font-size: var(--t-sm);     /* 업무: 14 (조금 크게) */
+}
+
+/* 도구 · 수상 */
+.ab-extra {
+  display: grid;
+  gap: 48px;
+  margin-top: clamp(56px, 7vw, 6rem);
+}
+
+.ab-extra-title {
+  margin-bottom: 20px;
+  font-family: var(--font-serif); font-weight: 700; /* 강조 굵기 통일 */
+  font-size: var(--fs-small);
+  letter-spacing: -0.5px;
+  color: var(--color-muted);
+}
+
+.ab-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ab-tools li {
+  padding: 8px 16px;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  font-size: var(--fs-caption);
+  font-weight: 500;
+}
+
+.ab-awards li {
+  display: grid;
+  gap: 4px;
+  padding: 16px 0;
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.ab-awards li + li { border-top: 0; } /* 수상이 여럿일 때 사이 선이 겹치지 않게 */
+
+.ab-award-year {
+  font-family: var(--font-serif); font-weight: 300;
+  font-size: var(--fs-small);
+  letter-spacing: -0.5px;
+  color: var(--color-accent);
+}
+
+.ab-award-name {
+  font-size: var(--t-lead);
+  font-weight: 500;
+}
+
+.ab-award-project {
+  font-size: var(--t-sm-r);
+  color: var(--color-muted);
+}
+
+/* ---------- 6. 스크롤 등장 (js/about.js 가 화면에 들어온 요소에 .is-in 을 붙임) ---------- */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+}
+
+.js [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- 7. 태블릿 이상 (768px~) ---------- */
+@media (min-width: 768px) {
+  .ab-hero-title {
+    font-size: var(--t-display);
+  }
+
+  /* 숫자 정보 3칸 가로 | 소개 문단은 화면 절반부터 */
+  .ab-hero-bottom {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 40px;
+  }
+
+  .ab-hero-facts {
+    grid-template-columns: repeat(3, auto);
+    justify-content: start;
+    column-gap: clamp(24px, 3vw, 3rem);
+    align-content: start;
+  }
+
+  /* 섹션 머리: 왼쪽 라벨 | 오른쪽 제목·설명 (컨택트의 화면 절반 기준선과 맞춤) */
+  .ab-section-head {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 40px;
+    align-items: start;
+  }
+
+  .ab-section-head .section-label {
+    grid-row: span 2;
+    padding-top: 0.6em;
+  }
+
+  .ab-service-items {
+    column-gap: 24px;
+  }
+
+  /* 클라이언트: 2열 */
+  .ab-client-list {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 40px;
+  }
+
+  .ab-extra {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 40px;
+  }
+}
+
+/* ---------- 8. 데스크톱 (1024px~): 경력 4열 표 ---------- */
+@media (min-width: 1024px) {
+  .ab-career-item {
+    grid-template-columns: 2fr 3fr 3fr 4fr;
+    column-gap: 32px;
+    align-items: baseline;
+    padding: 28px 1.25rem 28px 0; /* 오른쪽만 1.25rem: 구분선은 끝까지, 설명 글자만 오른쪽 끝에서 떨어짐 */
+  }
+
+  .ab-career-desc {
+    font-size: var(--t-sm);
+  }
+}
+
+/* ---------- 9. 데스크톱 (1200px~): 서비스 카드 좌우 배치 ---------- */
+@media (min-width: 1200px) {
+  .ab-service {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 40px;
+    padding: 56px 0;
+  }
+
+  .ab-service-body {
+    gap: 20px;
+  }
+
+  /* 제목 영역을 이미지 위쪽에 붙이고 세부 항목은 아래로 */
+  .ab-service-items {
+    margin-top: 24px;
+  }
+
+  .ab-client-list {
+    grid-template-columns: repeat(4, 1fr);
+    border-top: none;
+  }
+
+  .ab-client {
+    border-top: 1px solid var(--color-line);
+    border-bottom: none;
+    align-content: start;
+  }
+
+  .ab-client p {
+    font-size: var(--t-h4);
+  }
+  .ab-caps {
+    font-size: var(--t-lead); /* 75% */
+  }
+}
+
+/* ---------- 10. 큰 화면 비례 확대 (1441px~, style.css 7-1 과 같은 원리) ---------- */
+@media (min-width: 1441px) {
+  .ab-hero            { padding: calc(var(--header-h) + 3rem) 0 8rem; }
+  .ab-hero-bottom,
+  .ab-section-head,
+  .ab-client-list,
+  .ab-extra,
+  .ab-service         { column-gap: 2.5rem; }
+  .ab-service         { padding: 3.5rem 0; }
+  .ab-service:first-child { padding-top: 0; }
+  .ab-career-item     { column-gap: 2rem; padding: 1.75rem 1.25rem 1.75rem 0; } /* 왼쪽 0 · 오른쪽 1.25rem */
+  .ab-client          { padding: 1.75rem 0; }
+  .ab-tools li        { padding: 0.5rem 1rem; }
+}
+
+/* ---------- 11. 동작 줄이기 ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .ab-hero-title.is-split .work-title-char {
+    animation: none;
+    transform: none;
+  }
+
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .ab-service-media img,
+  .ab-service-media video {
+    transition: none;
+  }
+}

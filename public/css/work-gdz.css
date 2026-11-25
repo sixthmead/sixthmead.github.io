@@ -1,0 +1,269 @@
+/* =========================================================
+   Goodiez 케이스 스터디 (work/project-04.html) 전용
+   - style.css → work.css → work-gut.css → 이 파일 순서로 불러옴
+   - 레이아웃 · 폰 프레임 · 등장 효과는 work-gut.css 의 gm-* 를 그대로 쓰고,
+     여기서는 색(변수)만 Goodiez 바이올렛으로 바꾸고 이 작업에만 있는 블록을 더함
+   - 색 값은 Figma Guidelines › Color 의 변수(Violet100~700, Flowkit) 그대로
+   ========================================================= */
+
+/* ---------- 0. 변수 덮어쓰기 ---------- */
+.gm-theme.gdz-theme {
+  --gm-green: #6432AF;      /* Violet-700 · 브랜드 / 주요 행동 */
+  --gm-green-d: #4E2590;
+  --gm-green-l: #B1A2DB;    /* Violet-400 · 어두운 배경 위 강조 */
+  --gm-mint: #F9F8FD;       /* Violet-100 */
+  --gm-orange: #29CC6A;     /* Flowkit Green · Lowest Ask / Buy */
+  --gm-pink: #FC5555;       /* Flowkit Red · Highest Offer / Sell · 오류 */
+  --gm-ink: #111111;
+  --gm-surface: #F5F5F5;    /* Gray-200 · 앱 배경 */
+
+  --color-accent-start: #6432AF;
+  --color-accent-end: #9986D0;
+  --color-accent: #6432AF;
+  --gradient-accent: linear-gradient(120deg, #6432AF 0%, #745BC0 50%, #9986D0 100%);
+}
+
+.gdz-theme .gm-green-bg { background: #6432AF; }
+.gdz-theme .gm-red { color: var(--gm-pink); }
+.gdz-theme .gm-buy { color: #1FA857; }
+
+/* 히어로 배경 글로우를 바이올렛 톤으로 */
+.gdz-theme .gm-hero {
+  background:
+    radial-gradient(60% 50% at 85% 0%, rgba(153, 134, 208, 0.28), transparent 70%),
+    radial-gradient(40% 40% at 0% 30%, rgba(41, 204, 106, 0.08), transparent 70%),
+    linear-gradient(180deg, var(--gm-mint) 0%, #fff 70%);
+}
+.gdz-theme .gm-facts > div { background: linear-gradient(180deg, #fbfaff, #fff); }
+@keyframes gdz-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(100, 50, 175, 0.5); }
+  70%, 100% { box-shadow: 0 0 0 10px rgba(100, 50, 175, 0); }
+}
+.gdz-theme .gm-dot { animation-name: gdz-pulse; }
+
+/* 개요 문장: 강조 단어 위치를 이 문장에 맞춤 (14~15번째 단어 = "신뢰를 설계하는") */
+.gdz-theme .gm-statement .w.on:nth-child(n+12):nth-child(-n+13) { color: var(--gm-ink); }
+.gdz-theme .gm-statement .w.on:nth-child(n+14):nth-child(-n+15) { color: var(--gm-green); }
+
+/* ---------- 1. 문제 → 화면의 답 (3줄 매트릭스) ---------- */
+.gz-matrix {
+  list-style: none;
+  border-top: 1px solid var(--gm-line);
+}
+
+.gz-matrix li {
+  display: grid;
+  gap: 12px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--gm-line);
+}
+
+.gz-matrix .gz-q {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  font-size: var(--t-body-lg);
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  word-break: keep-all;
+}
+
+.gz-matrix .gz-q .gm-mono { color: var(--gm-muted); flex: none; }
+
+.gz-matrix .gz-a {
+  color: var(--gm-muted);
+  line-height: 1.7;
+  word-break: keep-all;
+}
+
+.gz-matrix .gz-a b { color: var(--gm-green); font-weight: 700; /* 강조 굵기 통일 */ }
+
+.gz-matrix .gz-arrow {
+  display: none;
+  width: 20px;
+  fill: none;
+  stroke: var(--gm-green);
+  stroke-width: 1.6;
+}
+
+@media (min-width: 1024px) {
+  .gz-matrix li {
+    grid-template-columns: 1fr 40px 1.3fr;
+    align-items: center;
+    gap: 32px;
+  }
+  .gz-matrix .gz-arrow { display: block; }
+}
+
+/* ---------- 2. 핵심 거래 루프 (번호 달린 흐름) ---------- */
+.gz-loop {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 32px;
+  list-style: none;
+}
+
+.gz-loop li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  font-size: var(--t-caption-r); /* 보통 굵기 → 80% */
+  color: #fff;
+}
+
+.gz-loop li .gm-mono { color: rgba(255, 255, 255, 0.55); font-size: 0.6875rem; }
+.gz-loop li.is-key { background: #fff; color: var(--gm-green); border-color: #fff; font-weight: 600; }
+.gz-loop li.is-key .gm-mono { color: var(--gm-green); opacity: 0.6; } /* 흰 배경 칸: 번호도 칸 글자색(보라)으로 */
+
+/* ---------- 3. 디자인 시스템: 가격 카드 · 바텀바 데모 ---------- */
+.gz-price {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.gz-price > div {
+  overflow: hidden;
+  border-radius: 12px;
+  text-align: center;
+  color: #fff;
+}
+
+.gz-price p { padding: 14px 8px 10px; }
+.gz-price small { display: block; font-size: 0.6875rem; opacity: 0.8; }
+.gz-price strong { display: block; margin-top: 4px; font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px; }
+.gz-price span { display: block; padding: 8px; font-size: 0.75rem; font-weight: 600; }
+
+.gz-price .ask { background: #29CC6A; }
+.gz-price .ask span { background: #0E8A3E; }
+.gz-price .offer { background: #F79595; }
+.gz-price .offer span { background: #E53A2A; }
+
+.gz-trade {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: #745BC0;
+  color: #fff;
+  font-size: 0.8125rem;
+}
+
+.gz-trade b { display: block; font-size: 1rem; }
+
+.gz-tabbar {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin-top: 16px;
+  padding: 10px 6px;
+  border-radius: 20px 20px 0 0;
+  background: #6432AF;
+  list-style: none;
+}
+
+.gz-tabbar li {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  font-size: 0.625rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.gz-tabbar li i {
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid currentColor;
+  border-radius: 6px;
+}
+
+.gz-tabbar li.on { color: #fff; font-weight: 700; }
+.gz-tabbar li.on i { background: #fff; }
+
+/* 버튼 데모 */
+.gdz-theme .gm-btn--soft { background: #E1DCF1; color: #6432AF; }
+.gdz-theme .gm-btn--buy { background: #29CC6A; border-radius: 8px; height: 40px; font-size: var(--t-sm-r); }
+.gdz-theme .gm-btn--sell { background: #FF7A00; border-radius: 8px; height: 40px; font-size: var(--t-sm-r); }
+
+.gz-chip-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.gz-chip {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #E1DCF1;
+  color: #6432AF;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.gz-chip--line { background: #fff; border: 1px solid #C9BEE6; color: #9986D0; }
+.gz-chip--solid { background: #6432AF; color: #fff; }
+
+/* 컬러 스케일 막대 */
+.gz-scale {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  height: 44px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  border-radius: 10px;
+  list-style: none;
+}
+.gz-scale li { background: var(--c); }
+
+/* 타이포 견본: 실제 앱 서체 Montserrat */
+.gz-montserrat { font-family: "Montserrat", "Pretendard Variable", sans-serif; }
+
+/* ---------- 4. 회고 ---------- */
+.gz-retro h3 { color: var(--gm-green); }
+
+/* ---------- 5. Before/After 화살표 · 3단 비교 ---------- */
+.gdz-theme .gm-ba-arrow { background: var(--gm-green); }
+.gdz-theme .gm-ba-arrow svg { stroke: #fff; }
+
+/* 폼 3단 비교: 모바일에선 가로 스크롤, 화살표 숨김 */
+@media (max-width: 767px) {
+  .gdz-theme .gz-ba3 {
+    justify-content: flex-start;
+    margin: 0 calc(var(--space-gutter) * -1);
+    padding: 0 var(--space-gutter) 8px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--space-gutter); /* 멈출 때도 왼쪽 여백 유지 */
+    scrollbar-width: none;
+  }
+  .gdz-theme .gz-ba3::-webkit-scrollbar { display: none; }
+  .gdz-theme .gz-ba3 .gm-ba-arrow { display: none; }
+  .gdz-theme .gz-ba3 .gm-phone { flex: none; scroll-snap-align: start; --w: calc(var(--pw) * 0.95); }
+}
+@media (min-width: 768px) {
+  .gdz-theme .gz-ba3 { gap: 24px; }
+  .gdz-theme .gz-ba3 .gm-phone { --w: calc(var(--pw) * 0.95); }
+}
+@media (min-width: 1024px) {
+  .gdz-theme .gz-ba3 .gm-phone { --w: calc(var(--pw) * 1.05); }
+}
+
+/* ---------- 스크롤 화면 하단 내비게이션 고정 ----------
+   .gm-phone--scroll 화면 안에 넣은 Navigation.png (344 × 80, 화면 폭 360 기준)
+   - 스크린샷은 위아래로 흘러도 내비게이션은 화면 아래에 그대로 붙어 있음
+   - 폭 344/360 = 95.56%, 가운데 정렬
+   - 내비게이션 높이만큼 스크롤을 더 내리는 계산은 js/work-gdz.js 에서 */
+.gdz-theme .gm-phone-screen img.gm-nav {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 95.5556%;
+  height: auto;
+  transform: translateX(-50%);
+  z-index: 2;           /* 스크린샷 위, 폰 프레임(::after, z-index 3) 아래 */
+  pointer-events: none;
+}
+
+/* 스크린샷에 걸린 흐르는 애니메이션이 내비게이션에는 걸리지 않게 */
+.gdz-theme .gm-phone--scroll.is-play .gm-phone-screen img.gm-nav {
+  animation: none;
+}

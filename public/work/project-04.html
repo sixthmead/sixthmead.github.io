@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Goodiez — Atomik</title>
+  <meta name="description" content="Goodiez 수집품 거래 앱 iOS·Android 프로덕트 디자인 — UI/UX Designer Yi Jinkwang">
+  <!-- Pretendard 웹폰트 (메인 페이지와 동일) -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <!-- Montserrat 웹폰트: 사이트 영문 글꼴이자 Goodiez 앱 타이포 견본 서체 (한글은 Pretendard) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+  <!-- 공통 스타일 먼저, 상세 페이지 전용 스타일을 그 뒤에 (뒤에 온 규칙이 덮어씀) -->
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/work.css">
+  <link rel="stylesheet" href="../css/work-gut.css">
+  <link rel="stylesheet" href="../css/work-gdz.css">
+  <link rel="stylesheet" href="../css/work-dock.css">
+  <link rel="stylesheet" href="../css/device-phone.css"> <!-- 스마트폰 디바이스 프레임 (공통) -->
+  <!-- JS 가 켜져 있으면 html 에 .js 클래스를 붙임
+       - .js : 제목을 글자로 나누기 전엔 잠깐 숨겨 둠 (work.css 1번) -->
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="work-page gm-theme gdz-theme">
+
+
+  <!-- ========== 본문 전체 묶음 ==========
+       페이지에 들어올 때·나갈 때 이 상자 전체가 위로 슬라이드됨 -->
+  <div class="page">
+
+  <!-- ========== 헤더 (메인과 같음, 링크만 ../index.html 로) ========== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="header-left">
+        <a href="../index.html" class="logo">Yi Jinkwang</a>
+        <p class="header-greeting">Hi! Nice to meet you :)</p>
+      </div>
+
+      <nav class="desktop-nav" aria-label="주요 메뉴">
+        <ul>
+          <li><a href="index.html" class="text-link text-link--reversed"><span class="text-link-label">Works</span></a></li>
+          <li><a href="../about.html" class="text-link text-link--reversed"><span class="text-link-label">About</span></a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="../index.html#contact" class="text-link header-cta">
+          <span class="text-link-label">Let's talk</span>
+          <span class="text-link-icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+            <svg viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+          </span>
+        </a>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="site-menu" aria-label="메뉴 열기">
+          <span class="menu-toggle-line"></span>
+          <span class="menu-toggle-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== 전체 화면 메뉴 (모바일) ========== -->
+  <div class="site-menu" id="site-menu" aria-hidden="true">
+    <div class="container site-menu-inner">
+      <nav aria-label="모바일 메뉴">
+        <ul class="menu-list">
+          <li style="--i: 0"><a href="index.html"><span class="num">01</span> Works</a></li>
+          <li style="--i: 1"><a href="../about.html"><span class="num">02</span> About</a></li>
+          <!-- Contact 메뉴는 잠시 숨김 (다시 보이려면 아래 li 의 hidden 을 지우면 됨) -->
+          <li style="--i: 2" hidden><a href="../index.html#contact"><span class="num">03</span> Contact</a></li>
+        </ul>
+      </nav>
+      <div class="menu-footer" style="--i: 3">
+        <a href="../index.html#contact" class="arrow-link">
+          <span class="arrow-link-text">Start a project</span>
+          <span class="arrow-link-circle" aria-hidden="true">
+            <svg class="arrow-link-icon" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+            <svg class="arrow-link-icon arrow-link-icon--next" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+          </span>
+        </a>
+        <div class="menu-meta">
+          <a href="mailto:sixthmead@me.com" class="text-link"><span class="text-link-label">sixthmead@me.com</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <main id="top">
+
+    <!-- =========================================================
+         이미지: images/work/project-04/
+         - cover.jpg / thumb.jpg : 커버 · 썸네일 (js/works-data.js)
+         - screens/*.png         : Figma(Work › Designing · Dark Mode) 화면 360px 원본
+           → 더 선명하게 하려면 Figma 에서 같은 이름으로 2x PNG 를 내보내 덮어쓰면 됨
+         스타일: work-gut.css(공통 gm-* 레이아웃) + work-gdz.css(Goodiez 색 · 전용 블록)
+         ========================================================= -->
+
+    <!-- ========== 01. 히어로 ========== -->
+    <section class="case-hero">
+      <div class="container case-hero-head">
+        <p class="case-eyebrow">Goodiez — Collector Marketplace App</p>
+        <h1 class="case-title" data-split>Goodiez</h1>
+        <p class="case-summary">
+          수집용 콘솔 게임을 사고, 팔고, 모으는 컬렉터 마켓 앱.
+          디자인 없이 먼저 출시된 서비스에 합류해, 거래의 모든 단계를
+          ‘가격’과 ‘신뢰’ 두 가지 언어로 다시 설계했습니다.
+        </p>
+      </div>
+
+      <figure class="case-cover">
+        <img data-work-img="project-04:cover" src="../images/work/project-04/cover.jpg" alt="Goodiez 로그인, 홈, 상품 상세, 주문 검토, 사용자 프로필 화면" onerror="this.remove()">
+      </figure>
+
+      <div class="container case-meta">
+        <p class="section-label">About</p>
+        <dl class="case-facts">
+          <div><dt>Client</dt><dd>Goodiez</dd></div>
+          <div><dt>Role</dt><dd>Product Designer (Freelance)</dd></div>
+          <div><dt>Platform</dt><dd>iOS · Android · 360 Base</dd></div>
+          <div><dt>Scope</dt><dd><strong data-count="160">160</strong>+ Screens · UX/UI 전담</dd></div>
+          <div><dt>Year</dt><dd>2023</dd></div>
+        </dl>
+        <div class="case-services">
+          <p class="case-services-title">Services</p>
+          <ul>
+            <li>Product Design</li>
+            <li>UX Re-architecture</li>
+            <li>Design System</li>
+            <li>Light · Dark Theme</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 02. 개요 ========== -->
+    <section class="gm-section" id="overview" data-chapter="Overview">
+      <div class="container gm-split">
+        <h4 class="section-label sec-title"><span class="num">01</span> <span class="sec-dash">—</span> Overview</h4>
+        <div class="gm-body">
+          <p class="gm-statement" data-scrub>
+            출시는 이미 끝나 있었다. 남은 일은 움직이는 서비스를 멈추지 않고, 거래의 모든 순간에 신뢰를 설계하는 것이었습니다.
+          </p>
+          <div class="gm-columns" data-reveal>
+            <div>
+              <h3 class="gm-col-title">Context</h3>
+              <p>해외 비디오게임 시장의 투자유치 시즌에 맞춰 상품 데이터베이스를 먼저 확보해야 했고, 그래서 앱은 디자인 과정 없이 개발 · 출시되었습니다. 화면마다 기준이 달라 디자인과 개발 사이의 해석 차이가 반복 수정으로 이어지던 상태였습니다.</p>
+            </div>
+            <div>
+              <h3 class="gm-col-title">My Part</h3>
+              <p>기존 화면을 전수 점검해 IA와 User Flow를 다시 세우고, 홈 · 검색 · 상품 상세 · Ask/Bid 거래 · 정산 · 프로필까지 160개 이상의 화면을 단독으로 디자인했습니다. 13개 보드의 가이드라인과 다크 모드까지 정리해 개발이 기준을 보고 만들 수 있게 했습니다.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 03. 문제 → 화면의 답 ========== -->
+    <section class="gm-section gm-section--tint" id="problem" data-chapter="Problem">
+      <div class="container">
+        <header class="gm-head gm-head--row">
+          <div>
+            <h4 class="section-label sec-title"><span class="num">02</span> <span class="sec-dash">—</span> Problem → Answer</h4>
+            <h2 class="gm-h2" data-reveal>시장의 세 가지 불안을<br><span class="gm-green">화면의 장치로.</span></h2>
+          </div>
+          <p class="gm-text" data-reveal>
+            컬렉터 거래 시장의 문제는 기능이 없어서가 아니라, 믿을 근거가 화면에 보이지 않아서였습니다.
+            그래서 서비스 목표를 그대로 기능 목록으로 옮기지 않고, 각각을 사용자가 눈으로 확인할 수 있는
+            UI 요소 하나로 대응시켰습니다.
+          </p>
+        </header>
+        <ol class="gz-matrix" data-reveal>
+          <li>
+            <p class="gz-q"><span class="gm-mono">01 · Trust</span>구매자와 판매자 모두를 보호할 장치가 없다</p>
+            <svg class="gz-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg>
+            <p class="gz-a">결제 직전에 <b>Verification(검수) 옵트인 단계</b>를 두고, 검수 비용을 정산표에 한 줄로 드러냈습니다. 판매 이후엔 배송 상태 · 구매자 · 송장 번호를 한 화면에 묶어 거래가 끝날 때까지 추적되게 했습니다.</p>
+          </li>
+          <li>
+            <p class="gz-q"><span class="gm-mono">02 · Pricing</span>아이템이 과대평가되고, 판매자는 가격을 정하기 어렵다</p>
+            <svg class="gz-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg>
+            <p class="gz-a">상품 상세 최상단에 <b>Lowest Ask · Highest Offer · Market Value</b> 세 개의 가격 신호를 고정했습니다. 가격 입력 필드 바로 아래에도 최고 입찰가 / 최저 판매가를 함께 보여, 숫자를 넣는 순간 시세와 비교되게 했습니다.</p>
+          </li>
+          <li>
+            <p class="gz-q"><span class="gm-mono">03 · Fragmented</span>수집 · 거래가 여러 곳에 흩어져 있다</p>
+            <svg class="gz-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg>
+            <p class="gz-a">홈 · 리스트 · <b>Trade-In</b> · 마이페이지 · 메뉴의 5탭 구조로 구매 · 판매 · 보상판매 · 컬렉션을 한 앱 안에 정리하고, 사용자 프로필을 Sell / Buy offer / Collection 탭으로 나눠 ‘나의 컬렉션’이 곧 ‘나의 상점’이 되게 했습니다.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ========== 04. 핵심 거래 루프 ========== -->
+    <section class="gm-section gm-green-bg" id="loop" data-chapter="Trade Loop" data-dark>
+      <div class="container">
+        <header class="gm-head gm-head--row">
+          <div>
+            <h4 class="section-label sec-title"><span class="num">03</span> <span class="sec-dash">—</span> Core Loop</h4>
+            <h2 class="gm-h2" data-reveal>검색에서 송장까지,<br>끊기지 않는 한 줄.</h2>
+          </div>
+          <div>
+            <p class="gm-text" data-reveal>
+              러프 설계에서 빠져 있던 예외 상황과 화면 간 연결을 채우는 것이 첫 작업이었습니다.
+              사용자와 관리자 두 관점의 시나리오로 프로토타입을 돌려 끊기는 지점을 찾았고,
+              모든 거래가 아래의 한 흐름 위에 놓이도록 IA를 다시 짰습니다.
+            </p>
+            <ol class="gz-loop" data-reveal>
+              <li><span class="gm-mono">01</span>Search</li>
+              <li><span class="gm-mono">02</span>Game</li>
+              <li class="is-key"><span class="gm-mono">03</span>Condition</li>
+              <li><span class="gm-mono">04</span>Ask · Bid</li>
+              <li class="is-key"><span class="gm-mono">05</span>Verification</li>
+              <li><span class="gm-mono">06</span>Review</li>
+              <li><span class="gm-mono">07</span>Confirm</li>
+              <li><span class="gm-mono">08</span>Tracking</li>
+            </ol>
+          </div>
+        </header>
+        <div class="gm-rail" data-reveal>
+          <figure class="gm-phone"><div class="gm-phone-screen"><img src="../images/work/project-04/screens/search-market.png" alt="마켓 검색 결과 — 상태 라벨과 세 가지 가격" loading="lazy"></div><figcaption class="gm-cap gm-mono">01 · Search</figcaption></figure>
+          <figure class="gm-phone gm-phone--scroll"><div class="gm-phone-screen"><img src="../images/work/project-04/screens/game-detail.png" alt="상품 상세" loading="lazy"><img class="gm-nav" src="../images/work/project-04/screens/Navigation.png" alt="" aria-hidden="true"></div><figcaption class="gm-cap gm-mono">02 · Game</figcaption></figure>
+          <figure class="gm-phone"><div class="gm-phone-screen"><img src="../images/work/project-04/screens/game-condition.png" alt="상품 상태 선택 바텀시트" loading="lazy"></div><figcaption class="gm-cap gm-mono">03 · Condition</figcaption></figure>
+          <figure class="gm-phone gm-phone--scroll" style="--delay: .3s"><div class="gm-phone-screen"><img src="../images/work/project-04/screens/ask-listing.png" alt="판매 등록 폼" loading="lazy"><img class="gm-nav" src="../images/work/project-04/screens/Navigation.png" alt="" aria-hidden="true"></div><figcaption class="gm-cap gm-mono">04 · Ask</figcaption></figure>
+          <figure class="gm-phone"><div class="gm-phone-screen"><img src="../images/work/project-04/screens/verification.png" alt="검수 서비스 선택" loading="lazy"></div><figcaption class="gm-cap gm-mono">05 · Verification</figcaption></figure>
+          <figure class="gm-phone gm-phone--scroll" style="--delay: .6s"><div class="gm-phone-screen"><img src="../images/work/project-04/screens/ask-review.png" alt="주문 검토 — 수수료와 예상 정산액" loading="lazy"><img class="gm-nav" src="../images/work/project-04/screens/Navigation.png" alt="" aria-hidden="true"></div><figcaption class="gm-cap gm-mono">06 · Review</figcaption></figure>
+          <figure class="gm-phone"><div class="gm-phone-screen"><img src="../images/work/project-04/screens/buy-confirm.png" alt="구매 확인" loading="lazy"></div><figcaption class="gm-cap gm-mono">07 · Confirm</figcaption></figure>
+          <figure class="gm-phone gm-phone--scroll" style="--delay: .9s"><div class="gm-phone-screen"><img src="../images/work/project-04/screens/selling-detail.png" alt="판매 상세 — 배송 상태와 송장 번호" loading="lazy"><img class="gm-nav" src="../images/work/project-04/screens/Navigation.png" alt="" aria-hidden="true"></div><figcaption class="gm-cap gm-mono">08 · Tracking</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 05. 홈 ========== -->
+    <section class="gm-section" id="home" data-chapter="Home">
+      <div class="container gm-feature">
+        <div class="gm-feature-text">
+          <h4 class="section-label sec-title"><span class="num">04</span> <span class="sec-dash">—</span> Home</h4>
+          <h2 class="gm-h2" data-reveal>진열대는<br><span class="gm-green">거래 의도</span>로 나눴습니다.</h2>
+          <p class="gm-text" data-reveal>
+            홈은 장르나 신작 순이 아니라 ‘지금 무엇을 하려는가’로 선반을 나눴습니다. 사고 싶은 사람에게는
+            Buy Now &amp; Make an Offer, 팔고 싶은 사람에게는 Sell Now &amp; Ask. 같은 상품 카드를 쓰되
+            하단의 행동 라벨과 가격 색만 초록(구매) · 빨강(판매)으로 바꿔, 스크롤만으로 의도를 구분하게 했습니다.
+          </p>
+          <ul class="gm-notes" data-reveal>
+            <li><span class="gm-mono">A</span>상단 플랫폼 로고 타일로 Nintendo · PlayStation · Xbox 진입을 한 번에</li>
+            <li><span class="gm-mono">B</span>판매자를 원형 아바타 선반으로 분리해 ‘사람’ 단위의 탐색을 열어 둠</li>
+            <li><span class="gm-mono">C</span>내 상품은 썸네일에 <em>Mine</em> 배지로 표시해 자기 매물을 바로 구분</li>
+          </ul>
+        </div>
+        <div class="gm-feature-stage gm-stack">
+          <figure class="gm-phone gm-phone--l gm-phone--scroll gm-phone--slow" data-reveal>
+            <div class="gm-phone-screen"><img src="../images/work/project-04/screens/home-full.png" alt="홈 전체 화면" loading="lazy"><img class="gm-nav" src="../images/work/project-04/screens/Navigation.png" alt="" aria-hidden="true"></div>
+            <figcaption class="gm-cap gm-mono">Home · 360 × 2288</figcaption>
+          </figure>
+          <figure class="gm-phone" data-reveal style="--d: .1s" data-speed="-0.05">
+            <div class="gm-phone-screen"><img src="../images/work/project-04/screens/signin.png" alt="소셜 로그인" loading="lazy"></div>
+            <figcaption class="gm-cap gm-mono">Sign in</figcaption>
+          </figure>
+          <figure class="gm-phone" data-reveal style="--d: .2s" data-speed="0.04">
+            <div class="gm-phone-screen"><img src="../images/work/project-04/screens/popup-push.png" alt="푸시 알림 허용 팝업" loading="lazy"></div>
+            <figcaption class="gm-cap gm-mono">Push opt-in</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 06. 상품 상세 — 가격이 곧 인터페이스 ========== -->
+    <section class="gm-section gm-section--tint" id="product" data-chapter="Product">
+      <div class="container gm-feature gm-feature--rev">
+        <div class="gm-feature-text">
+          <h4 class="section-label sec-title"><span class="num">05</span> <span class="sec-dash">—</span> Product Details</h4>
+          <h2 class="gm-h2" data-reveal>가격이 곧<br><span class="gm-green">인터페이스.</span></h2>
+          <p class="gm-text" data-reveal>
+            기존 상세 화면은 버튼과 탭의 위계가 비슷해 무엇이 중요한지 읽히지 않았고, 상품 이미지도 기준 없이
+            노출돼 신뢰를 떨어뜨렸습니다. 그래서 상품명보다 먼저 <span class="gm-buy">최저 판매가</span>와
+            <span class="gm-red">최고 제안가</span>를 두 장의 카드로 올렸습니다. 카드 자체가 ‘Buy or Offer’,
+            ‘Sell or Ask’ 버튼이라, 가격을 읽는 순간 다음 행동이 정해집니다.
+          </p>
+          <ul class="gm-notes" data-reveal>
+            <li><span class="gm-mono">A</span>상태(Condition)를 고르기 전엔 선택 필드를 빨간 테두리로 강조해 첫 단계를 지정</li>
+            <li><span class="gm-mono">B</span>상태 바텀시트는 등급마다 가격을 붙이고 최저가에 <em>Lowest</em> 배지를 달아 비교를 한 화면에서</li>
+            <li><span class="gm-mono">C</span>Trade-In 예상가와 외부 시세(PriceCharting) 기준일을 별도 카드로 분리해 출처를 명시</li>
+            <li><span class="gm-mono">D</span>상품 이미지는 1:1 흰 타일과 동일한 여백으로 통일, 영상은 썸네일에 재생 아이콘으로 구분</li>
+          </ul>
+        </div>
+        <div class="gm-feature-stage gm-stack">
+          <figure class="gm-phone gm-phone--l gm-phone--scroll" data-reveal>
+            <div class="gm-phone-screen"><img src="../images/work/project-04/screens/game-detail.png" alt="상품 상세 — 가격 카드와 Trade-In 카드" loading="lazy"><img class="gm-nav" src="../images/work/project-04/screens/Navigation.png" alt="" aria-hidden="true"></div>
+            <figcaption class="gm-cap gm-mono">Game · Detail</figcaption>
+          </figure>
+          <figure class="gm-phone" data-reveal style="--d: .1s" data-speed="-0.05">
+            <div class="gm-phone-screen"><img src="../images/work/project-04/screens/game-condition.png" alt="상태별 가격 바텀시트" loading="lazy"></div>
+            <figcaption class="gm-cap gm-mono">Condition sheet</figcaption>
+          </figure>
+          <figure class="gm-phone" data-reveal style="--d: .2s" data-speed="0.04">
+            <div class="gm-phone-screen"><img src="../images/work/project-04/screens/search-market.png" alt="검색 결과 리스트" loading="lazy"></div>
+            <figcaption class="gm-cap gm-mono">Market list</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 07. Ask · Bid 폼 ========== -->
+    <section class="gm-section" id="listing" data-chapter="Listing">
+      <div class="container">
+        <header class="gm-head gm-head--row">
+          <div>
+            <h4 class="section-label sec-title"><span class="num">06</span> <span class="sec-dash">—</span> Ask · Bid</h4>
+            <h2 class="gm-h2" data-reveal>파는 폼과 사는 폼,<br><span class="gm-green">같은 뼈대로.</span></h2>
+          </div>
+          <p class="gm-text" data-reveal>
+            판매 등록(Ask)과 구매 제안(Bid)은 상품 헤더 → 상태 선택 → 사진 → 가격 → 설명의 순서를 공유합니다.
+            한쪽을 익히면 다른 쪽도 바로 쓸 수 있도록요. 필수값이 비면 버튼을 비활성 톤으로 두고,
+            제출 시점에는 필드 아래 한 줄의 빨간 문구로만 이유를 알려 폼의 리듬을 깨지 않게 했습니다.
+          </p>
+        </header>
+        <div class="gm-ba gz-ba3" data-reveal>
+          <figure class="gm-phone gm-phone--l gm-phone--scroll">
+            <div class="gm-phone-screen"><img src="../images/work/project-04/screens/ask-listing.png" alt="판매 등록 — 기본 상태" loading="lazy"><img class="gm-nav" src="../images/work/project-04/screens/Navigation.png" alt="" aria-hidden="true"></div>
+            <figcaption class="gm-cap gm-mono"><b>Default</b> 입력 중</figcaption>
+          </figure>
+          <span class="gm-ba-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+          <figure class="gm-phone gm-phone--l gm-phone--scroll" style="--delay: .6s">
+            <div class="gm-phone-screen"><img src="../images/work/project-04/screens/ask-listing-error.png" alt="판매 등록 — 입력 오류 상태" loading="lazy"><img class="gm-nav" src="../images/work/project-04/screens/Navigation.png" alt="" aria-hidden="true"></div>
+            <figcaption class="gm-cap gm-mono"><b>Validation</b> 사진 · 가격 누락</figcaption>
+          </figure>
+          <span class="gm-ba-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+          <figure class="gm-phone gm-phone--l gm-phone--scroll" style="--delay: 1.2s">
+            <div class="gm-phone-screen"><img src="../images/work/project-04/screens/bid.png" alt="구매 제안 폼" loading="lazy"><img class="gm-nav" src="../images/work/project-04/screens/Navigation.png" alt="" aria-hidden="true"></div>
+            <figcaption class="gm-cap gm-mono"><b>Bid</b> 같은 구조</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 08. 신뢰 레이어 ========== -->
+    <section class="gm-section gm-section--tint" id="trust" data-chapter="Trust">
+      <div class="container gm-feature">
+        <div class="gm-feature-text">
+          <h4 class="section-label sec-title"><span class="num">07</span> <span class="sec-dash">—</span> Trust Layer</h4>
+          <h2 class="gm-h2" data-reveal>돈이 오가는 화면은<br><span class="gm-green">숨김 없이.</span></h2>
+          <p class="gm-text" data-reveal>
+            결제와 정산 화면에서는 장식을 덜어 내고 숫자만 남겼습니다. 판매가에서 거래 수수료, 처리 수수료,
+            배송비, 검수비가 차례로 빠지고 마지막 줄에 바이올렛으로 ‘Estimate Payout’이 남는 구조입니다.
+            검수는 강제가 아닌 체크박스 옵트인으로 두되, 추가 요금 문구를 같은 줄에 붙여 나중에 놀라지 않게 했습니다.
+          </p>
+        </div>
+        <div class="gm-feature-stage gm-stack">
+          <figure class="gm-phone gm-phone--l gm-phone--scroll" data-reveal>
+            <div class="gm-phone-screen"><img src="../images/work/project-04/screens/ask-review.png" alt="주문 검토 — 수수료 내역과 예상 정산액" loading="lazy"><img class="gm-nav" src="../images/work/project-04/screens/Navigation.png" alt="" aria-hidden="true"></div>
+            <figcaption class="gm-cap gm-mono">Review · Payout</figcaption>
+          </figure>
+          <figure class="gm-phone gm-phone--scroll" data-reveal style="--d: .1s; --delay: .5s" data-speed="-0.05">
+            <div class="gm-phone-screen"><img src="../images/work/project-04/screens/selling-detail.png" alt="판매 상세 — 배송 상태와 송장" loading="lazy"><img class="gm-nav" src="../images/work/project-04/screens/Navigation.png" alt="" aria-hidden="true"></div>
+            <figcaption class="gm-cap gm-mono">Selling · Tracking</figcaption>
+          </figure>
+          <figure class="gm-phone gm-phone--scroll" data-reveal style="--d: .2s; --delay: 1s" data-speed="0.04">
+            <div class="gm-phone-screen"><img src="../images/work/project-04/screens/profile.png" alt="사용자 프로필 — Sell, Buy offer, Collection 탭" loading="lazy"><img class="gm-nav" src="../images/work/project-04/screens/Navigation.png" alt="" aria-hidden="true"></div>
+            <figcaption class="gm-cap gm-mono">Profile · Shop</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 09. 디자인 시스템 ========== -->
+    <section class="gm-section gm-ink" id="system" data-chapter="Design System" data-dark>
+      <div class="container">
+        <header class="gm-head gm-head--row">
+          <div>
+            <h4 class="section-label sec-title"><span class="num">08</span> <span class="sec-dash">—</span> Design System</h4>
+            <h2 class="gm-h2" data-reveal>화면을 고치는 대신,<br><span class="gm-green-l">결정의 기준을.</span></h2>
+          </div>
+          <p class="gm-text" data-reveal>
+            반복 수정의 원인은 개별 화면이 아니라 ‘기준이 없음’이었습니다. Color · Typography · Grid부터
+            Button · Card · Select · Tab · Label · Notify · Bottom Bar까지 13개 보드의 가이드를 Figma 변수로 만들어,
+            디자이너와 개발자가 같은 이름으로 이야기하게 했습니다. 아래 요소는 실제 컴포넌트를 코드로 다시 그린 것입니다.
+          </p>
+        </header>
+        <div class="gm-ds">
+          <!-- 컬러 -->
+          <div class="gm-ds-card gm-ds-color" data-reveal>
+            <p class="gm-ds-label gm-mono">Color — Violet Scale</p>
+            <ol class="gz-scale" aria-label="Violet 100~700">
+              <li style="--c:#F9F8FD"></li><li style="--c:#E1DCF1"></li><li style="--c:#C9BEE6"></li><li style="--c:#B1A2DB"></li><li style="--c:#9986D0"></li><li style="--c:#745BC0"></li><li style="--c:#6432AF"></li>
+            </ol>
+            <ul class="gm-swatches">
+              <li style="--c:#6432AF"><i></i><b>Violet 700</b><span class="gm-mono">#6432AF</span><em>브랜드 · 주요 행동</em></li>
+              <li style="--c:#E1DCF1"><i></i><b>Violet 200</b><span class="gm-mono">#E1DCF1</span><em>보조 버튼 · 라벨</em></li>
+              <li style="--c:#29CC6A"><i></i><b>Green</b><span class="gm-mono">#29CC6A</span><em>Lowest Ask · Buy</em></li>
+              <li style="--c:#FC5555"><i></i><b>Red</b><span class="gm-mono">#FC5555</span><em>Highest Offer · Sell · 오류</em></li>
+              <li style="--c:#111111"><i></i><b>Black</b><span class="gm-mono">#111111</span><em>본문 텍스트</em></li>
+              <li style="--c:#F5F5F5"><i></i><b>Gray 200</b><span class="gm-mono">#F5F5F5</span><em>앱 배경</em></li>
+            </ul>
+          </div>
+          <!-- 타이포 -->
+          <div class="gm-ds-card gm-ds-type" data-reveal style="--d: .06s">
+            <p class="gm-ds-label gm-mono">Typography — Montserrat</p>
+            <ul class="gm-type gz-montserrat">
+              <li><span class="gm-mono">H3 · 32/48</span><p style="font-size:2rem;font-weight:700;letter-spacing:-0.5px">Goodiez</p></li>
+              <li><span class="gm-mono">H4 · 24/32</span><p style="font-size:1.5rem;font-weight:500">Donkey Kong Country</p></li>
+              <li><span class="gm-mono">H6 · 16/24</span><p style="font-size:1rem;font-weight:500">Buy Now &amp; Make an Offer</p></li>
+              <li><span class="gm-mono">P3 · 14/24</span><p style="font-size:.875rem">Nintendo Entertainment System</p></li>
+              <li><span class="gm-mono">P5 · 12/16</span><p style="font-size:.75rem;opacity:.6">Provided by PriceCharting</p></li>
+            </ul>
+          </div>
+          <!-- 버튼 -->
+          <div class="gm-ds-card gm-ds-ui" data-reveal style="--d: .1s">
+            <p class="gm-ds-label gm-mono">Button · Label</p>
+            <div class="gm-ui">
+              <button class="gm-btn" type="button">Place Ask</button>
+              <button class="gm-btn gm-btn--soft" type="button">Cancel</button>
+              <div class="gm-btn-row">
+                <button class="gm-btn gm-btn--buy" type="button">Buy it</button>
+                <button class="gm-btn gm-btn--sell" type="button">Sell it</button>
+              </div>
+              <div class="gz-chip-row">
+                <span class="gz-chip">Very Good - Manual only</span>
+                <span class="gz-chip">Game Boy Advance</span>
+                <span class="gz-chip gz-chip--solid">999+</span>
+                <span class="gz-chip gz-chip--line">follow</span>
+              </div>
+            </div>
+          </div>
+          <!-- 가격 카드 -->
+          <div class="gm-ds-card gm-ds-state" data-reveal style="--d: .14s">
+            <p class="gm-ds-label gm-mono">Price Card · Bottom Bar</p>
+            <div class="gz-price">
+              <div class="ask"><p><small>Lowest Ask</small><strong>$50.00</strong></p><span>Buy or Offer ›</span></div>
+              <div class="offer"><p><small>Highest Offer</small><strong>$39.00</strong></p><span>Sell or Ask ›</span></div>
+            </div>
+            <div class="gz-trade"><div>Trade In Now<b>Trade In Value $ 41.92</b></div><span aria-hidden="true">›</span></div>
+            <ol class="gz-tabbar" aria-label="하단 탭 바">
+              <li class="on"><i></i>Home</li><li><i></i>List</li><li><i></i>Trade-In</li><li><i></i>My page</li><li><i></i>Menu</li>
+            </ol>
+          </div>
+          <!-- 그리드 -->
+          <div class="gm-ds-card gm-ds-grid" data-reveal style="--d: .18s">
+            <p class="gm-ds-label gm-mono">Layout</p>
+            <div class="gm-grid-demo" aria-hidden="true">
+              <div class="gm-grid-phone">
+                <span class="gm-grid-m l">16</span><span class="gm-grid-m r">16</span>
+                <i></i><i class="t"></i><i></i><i class="s"></i>
+                <span class="gm-grid-w">328</span>
+              </div>
+            </div>
+            <ul class="gm-grid-spec gm-mono">
+              <li><b>360 × 800</b>Base frame</li>
+              <li><b>16 / 328</b>Margin / Content</li>
+              <li><b>Pill · 16 · 12</b>Button · Field · Tile radius</li>
+              <li><b>5</b>Tab bar items</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 10. 라이트 · 다크 ========== -->
+    <section class="gm-section" id="theme" data-chapter="Dark Mode">
+      <div class="container">
+        <header class="gm-head gm-head--row">
+          <div>
+            <h4 class="section-label sec-title"><span class="num">09</span> <span class="sec-dash">—</span> Light · Dark</h4>
+            <h2 class="gm-h2" data-reveal>밤에 컬렉션을 보는<br><span class="gm-green">사람을 위해.</span></h2>
+          </div>
+          <p class="gm-text" data-reveal>
+            게임 컬렉터의 사용 시간은 저녁 이후에 몰립니다. 다크 모드는 색을 반전하지 않고 바이올렛을 짙은 남보라
+            배경으로 내려, 브랜드 톤을 유지한 채 상품 이미지가 가장 밝게 보이도록 했습니다.
+            흰 상품 타일과 초록 · 빨강 가격 색은 두 테마에서 그대로 두어 거래 신호가 바뀌지 않게 했습니다.
+          </p>
+        </header>
+        <div class="gm-ba" data-reveal>
+          <figure class="gm-phone gm-phone--l gm-phone--scroll">
+            <div class="gm-phone-screen"><img src="../images/work/project-04/screens/home-light.png" alt="홈 — 라이트 모드" loading="lazy"><img class="gm-nav" src="../images/work/project-04/screens/Navigation.png" alt="" aria-hidden="true"></div>
+            <figcaption class="gm-cap gm-mono"><b>Light</b> 기본</figcaption>
+          </figure>
+          <span class="gm-ba-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+          <figure class="gm-phone gm-phone--l gm-phone--scroll" style="--delay: .6s">
+            <div class="gm-phone-screen"><img src="../images/work/project-04/screens/home-dark.png" alt="홈 — 다크 모드" loading="lazy"><img class="gm-nav" src="../images/work/project-04/screens/Navigation.png" alt="" aria-hidden="true"></div>
+            <figcaption class="gm-cap gm-mono"><b>Dark</b> 저녁 사용</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 11. 전체 화면 띠 (js/work-gdz.js 가 채움) ========== -->
+    <section class="gm-wall" aria-label="Goodiez 화면 모음">
+      <div class="gm-wall-row" data-wall></div>
+      <div class="gm-wall-row gm-wall-row--rev" data-wall></div>
+    </section>
+
+    <!-- ========== 12. 결과 ========== -->
+    <section class="gm-section" id="outcome" data-chapter="Outcome">
+      <div class="container gm-split">
+        <h4 class="section-label sec-title"><span class="num">10</span> <span class="sec-dash">—</span> Outcome</h4>
+        <ol class="gm-outcome">
+          <li data-reveal>
+            <strong><span data-count="160">160</span><small>+</small></strong>
+            <h3>Screens</h3>
+            <p>홈부터 거래 · 정산 · 프로필까지, 기본 화면과 오류 · 빈 화면 · 팝업 상태를 360 기준 하나의 그리드 위에서 완성했습니다.</p>
+          </li>
+          <li data-reveal style="--d: .08s">
+            <strong><span data-count="13">13</span><small>boards</small></strong>
+            <h3>Guidelines</h3>
+            <p>Figma 변수로 묶은 13개 가이드 보드가 디자인 · 개발 간 해석 차이를 줄이고, 이후 Trade-In 같은 신규 기능도 조합만으로 확장되게 했습니다.</p>
+          </li>
+          <li data-reveal style="--d: .16s">
+            <strong>2<small>themes</small></strong>
+            <h3>Light · Dark</h3>
+            <p>같은 토큰 위에서 라이트 · 다크 두 테마를 운영해, 거래 신호 색은 그대로 두고 배경 톤만 바꾸는 구조를 만들었습니다.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ========== 13. 회고 ========== -->
+
+    <!-- ========== 다음 작업 ========== -->
+    <section class="section work-next">
+      <div class="container">
+        <h4 class="section-label sec-title">Next project</h4>
+        <a href="project-05.html" class="work-next-link">
+          <span class="work-next-title">Good Neighbors</span>
+          <span class="arrow-link-circle" aria-hidden="true">
+            <svg class="arrow-link-icon" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+            <svg class="arrow-link-icon arrow-link-icon--next" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+          </span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Atomik 6ixthmead</p>
+    </div>
+  </footer>
+
+  </div>
+  <!-- /.page -->
+
+  <script src="../js/works-data.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/work-gdz.js"></script>
+  <script src="../js/work-dock.js"></script>
+</body>
+</html>

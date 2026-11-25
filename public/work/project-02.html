@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noul — Atomik</title>
+  <meta name="description" content="노을(Noul) 국문·영문 기업 웹사이트 — 키 비주얼, 기술 시각화, 반응형 디자인 시스템 아트디렉션 · UI/UX Designer Yi Jinkwang">
+  <!-- Pretendard 웹폰트 (메인 페이지와 동일) -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <!-- Montserrat 웹폰트: 사이트 영문 글꼴 (한글은 Pretendard) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+  <!-- 공통 스타일 먼저, 상세 페이지 전용 스타일을 그 뒤에 (뒤에 온 규칙이 덮어씀) -->
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/work.css">
+  <link rel="stylesheet" href="../css/work-dock.css">
+  <link rel="stylesheet" href="../css/work-noul.css">
+  <link rel="stylesheet" href="../css/device-phone.css"> <!-- 스마트폰 디바이스 프레임 (공통) -->
+  <!-- Noul 사이트 영문 서체(Open Sans) — 디자인 시스템 견본용 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap">
+  <!-- JS 가 켜져 있으면 html 에 .js 클래스를 붙임
+       - .js : 제목을 글자로 나누기 전엔 잠깐 숨겨 둠 (work.css 1번) -->
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="work-page nl-theme">
+
+
+  <!-- ========== 본문 전체 묶음 ==========
+       페이지에 들어올 때·나갈 때 이 상자 전체가 위로 슬라이드됨 -->
+  <div class="page">
+
+  <!-- ========== 헤더 (메인과 같음, 링크만 ../index.html 로) ========== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="header-left">
+        <a href="../index.html" class="logo">Yi Jinkwang</a>
+        <p class="header-greeting">Hi! Nice to meet you :)</p>
+      </div>
+
+      <nav class="desktop-nav" aria-label="주요 메뉴">
+        <ul>
+          <li><a href="index.html" class="text-link text-link--reversed"><span class="text-link-label">Works</span></a></li>
+          <li><a href="../index.html#about" class="text-link text-link--reversed"><span class="text-link-label">About</span></a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="../index.html#contact" class="text-link header-cta">
+          <span class="text-link-label">Let's talk</span>
+          <span class="text-link-icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+            <svg viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+          </span>
+        </a>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="site-menu" aria-label="메뉴 열기">
+          <span class="menu-toggle-line"></span>
+          <span class="menu-toggle-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== 전체 화면 메뉴 (모바일) ========== -->
+  <div class="site-menu" id="site-menu" aria-hidden="true">
+    <div class="container site-menu-inner">
+      <nav aria-label="모바일 메뉴">
+        <ul class="menu-list">
+          <li style="--i: 0"><a href="index.html"><span class="num">01</span> Works</a></li>
+          <li style="--i: 1"><a href="../index.html#about"><span class="num">02</span> About</a></li>
+          <!-- Contact 메뉴는 잠시 숨김 (다시 보이려면 아래 li 의 hidden 을 지우면 됨) -->
+          <li style="--i: 2" hidden><a href="../index.html#contact"><span class="num">03</span> Contact</a></li>
+        </ul>
+      </nav>
+      <div class="menu-footer" style="--i: 3">
+        <a href="../index.html#contact" class="arrow-link">
+          <span class="arrow-link-text">Start a project</span>
+          <span class="arrow-link-circle" aria-hidden="true">
+            <svg class="arrow-link-icon" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+            <svg class="arrow-link-icon arrow-link-icon--next" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+          </span>
+        </a>
+        <div class="menu-meta">
+          <a href="mailto:sixthmead@me.com" class="text-link"><span class="text-link-label">sixthmead@me.com</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="top" class="nl">
+
+    <!-- =========================================================
+         Noul 케이스 스터디
+         이미지: images/work/project-02/
+         - cover.jpg / thumb.jpg     : 커버 · 썸네일 (js/works-data.js)
+         - kv-*.jpg                  : 메인 히어로 시안 5종 (Figma [M00-00] Index › ENG_Index_Visual1_v*)
+         - site-main-full.jpg 등     : 페이지 전체 화면 (Figma 1440 원본)
+         - tech-01~04.jpg            : miLab 분해도 핫스팟 4단계 (Figma [P01] › Technology 3)
+         - m-*.jpg                   : 모바일 360 원본
+         스타일: work-noul.css · 인터랙션: work-noul.js · 하단 챕터 독: work-dock.js
+         ========================================================= -->
+
+    <!-- ========== 히어로 ========== -->
+    <section class="case-hero">
+      <div class="container case-hero-head">
+        <p class="case-eyebrow">Case 02 — Corporate Website · KR / EN</p>
+        <h1 class="case-title" data-split>Noul</h1>
+        <p class="case-summary">
+          소량의 혈액만으로 실험실 수준의 진단을 해내는 바이오 기업 노을.
+          전문가의 언어로만 설명되던 기술을, 처음 보는 사람도 이해하고
+          믿을 수 있는 이야기로 다시 짰습니다.
+        </p>
+      </div>
+
+      <figure class="case-cover">
+        <img data-work-img="project-02:cover" src="../images/work/project-02/cover.jpg" alt="노을 영문 웹사이트 메인 화면이 띄워진 노트북" onerror="this.remove()">
+      </figure>
+      <div class="container">
+        <p class="case-cover-caption">Main — Unprecedented breakthrough in diagnostics</p>
+      </div>
+
+      <div class="container case-meta">
+        <p class="section-label">About</p>
+        <dl class="case-facts">
+          <div><dt>Client</dt><dd>Noul Co., Ltd.</dd></div>
+          <div><dt>Role</dt><dd>Art Direction · Web Design</dd></div>
+          <div><dt>Team</dt><dd><strong data-count="3">3</strong> Designers · 디자인 리드</dd></div>
+          <div><dt>Scope</dt><dd>7 Templates · KR / EN · PC / MO</dd></div>
+          <div><dt>Live</dt><dd><a href="https://noul.kr/" target="_blank" rel="noopener">noul.kr ↗</a></dd></div>
+          <div><dt>Year</dt><dd>2021</dd></div>
+        </dl>
+        <div class="case-services">
+          <p class="case-services-title">Services</p>
+          <ul>
+            <li>Art Direction</li>
+            <li>Key Visual</li>
+            <li>Information Design</li>
+            <li>Responsive Design System</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 흐르는 키워드 띠 -->
+    <div class="nl-marquee" aria-hidden="true">
+      <div class="nl-marquee-track">
+        <span>Beyond diagnostics</span><i></i><span>miLab™ Platform</span><i></i><span>NGSI</span><i></i><span>Onboard AI</span><i></i><span>Decentralized Lab</span><i></i>
+        <span>Beyond diagnostics</span><i></i><span>miLab™ Platform</span><i></i><span>NGSI</span><i></i><span>Onboard AI</span><i></i><span>Decentralized Lab</span><i></i>
+      </div>
+    </div>
+
+    <!-- ========== 01. 개요 ========== -->
+    <section class="nl-section" id="overview" data-chapter="Overview">
+      <div class="container nl-grid">
+        <h4 class="section-label sec-title"><span class="num">01</span> <span class="sec-dash">—</span> Overview</h4>
+        <div class="nl-body">
+          <p class="nl-statement" data-scrub>
+            실험실 안에만 있던 진단 기술을, 처음 보는 사람도 이해하고 믿을 수 있는 이야기로 바꾸는 일이었습니다.
+          </p>
+          <div class="nl-columns" data-reveal>
+            <div>
+              <h3 class="nl-col-title">Context</h3>
+              <p>노을은 고체 기반 염색 기술(NGSI)과 온보드 AI를 하나의 장비에 담은 진단 플랫폼 miLab™을 만듭니다. 인프라가 부족한 지역에서도 실험실 수준의 혈액 진단을 가능하게 하는 기술이지만, 기존 사이트에서는 그 가치가 전문 용어와 긴 문단 속에 묻혀 있었습니다.</p>
+            </div>
+            <div>
+              <h3 class="nl-col-title">My Part</h3>
+              <p>3명의 디자인팀에서 아트디렉션을 맡아 콘셉트와 키 비주얼을 정하고, 국문 · 영문 7개 템플릿의 UX/UI를 직접 디자인했습니다. 기술 시각화 시안으로 클라이언트를 설득했고, 오픈 이후에는 노을 사내 브랜드 디자이너와 함께 고도화를 이어 갔습니다.</p>
+            </div>
+          </div>
+
+          <!-- 사이트 구조: Figma 파일 구성 기준 -->
+          <div class="nl-map" data-reveal>
+            <div class="nl-map-head">
+              <p class="nl-mono">Information Architecture</p>
+              <p class="nl-map-total"><strong>3</strong> GNB <span>/</span> <strong>7</strong> Templates <span>/</span> Desktop 1440 · Mobile 360</p>
+            </div>
+            <ol class="nl-map-cols">
+              <li class="is-main"><span class="nl-mono">M00</span><h4>Index</h4><ul><li>Hero · Key Visual</li><li>miLab Intro</li><li>Platform · Voices</li><li>News · Team</li><li>Partners</li></ul></li>
+              <li class="is-gnb"><span class="nl-mono">P01</span><h4>miLab Platform</h4><ul><li>NGSI Cartridge</li><li>miLab Device</li><li>Onboard AI</li><li>miView</li><li>Technologies</li></ul></li>
+              <li class="is-gnb"><span class="nl-mono">P02</span><h4>Value</h4><ul><li>Gold Standard</li><li>Cost Efficiency</li><li>Resource-poor</li><li>Surveillance</li></ul></li>
+              <li class="is-gnb"><span class="nl-mono">P03</span><h4>Focus</h4><ul><li>Malaria</li><li>Blood Cell</li><li>Cancer</li><li>IHC</li></ul></li>
+              <li><span class="nl-mono">S01</span><h4>Who we are</h4><ul><li>Mission</li><li>Approach</li><li>History</li><li>Global Offices</li></ul></li>
+              <li><span class="nl-mono">S03</span><h4>Sustainability</h4><ul><li>Circle</li><li>Innovation</li><li>SDGs</li><li>Impact</li></ul></li>
+              <li><span class="nl-mono">S04</span><h4>Careers</h4><ul><li>Culture</li><li>Process</li><li>Openings</li><li>Detail</li></ul></li>
+            </ol>
+            <p class="nl-map-legend nl-mono"><i class="is-gnb"></i>GNB 상시 노출 <i></i>햄버거 메뉴 (Company)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 02. 문제 → 답 ========== -->
+    <section class="nl-section nl-section--apricot" id="problem" data-chapter="Problem">
+      <div class="container">
+        <header class="nl-head">
+          <h4 class="section-label nl-text-title"><span class="num">02</span> <span class="nl-dash">—</span> Problem → Answer</h4>
+          <div>
+            <h2 class="nl-h2" data-reveal>정보를 덜어내지 않고,<br><span class="nl-grad">읽히게 만드는 법.</span></h2>
+            <p class="nl-text" data-reveal>클라이언트가 담고 싶은 내용은 많았고, 대부분이 줄일 수 없는 기술 정보였습니다. 그래서 분량을 줄이는 대신 ‘어떤 형식으로 보여 줄 것인가’를 세 가지 원칙으로 정리했습니다.</p>
+          </div>
+        </header>
+
+        <ol class="nl-matrix">
+          <li data-reveal>
+            <p class="nl-q"><span class="nl-mono">01 · Complexity</span>NGSI · 디지털 이미징 · 온보드 AI — 전문가가 아니면 이해할 수 없는 기술</p>
+            <svg class="nl-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg>
+            <p class="nl-a"><b>문장 대신 구조를 보여 준다.</b> 장비를 분해한 3D 렌더 위에 핫스팟을 얹어, 부품을 하나씩 짚으며 기술을 설명하는 인터랙션으로 바꿨습니다.</p>
+          </li>
+          <li data-reveal style="--d:.08s">
+            <p class="nl-q"><span class="nl-mono">02 · Trust</span>“더 정확하다”, “더 저렴하다”는 주장만으로는 믿음이 생기지 않는다</p>
+            <svg class="nl-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg>
+            <p class="nl-a"><b>숫자 → 사람의 목소리 순서로.</b> 정확도 · 비용을 막대와 원형 차트로 먼저 보여 주고, 바로 아래에 연구자와 의사의 인용을 붙여 근거를 이중으로 쌓았습니다.</p>
+          </li>
+          <li data-reveal style="--d:.16s">
+            <p class="nl-q"><span class="nl-mono">03 · Value</span>기술 기업이자, 의료 접근성을 넓히려는 임팩트 기업이라는 정체성</p>
+            <svg class="nl-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg>
+            <p class="nl-a"><b>차가운 기술에 온도를 입힌다.</b> 사명 ‘노을’에서 출발한 따뜻한 주황과 자연의 풍경을 키 비주얼로, 신뢰의 네이비를 정보 영역의 바탕으로 나눠 썼습니다.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ========== 03. 콘셉트 — 키 비주얼 시안 ========== -->
+    <section class="nl-dark" id="concept" data-chapter="Key Visual" data-dark>
+      <div class="nl-dusk" aria-hidden="true"></div>
+      <div class="container nl-dark-inner">
+        <h4 class="section-label nl-text-title"><span class="num">03</span> <span class="nl-dash">—</span> Concept</h4>
+        <h2 class="nl-display" data-reveal>Noul,<br><span class="nl-grad">the color of dusk.</span></h2>
+        <div class="nl-dark-intro" data-reveal>
+          <p class="nl-dark-lead">사명 ‘노을’은 하루의 끝이 아니라, 새로운 시작을 비추는 빛입니다.</p>
+          <p>브랜드 컬러 #EA5504가 노을빛에서 왔다는 점에서 출발했습니다. 진단 기업의 히어로가 흔히 쓰는 세포 · 실험실 이미지 대신, 수평선과 물결처럼 ‘아직 가 보지 않은 곳’을 떠올리게 하는 풍경으로 ‘Beyond diagnostics’를 말하고자 했습니다. 같은 레이아웃 위에서 다섯 방향을 비교했습니다.</p>
+        </div>
+
+        <!-- 시안 비교: 탭을 누르거나 자동으로 넘어감 -->
+        <div class="nl-kv" data-kv data-reveal>
+          <div class="nl-kv-stage">
+            <figure class="nl-kv-slide is-on"><img src="../images/work/project-02/kv-coast.jpg" alt="최종안 — 해안선을 내려다본 항공 사진 위 'Unprecedented breakthrough in diagnostics'" loading="lazy"></figure>
+            <figure class="nl-kv-slide"><img src="../images/work/project-02/kv-sunset.jpg" alt="시안 — 노을 진 바다 위 작은 배" loading="lazy"></figure>
+            <figure class="nl-kv-slide"><img src="../images/work/project-02/kv-sail.jpg" alt="시안 — 해 질 녘 요트 갑판" loading="lazy"></figure>
+            <figure class="nl-kv-slide"><img src="../images/work/project-02/kv-explorer.jpg" alt="시안 — 돛과 물보라, 네이비 헤드라인 'Breaking through Explorer for Saving Lives'" loading="lazy"></figure>
+            <figure class="nl-kv-slide"><img src="../images/work/project-02/kv-cell.jpg" alt="시안 — 착색된 세포 전자현미경 이미지" loading="lazy"></figure>
+            <span class="nl-kv-badge nl-mono" data-kv-badge>Final</span>
+          </div>
+          <ol class="nl-kv-tabs" role="tablist" aria-label="키 비주얼 시안">
+            <li><button type="button" role="tab" aria-selected="true"><span class="nl-mono">A</span><b>Coast</b><em>최종 · 수평선 너머</em></button></li>
+            <li><button type="button" role="tab" aria-selected="false"><span class="nl-mono">B</span><b>Dusk</b><em>노을 · 고요함</em></button></li>
+            <li><button type="button" role="tab" aria-selected="false"><span class="nl-mono">C</span><b>Voyage</b><em>항해 · 동행</em></button></li>
+            <li><button type="button" role="tab" aria-selected="false"><span class="nl-mono">D</span><b>Explorer</b><em>도전 · 네이비 카피</em></button></li>
+            <li><button type="button" role="tab" aria-selected="false"><span class="nl-mono">E</span><b>Cell</b><em>기술 · 현미경</em></button></li>
+          </ol>
+          <span class="nl-kv-bar" aria-hidden="true"><i data-kv-bar></i></span>
+        </div>
+
+        <dl class="nl-spec" data-reveal>
+          <div><dt class="nl-mono">Why Coast</dt><dd>노을의 주황 · 바다의 청록이 한 장에 함께 담겨 브랜드 컬러와 정보 영역의 네이비를 자연스럽게 잇는 유일한 안</dd></div>
+          <div><dt class="nl-mono">Why not Cell</dt><dd>기술은 정확히 보여 주지만 ‘또 하나의 실험실’로 읽혀, 접근성이라는 메시지와 멀어짐</dd></div>
+          <div><dt class="nl-mono">Rule</dt><dd>모든 안에서 헤드라인 위치 · 크기 · CTA를 고정해 ‘이미지’만 비교되게</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ========== 04. 메인 페이지 ========== -->
+    <section class="nl-section" id="main" data-chapter="Main Page">
+      <div class="container">
+        <header class="nl-head">
+          <h4 class="section-label sec-title"><span class="num">04</span> <span class="sec-dash">—</span> Main Page</h4>
+          <div>
+            <h2 class="nl-h2" data-reveal>스크롤 한 번에,<br><span class="nl-grad">기술 → 근거 → 사람.</span></h2>
+            <p class="nl-text" data-reveal>메인은 ‘무엇을 만드는가’에서 ‘왜 믿을 수 있는가’, ‘누가 만드는가’로 흐르도록 섹션 순서를 짰습니다. 배경색도 화이트 → 네이비 → 화이트 → 아프리콧으로 바꿔, 긴 페이지에서도 지금 어떤 이야기를 읽고 있는지 색으로 구분되게 했습니다.</p>
+          </div>
+        </header>
+
+        <div class="nl-stage" data-stage data-marks="0,880,1563,2376,3105,3810" data-total="4368">
+          <div class="nl-stage-sticky">
+            <div class="nl-browser">
+              <div class="nl-browser-bar" aria-hidden="true">
+                <span class="nl-browser-dots"><i></i><i></i><i></i></span>
+                <span class="nl-browser-url nl-mono">noul.kr/en</span>
+                <span class="nl-browser-meta nl-mono" data-stage-pct>Index — 0%</span>
+              </div>
+              <figure class="nl-scroller">
+                <img src="../images/work/project-02/site-main-full.jpg" alt="노을 영문 메인 페이지 전체 화면" data-stage-img loading="lazy">
+              </figure>
+            </div>
+            <ul class="nl-notes"> <!-- 브라우저 바로 아래 · 고정 영역 안: 스크롤하는 동안 처음부터 함께 보임 -->
+              <li><span class="nl-mono">A</span><p><b>비전은 한 문장으로.</b> 히어로 다음에 긴 소개 대신 “더 많은 사람이 더 빨리, 높은 품질의 진단을”이라는 문장과 장비 한 컷만 둬 첫인상을 정리했습니다.</p></li>
+              <li><span class="nl-mono">B</span><p><b>숫자 옆에 사람.</b> 네이비 섹션에서 특허 71 · 임상 11 · 검체 4,122의 지표와 연구자 인용 카드를 한 줄에 배치해, 수치와 증언이 함께 읽히게 했습니다.</p></li>
+              <li><span class="nl-mono">C</span><p><b>카드는 하나의 규칙으로.</b> News · Team 카드는 이미지 좌하단의 주황 라벨(News · Research · Recruit · Story)만 바꿔 같은 컴포넌트로 운영했습니다.</p></li>
+            </ul>
+            <ol class="nl-stage-legend nl-mono">
+              <li><b>Hero</b><span>키 비주얼 · Our Story</span></li>
+              <li><b>miLab</b><span>한 문장 비전 + 제품</span></li>
+              <li><b>Platform</b><span>숫자 3개 · 전문가 인용</span></li>
+              <li><b>News</b><span>카테고리 라벨 카드</span></li>
+              <li><b>Team</b><span>채용 · 스토리</span></li>
+              <li><b>Partners</b><span>파트너 로고 12</span></li>
+            </ol>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========== 05. 기술 시각화 ========== -->
+    <section class="nl-section nl-section--line" id="visualize" data-chapter="Visualize">
+      <div class="container">
+        <header class="nl-head">
+          <h4 class="section-label nl-text-title"><span class="num">05</span> <span class="nl-dash">—</span> Visualize</h4>
+          <div>
+            <h2 class="nl-h2" data-reveal>보이지 않는 기술을<br><span class="nl-grad">분해해서 보여 주기.</span></h2>
+            <p class="nl-text" data-reveal>‘세계 최초의 완전 자동화 진단 장비’라는 말을 증명하려면 안을 열어 보여 주는 게 가장 빨랐습니다. 장비를 네 개의 기술 모듈로 분해한 렌더를 만들고, 한 번에 하나의 모듈만 진하게 남겨 설명이 흩어지지 않게 했습니다. 아래 탭으로 실제 화면의 4단계를 확인할 수 있습니다.</p>
+          </div>
+        </header>
+
+        <div class="nl-explode" data-tabs data-reveal>
+          <ol class="nl-explode-tabs" role="tablist" aria-label="miLab 기술 모듈">
+            <li><button type="button" role="tab" aria-selected="true"><span class="nl-mono">01</span><b>Embedded AI</b><em>Network-free · High performance CPU · Low power</em></button></li>
+            <li><button type="button" role="tab" aria-selected="false"><span class="nl-mono">02</span><b>H/W</b><em>High speed auto-focusing · Optimized FPGA chip</em></button></li>
+            <li><button type="button" role="tab" aria-selected="false"><span class="nl-mono">03</span><b>Digital Imaging</b><em>500× microscopic lens · CMOS sensor</em></button></li>
+            <li><button type="button" role="tab" aria-selected="false"><span class="nl-mono">04</span><b>Bio</b><em>No water needed · Gold standard NGSI</em></button></li>
+          </ol>
+          <div class="nl-explode-stage">
+            <img class="is-on" src="../images/work/project-02/tech-01.jpg" alt="miLab 분해도 — Embedded AI 보드 강조" loading="lazy">
+            <img src="../images/work/project-02/tech-02.jpg" alt="miLab 분해도 — 하드웨어 모듈 강조" loading="lazy">
+            <img src="../images/work/project-02/tech-03.jpg" alt="miLab 분해도 — 디지털 이미징 모듈 강조" loading="lazy">
+            <img src="../images/work/project-02/tech-04.jpg" alt="miLab 분해도 — NGSI 카트리지 강조" loading="lazy">
+          </div>
+        </div>
+
+        <div class="nl-split">
+          <div class="nl-split-text">
+            <h3 class="nl-h3" data-reveal>제품 페이지는<br>‘하나의 장비, 네 개의 장면’.</h3>
+            <p class="nl-text" data-reveal>miLab Platform 페이지는 카트리지 → 장비 → AI → 뷰어 순서로, 검체가 실제로 이동하는 경로를 따라 내려가도록 구성했습니다. 각 장면은 ‘한 줄 수식어 + 제품명 + 4개의 특징’이라는 같은 틀을 반복해, 처음 보는 기술이 연달아 나와도 읽는 방법은 바뀌지 않게 했습니다.</p>
+            <ul class="nl-flow" data-reveal>
+              <li><span class="nl-mono">01</span>NGSI® Cartridge<em>All-in-one</em></li>
+              <li><span class="nl-mono">02</span>miLab Device<em>The smallest lab</em></li>
+              <li><span class="nl-mono">03</span>Onboard AI<em>100× more precise</em></li>
+              <li><span class="nl-mono">04</span>Cell viewer, miView<em>Anytime, anywhere</em></li>
+            </ul>
+          </div>
+          <figure class="nl-tall" data-autoscroll data-reveal>
+            <div class="nl-tall-frame"><img src="../images/work/project-02/milab-full.jpg" alt="miLab Platform 페이지 전체 화면" loading="lazy"></div>
+            <figcaption class="nl-cap nl-mono">P01 · miLab Platform — 1440 × 10496</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 06. 근거 — Value 페이지의 데이터 ========== -->
+    <section class="nl-navy" id="evidence" data-chapter="Evidence" data-dark>
+      <div class="container">
+        <header class="nl-head">
+          <h4 class="section-label nl-text-title"><span class="num">06</span> <span class="nl-dash">—</span> Evidence</h4>
+          <div>
+            <h2 class="nl-h2" data-reveal>주장 대신,<br><span class="nl-grad-l">숫자로 먼저.</span></h2>
+            <p class="nl-text" data-reveal>Value 페이지의 네 가지 가치(정확도 · 비용 · 접근성 · 감시)는 모두 ‘데이터 시각화 → 전문가 인용 → Read more’의 같은 순서로 설계했습니다. 아래 차트는 실제 페이지의 수치를 코드로 다시 그린 것입니다.</p>
+          </div>
+        </header>
+
+        <div class="nl-proof">
+          <!-- 정확도 막대 -->
+          <div class="nl-proof-card" data-reveal>
+            <p class="nl-mono nl-proof-label">01 · Perfect Gold Standard</p>
+            <h3>Accuracy of Diagnosis</h3>
+            <div class="nl-bars" data-bars>
+              <p class="nl-bars-group">Sensitivity</p>
+              <div class="nl-bar is-mi" style="--v:94.4"><span>miLab</span><b>94.4%</b></div>
+              <div class="nl-bar" style="--v:55.3"><span>Manual microscopy</span><b>55.3%</b></div>
+              <p class="nl-bars-group">Specificity</p>
+              <div class="nl-bar is-mi" style="--v:94.4"><span>miLab</span><b>94.4%</b></div>
+              <div class="nl-bar" style="--v:81.2"><span>Manual microscopy</span><b>81.2%</b></div>
+            </div>
+          </div>
+
+          <!-- 비용 구성 -->
+          <div class="nl-proof-card" data-reveal style="--d:.08s">
+            <p class="nl-mono nl-proof-label">02 · Complex workflow simplified</p>
+            <h3>Where the cost goes</h3>
+            <div class="nl-donut-wrap">
+              <div class="nl-donut" aria-hidden="true"><span><b><span data-count="70">70</span>%+</b>Labor</span></div>
+              <ul class="nl-legend">
+                <li style="--c:#00BCF0"><i></i>Technician labor<b>55%</b></li>
+                <li style="--c:#0073DA"><i></i>Doctor labor<b>18%</b></li>
+                <li style="--c:#8D857F"><i></i>Device purchase<b>18%</b></li>
+                <li style="--c:#5C5550"><i></i>Etc.<b>5%</b></li>
+                <li style="--c:#D8D8D8"><i></i>Maintenance<b>4%</b></li>
+              </ul>
+            </div>
+            <p class="nl-proof-note">혈액 검사 비용의 70% 이상이 사람의 손에서 나온다는 사실을 한 장의 원으로. 자동화의 가치가 설명 없이 읽힙니다.</p>
+          </div>
+
+          <!-- 자원 -->
+          <div class="nl-proof-card nl-proof-card--wide" data-reveal style="--d:.12s">
+            <p class="nl-mono nl-proof-label">03 · Lab-grade diagnosis in resource-poor settings</p>
+            <ul class="nl-free">
+              <li><span class="nl-mono">Liquid · 500ml</span><b>FREE</b></li>
+              <li><span class="nl-mono">Specialist · Technician &amp; doctor</span><b>FREE</b></li>
+              <li><span class="nl-mono">Infrastructure · Water, ventilator, microscope</span><b>FREE</b></li>
+            </ul>
+          </div>
+
+          <!-- 인용 -->
+          <blockquote class="nl-quote" data-reveal>
+            <p>“miLab provides results from each sample with a high accuracy and consistency compared to other available methods.”</p>
+            <footer class="nl-mono">Hans-Peter Beck, Professor, PhD — Swiss Tropical and Public Health Institute</footer>
+          </blockquote>
+        </div>
+
+        <div class="nl-trio">
+          <figure class="nl-tall nl-tall--dark" data-autoscroll data-reveal>
+            <div class="nl-tall-frame"><img src="../images/work/project-02/value-full.jpg" alt="Value 페이지 전체 화면" loading="lazy"></div>
+            <figcaption class="nl-cap nl-mono">P02 · Value</figcaption>
+          </figure>
+          <figure class="nl-tall nl-tall--dark" data-autoscroll data-reveal style="--d:.08s; --delay:1.5s">
+            <div class="nl-tall-frame"><img src="../images/work/project-02/who-full.jpg" alt="Who we are 페이지 전체 화면" loading="lazy"></div>
+            <figcaption class="nl-cap nl-mono">S01 · Who we are</figcaption>
+          </figure>
+          <figure class="nl-tall nl-tall--dark" data-autoscroll data-reveal style="--d:.16s; --delay:3s">
+            <div class="nl-tall-frame"><img src="../images/work/project-02/sustain-full.jpg" alt="Sustainability 페이지 전체 화면" loading="lazy"></div>
+            <figcaption class="nl-cap nl-mono">S03 · Sustainability</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 07. 디자인 시스템 ========== -->
+    <section class="nl-section" id="system" data-chapter="Design System">
+      <div class="container">
+        <header class="nl-head">
+          <h4 class="section-label nl-text-title"><span class="num">07</span> <span class="nl-dash">—</span> Design System</h4>
+          <div>
+            <h2 class="nl-h2" data-reveal>두 개의 언어,<br><span class="nl-grad">하나의 라이브러리.</span></h2>
+            <p class="nl-text" data-reveal>국문과 영문은 글자 폭과 줄 길이가 달라 같은 레이아웃에서도 쉽게 무너집니다. 그래서 화면보다 먼저 NOUL-Library를 만들고 Typographic · Color · Board · Button · Icon · Form · Label · Layout · Symbol 9개 페이지로 정리해, 7개 템플릿이 모두 이 라이브러리를 참조하게 했습니다.</p>
+          </div>
+        </header>
+
+        <div class="nl-ds">
+          <!-- 컬러 -->
+          <div class="nl-ds-card nl-ds-color" data-reveal>
+            <p class="nl-mono nl-ds-label">Color — NOUL-Library</p>
+            <div class="nl-swatch-hero" style="--c:#EA5504">
+              <span class="nl-mono">Primary</span>
+              <b>Noul</b>
+              <code>#EA5504</code>
+            </div>
+            <ul class="nl-swatches">
+              <li style="--c:#002A66"><i></i><b>Dark Navy</b><code>#002A66</code></li>
+              <li style="--c:#0046A5"><i></i><b>Navy</b><code>#0046A5</code></li>
+              <li style="--c:#0073DA"><i></i><b>Sky</b><code>#0073DA</code></li>
+              <li style="--c:#00BCF0"><i></i><b>Pure Sky</b><code>#00BCF0</code></li>
+              <li style="--c:#FFD400"><i></i><b>Yellow</b><code>#FFD400</code></li>
+              <li style="--c:#5C5550"><i></i><b>Brown</b><code>#5C5550</code></li>
+              <li style="--c:#8D857F"><i></i><b>Light Brown</b><code>#8D857F</code></li>
+              <li style="--c:#F7F3F0" class="is-light"><i></i><b>Apricot</b><code>#F7F3F0</code></li>
+            </ul>
+            <ol class="nl-neutral" aria-label="Neutral scale">
+              <li style="--c:#000"></li><li style="--c:#333"></li><li style="--c:#666"></li><li style="--c:#999"></li><li style="--c:#D8D8D8"></li><li style="--c:#E5E5E5"></li><li style="--c:#F5F5F5"></li><li style="--c:#fff"></li>
+            </ol>
+            <p class="nl-ds-note">주황은 CTA · 라벨 · 진행 표시처럼 ‘행동’에만, 네이비는 데이터 · 인용처럼 ‘신뢰’가 필요한 면에만. 브라운 계열은 회사 · 문화 페이지의 따뜻한 바탕으로 분리했습니다.</p>
+          </div>
+
+          <!-- 타이포 -->
+          <div class="nl-ds-card nl-ds-type" data-reveal style="--d:.08s">
+            <p class="nl-mono nl-ds-label">Typography — Noto Sans CJK KR · Open Sans</p>
+            <ol class="nl-typescale">
+              <li><span class="nl-mono">D1</span><b class="nl-os" style="--s:56px">NGSI Cartridge</b></li>
+              <li><span class="nl-mono">H1</span><b class="nl-os" style="--s:36px">Breakthrough in diagnostics</b></li>
+              <li><span class="nl-mono">H1 KR</span><b style="--s:30px">노을은 인류의 건강과 생명을</b></li>
+              <li><span class="nl-mono">H2_L</span><b class="nl-os nl-light" style="--s:28px">Improve diagnostic accuracy</b></li>
+              <li><span class="nl-mono">H4</span><b class="nl-os" style="--s:20px">Global clinical research</b></li>
+              <li><span class="nl-mono">P1–P5</span><b class="nl-os nl-light" style="--s:15px">Entire blood sample preparation process is automated in a single micro NGSI Cartridge.</b></li>
+            </ol>
+            <p class="nl-ds-note">영문 서체는 Ubuntu · Open Sans · Roboto 세 후보를 같은 스케일(D1–P5)로 나란히 비교한 뒤, 국문 Noto Sans 옆에 두었을 때 가장 자연스럽게 섞이는 Open Sans로 정했습니다. 제목은 Bold, 부제는 Light로 굵기 대비를 크게 가져갔습니다.</p>
+          </div>
+
+          <!-- 컴포넌트 -->
+          <div class="nl-ds-card nl-ds-comp" data-reveal style="--d:.12s">
+            <p class="nl-mono nl-ds-label">Components</p>
+            <div class="nl-comp-row">
+              <span class="nl-btn nl-btn--fill">Read More <i aria-hidden="true">→</i></span>
+              <span class="nl-btn nl-btn--line">Contact Sales <i aria-hidden="true">→</i></span>
+              <span class="nl-btn nl-btn--navy">View Detail <i aria-hidden="true">→</i></span>
+            </div>
+            <div class="nl-comp-row">
+              <span class="nl-label">News</span><span class="nl-label">Research</span><span class="nl-label">Recruit</span><span class="nl-label">Story</span>
+            </div>
+            <div class="nl-comp-stat">
+              <span class="nl-stat-ic" aria-hidden="true">
+                <svg viewBox="0 0 32 32"><path d="M9 6h14M10 6l3 8M22 6l-3 8M16 15a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm0 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5z"/></svg>
+              </span>
+              <p><b data-count="71">71</b><span>Patented in the US, Japan, Korea, Australia, China and PCT</span></p>
+            </div>
+          </div>
+
+          <div class="nl-ds-card nl-ds-grid" data-reveal style="--d:.16s">
+            <p class="nl-mono nl-ds-label">Layout — 1440 / 1168 / 136</p>
+            <div class="nl-gridviz" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <p class="nl-ds-note">1440 캔버스에 좌우 136px 여백 · 본문 1168px. 2단은 568 + 32 + 568로 고정해 국문 · 영문이 같은 줄 위치에서 시작하게 했고, 모바일은 360에 16px 여백 한 단으로 접습니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 08. 모바일 ========== -->
+    <section class="nl-section nl-section--apricot" id="mobile" data-chapter="Mobile">
+      <div class="container nl-grid">
+        <h4 class="section-label nl-text-title"><span class="num">08</span> <span class="nl-dash">—</span> Mobile</h4>
+        <div class="nl-body">
+          <h2 class="nl-h2" data-reveal>작은 화면에서는<br><span class="nl-grad">한 번에 하나씩.</span></h2>
+          <p class="nl-text" data-reveal>데스크톱의 2 · 3단 카드는 모바일에서 한 장씩 넘기는 캐러셀로, 좌우 분할 텍스트는 위아래로 쌓았습니다. 숫자 · 인용 · 차트처럼 정보 밀도가 높은 영역은 순서를 바꾸지 않고 폭만 좁혀, 데스크톱과 같은 흐름으로 읽히게 했습니다.</p>
+        </div>
+      </div>
+      <div class="container">
+        <div class="nl-phones">
+          <figure class="nl-phone" data-autoscroll data-speed="0.05">
+            <div class="nl-tall-frame"><img src="../images/work/project-02/m-main.jpg" alt="모바일 메인" loading="lazy"></div>
+            <figcaption class="nl-cap nl-mono">M · Index</figcaption>
+          </figure>
+          <figure class="nl-phone nl-phone--center" data-autoscroll style="--delay:1s">
+            <div class="nl-tall-frame"><img src="../images/work/project-02/m-milab.jpg" alt="모바일 miLab Platform" loading="lazy"></div>
+            <figcaption class="nl-cap nl-mono">M · miLab Platform</figcaption>
+          </figure>
+          <figure class="nl-phone" data-autoscroll data-speed="0.05" style="--delay:2s">
+            <div class="nl-tall-frame"><img src="../images/work/project-02/m-value.jpg" alt="모바일 Value" loading="lazy"></div>
+            <figcaption class="nl-cap nl-mono">M · Value</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 09. 결과 · 회고 ========== -->
+    <section class="nl-section" id="outcome" data-chapter="Outcome">
+      <div class="container">
+        <header class="nl-head">
+          <h4 class="section-label nl-text-title"><span class="num">09</span> <span class="nl-dash">—</span> Outcome</h4>
+          <div>
+            <h2 class="nl-h2" data-reveal>설득은 말이 아니라<br><span class="nl-grad">시안으로 했습니다.</span></h2>
+          </div>
+        </header>
+
+        <ul class="nl-stats">
+          <li data-reveal><strong>Lead</strong><span>아트디렉션 · 웹디자인 리드<br>키 비주얼 · 템플릿 · 디자인 시스템 · 브리핑</span></li>
+          <li data-reveal style="--d:.08s"><strong><span data-count="7">7</span><small>tpl</small></strong><span>페이지 템플릿<br>× 국문 · 영문 × PC · MO</span></li>
+          <li data-reveal style="--d:.16s"><strong><span data-count="5">5</span><small>KV</small></strong><span>메인 키 비주얼<br>비교 시안</span></li>
+          <li data-reveal style="--d:.24s"><strong><span data-count="9">9</span><small>pg</small></strong><span>NOUL-Library<br>디자인 시스템 페이지</span></li>
+        </ul>
+
+        <div class="nl-reflect" data-reveal>
+          <div>
+            <h3 class="nl-col-title">What worked</h3>
+            <p>담고 싶은 내용이 많은 클라이언트에게 ‘줄이자’고 말하는 대신, 같은 정보를 차트 · 분해도 · 인용으로 바꾼 시안을 여러 갈래로 먼저 보여 줬습니다. 치열한 브리핑 끝에 정보를 지키면서도 쉽게 읽히는 방향에 함께 합의할 수 있었습니다.</p>
+          </div>
+          <div>
+            <h3 class="nl-col-title">After launch</h3>
+            <p>오픈 이후에는 노을 사내 브랜드 디자이너들과 리서치 · 레퍼런스를 함께 검토하며 고도화를 진행했습니다. 처음 세운 라이브러리 덕분에 구조의 원칙은 지키면서 비주얼의 완성도만 끌어올릴 수 있었습니다.</p>
+          </div>
+        </div>
+
+        <p class="nl-visit" data-reveal>
+          <a href="https://noul.kr/" class="arrow-link" target="_blank" rel="noopener">
+            <span class="arrow-link-text">Visit noul.kr</span>
+            <span class="arrow-link-circle" aria-hidden="true">
+              <svg class="arrow-link-icon" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+              <svg class="arrow-link-icon arrow-link-icon--next" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+            </span>
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ========== 다음 작업 ========== -->
+    <section class="section work-next">
+      <div class="container">
+        <h4 class="section-label sec-title">Next project</h4>
+        <a href="project-03.html" class="work-next-link">
+          <span class="work-next-title">GUT Morning</span>
+          <span class="arrow-link-circle" aria-hidden="true">
+            <svg class="arrow-link-icon" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+            <svg class="arrow-link-icon arrow-link-icon--next" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+          </span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Atomik 6ixthmead</p>
+    </div>
+  </footer>
+
+  </div>
+  <!-- /.page -->
+
+  <script src="../js/works-data.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/work-noul.js"></script>
+  <script src="../js/work-dock.js"></script>
+</body>
+</html>

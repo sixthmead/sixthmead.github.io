@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Works — Atomik</title>
+  <meta name="description" content="UI/UX Designer Yi Jinkwang 의 작업 모음">
+  <!-- Pretendard 웹폰트 (메인 페이지와 동일) -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <!-- Montserrat 웹폰트: 사이트 영문 글꼴 (한글은 Pretendard) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+  <!-- 공통 스타일 먼저, 작업 목록 전용 스타일을 그 뒤에 -->
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/works.css">
+</head>
+<body class="works-page">
+
+  <!-- =========================================================
+       작업 목록 페이지 (메인의 Works 메뉴를 누르면 오는 곳)
+       - 데스크톱(1200px~): 카드가 3D 로 겹쳐 쌓이고, 일정 시간마다
+         맨 앞 카드가 아래로 떨어지며 다음 카드가 앞으로 나옴 (main.js 6번)
+       - 모바일·태블릿: 화면 폭 가득한 카드 목록 (이름 + 태그)
+
+       [썸네일 이미지 연동]
+       - 이미지 경로는 js/works-data.js 한 곳에서 관리 (메인 Works 카드와 같은 thumb 이미지)
+         - 그 파일에서 경로를 바꾸면 메인 카드 · 이 페이지(데스크톱 스택, 모바일 목록) 모두에 반영
+       - data-work-still: 썸네일이 영상이어도 이 페이지에서는 정지 이미지(thumbPoster)를 씀
+       - 경로가 비었거나 파일이 없으면 img 가 지워지고 카드마다 조금씩 다른 보라~핑크 그라데이션이 보임
+         (--angle: 그라데이션 방향, --tone: 색상을 살짝 돌리는 값)
+
+       [작업 추가·삭제]
+       - 데스크톱 스택(.works-stack)과 모바일 목록(.works-list) 두 곳에 같은 순서로 추가·삭제
+       - 스택 카드 수는 자유 (2개 이상), JS 가 개수를 알아서 셈
+       ========================================================= -->
+
+  <div class="page">
+
+  <!-- ========== 헤더 (상세 페이지와 같음) ========== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="header-left">
+        <a href="../index.html" class="logo">Yi Jinkwang</a>
+        <p class="header-greeting">Hi! Nice to meet you :)</p>
+      </div>
+
+      <nav class="desktop-nav" aria-label="주요 메뉴">
+        <ul>
+          <li><a href="index.html" class="text-link text-link--reversed" aria-current="page"><span class="text-link-label">Works</span></a></li>
+          <li><a href="../about.html" class="text-link text-link--reversed"><span class="text-link-label">About</span></a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="../index.html#contact" class="text-link header-cta">
+          <span class="text-link-label">Let's talk</span>
+          <span class="text-link-icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+            <svg viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+          </span>
+        </a>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="site-menu" aria-label="메뉴 열기">
+          <span class="menu-toggle-line"></span>
+          <span class="menu-toggle-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== 전체 화면 메뉴 (모바일) ========== -->
+  <div class="site-menu" id="site-menu" aria-hidden="true">
+    <div class="container site-menu-inner">
+      <nav aria-label="모바일 메뉴">
+        <ul class="menu-list">
+          <li style="--i: 0"><a href="index.html" aria-current="page"><span class="num">01</span> Works</a></li>
+          <li style="--i: 1"><a href="../about.html"><span class="num">02</span> About</a></li>
+          <li style="--i: 2" hidden><a href="../index.html#contact"><span class="num">03</span> Contact</a></li>
+        </ul>
+      </nav>
+      <div class="menu-footer" style="--i: 3">
+        <a href="../index.html#contact" class="arrow-link">
+          <span class="arrow-link-text">Start a project</span>
+          <span class="arrow-link-circle" aria-hidden="true">
+            <svg class="arrow-link-icon" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+            <svg class="arrow-link-icon arrow-link-icon--next" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+          </span>
+        </a>
+        <div class="menu-meta">
+          <a href="mailto:sixthmead@me.com" class="text-link"><span class="text-link-label">sixthmead@me.com</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="top">
+
+    <!-- ========== 데스크톱: 3D 카드 스택 (1200px~ 에서만 보임) ==========
+         - 카드 순서 = 등장 순서 (첫 번째 카드가 처음에 맨 앞, main.js 가 화면용으로 순서를 뒤집음)
+         - 카드 위치·움직임은 main.js 6번이 정함
+         - 화면 읽기 프로그램용으로 각 링크에 작업 이름을 aria-label 로 둠 -->
+    <section class="works-stage" aria-label="작업 목록">
+      <div class="works-stack">
+        <a class="works-card" href="project-01.html" aria-label="LG 에너지솔루션" style="--angle: 135deg; --tone: 0deg">
+          <img data-work-img="project-01:thumb" data-work-still alt="" onerror="this.remove()">
+        </a>
+        <a class="works-card" href="project-02.html" aria-label="Noul" style="--angle: 45deg; --tone: -25deg">
+          <img data-work-img="project-02:thumb" data-work-still alt="" onerror="this.remove()">
+        </a>
+        <a class="works-card" href="project-03.html" aria-label="GUT Morning" style="--angle: 225deg; --tone: 18deg">
+          <img data-work-img="project-03:thumb" data-work-still alt="" onerror="this.remove()">
+        </a>
+        <a class="works-card" href="project-04.html" aria-label="Goodiez" style="--angle: 315deg; --tone: -40deg">
+          <img data-work-img="project-04:thumb" data-work-still alt="" onerror="this.remove()">
+        </a>
+        <a class="works-card" href="project-05.html" aria-label="Good Neighbors" style="--angle: 180deg; --tone: 30deg">
+          <img data-work-img="project-05:thumb" data-work-still alt="" onerror="this.remove()">
+        </a>
+        <a class="works-card" href="project-07.html" aria-label="Hyundaitel 안면인식 도어폰" style="--angle: 90deg; --tone: -60deg">
+          <img data-work-img="project-07:thumb" data-work-still alt="" onerror="this.remove()">
+        </a>
+      </div>
+
+      <!-- 화면 맨 아래 작은 줄 -->
+      <div class="works-stage-bottom">
+        <p>Atomik <span class="works-stage-dash">—</span> Works</p>
+        <p>©<span class="js-year"></span></p>
+      </div>
+    </section>
+
+    <!-- ========== 모바일·태블릿: 카드 목록 (~1199px) ========== -->
+    <section class="works-mobile">
+      <div class="container works-mobile-header">
+        <p class="section-label"><span class="num">01</span> — Works</p>
+        <h1 class="works-mobile-title">Works</h1>
+        <p class="works-mobile-desc">문제를 정의하고 해결해 온 과정을 프로젝트별로 정리했습니다.</p>
+      </div>
+
+      <div class="works-list">
+        <a class="works-item" href="project-01.html" style="--angle: 135deg; --tone: 0deg">
+          <img data-work-img="project-01:thumb" data-work-still alt="" onerror="this.remove()">
+          <div class="works-item-info">
+            <h2 class="works-item-name">LG 에너지솔루션</h2>
+            <ul class="works-item-tags">
+              <li>Design PL</li>
+              <li>Web Design</li>
+              <li>Generative AI</li>
+            </ul>
+          </div>
+        </a>
+        <a class="works-item" href="project-02.html" style="--angle: 45deg; --tone: -25deg">
+          <img data-work-img="project-02:thumb" data-work-still alt="" onerror="this.remove()">
+          <div class="works-item-info">
+            <h2 class="works-item-name">Noul</h2>
+            <ul class="works-item-tags">
+              <li>Art Direction</li>
+              <li>Web Design</li>
+              <li>Responsive</li>
+            </ul>
+          </div>
+        </a>
+        <a class="works-item" href="project-03.html" style="--angle: 225deg; --tone: 18deg">
+          <img data-work-img="project-03:thumb" data-work-still alt="" onerror="this.remove()">
+          <div class="works-item-info">
+            <h2 class="works-item-name">GUT Morning</h2>
+            <ul class="works-item-tags">
+              <li>Mobile Web</li>
+              <li>UX/UI Design</li>
+              <li>Campaign</li>
+            </ul>
+          </div>
+        </a>
+        <a class="works-item" href="project-04.html" style="--angle: 315deg; --tone: -40deg">
+          <img data-work-img="project-04:thumb" data-work-still alt="" onerror="this.remove()">
+          <div class="works-item-info">
+            <h2 class="works-item-name">Goodiez</h2>
+            <ul class="works-item-tags">
+              <li>Mobile App</li>
+              <li>UX Architecture</li>
+              <li>Design System</li>
+            </ul>
+          </div>
+        </a>
+        <a class="works-item" href="project-05.html" style="--angle: 180deg; --tone: 30deg">
+          <img data-work-img="project-05:thumb" data-work-still alt="" onerror="this.remove()">
+          <div class="works-item-info">
+            <h2 class="works-item-name">Good Neighbors</h2>
+            <ul class="works-item-tags">
+              <li>Art Direction</li>
+              <li>Brand Guide</li>
+              <li>Web Design</li>
+            </ul>
+          </div>
+        </a>
+        <a class="works-item" href="project-07.html" style="--angle: 90deg; --tone: -60deg">
+          <img data-work-img="project-07:thumb" data-work-still alt="" onerror="this.remove()">
+          <div class="works-item-info">
+            <h2 class="works-item-name">Hyundaitel 안면인식 도어폰</h2>
+            <ul class="works-item-tags">
+              <li>GUI Design</li>
+              <li>UX Flow</li>
+              <li>Iconography</li>
+            </ul>
+          </div>
+        </a>
+      </div>
+
+      <!-- 목록 아래 짧은 컨택트 -->
+      <div class="container works-mobile-contact">
+        <h2 class="works-mobile-contact-title">함께 일해요</h2>
+        <a href="../index.html#contact" class="arrow-link">
+          <span class="arrow-link-text">Let's talk</span>
+          <span class="arrow-link-circle" aria-hidden="true">
+            <svg class="arrow-link-icon" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+            <svg class="arrow-link-icon arrow-link-icon--next" viewBox="0 0 16 16"><path d="M4 12L12 4M5 4h7v7" /></svg>
+          </span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer works-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Atomik 6ixthmead</p>
+    </div>
+  </footer>
+
+  </div>
+  <!-- /.page -->
+
+  <script src="../js/works-data.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
