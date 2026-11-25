@@ -213,9 +213,18 @@ h3 {
 }
 
 .logo {
+  display: inline-flex;
+  align-items: center;
   font-weight: 700;
   font-size: 1.125rem;
   letter-spacing: -0.5px;
+}
+
+/* SVG 로고 (images/logo.svg, 296×48 비율 유지) */
+.logo img {
+  display: block;
+  height: 1.25rem;  /* 모바일 20px */
+  width: auto;
 }
 
 /* 오른쪽 묶음: 텍스트 링크 + 메뉴 버튼 */
@@ -1431,6 +1440,11 @@ em, i, cite, dfn, var, address { font-style: normal; }
   .header-greeting,
   .header-actions .header-cta {
     font-size: min(0.97vw, 16px);
+  }
+
+  /* 데스크톱 로고 높이: 1440px 에서 22px → 최대 24px */
+  .logo img {
+    height: min(1.53vw, 24px);
   }
 
   /* 섹션 사이 간격들 (px → rem) */

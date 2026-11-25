@@ -1,0 +1,19 @@
+<svg width="296" height="48" viewBox="0 0 296 48" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Yi Jinkwang">
+<path d="M48 0L0 48H17.6L33.6 32V48H48V0Z" fill="#FF6B6B"/>
+<path d="M56 16H104V32H56V16Z" fill="url(#logo_g0)"/>
+<path d="M72 0H88V48H72V0Z" fill="#FF6B6B"/>
+<path d="M136 0C122.744 0 112 10.744 112 24C112 37.256 122.744 48 136 48C149.256 48 160 37.256 160 24C160 10.744 149.256 0 136 0ZM136 40C127.164 40 120 32.836 120 24C120 15.164 127.164 8 136 8C144.836 8 152 15.164 152 24C152 32.836 144.836 40 136 40Z" fill-rule="evenodd" clip-rule="evenodd" fill="#FF6B6B"/>
+<path d="M136 16C140.42 16 144 19.58 144 24C144 28.42 140.42 32 136 32C131.58 32 128 28.42 128 24C128 19.58 131.58 16 136 16Z" fill="url(#logo_g1)"/>
+<path d="M168 24H216V48H168V24Z" fill="#FF6B6B"/>
+<path d="M192 24H168V0" fill="#FF6B6B"/>
+<path d="M216 0V24H192" fill="#FF6B6B"/>
+<path d="M224 0H240V48H224V0Z" fill="#FF6B6B"/>
+<path d="M248 0H264V48H248V0Z" fill="#FF6B6B"/>
+<path d="M264 24V0H288" fill="url(#logo_g2)"/>
+<path d="M248 48V0L296 48" fill="#FF6B6B"/>
+<defs>
+<linearGradient id="logo_g0" x1="80" y1="16" x2="80" y2="32" gradientUnits="userSpaceOnUse"><stop stop-color="#A747F6"/><stop offset="1" stop-color="#E05EA0"/></linearGradient>
+<linearGradient id="logo_g1" x1="136" y1="16" x2="136" y2="32" gradientUnits="userSpaceOnUse"><stop stop-color="#A747F6"/><stop offset="1" stop-color="#E05EA0"/></linearGradient>
+<linearGradient id="logo_g2" x1="276" y1="0" x2="276" y2="24" gradientUnits="userSpaceOnUse"><stop stop-color="#A747F6"/><stop offset="1" stop-color="#E05EA0"/></linearGradient>
+</defs>
+</svg>
