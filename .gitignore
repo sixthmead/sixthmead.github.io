@@ -14,5 +14,11 @@
 _to_delete/
 *.tmp.html
 
+# 예전 버전·견본·복사본 페이지 (컴퓨터에만 보관, 사이트에는 안 올림)
+*-old.html
+*-prev.html
+*-template.html
+*복사본*
+
 # 내 컴퓨터 전용 Claude 설정 (미리보기 서버 경로 등)
 .claude/
