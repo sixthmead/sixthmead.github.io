@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deploy_retry.outputs.page_url || steps.deploy_first.outputs.page_url }}
     steps:
       # 1) 저장소 파일 가져오기
       - name: Checkout
@@ -44,6 +44,18 @@ jobs:
           path: public
 
       # 4) 사이트로 게시
+      #    올린 직후에는 GitHub이 파일을 아직 못 찾는 경우가 가끔 있어서,
+      #    첫 시도가 실패하면 30초 기다렸다가 한 번 더 게시해요.
       - name: Deploy
-        id: deployment
+        id: deploy_first
+        continue-on-error: true
+        uses: actions/deploy-pages@v5
+
+      - name: Wait before retry
+        if: steps.deploy_first.outcome == 'failure'
+        run: sleep 30
+
+      - name: Deploy (retry)
+        id: deploy_retry
+        if: steps.deploy_first.outcome == 'failure'
         uses: actions/deploy-pages@v5
