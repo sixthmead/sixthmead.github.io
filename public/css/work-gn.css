@@ -516,3 +516,49 @@
   .gn-sk-lnb span.on { width: auto; }
   .gn-sk-next { line-height: 1.5; }
 }
+
+/* ---------- 개요 안 사이트 구조 (Noul · LG 개요와 같은 형식) ----------
+   머리줄(라벨 + 합계) → 위쪽 선이 있는 4칸 → 범례 */
+.gn-map { margin-top: clamp(56px, 7vw, 96px); }
+.gn-map-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+  padding-bottom: 20px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--gm-line);
+}
+.gn-map-head .gm-mono { font-size: var(--t-caption); text-transform: uppercase; } /* Noul 과 같은 대문자 라벨 */
+.gn-map-total { font-size: var(--t-sm-r); color: var(--gm-muted); }
+.gn-map-total strong { color: var(--gm-ink); font-weight: 700; }
+.gn-map-total span { margin: 0 6px; opacity: 0.4; }
+.gn-map-cols {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px 16px;
+  list-style: none;
+}
+.gn-map-cols > li {
+  padding-top: 14px;
+  border-top: 2px solid rgba(46, 37, 34, 0.25); /* 배경 · 원본 파일 */
+}
+.gn-map-cols > li.is-core { border-color: var(--gm-green); } /* 자주 찾는 규칙 영역 */
+.gn-map-cols > li > .gm-mono { color: var(--gm-muted); font-size: var(--t-micro); }
+.gn-map-cols h4 { margin: 4px 0 10px; font-size: var(--t-body); font-weight: 700; letter-spacing: -0.5px; }
+.gn-map-cols ul { display: grid; gap: 4px; list-style: none; font-size: var(--t-caption-r); color: var(--gm-muted); }
+.gn-map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 28px;
+  color: var(--gm-muted);
+  font-size: var(--t-micro);
+}
+.gn-map-legend i { width: 18px; height: 2px; background: rgba(46, 37, 34, 0.25); }
+.gn-map-legend i.is-core { background: var(--gm-green); }
+.gn-map-legend i:not(:first-child) { margin-left: 16px; }
+@media (min-width: 1024px) {
+  .gn-map-cols { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}

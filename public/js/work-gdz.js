@@ -57,11 +57,8 @@
     const screen = fig.querySelector('.gm-phone-screen');
     const img = screen && screen.querySelector('img');
     if (!img || !img.naturalHeight) return;
-    // 하단에 고정한 내비게이션(.gm-nav)이 있으면 그 높이만큼 더 내려서
-    // 스크린샷 맨 아래 내용이 내비게이션에 가려지지 않게 함
-    const nav = screen.querySelector('.gm-nav');
-    const navH = nav ? nav.offsetHeight : 0;
-    const dist = Math.max(0, img.clientHeight + navH - screen.clientHeight);
+    // 이미지 맨 아래가 화면 맨 아래(하단 내비게이션의 아래 끝)에 닿는 지점에서 멈춤
+    const dist = Math.max(0, img.clientHeight - screen.clientHeight);
     const speed = fig.classList.contains('gm-phone--slow') ? 45 : 60; // px/s
     fig.style.setProperty('--dist', `${dist}px`);
     // 0.6 = 흐르는 속도 비율 (1 이면 원래 속도, 작을수록 느림)

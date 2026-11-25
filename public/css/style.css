@@ -1046,9 +1046,9 @@ body.menu-open {
   gap: 12px 20px;
 }
 
-/* 메일 주소: 강조 문장 크기(h2), 굵게. 올리면 .text-link 공통 그라데이션 밑줄 */
+/* 메일 주소: h3 크기(32), 굵게. 올리면 .text-link 공통 그라데이션 밑줄 */
 .contact-mail-link {
-  font-size: var(--t-h2);
+  font-size: var(--t-h3);
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.5px;

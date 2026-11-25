@@ -382,7 +382,7 @@
     <!-- ========== (05) 컨택트 (메인과 같은 모양, 스타일은 style.css) ========== -->
     <section class="section contact" id="contact">
       <div class="container contact-inner">
-        <p class="section-label contact-label"><span class="num">05</span> — Contact</p>
+        <h4 class="section-label sec-title contact-label">Contact</h4>
 
         <!-- 문장 아이콘 세트 (한 번만 정의 → 아래에서 <use> 로 불러 씀)
              48×48 격자 · 포인트 그라데이션 면 · 왼쪽 위 빛 반사 -->
@@ -426,21 +426,47 @@
         <h2 class="contact-title">
           사용자의 마음을 움직이는 <span class="nw">디자인<svg class="contact-icon contact-icon--smile" style="--i:0" aria-hidden="true"><use href="#ct-smile"/></svg>으로</span>
           브랜드와 사람<svg class="contact-icon contact-icon--planet" style="--i:1" aria-hidden="true"><use href="#ct-planet"/></svg> 사이를
-          자연스럽게 <span class="nw">이어 드립니다<svg class="contact-icon contact-icon--heart" style="--i:2" aria-hidden="true"><use href="#ct-heart"/></svg></span>
+          잇는 <span class="nw">디자이너입니다<svg class="contact-icon contact-icon--heart" style="--i:2" aria-hidden="true"><use href="#ct-heart"/></svg></span>
         </h2>
 
         <div class="contact-body">
           <p class="contact-desc">
-            새 프로젝트, 협업 제안, 가벼운 질문 모두 환영합니다.<br>
-            브랜드의 가치가 사용자에게 그대로 전해지는 디지털 경험을 함께 만들어요.
+            새로운 팀에서 함께 성장할 기회를 찾고 있습니다.<br>
+            브랜드의 가치가 사용자에게 온전히 전해지는 디지털 경험을 함께 만들어 가고 싶습니다.
           </p>
 
-          <ul class="contact-links">
-            <li><a href="mailto:sixthmead@me.com" class="text-link"><span class="text-link-label">sixthmead@me.com</span></a></li>
-            <li><a href="#" target="_blank" rel="noopener" class="text-link"><span class="text-link-label">Instagram</span></a></li>
-            <li><a href="#" target="_blank" rel="noopener" class="text-link"><span class="text-link-label">LinkedIn</span></a></li>
-            <li><a href="#" target="_blank" rel="noopener" class="text-link"><span class="text-link-label">GitHub</span></a></li>
+          <!-- 1) 메일: 이 영역의 주인공. 크게 + 옆에 복사 버튼
+                  (메일 앱이 없는 사람도 주소를 바로 가져갈 수 있게) -->
+          <div class="contact-mail">
+            <a href="mailto:sixthmead@me.com" class="text-link contact-mail-link"><span class="text-link-label">sixthmead@me.com</span></a>
+            <button type="button" class="contact-copy" data-copy="sixthmead@me.com" aria-label="메일 주소 복사">
+              <span class="contact-copy-text">Copy</span>
+            </button>
+            <!-- 복사 결과를 화면 읽기 프로그램에 알려 주는 자리 (눈에는 안 보임) -->
+            <span class="sr-only" aria-live="polite" data-copy-status></span>
+          </div>
+
+          <!-- 2) 지금 상태: 합류 가능 시기 + 회신 안내 (날짜·문구는 여기서 바꾸면 됨) -->
+          <ul class="contact-status">
+            <li><span class="contact-status-dot" aria-hidden="true"></span>협의 후 합류 가능</li>
+            <li>메일 주시면 빠르게 회신드리겠습니다</li>
           </ul>
+
+          <!-- 3) SNS: 목적별로 묶음 (왼쪽 작은 라벨 + 링크). 주소는 href="#" 를 실제 주소로 바꾸기 -->
+          <dl class="contact-sns">
+            <div class="contact-sns-row">
+              <dt>Work</dt>
+              <dd><a href="#" target="_blank" rel="noopener" class="text-link"><span class="text-link-label">Behance</span></a></dd>
+            </div>
+            <div class="contact-sns-row">
+              <dt>Career</dt>
+              <dd><a href="#" target="_blank" rel="noopener" class="text-link"><span class="text-link-label">LinkedIn</span></a></dd>
+            </div>
+            <div class="contact-sns-row">
+              <dt>Daily</dt>
+              <dd><a href="#" target="_blank" rel="noopener" class="text-link"><span class="text-link-label">Instagram</span></a></dd>
+            </div>
+          </dl>
         </div>
       </div>
     </section>

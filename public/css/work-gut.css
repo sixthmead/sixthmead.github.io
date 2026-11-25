@@ -991,7 +991,7 @@ html:not(.js) .gm-map-pill { transform: none; }
 }
 
 .gm-outcome small {
-  font-size: var(--t-sm);
+  font-size: var(--t-lead); /* 14 → 20 (약 1.4배) */
   font-weight: 500;
   letter-spacing: -0.5px;
   margin-left: 6px;
@@ -1222,3 +1222,24 @@ html:not(.js) .gm-map-pill { transform: none; }
 /* Outcome 아래 실제 서비스 링크: 데스크톱에서는 오른쪽 내용 칸에 맞춤 */
 .gm-visit { margin-top: clamp(48px, 6vw, 80px); }
 @media (min-width: 1024px) { .gm-visit { grid-column: 2; } }
+
+/* ---------- 화면 하단 내비게이션 고정 (GUT Morning Navigation.png, 384 × 96) ----------
+   - 스크린샷은 위아래로 흘러도 내비게이션은 화면 아래에 그대로 붙어 있음
+   - 화면 폭에 꽉 차게, 높이는 비율대로
+   - 스크롤은 이미지 맨 아래가 화면 맨 아래에 닿을 때 멈춤 (내비게이션 아래 끝과 맞춤) */
+.gut-theme .gm-phone-screen img.gm-nav { /* GUT 페이지 전용 (Goodiez 는 work-gdz.css 에서 따로 관리) */
+  /* 이미지 384 × 96 = 탭바 본체 360 × 72 + 둘레 그림자 여백 12px
+     → 탭바 본체가 화면 폭(360)에 딱 맞도록 384/360 배로 키우고, 여백 12px 만큼 왼쪽·아래로 빼냄
+     (margin 의 % 는 화면 폭 기준이라 12/360 = 3.3333%) */
+  position: absolute;
+  left: -3.3333%;
+  bottom: 0;
+  margin-bottom: -3.3333%;
+  width: 106.6667%;
+  max-width: none;
+  height: auto;
+  z-index: 2;           /* 스크린샷 위, 폰 프레임(::after) 아래 */
+  pointer-events: none;
+}
+/* 스크린샷에 걸린 흐르는 애니메이션이 내비게이션에는 걸리지 않게 */
+.gut-theme .gm-phone--scroll.is-play .gm-phone-screen img.gm-nav { animation: none; transform: none; }

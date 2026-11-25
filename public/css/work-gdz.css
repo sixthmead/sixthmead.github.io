@@ -251,7 +251,7 @@
    .gm-phone--scroll 화면 안에 넣은 Navigation.png (344 × 80, 화면 폭 360 기준)
    - 스크린샷은 위아래로 흘러도 내비게이션은 화면 아래에 그대로 붙어 있음
    - 폭 344/360 = 95.56%, 가운데 정렬
-   - 내비게이션 높이만큼 스크롤을 더 내리는 계산은 js/work-gdz.js 에서 */
+   - 스크롤은 이미지 맨 아래가 화면 맨 아래에 닿을 때 멈춤 (내비게이션 아래 끝과 맞춤, js/work-gdz.js) */
 .gdz-theme .gm-phone-screen img.gm-nav {
   position: absolute;
   left: 50%;

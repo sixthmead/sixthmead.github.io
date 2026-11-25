@@ -57,6 +57,7 @@
     const screen = fig.querySelector('.gm-phone-screen');
     const img = screen && screen.querySelector('img');
     if (!img || !img.naturalHeight) return;
+    // 이미지 맨 아래가 화면 맨 아래(하단 내비게이션의 아래 끝)에 닿는 지점에서 멈춤
     const dist = Math.max(0, img.clientHeight - screen.clientHeight);
     const speed = fig.classList.contains('gm-phone--slow') ? 45 : 60; // px/s
     fig.style.setProperty('--dist', `${dist}px`);
