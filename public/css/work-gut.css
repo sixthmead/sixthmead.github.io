@@ -1218,3 +1218,7 @@ html:not(.js) .gm-map-pill { transform: none; }
   .gm-map-meta p { display: none; }
   .gm-map-name { flex-basis: auto; font-size: var(--t-sm); }
 }
+
+/* Outcome 아래 실제 서비스 링크: 데스크톱에서는 오른쪽 내용 칸에 맞춤 */
+.gm-visit { margin-top: clamp(48px, 6vw, 80px); }
+@media (min-width: 1024px) { .gm-visit { grid-column: 2; } }

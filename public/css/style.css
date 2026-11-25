@@ -1482,3 +1482,21 @@ h4.section-label.sec-title {
 .sec-title .num { margin-right: 0.15em; }
 .sec-title .num, .sec-title .sec-dash { font-family: var(--font-sans); font-style: normal; }
 .sec-title .sec-dash { font-size: var(--fs-small); font-weight: 300; }
+
+/* 작업 카드 맨 아래 Services 캡슐 (About 클라이언트 캡슐과 같은 모양) */
+.work-tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+.work-tags li {
+  padding: 0.4em 0.9em;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  font-size: var(--t-body-r);
+  color: var(--color-muted);
+  white-space: nowrap;
+  line-height: 1.2;
+}

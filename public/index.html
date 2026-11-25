@@ -165,7 +165,7 @@
 
         <!-- 위쪽: 섹션 라벨 -->
         <div class="hero-top">
-          <p class="section-label"><span class="num">01</span> — Hello</p>
+          <h4 class="section-label sec-title"><span class="num">01</span> <span class="sec-dash">—</span> Hello</h4>
         </div>
 
         <!-- 헤드라인 영역: 왼쪽(헤드라인 + 버튼) · 오른쪽(소개 문단)
@@ -219,7 +219,7 @@
     <!-- 잠시 숨김: 내용은 그대로 두고 hidden 속성으로만 가림. 다시 쓰려면 hidden 을 지우면 됨 -->
     <section class="section services" id="services" hidden>
       <div class="container">
-        <p class="section-label"><span class="num">02</span> — Services</p>
+        <h4 class="section-label sec-title"><span class="num">02</span> <span class="sec-dash">—</span> Services</h4>
         <ul class="service-list">
           <li class="service-item">
             <span class="num">01</span>
@@ -246,54 +246,84 @@
     <section class="section works" id="works">
       <div class="container">
         <!-- 서비스 섹션을 숨겨서 화면 번호를 하나씩 당김 (Works~Contact: 02~06). 서비스를 다시 켜면 03~07 로 되돌리기 -->
-        <p class="section-label"><span class="num">02</span> — Works</p>
+        <h4 class="section-label sec-title"><span class="num">02</span> <span class="sec-dash">—</span> Works</h4>
         <div class="work-grid">
           <a class="work-card" href="work/project-01.html">
             <div class="work-thumb"><img data-work-img="project-01:thumb" alt="" onerror="this.remove()"></div>
             <div class="work-meta">
-              <span class="num">01</span>
-              <h3>LG 에너지솔루션</h3>
               <p>Corporate Website · 2025</p>
+              <h3>LG 에너지솔루션</h3>
+              <ul class="work-tags" aria-label="Services">
+                <li>Design Direction</li>
+                <li>UI/UX Design</li>
+                <li>Design System</li>
+                <li>Generative AI Visual</li>
+              </ul>
             </div>
           </a>
           <a class="work-card" href="work/project-02.html">
             <div class="work-thumb"><img data-work-img="project-02:thumb" alt="" onerror="this.remove()"></div>
             <div class="work-meta">
-              <span class="num">02</span>
-              <h3>Noul</h3>
               <p>Corporate Website · 2021</p>
+              <h3>Noul</h3>
+              <ul class="work-tags" aria-label="Services">
+                <li>Art Direction</li>
+                <li>Key Visual</li>
+                <li>Information Design</li>
+                <li>Responsive Design System</li>
+              </ul>
             </div>
           </a>
           <a class="work-card" href="work/project-03.html">
             <div class="work-thumb"><img data-work-img="project-03:thumb" alt="" onerror="this.remove()"></div>
             <div class="work-meta">
-              <span class="num">03</span>
-              <h3>GUT Morning</h3>
               <p>Mobile Web · 2024</p>
+              <h3>GUT Morning</h3>
+              <ul class="work-tags" aria-label="Services">
+                <li>Mobile GUI</li>
+                <li>Design System</li>
+                <li>Gamification</li>
+                <li>360 Base Grid</li>
+              </ul>
             </div>
           </a>
           <a class="work-card" href="work/project-04.html">
             <div class="work-thumb"><img data-work-img="project-04:thumb" alt="" onerror="this.remove()"></div>
             <div class="work-meta">
-              <span class="num">04</span>
-              <h3>Goodiez</h3>
               <p>Mobile App · 2023</p>
+              <h3>Goodiez</h3>
+              <ul class="work-tags" aria-label="Services">
+                <li>Product Design</li>
+                <li>UX Re-architecture</li>
+                <li>Design System</li>
+                <li>Light · Dark Theme</li>
+              </ul>
             </div>
           </a>
           <a class="work-card" href="work/project-05.html">
             <div class="work-thumb"><img data-work-img="project-05:thumb" alt="" onerror="this.remove()"></div>
             <div class="work-meta">
-              <span class="num">05</span>
-              <h3>Good Neighbors</h3>
               <p>Brand Guide Website · 2022</p>
+              <h3>Good Neighbors</h3>
+              <ul class="work-tags" aria-label="Services">
+                <li>Art Direction</li>
+                <li>Information Architecture</li>
+                <li>Rule Visualization</li>
+                <li>Responsive · Bilingual</li>
+              </ul>
             </div>
           </a>
           <a class="work-card" href="work/project-07.html">
             <div class="work-thumb"><img data-work-img="project-07:thumb" alt="" onerror="this.remove()"></div>
             <div class="work-meta">
-              <span class="num">07</span>
-              <h3>Hyundaitel Face ID</h3>
               <p>Doorphone GUI · 2023</p>
+              <h3>Hyundaitel 안면인식 도어폰</h3>
+              <ul class="work-tags" aria-label="Services">
+                <li>GUI Design</li>
+                <li>UX Flow</li>
+                <li>State Design</li>
+                <li>Iconography</li>
+              </ul>
             </div>
           </a>
         </div>
@@ -303,7 +333,7 @@
     <!-- ========== (04) 미션 ========== -->
     <section class="section mission" id="mission" hidden> <!-- 지금은 숨김: hidden 을 지우면 다시 보임 -->
       <div class="container">
-        <p class="section-label"><span class="num">03</span> — Mission</p>
+        <h4 class="section-label sec-title"><span class="num">03</span> <span class="sec-dash">—</span> Mission</h4>
         <p class="mission-text">
           내가 일하는 이유와 지향하는 가치를 담은 <em>임시 미션 문장</em>이 들어갑니다.
         </p>
@@ -313,7 +343,7 @@
     <!-- ========== (05) 강점 3개 ========== -->
     <section class="section strengths" id="strengths" hidden> <!-- 지금은 숨김: hidden 을 지우면 다시 보임 -->
       <div class="container">
-        <p class="section-label"><span class="num">04</span> — Strengths</p>
+        <h4 class="section-label sec-title"><span class="num">04</span> <span class="sec-dash">—</span> Strengths</h4>
         <ul class="strength-list">
           <li class="strength-item">
             <span class="num">01</span>
@@ -339,7 +369,7 @@
          컨택트 번호를 (06) 으로 되돌리면 됨 -->
     <section class="section about" id="about" hidden>
       <div class="container about-inner">
-        <p class="section-label"><span class="num">05</span> — About</p>
+        <h4 class="section-label sec-title"><span class="num">05</span> <span class="sec-dash">—</span> About</h4>
         <div class="about-photo"></div>
         <div class="about-text">
           <h2>안녕하세요, 임시 이름입니다.</h2>
@@ -352,7 +382,7 @@
     <section class="section contact" id="contact">
       <div class="container contact-inner">
         <!-- 라벨: 데스크톱에선 큰 문장 첫 줄의 들여쓴 자리에 겹쳐 놓임 -->
-        <p class="section-label contact-label">Contact</p>
+        <h4 class="section-label sec-title contact-label">Contact</h4>
 
         <!-- 큰 문장: 첫 줄만 들여쓰기, 중간중간 선 아이콘 -->
         <!-- 문장 아이콘 세트 (한 번만 정의 → 아래에서 <use> 로 불러 씀)
