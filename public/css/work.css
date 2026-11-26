@@ -258,27 +258,27 @@
    - 링크 주소(href)로 프로젝트를 구분해 색 변수를 바꿔 줌 → 원 버튼 · 올렸을 때 제목 그라데이션에 함께 적용
    - 값은 각 프로젝트 CSS(work-lges / noul / gut / gdz / gn / hdt)의 --gradient-accent 와 같음
    - 프로젝트 색을 바꾸면 여기도 같이 바꾸기 */
-.work-next-link[href="project-01.html"] { /* LG 에너지솔루션 */
+.work-next-link[href="lg-energy-solution.html"] { /* LG 에너지솔루션 */
   --color-accent: #33B0C6;
   --gradient-accent: linear-gradient(100deg, #2B8FD8 0%, #33B0C6 45%, #13BD99 100%);
 }
-.work-next-link[href="project-02.html"] { /* Noul */
+.work-next-link[href="noul.html"] { /* Noul */
   --color-accent: #EA5504;
   --gradient-accent: linear-gradient(100deg, #EA5504 0%, #F27A1F 45%, #F5A623 100%);
 }
-.work-next-link[href="project-03.html"] { /* GUT Morning */
+.work-next-link[href="gut-morning.html"] { /* GUT Morning */
   --color-accent: #169E4A;
   --gradient-accent: linear-gradient(120deg, #169E4A 0%, #3DBE6B 50%, #F79C22 100%);
 }
-.work-next-link[href="project-04.html"] { /* Goodiez */
+.work-next-link[href="goodiez.html"] { /* Goodiez */
   --color-accent: #6432AF;
   --gradient-accent: linear-gradient(120deg, #6432AF 0%, #745BC0 50%, #9986D0 100%);
 }
-.work-next-link[href="project-05.html"] { /* Good Neighbors */
+.work-next-link[href="good-neighbors.html"] { /* Good Neighbors */
   --color-accent: #89A230;
   --gradient-accent: linear-gradient(120deg, #556A1F 0%, #89A230 60%, #D5DAB4 100%);
 }
-.work-next-link[href="project-07.html"] { /* Hyundaitel */
+.work-next-link[href="hyundaitel.html"] { /* Hyundaitel */
   --color-accent: #0A78B8;
   --gradient-accent: linear-gradient(120deg, #00A9C7 0%, #1D6FD0 55%, #1D3FBF 100%);
 }

@@ -1,5 +1,5 @@
 /* =========================================================
-   Good Neighbors 케이스 스터디 (project-05.html) 전용 인터랙션
+   Good Neighbors 케이스 스터디 (good-neighbors.html) 전용 인터랙션
    - work-gdz.js 와 같은 구조 + 이 작업에만 있는 것(컬러 코드 복사 · 서체 굵기 전환)
    1) [data-reveal]       화면에 들어오면 .is-in → 아래에서 올라오며 나타남
    2) [data-scrub]        큰 문장을 단어로 나눠 스크롤에 따라 하나씩 진해짐

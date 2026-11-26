@@ -1,5 +1,5 @@
 /* =========================================================
-   GUT Morning 케이스 스터디 (project-03.html) 전용 인터랙션
+   GUT Morning 케이스 스터디 (gut-morning.html) 전용 인터랙션
    1) [data-reveal]        화면에 들어오면 .is-in → 아래에서 올라오며 나타남
    2) [data-scrub]         큰 문장을 단어로 나눠 스크롤에 따라 하나씩 진해짐
    3) .gm-phone--scroll    긴 화면을 폰 프레임 안에서 위아래로 천천히 스크롤
