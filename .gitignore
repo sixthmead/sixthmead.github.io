@@ -20,5 +20,9 @@ _to_delete/
 *-template.html
 *복사본*
 
+# PDF 포트폴리오 결과물과 만들 때 쓴 작업 폴더 (컴퓨터에만 보관)
+Claude outputs/
+_pdf_build/
+
 # 내 컴퓨터 전용 Claude 설정 (미리보기 서버 경로 등)
 .claude/
