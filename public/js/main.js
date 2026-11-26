@@ -223,7 +223,7 @@ document.querySelectorAll('[data-split]').forEach((title) => {
    [움직임 순서]
    1) 펼치기 (1.2초) : 모든 카드가 자기 자리로 이동, 맨 앞 카드부터 0.1초 간격으로 출발
                         (페이지를 처음 열면 한 자리에 겹쳐 있던 카드가 이렇게 펼쳐짐)
-   2) 0.5초 멈춤
+   2) 1.8초 멈춤 : 맨 앞 카드를 보고 누를 수 있는 시간 (마우스를 올려 두면 뗄 때까지 계속 멈춤)
    3) 떨어지기 (0.7초) : 맨 앞 카드가 카드 높이의 150% 만큼 아래로 빠르게 떨어짐
    4) 떨어진 카드를 HTML 맨 앞(= 맨 뒤 카드)으로 옮기고 다시 1) 부터
       → 떨어진 카드는 다른 카드들 뒤로 지나가며 맨 뒤 자리로 올라감
@@ -234,7 +234,7 @@ const worksStack = document.querySelector('.works-stack');
 if (worksStack) {
   const SPREAD_TIME = 1200;   // 펼치기: 카드 한 장이 이동하는 시간
   const STAGGER = 100;        // 펼치기: 카드끼리 출발 간격
-  const HOLD_TIME = 500;      // 펼친 뒤 멈춰 있는 시간
+  const HOLD_TIME = 1800;     // 펼친 뒤 멈춰 있는 시간 (맨 앞 카드를 보고 누를 수 있게)
   const DROP_TIME = 700;      // 떨어지는 시간
   const EASE_IN_OUT = 'cubic-bezier(0.45, 0, 0.55, 1)';   // 천천히 출발 → 빠르게 → 천천히 도착
   const EASE_IN = 'cubic-bezier(0.11, 0, 0.5, 0)';        // 천천히 출발해서 점점 빠르게
@@ -324,11 +324,17 @@ if (worksStack) {
     await wait(SPREAD_TIME + last * STAGGER);
   };
 
+  // 맨 앞 카드 위에 마우스가 있는지 (있는 동안은 떨어뜨리지 않고 기다림)
+  let hovered = null;
+  worksStack.addEventListener('pointerover', (e) => { hovered = e.target.closest('.works-card'); });
+  worksStack.addEventListener('pointerleave', () => { hovered = null; });
+
   // 2)~4) 멈췄다가 맨 앞 카드 떨어뜨리고 맨 뒤로 보내기
   const drop = async () => {
-    await wait(HOLD_TIME);
     const cards = getCards();
     const front = cards[cards.length - 1];
+    await wait(HOLD_TIME);
+    while (hovered === front) await wait(200);       // 마우스를 올려 두면 뗄 때까지 멈춤
     moveCard(front, Number(front.dataset.y) + 150, Number(front.dataset.z), {
       duration: DROP_TIME,
       easing: EASE_IN,

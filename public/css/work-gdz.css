@@ -45,54 +45,64 @@
 .gdz-theme .gm-statement .w.on:nth-child(n+12):nth-child(-n+13) { color: var(--gm-ink); }
 .gdz-theme .gm-statement .w.on:nth-child(n+14):nth-child(-n+15) { color: var(--gm-green); }
 
-/* ---------- 1. 문제 → 화면의 답 (3줄 매트릭스) ---------- */
+/* ---------- 1. 문제 → 화면의 답 (3줄 매트릭스) ----------
+   Noul(work-noul.css .nl-matrix)과 같은 디자인
+   - 항목마다 흰 카드 (모서리 휴대폰 12px · 768px~ 20px, 카드 사이 16px)
+   - 번호 라벨은 질문 위, 브랜드 색 / 화살표 28px (휴대폰: 아래 방향 · 768px~: 오른쪽, 3칸 배치)
+   - 차이 하나: Goodiez 의 강조(b)는 문장 중간에 있어서 줄을 떼지 않고 문장 안에 둠 */
 .gz-matrix {
+  display: grid;
+  gap: 16px;
   list-style: none;
-  border-top: 1px solid var(--gm-line);
 }
 
 .gz-matrix li {
   display: grid;
-  gap: 12px;
-  padding: 28px 0;
-  border-bottom: 1px solid var(--gm-line);
+  gap: 16px;
+  padding: clamp(24px, 3vw, 36px);
+  border-radius: 12px;            /* 휴대폰 12px → 768px~ 20px (Noul 과 같음) */
+  background: #fff;
 }
 
 .gz-matrix .gz-q {
-  display: flex;
-  gap: 12px;
-  align-items: baseline;
-  font-size: var(--t-body-lg);
-  font-weight: 600;
+  font-size: var(--t-lead);
+  font-weight: 500;
+  line-height: var(--lh-body);
   letter-spacing: -0.5px;
   word-break: keep-all;
 }
 
-.gz-matrix .gz-q .gm-mono { color: var(--gm-muted); flex: none; }
+.gz-matrix .gz-q .gm-mono {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--gm-green);
+}
 
 .gz-matrix .gz-a {
   color: var(--gm-muted);
-  line-height: 1.7;
+  line-height: var(--lh-body);
   word-break: keep-all;
 }
 
-.gz-matrix .gz-a b { color: var(--gm-green); font-weight: 700; /* 강조 굵기 통일 */ }
+.gz-matrix .gz-a b { color: var(--gm-ink); font-weight: 700; /* 강조 굵기 통일 */ }
 
 .gz-matrix .gz-arrow {
-  display: none;
-  width: 20px;
+  width: 28px;
+  height: 28px;
   fill: none;
   stroke: var(--gm-green);
-  stroke-width: 1.6;
+  stroke-width: 1.5;
+  transform: rotate(90deg);       /* 휴대폰: 질문 → 아래 답 */
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .gz-matrix li {
-    grid-template-columns: 1fr 40px 1.3fr;
+    grid-template-columns: 1fr 40px 1fr;
     align-items: center;
     gap: 32px;
+    border-radius: 20px;
   }
-  .gz-matrix .gz-arrow { display: block; }
+  .gz-matrix .gz-arrow { transform: none; justify-self: center; }
 }
 
 /* ---------- 2. 핵심 거래 루프 (번호 달린 흐름) ---------- */

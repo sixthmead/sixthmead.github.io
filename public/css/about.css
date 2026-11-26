@@ -28,7 +28,7 @@
 .ab-section-desc {
   /* 폭 제한 없음: 데스크톱에서 한 줄로 */
   font-size: var(--t-body-lg-r);
-  line-height: 1.55;
+  line-height: var(--lh-body);
   color: var(--color-muted);
 }
 
@@ -91,7 +91,7 @@
   gap: 1em;
   max-width: 34em;
   font-size: var(--t-body-lg-r);
-  line-height: 1.6;
+  line-height: var(--lh-body);
 }
 
 .ab-hero-desc p + p {
@@ -214,7 +214,7 @@
 }
 
 .ab-service-title {
-  font-size: var(--t-h1);
+  font-size: var(--t-h2);   /* 48px (모바일 28px) */
   font-weight: 700; /* 큰 제목 굵기 통일 */
   line-height: 1.05;
   letter-spacing: -0.5px;
@@ -223,7 +223,7 @@
 .ab-service-desc {
   max-width: 32em;
   font-size: var(--t-body-lg-r);
-  line-height: 1.6;
+  line-height: var(--lh-body);
   color: var(--color-muted);
 }
 

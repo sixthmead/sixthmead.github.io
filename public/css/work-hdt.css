@@ -109,7 +109,7 @@
 .ht-hero-desc {
   max-width: 34em;
   font-size: var(--t-body-r);
-  line-height: 1.75;
+  line-height: var(--lh-body);
   color: var(--ht-muted);
   word-break: keep-all;
 }
@@ -203,7 +203,7 @@
 .ht-text {
   max-width: 34em;
   font-size: var(--t-body-r);
-  line-height: 1.8;
+  line-height: var(--lh-body);
   color: var(--ht-muted);
   word-break: keep-all;
   margin-top: 24px;
@@ -216,7 +216,7 @@
   margin-top: 16px;
   color: var(--ht-muted);
   font-size: var(--t-caption);
-  line-height: 1.6;
+  line-height: var(--lh-body);
   word-break: keep-all;
 }
 
@@ -264,7 +264,7 @@
 .ht-columns p,
 .ht-guide-text p {
   font-size: var(--t-body-r);
-  line-height: 1.8;
+  line-height: var(--lh-body);
   color: var(--ht-muted);
   word-break: keep-all;
 }
@@ -288,7 +288,7 @@
 
 .ht-principles .ht-mono { color: var(--ht-cyan-d); padding-top: 4px; }
 .ht-principles h3 { font-size: var(--t-body-lg); font-weight: 700; /* 강조 굵기 통일 */ letter-spacing: -0.5px; margin-bottom: 6px; }
-.ht-principles p { font-size: var(--t-body-r); line-height: 1.7; color: var(--ht-muted); word-break: keep-all; }
+.ht-principles p { font-size: var(--t-body-r); line-height: var(--lh-body); color: var(--ht-muted); word-break: keep-all; }
 
 .ht-visual {
   margin: 0;
@@ -634,7 +634,7 @@
   grid-column: 2;
   font-style: normal;
   font-size: var(--t-caption-r);
-  line-height: 1.55;
+  line-height: var(--lh-body);
   color: rgba(255, 255, 255, 0.55);
   max-height: 0;
   overflow: hidden;
@@ -727,7 +727,7 @@
 }
 
 .ht-states h3 { font-size: var(--t-body); font-weight: 700; /* 강조 굵기 통일 */ letter-spacing: -0.5px; margin-bottom: 4px; }
-.ht-states p { font-size: var(--t-caption-r); line-height: 1.65; color: var(--ht-muted); word-break: keep-all; }
+.ht-states p { font-size: var(--t-caption-r); line-height: var(--lh-body); color: var(--ht-muted); word-break: keep-all; }
 
 /* 상태 기호 (CSS 로 그린 작은 견본) */
 .k {
@@ -805,7 +805,7 @@
 .ht-msg-desc {
   margin: 20px 0 32px;
   font-size: var(--t-body-r);
-  line-height: 1.7;
+  line-height: var(--lh-body);
   color: rgba(255, 255, 255, 0.65);
   word-break: keep-all;
   min-height: 1.7em;
@@ -814,12 +814,12 @@
 .ht-msg-grid {
   list-style: none;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  grid-template-columns: repeat(3, 1fr);   /* 휴대폰도 3열 (태블릿 3열 · 데스크톱 6열) */
+  gap: 8px;
 }
 
 .ht-msg-grid li {
-  border-radius: 10px;
+  border-radius: 8px;
   overflow: hidden;
   background: var(--ht-navy);
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
@@ -870,7 +870,7 @@
 .ht-outcome p {
   max-width: 34em;
   font-size: var(--t-body-r);
-  line-height: 1.8;
+  line-height: var(--lh-body);
   color: var(--ht-muted);
   word-break: keep-all;
 }

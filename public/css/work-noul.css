@@ -92,7 +92,7 @@
   margin-top: 28px;
   max-width: 36em;
   font-size: var(--t-body-lg-r);
-  line-height: 1.75;
+  line-height: var(--lh-body);
   color: var(--nl-muted);
 }
 .nl-statement {
@@ -109,7 +109,7 @@
   gap: 32px;
   margin-top: clamp(48px, 6vw, 80px);
   color: var(--nl-muted);
-  line-height: 1.75;
+  line-height: var(--lh-body);
 }
 .nl-col-title {
   margin-bottom: 12px;
@@ -202,7 +202,7 @@
 .nl-q {
   font-size: var(--t-lead);
   font-weight: 500;
-  line-height: 1.45;
+  line-height: var(--lh-body);
   letter-spacing: -0.5px;
 }
 .nl-q .nl-mono { display: block; margin-bottom: 10px; color: var(--nl-orange); }
@@ -214,7 +214,7 @@
   stroke-width: 1.5;
   transform: rotate(90deg);
 }
-.nl-a { color: var(--nl-muted); line-height: 1.75; }
+.nl-a { color: var(--nl-muted); line-height: var(--lh-body); }
 .nl-a b { display: block; margin-bottom: 4px; color: var(--nl-ink); font-weight: 700; /* 강조 굵기 통일 */ }
 
 /* ---------- 6. 다크 챕터 — 키 비주얼 ---------- */
@@ -252,11 +252,11 @@
   margin-top: clamp(40px, 5vw, 72px);
   max-width: 40em;
   color: rgba(255, 255, 255, 0.66);
-  line-height: 1.75;
+  line-height: var(--lh-body);
 }
 .nl-dark-lead {
   font-size: calc(var(--t-h4) * 0.8); /* 보통 굵기 → 80% */
-  line-height: 1.45;
+  line-height: var(--lh-body);
   color: #fff;
   letter-spacing: -0.5px;
 }
@@ -342,7 +342,7 @@
   border-top: 1px solid rgba(255, 255, 255, 0.14);
 }
 .nl-spec dt { margin-bottom: 8px; color: var(--nl-amber); font-weight: 700; } /* 라벨 Bold */
-.nl-spec dd { color: rgba(255, 255, 255, 0.72); line-height: 1.65; font-size: var(--t-body-r); }
+.nl-spec dd { color: rgba(255, 255, 255, 0.72); line-height: var(--lh-body); font-size: var(--t-body-r); }
 
 /* ---------- 7. 브라우저 프레임 · 스크롤 무대 ---------- */
 .nl-browser {
@@ -404,7 +404,7 @@
   font-size: var(--t-micro);
   font-weight: 700; /* 배지 글자 Bold */
 }
-.nl-notes p { color: var(--nl-muted); line-height: 1.7; }
+.nl-notes p { color: var(--nl-muted); line-height: var(--lh-body); }
 .nl-notes b { display: block; margin-bottom: 4px; color: var(--nl-ink); font-weight: 700; /* 강조 굵기 통일 */ }
 
 /* ---------- 8. 분해도 탭 ---------- */
@@ -537,15 +537,16 @@
 }
 .nl-proof-label { color: var(--nl-pure-sky); font-size: var(--t-micro); }
 .nl-proof-card h3 { margin: 10px 0 28px; font-size: var(--t-lead); font-weight: 700; /* 강조 굵기 통일 */ letter-spacing: -0.5px; }
-.nl-proof-note { margin-top: 24px; font-size: var(--t-sm-r); line-height: 1.7; color: rgba(255, 255, 255, 0.6); }
+.nl-proof-note { margin-top: 24px; font-size: var(--t-sm-r); line-height: var(--lh-body); color: rgba(255, 255, 255, 0.6); }
 
 .nl-bars-group { margin: 20px 0 8px; font-size: var(--t-caption-r); color: rgba(255, 255, 255, 0.6); }
 .nl-bars-group:first-child { margin-top: 0; }
 .nl-bar {
   position: relative;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;   /* 수치를 양 끝이 아니라 라벨 바로 옆에 */
   align-items: center;
+  gap: 8px;
   height: 30px;
   margin-bottom: 6px;
   padding: 0 12px;
@@ -553,25 +554,30 @@
   background: rgba(255, 255, 255, 0.08);
   overflow: hidden;
   font-size: var(--t-caption-r);
+  color: var(--nl-navy);         /* 글자는 채워진 막대(하늘색 · 흰색) 위에 → 진한 네이비로 대비 확보 */
   isolation: isolate;
 }
 .nl-bar::before {
   content: "";
   position: absolute;
-  inset: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 0;                      /* 폭을 키우는 방식 → 끝이 늘어나지 않고 항상 반원 */
   z-index: -1;
   border-radius: inherit;
-  background: #fff;
-  transform-origin: left;
-  transform: scaleX(0);
-  transition: transform 1.6s var(--nl-ease) .2s;
+  background: rgba(255, 255, 255, 0.88);
+  transition: width 1.6s var(--nl-ease) .2s;
 }
 .nl-bar.is-mi::before { background: var(--nl-pure-sky); }
-.nl-bar:not(.is-mi) { color: var(--nl-navy); }
-.nl-bar:not(.is-mi) b { color: rgba(255,255,255,.8); }
 .nl-bar b { font-weight: 700; /* 강조 굵기 통일 */ font-variant-numeric: tabular-nums; }
-.is-in .nl-bar::before { transform: scaleX(calc(var(--v) / 100)); }
-.no-js .nl-bar::before { transform: scaleX(calc(var(--v) / 100)); }
+
+/* 글자: 막대가 거의 다 차오른 뒤 나타남 (채워지기 전 어두운 바탕에선 네이비 글자가 안 보이므로) */
+.nl-bar > * { opacity: 0; transition: opacity 0.5s ease 1.2s; }
+.is-in .nl-bar > *,
+.no-js .nl-bar > * { opacity: 1; }
+.is-in .nl-bar::before,
+.no-js .nl-bar::before { width: calc(var(--v) * 1%); }
 
 .nl-donut-wrap { display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: center; }
 .nl-donut {
@@ -626,7 +632,7 @@
 .nl-quote p {
   font-size: var(--t-h3);
   font-weight: 500;
-  line-height: 1.4;
+  line-height: var(--lh-body);
   letter-spacing: -0.5px;
 }
 .nl-quote footer { margin-top: 24px; font-size: var(--t-micro); color: rgba(255,255,255,.8); text-transform: none; }
@@ -647,7 +653,7 @@
   background: var(--nl-apricot);
 }
 .nl-ds-label { margin-bottom: 24px; color: var(--nl-muted); font-size: var(--t-micro); }
-.nl-ds-note { margin-top: 24px; font-size: var(--t-sm-r); line-height: 1.7; color: var(--nl-muted); }
+.nl-ds-note { margin-top: 24px; font-size: var(--t-sm-r); line-height: var(--lh-body); color: var(--nl-muted); }
 
 .nl-swatch-hero {
   display: grid;
@@ -802,13 +808,13 @@
   font-variant-numeric: tabular-nums;
 }
 .nl-stats small { margin-left: 4px; font-size: 0.3em; letter-spacing: -0.5px; color: var(--nl-orange); }
-.nl-stats li > span { font-size: var(--t-sm-r); line-height: 1.55; color: var(--nl-muted); }
+.nl-stats li > span { font-size: var(--t-sm-r); line-height: var(--lh-body); color: var(--nl-muted); }
 .nl-reflect {
   display: grid;
   gap: 32px;
   margin-top: clamp(56px, 7vw, 96px);
   color: var(--nl-muted);
-  line-height: 1.75;
+  line-height: var(--lh-body);
 }
 .nl-visit { margin-top: clamp(48px, 6vw, 80px); }
 

@@ -532,7 +532,7 @@
 
 .work-facts dd {
   font-size: var(--t-body-r);
-  line-height: 1.45;
+  line-height: var(--lh-body);
   word-break: keep-all;
 }
 
@@ -541,7 +541,7 @@
   max-width: 40em;
   color: var(--color-muted);
   font-size: var(--t-body-lg-r);
-  line-height: 1.75;
+  line-height: var(--lh-body);
   word-break: keep-all;
 }
 
@@ -606,7 +606,7 @@
 .work-point p {
   color: var(--color-muted);
   font-size: var(--t-sm-r);
-  line-height: 1.6;
+  line-height: var(--lh-body);
   word-break: keep-all;
 }
 
@@ -647,7 +647,7 @@
   margin-top: 40px;
   color: rgba(255, 255, 255, 0.65);
   font-size: var(--t-body-lg-r);
-  line-height: 1.75;
+  line-height: var(--lh-body);
   word-break: keep-all;
 }
 
@@ -823,7 +823,7 @@
   margin-top: 24px;
   font-size: var(--t-lead);   /* 17px ~ 22px */
   font-weight: 500;
-  line-height: 1.5;
+  line-height: var(--lh-body);
   letter-spacing: -0.5px;
   word-break: keep-all;
 }
@@ -883,7 +883,7 @@
 
 .case-facts dd {
   font-size: var(--t-body-r);
-  line-height: 1.45;
+  line-height: var(--lh-body);
   word-break: keep-all;
 }
 
@@ -896,7 +896,7 @@
   display: grid;
   gap: 4px;
   font-size: var(--t-body-r);
-  line-height: 1.45;
+  line-height: var(--lh-body);
 }
 
 /* 태블릿 (768px~): 커버를 조금 더 가로로 */
@@ -965,7 +965,7 @@
   max-width: 34em;
   color: rgba(10, 10, 10, 0.7);
   font-size: var(--t-body-lg-r);
-  line-height: 1.7;
+  line-height: var(--lh-body);
 }
 
 /* 정보 표: 선 없이, 라벨은 작은 고딕 */
@@ -1055,7 +1055,7 @@
   margin-top: 40px; /* 위 이미지·패널과의 여백 (20 → 40) */
   color: rgba(10, 10, 10, 0.7);
   font-size: var(--t-body-lg-r);
-  line-height: 1.7;
+  line-height: var(--lh-body);
 }
 
 /* project-01 짧은 글은 오른쪽 끝까지 넓힘 (줄바꿈은 HTML 의 <br> 로) */
@@ -1156,3 +1156,54 @@
   font-size: var(--t-h1);
 }
 
+
+/* ---------- 15. 모바일에서 생략하는 내용 ----------
+   Information Architecture(사이트 구조표)는 칸이 많아 휴대폰에서 길고 읽기 어려움
+   → 767px 이하에서는 통째로 숨김 (01 LG · 02 Noul · 05 Good Neighbors)
+   - 768px 이상(태블릿 · 데스크톱)에서는 그대로 보임 */
+@media (max-width: 767px) {
+  .work-page .lg-map,
+  .work-page .nl-map,
+  .work-page .gn-map {
+    display: none;
+  }
+}
+
+/* ---------- 16. 흐르는 키워드 띠 (01 LG · 05 Good Neighbors) ----------
+   Noul(work-noul.css 3번 .nl-marquee)과 같은 디자인 — 점 색만 페이지마다 다름
+   - 같은 키워드 묶음을 두 번 적어 두고 절반(-50%)만큼 흘려 끊김 없이 반복
+   - '동작 줄이기'를 켜면 멈춤 */
+.work-marquee {
+  margin-top: clamp(64px, 8vw, 120px);
+  padding: 22px 0;
+  border-block: 1px solid var(--color-line);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.work-marquee-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 40px;
+  animation: work-marquee 36s linear infinite;
+  font-size: clamp(1.25rem, 2.4vw, 2rem);
+  font-weight: 500;
+  letter-spacing: -0.5px;
+}
+
+.work-marquee-track i {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 100%, var(--mq-dot-a), var(--mq-dot-b) 70%);
+}
+
+.work-marquee--lg { --mq-dot-a: #33B0C6; --mq-dot-b: #9988DF; }   /* LG 청록 → 보라 */
+.work-marquee--gn { --mq-dot-a: #D5DAB4; --mq-dot-b: #89A230; }   /* GN 연두 → 초록 */
+
+@keyframes work-marquee { to { transform: translateX(-50%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .work-marquee-track { animation: none; }
+}

@@ -4,6 +4,8 @@
    1) [data-reveal]      화면에 들어오면 .is-in → 살짝 올라오며 나타남
    2) [data-autoscroll]  브라우저 목업이 지나가는 동안 안의 메인 페이지가 위로 흐름
    3) [data-swatch]      아이콘 컬러 버튼 → 같은 순서의 이미지로 교체 (좌우 화살표로도 이동)
+   6) [data-construct]   아이콘 설계 판: 처음 보일 때 그려지고, 마우스를 올리면 다시 그려짐
+   7) .lg-prims          기본 도형 5개: 흰 박스 안 도형이 로고처럼 접혔다 펼쳐지며 등장, 마우스를 올리면 다시 재생
    - 하단 챕터 독은 공통 work-dock.js 가 맡음
    ========================================================= */
 (() => {
@@ -107,6 +109,114 @@
     stageUpdate();
   }
 
+  /* 6) [data-construct] 아이콘 설계 판: 화면에 들어오면 그려지고, 마우스를 올리면 다시 그려짐
+     - 순서·움직임은 work-lges.css 8-0-1, 여기서는 재생 시작과 선 길이만 맡음 */
+  const board = document.querySelector('[data-construct]');
+  if (board && !reduce) {
+    const svg = board.querySelector('.lg-cx');
+    const lines = [...board.querySelectorAll('.lg-cx-grid path, .lg-cx-key > *')];
+    const gridCount = board.querySelectorAll('.lg-cx-grid path').length;
+    const PLAY_TIME = 3300;          // 마지막 숫자가 다 나타날 때까지 (ms)
+    let playing = false;
+
+    // 선마다 화면 길이(--len)와 지연(--d) 넣기 — 선 굵기가 화면 기준이라 길이도 화면 px 로 맞춤
+    const measure = () => {
+      const scale = svg.getScreenCTM().a;
+      lines.forEach((el, i) => {
+        el.style.setProperty('--len', `${(el.getTotalLength() * scale + 2).toFixed(1)}px`);
+        // 격자: 0.05초 간격 / 키라인: 격자 뒤 0.45초부터 0.1초 간격
+        const d = i < gridCount ? i * 0.05 : 0.45 + (i - gridCount) * 0.1;
+        el.style.setProperty('--d', `${d}s`);
+      });
+    };
+
+    const play = () => {
+      if (playing) return;            // 그리는 중에는 다시 시작하지 않음
+      playing = true;
+      measure();
+      board.classList.remove('is-play');
+      void board.offsetWidth;          // 애니메이션을 처음부터 다시 시작하게 함
+      board.classList.add('is-play');
+      board.classList.remove('cx-wait');
+      setTimeout(() => {
+        board.classList.remove('is-play');   // 끝나면 완성된 그림 상태로 (창 크기가 바뀌어도 선이 끊기지 않게)
+        playing = false;
+      }, PLAY_TIME);
+    };
+
+    board.classList.add('cx-wait');
+    if ('IntersectionObserver' in window) {
+      const cio = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) { play(); cio.disconnect(); }
+      }, { threshold: 0.4 });
+      cio.observe(board);
+    } else {
+      play();
+    }
+    board.addEventListener('mouseenter', play);
+  }
+
+  /* 7) .lg-prims 기본 도형 5개: 흰 박스는 그대로, 박스 안 도형만 헤더 로고(logo-anim.js)처럼 변신
+     ① 박스 모서리에 작게 접혀 있다가 → ② 가운데로 슬라이드 → ③ 90° 회전이 풀리며 커짐 → ④ 철컥 잠김
+     - 왼쪽 도형부터 차례로 / 처음 화면에 들어올 때 1회 + 마우스를 올리면 다시 재생 */
+  const prims = document.querySelector('.lg-prims');
+  if (prims && !reduce && prims.animate) {
+    const shapes = [...prims.querySelectorAll('svg > *')];   // 박스(svg) 안 도형
+    const MECH = 'cubic-bezier(0.75, 0, 0.15, 1)';           // 빠르게 움직이고 딱 멈춤 (로고와 같은 곡선)
+    const ROT = [90, -90, 180, -180, 90];                     // 90° 단위로만 접혀 있음
+    // 도형마다 접혀 있는 자리 (박스 좌표 40 기준, 모서리 쪽) — 서로 다른 방향에서 들어옴
+    const FROM = [[-11, -11], [11, -11], [-11, 11], [11, 11], [0, -12]];
+    const DURATION = 1500;
+    const STAGGER = 80;
+    let primsBusy = false;
+    const t = (x, y, r, sc) => `translate(${x}px, ${y}px) rotate(${r}deg) scale(${sc})`;
+
+    shapes.forEach((el) => {             // 도형 자기 중심을 기준으로 돌고 커지게
+      el.style.transformBox = 'fill-box';
+      el.style.transformOrigin = 'center';
+    });
+
+    const playPrims = () => {
+      if (primsBusy) return;
+      primsBusy = true;
+      prims.classList.remove('is-wait');
+      shapes.forEach((el, i) => {
+        const [x, y] = FROM[i % FROM.length];
+        const r0 = ROT[i % ROT.length];
+        const kx = -Math.sign(x) * 1.5;  // 잠길 때 반동 (들어온 반대쪽으로 살짝)
+        const ky = -Math.sign(y) * 1.5;
+        el.animate([
+          // 1) 모서리에 작게 접힌 상태로 등장
+          { offset: 0,    transform: t(x, y, r0, 0.2),   opacity: 0, easing: MECH },
+          { offset: 0.12, transform: t(x, y, r0, 0.4),   opacity: 1, easing: 'linear' },
+          { offset: 0.18, transform: t(x, y, r0, 0.4),   opacity: 1, easing: MECH },
+          // 2) 가운데로 슬라이드
+          { offset: 0.42, transform: t(0, 0, r0, 0.4),   opacity: 1, easing: 'linear' },
+          { offset: 0.48, transform: t(0, 0, r0, 0.4),   opacity: 1, easing: MECH },
+          // 3) 90° 회전이 풀리며 원래 크기로
+          { offset: 0.7,  transform: t(0, 0, 0, 1),      opacity: 1, easing: 'linear' },
+          { offset: 0.75, transform: t(0, 0, 0, 1),      opacity: 1, easing: MECH },
+          // 4) 철컥 잠김
+          { offset: 0.87, transform: t(kx, ky, 0, 1.08), opacity: 1, easing: 'ease-out' },
+          { offset: 0.94, transform: t(-kx / 3, -ky / 3, 0, 0.97), opacity: 1, easing: 'ease-in-out' },
+          { offset: 1,    transform: t(0, 0, 0, 1),      opacity: 1 },
+        ], { duration: DURATION, delay: i * STAGGER, fill: 'backwards' });
+      });
+      setTimeout(() => { primsBusy = false; }, DURATION + shapes.length * STAGGER + 200);
+    };
+
+    prims.classList.add('is-wait');                 // 첫 재생 전: 도형만 숨김 (work-lges.css)
+    if ('IntersectionObserver' in window) {
+      const pio = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) { playPrims(); pio.disconnect(); }
+      }, { threshold: 0.6 });
+      pio.observe(prims);
+    } else {
+      playPrims();
+    }
+    prims.addEventListener('mouseenter', playPrims);
+  }
+
   /* 2) 브라우저 · 폰 목업 자동 스크롤 (화면 창 = .lg-browser-view 또는 .lg-phone-view) */
   const frames = [...document.querySelectorAll('[data-autoscroll]')].map((el) => ({
     el,
@@ -121,9 +231,11 @@
     const vh = window.innerHeight;
     frames.forEach(({ el, view, img }) => {
       if (!img.naturalHeight) return;
-      const r = el.getBoundingClientRect();
-      // 목업 위 끝이 화면 80% 에 닿을 때 0 → 위로 거의 빠져나갈 때 1
-      const p = clamp((vh * 0.8 - r.top) / (vh * 0.6 + r.height * 0.6));
+      // 기준 상자: 서브 페이지 패널은 패널 전체 (폰이 화면에 붙어 따라오므로 폰 위치로는 진행을 잴 수 없음)
+      const r = (el.closest('.lg-pair-stage') || el).getBoundingClientRect();
+      // 목업이 화면에 다 들어올 때까지(위 끝이 화면 30% 지점에 닿기 전)는 맨 위 화면에 머묾
+      // → 그 뒤 스크롤한 만큼 내려가, 목업 높이의 90% 를 지나면 페이지 끝까지 다 보임
+      const p = clamp((vh * 0.3 - r.top) / (r.height * 0.9));
       const shift = Math.max(0, img.clientHeight - view.clientHeight) * p;
       img.style.transform = `translate3d(0, ${-shift.toFixed(1)}px, 0)`;
     });

@@ -133,6 +133,14 @@
          01 OVERVIEW — 다른 상세 페이지와 같은 형식
          라벨 | 큰 문장(스크롤에 따라 진해짐) + Context / My Part + 사이트 구조
          ========================================================= -->
+    <!-- 흐르는 키워드 띠 (Noul 과 같은 디자인 · work.css 16번) -->
+    <div class="work-marquee work-marquee--lg" aria-hidden="true">
+      <div class="work-marquee-track">
+        <span>Design Direction</span><i></i><span>UI/UX System</span><i></i><span>Generative AI Visual</span><i></i><span>Quality Control</span><i></i><span>Global Brand Experience</span><i></i>
+        <span>Design Direction</span><i></i><span>UI/UX System</span><i></i><span>Generative AI Visual</span><i></i><span>Quality Control</span><i></i><span>Global Brand Experience</span><i></i>
+      </div>
+    </div>
+
     <section class="lg-overview" id="overview" data-chapter="Overview">
       <div class="container lg-split">
         <h4 class="section-label sec-title"><span class="num">01</span> <span class="sec-dash">—</span> Overview</h4>
@@ -237,11 +245,14 @@
                   <img src="../images/work/project-01/sub-company-pc.jpg" alt="회사소개 페이지 PC 전체 화면" loading="lazy">
                 </div>
               </div>
-              <div class="lg-phone lg-phone--scroll" data-autoscroll>
-                <div class="lg-phone-view">
-                  <img src="../images/work/project-01/sub-company-mo.jpg" alt="회사소개 페이지 모바일 전체 화면" loading="lazy">
-                </div>
-              </div>
+              <!-- 데스크톱: 폰이 보이는 화면의 세로 가운데를 따라옴 (work-lges.css 5-1) -->
+              <div class="lg-pair-side"><div class="lg-pair-sticky">
+                  <div class="lg-phone lg-phone--scroll" data-autoscroll>
+                    <div class="lg-phone-view">
+                      <img src="../images/work/project-01/sub-company-mo.jpg" alt="회사소개 페이지 모바일 전체 화면" loading="lazy">
+                    </div>
+                  </div>
+              </div></div>
             </div>
             <figcaption>Company — About us · PC / Mobile</figcaption>
           </figure>
@@ -259,11 +270,14 @@
                   <img src="../images/work/project-01/sub-cylindrical-pc.jpg" alt="원통형 배터리 46시리즈 페이지 PC 전체 화면" loading="lazy">
                 </div>
               </div>
-              <div class="lg-phone lg-phone--scroll" data-autoscroll>
-                <div class="lg-phone-view">
-                  <img src="../images/work/project-01/sub-cylindrical-mo.jpg" alt="원통형 배터리 46시리즈 페이지 모바일 전체 화면" loading="lazy">
-                </div>
-              </div>
+              <!-- 데스크톱: 폰이 보이는 화면의 세로 가운데를 따라옴 (work-lges.css 5-1) -->
+              <div class="lg-pair-side"><div class="lg-pair-sticky">
+                  <div class="lg-phone lg-phone--scroll" data-autoscroll>
+                    <div class="lg-phone-view">
+                      <img src="../images/work/project-01/sub-cylindrical-mo.jpg" alt="원통형 배터리 46시리즈 페이지 모바일 전체 화면" loading="lazy">
+                    </div>
+                  </div>
+              </div></div>
             </div>
             <figcaption>Product — Cylindrical 46-Series · PC / Mobile</figcaption>
           </figure>
@@ -320,13 +334,13 @@
             <figure class="lg-shot" data-reveal style="--d:.1s"><img src="../images/work/project-01/ai-03.jpg" alt="ESS 서브 비주얼" loading="lazy"><figcaption>Product — ESS</figcaption></figure>
             <figure class="lg-shot" data-reveal><img src="../images/work/project-01/ai-04.jpg" alt="회사소개 서브 비주얼 — 빛 줄기가 지나는 도시" loading="lazy"><figcaption>Company — About us</figcaption></figure>
             <figure class="lg-shot" data-reveal style="--d:.1s"><img src="../images/work/project-01/ai-05.jpg" alt="원통형 배터리 서브 비주얼 — 로봇 · 드론 · 트럭이 있는 공간" loading="lazy"><figcaption>Product — Cylindrical Battery</figcaption></figure>
-            <figure class="lg-shot" data-reveal><img src="../images/work/project-01/ai-06.jpg" alt="메인 글로벌 섹션 비주얼 — 밤의 지구와 도시 불빛" loading="lazy"><figcaption>Main — Global Network</figcaption></figure>
-            <figure class="lg-shot" data-reveal style="--d:.1s"><img src="../images/work/project-01/ai-07.jpg" alt="메인 차세대 기술 섹션 비주얼 — 흐르는 빛의 곡면" loading="lazy"><figcaption>Main — Next-gen Battery</figcaption></figure>
+            <figure class="lg-shot" data-reveal><img src="../images/work/project-01/ai-06.jpg" alt="메인 글로벌 섹션 비주얼 — 밤의 지구와 도시 불빛" loading="lazy"><figcaption>ESG — Vision</figcaption></figure>
+            <figure class="lg-shot" data-reveal style="--d:.1s"><img src="../images/work/project-01/ai-07.jpg" alt="메인 차세대 기술 섹션 비주얼 — 흐르는 빛의 곡면" loading="lazy"><figcaption>IR — Financial</figcaption></figure>
           </div>
 
           <div class="lg-text" data-reveal>
             <h4 class="lg-label lg-text-title"><span class="num">05</span> <span class="lg-dash">—</span> Generative AI</h4>
-            <p>눈에 보이지 않는 배터리 기술을 한 장면으로 보여 주고 싶었습니다.<br>메인 히어로와 제품 비주얼의 이미지 · 영상을 생성형 AI로 기획하고 제작했습니다.<br>브랜드 톤에 맞춰 장면을 설계해, 추상적인 미래 에너지를 한눈에 보이게 했습니다.</p>
+            <p>눈에 보이지 않는 배터리 기술을 한 장면으로 보여 주고 싶었습니다.<br>메인 히어로와 제품 비주얼의 이미지 · 영상을 생성형 AI(Midjourney)로 기획하고 제작했습니다.<br>브랜드 톤에 맞춰 장면을 설계해, 추상적인 미래 에너지를 한눈에 보이게 했습니다.</p>
           </div>
         </div>
       </section>
@@ -359,25 +373,25 @@
           <!-- 0. 설계 판 — 아이콘 하나를 키라인 그리드 위에 펼쳐 구조를 보여 줌
                (아이콘: Figma 'Icon_01' Abstract V02 · 숫자는 Figma 실제 값) -->
           <div class="lg-construct" data-reveal>
-            <figure class="lg-construct-board">
+            <figure class="lg-construct-board" data-construct>
               <figcaption class="lg-construct-cap"><span>Construction — V02</span><span>120 × 120</span></figcaption>
               <svg class="lg-cx" viewBox="-24 -24 168 168" role="img" aria-label="Abstract 아이콘 V02를 120 그리드, 원 키라인, 45도 대각선 위에 올린 설계도">
-                <!-- 아이콘 본체 -->
+                <!-- 아이콘 본체 (cx-… 클래스 = 그려지는 순서, work-lges.css 8-0 애니메이션) -->
                 <g class="lg-cx-icon">
-                  <g style="mix-blend-mode:multiply"><path d="M60 0C26.86 0 0 26.86 0 60L120 60C120 26.86 93.14 0 60 0Z" fill="#E1E7EA"/></g>
-                  <path d="M60 21.25C38.6 21.25 21.25 38.6 21.25 60L98.75 60C98.75 38.6 81.4 21.25 60 21.25Z" fill="#fff"/>
-                  <g style="mix-blend-mode:darken"><path d="M79.45 79.45L60 60V98.89Z" fill="#9988DF"/></g>
-                  <circle cx="60" cy="60" r="27.5" fill="#33B0C6"/>
-                  <circle cx="60" cy="60" r="12.5" fill="#fff"/>
-                  <circle cx="109.38" cy="60" r="10.63" fill="#E1E7EA"/>
-                  <circle cx="10.63" cy="60" r="10.63" fill="#E1E7EA"/>
-                  <circle cx="109.38" cy="60" r="6.25" fill="#fff"/>
+                  <g class="cx-arch" style="mix-blend-mode:multiply"><path d="M60 0C26.86 0 0 26.86 0 60L120 60C120 26.86 93.14 0 60 0Z" fill="#E1E7EA"/></g>
+                  <path class="cx-arch" d="M60 21.25C38.6 21.25 21.25 38.6 21.25 60L98.75 60C98.75 38.6 81.4 21.25 60 21.25Z" fill="#fff"/>
+                  <g class="cx-tri" style="mix-blend-mode:darken"><path d="M79.45 79.45L60 60V98.89Z" fill="#9988DF"/></g>
+                  <circle class="cx-ring" cx="60" cy="60" r="27.5" fill="#33B0C6"/>
+                  <circle class="cx-hole" cx="60" cy="60" r="12.5" fill="#fff"/>
+                  <circle class="cx-dot" cx="109.38" cy="60" r="10.63" fill="#E1E7EA"/>
+                  <circle class="cx-dot" cx="10.63" cy="60" r="10.63" fill="#E1E7EA"/>
+                  <circle class="cx-dot-hole" cx="109.38" cy="60" r="6.25" fill="#fff"/>
                 </g>
-                <!-- 보조선: 30 단위 격자 + 45° 대각선 -->
+                <!-- 보조선: 30 단위 격자 + 45° 대각선 (선 하나씩 → 차례로 그려짐) -->
                 <g class="lg-cx-grid">
-                  <path d="M0 -24V144M30 -24V144M60 -24V144M90 -24V144M120 -24V144"/>
-                  <path d="M-24 0H144M-24 30H144M-24 60H144M-24 90H144M-24 120H144"/>
-                  <path d="M-24 -24L144 144M144 -24L-24 144"/>
+                  <path d="M0 -24V144"/><path d="M30 -24V144"/><path d="M60 -24V144"/><path d="M90 -24V144"/><path d="M120 -24V144"/>
+                  <path d="M-24 0H144"/><path d="M-24 30H144"/><path d="M-24 60H144"/><path d="M-24 90H144"/><path d="M-24 120H144"/>
+                  <path d="M-24 -24L144 144"/><path d="M144 -24L-24 144"/>
                 </g>
                 <!-- 키라인: 사각 120 · 원 Ø120 / Ø77.5 / Ø55 / Ø25 · 점 Ø21.25 -->
                 <g class="lg-cx-key">

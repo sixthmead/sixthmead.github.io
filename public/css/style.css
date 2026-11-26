@@ -31,6 +31,9 @@
      - 화면 폭에 따라 자연스럽게 커짐 (clamp: 최소 · 화면 비례 · 최대)
      - 1441px 이상에서는 html 글자 크기가 커지므로 전체가 같은 비율로 함께 커짐
      - 새 요소를 만들 때도 font-size 는 반드시 아래 var(--t-…) 중에서 고름 */
+  /* 본문 행간: 본문·설명·메모·목록·리드 문단은 모두 이 값 하나만 씀 (제목·한 줄 UI 제외) */
+  --lh-body: 1.7;
+
   --t-display: clamp(2.75rem, 6.1vw, 5.5rem);    /* 88 · 44  페이지 큰 제목 (히어로 · 프로젝트 제목 · Next project) */
   --t-h1:      clamp(2.25rem, 4.45vw, 4rem);     /* 64 · 36  섹션 제목 · 통계 숫자 */
   --t-h2:      clamp(1.75rem, 3.35vw, 3rem);     /* 48 · 28  스크롤 강조 문장 */
@@ -90,7 +93,7 @@ body {
   color: var(--color-text);
   font-family: var(--font-sans);
   font-size: var(--t-body-r);
-  line-height: 1.6;
+  line-height: var(--lh-body);
   letter-spacing: -0.5px;   /* 사이트 전체 자간 -0.5px (각 요소도 -0.5px 로 통일) */
   -webkit-font-smoothing: antialiased;
   /* 한글 단어가 중간에서 잘리지 않게 (띄어쓰기 단위로만 줄바꿈)
@@ -1051,7 +1054,7 @@ body.menu-open {
 .contact-desc {
   /* 문장마다 <br> 로 줄을 나누므로 폭 제한 없음 */
   font-size: var(--t-body-lg-r);
-  line-height: 1.6;
+  line-height: var(--lh-body);
 }
 
 /* 1) 메일 + 복사 버튼: 한 줄에 나란히, 좁으면 버튼이 아래로 내려감 */
@@ -1255,7 +1258,7 @@ em, i, cite, dfn, var, address { font-style: normal; }
   font-size: var(--t-sm-r);
   font-style: normal;
   letter-spacing: -0.5px;
-  line-height: 1.6;
+  line-height: var(--lh-body);
 }
 
 /* ---------- 6. 태블릿 이상 (768px~) ---------- */

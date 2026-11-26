@@ -74,7 +74,7 @@
 
 .works-mobile-desc {
   font-size: var(--t-body-lg-r);
-  line-height: 1.45;
+  line-height: var(--lh-body);
   max-width: 20em;
   word-break: keep-all;
 }

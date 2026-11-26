@@ -115,7 +115,7 @@
 .gm-hero-desc {
   max-width: 34em;
   font-size: var(--t-body-r);
-  line-height: 1.75;
+  line-height: var(--lh-body);
   color: var(--gm-muted);
   word-break: keep-all;
 }
@@ -225,7 +225,7 @@
 .gm-text {
   max-width: 34em;
   font-size: var(--t-body-r);
-  line-height: 1.8;
+  line-height: var(--lh-body);
   color: var(--gm-muted);
   word-break: keep-all;
   margin-top: 24px;
@@ -269,7 +269,7 @@
 
 .gm-columns p {
   font-size: var(--t-body-r);
-  line-height: 1.8;
+  line-height: var(--lh-body);
   color: var(--gm-muted);
   word-break: keep-all;
 }
@@ -566,7 +566,7 @@ html:not(.js) .gm-map-pill { transform: none; }
   padding: 16px 0 16px 40px;   /* 왼쪽 40px = 알파벳 칸 32px + 간격 8px */
   border-bottom: 1px solid var(--gm-line);
   font-size: var(--t-body-r);
-  line-height: 1.6;
+  line-height: var(--lh-body);
   word-break: keep-all;
 }
 
@@ -1003,7 +1003,7 @@ html:not(.js) .gm-map-pill { transform: none; }
 .gm-outcome p {
   margin-top: 8px;
   font-size: var(--t-body-r);
-  line-height: 1.75;
+  line-height: var(--lh-body);
   color: var(--gm-muted);
   word-break: keep-all;
   max-width: 30em;

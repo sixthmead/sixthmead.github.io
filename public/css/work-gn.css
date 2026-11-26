@@ -55,25 +55,37 @@
 .gn-theme .gm-statement .w.on:nth-child(n+12):nth-child(-n+13) { color: var(--gm-ink); }
 .gn-theme .gm-statement .w.on:nth-child(n+6):nth-child(-n+10) { color: var(--gm-green); }
 
-/* ---------- 1. 문제 → 답 매트릭스 ---------- */
-.gn-matrix { list-style: none; border-top: 1px solid var(--gm-line); }
+/* ---------- 1. 문제 → 답 매트릭스 ----------
+   Noul(work-noul.css .nl-matrix) · Goodiez 와 같은 디자인
+   - 항목마다 흰 카드 (모서리 휴대폰 12px · 768px~ 20px, 카드 사이 16px)
+   - 번호 라벨은 질문 위, 브랜드 색 / 답의 굵은 제목은 첫 줄로 떼어 둠
+   - 화살표 28px: 휴대폰은 아래 방향, 768px~ 오른쪽 + 질문 | 화살표 | 답 3칸 */
+.gn-matrix { display: grid; gap: 16px; list-style: none; }
 .gn-matrix li {
   display: grid;
-  gap: 12px;
-  padding: 28px 0;
-  border-bottom: 1px solid var(--gm-line);
+  gap: 16px;
+  padding: clamp(24px, 3vw, 36px);
+  border-radius: 12px;
+  background: #fff;
 }
 .gn-q {
-  font-size: var(--t-body-lg);
-  font-weight: 600;
+  font-size: var(--t-lead);
+  font-weight: 500;
   letter-spacing: -0.5px;
-  line-height: 1.5;
+  line-height: var(--lh-body);
   word-break: keep-all;
 }
-.gn-q .gm-mono { display: block; margin-bottom: 8px; color: var(--gm-green-d); font-size: var(--t-micro); }
-.gn-a { color: var(--gm-muted); line-height: 1.75; word-break: keep-all; }
+.gn-q .gm-mono { display: block; margin-bottom: 10px; color: var(--gm-green); }
+.gn-a { color: var(--gm-muted); line-height: var(--lh-body); word-break: keep-all; }
 .gn-a b { display: block; margin-bottom: 4px; color: var(--gm-ink); font-weight: 700; /* 강조 굵기 통일 */ }
-.gn-arrow { display: none; width: 22px; fill: none; stroke: var(--gm-green); stroke-width: 1.6; }
+.gn-arrow {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: var(--gm-green);
+  stroke-width: 1.5;
+  transform: rotate(90deg);
+}
 
 /* ---------- 2. 정보 구조 맵 ---------- */
 .gn-ia { display: grid; gap: 12px; list-style: none; }
@@ -156,7 +168,7 @@
 .gn-sk-next i { width: 22px; height: 22px; border-radius: 50%; background: var(--gm-green); }
 .gn-sk-foot { border-bottom: 0 !important; }
 .gn-skeleton-notes { display: grid; gap: 0; list-style: none; border-top: 1px solid var(--gm-line); align-self: start; }
-.gn-skeleton-notes li { display: grid; grid-template-columns: 56px 1fr; gap: 12px; padding: 16px 0; border-bottom: 1px solid var(--gm-line); font-size: var(--t-body-r); line-height: 1.65; word-break: keep-all; }
+.gn-skeleton-notes li { display: grid; grid-template-columns: 56px 1fr; gap: 12px; padding: 16px 0; border-bottom: 1px solid var(--gm-line); font-size: var(--t-body-r); line-height: var(--lh-body); word-break: keep-all; }
 .gn-skeleton-notes .gm-mono { color: var(--gm-green-d); padding-top: 3px; font-size: var(--t-micro); }
 .gn-skeleton-notes b { display: block; font-weight: 700; /* 강조 굵기 통일 */ }
 .gn-skeleton-notes p { color: var(--gm-muted); }
@@ -310,7 +322,7 @@
 .gn-sub { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; margin-top: 8px; }
 .gn-sub .gn-sw { height: 88px; }
 .gn-sub-title { margin-top: 28px; color: rgba(255, 255, 255, 0.55); font-size: 0.6875rem; }
-.gn-color-note { margin-top: 20px; font-size: var(--t-caption-r); line-height: 1.7; color: rgba(255, 255, 255, 0.6); word-break: keep-all; }
+.gn-color-note { margin-top: 20px; font-size: var(--t-caption-r); line-height: var(--lh-body); color: rgba(255, 255, 255, 0.6); word-break: keep-all; }
 
 /* 타이포 */
 .gn-type-stage { min-height: 220px; display: grid; align-content: center; gap: 6px; font-family: var(--font-noto); font-weight: var(--wt, 300); transition: font-weight 0.3s; }
@@ -361,7 +373,7 @@
   padding: 10px 0;
   border-bottom: 1px solid var(--gm-line);
   font-size: var(--t-sm-r);
-  line-height: 1.5;
+  line-height: var(--lh-body);
   word-break: keep-all;
 }
 .gn-rule-cols ol li::before { content: counter(r); font-family: var(--font-mono); font-weight: 300; font-variant-numeric: tabular-nums; font-size: var(--t-micro); padding-top: 2px; color: var(--gm-green-d); }
@@ -423,36 +435,44 @@
    태블릿 이상
    ========================================================= */
 @media (min-width: 768px) {
+  .gn-matrix li { grid-template-columns: 1fr 40px 1fr; align-items: center; gap: 32px; border-radius: 20px; }
+  .gn-arrow { transform: none; justify-self: center; }
   .gn-ia { grid-template-columns: repeat(2, 1fr); }
   .gn-skeleton { grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: start; }
   .gn-trio { grid-template-columns: repeat(3, 1fr); gap: 24px; }
   .gn-trio .gn-browser-screen { aspect-ratio: 3 / 4; }
   .gn-rules { grid-template-columns: 1fr 1fr; gap: 48px; }
   .gn-apply { grid-template-columns: 1.1fr 1fr; align-items: start; gap: 32px; }
-  .gn-devices .gm-phone:nth-child(n+4) { display: block; }
+  /* 반응형 기기: 태블릿 구간(768~1023px)은 폰 · 태블릿 · 폰 3대만, 화면 폭에 맞춰 크기를 줄임
+     (폰 4대 + 태블릿을 다 놓으면 약 1,100px 이 필요해 화면 밖으로 넘침 → 5대는 1024px 부터) */
+  .gn-devices { --pw: min(200px, calc((100vw - var(--space-gutter) * 2 - 56px) / 3.39)); gap: 28px; }
+  .gn-devices .gm-phone { --w: calc(var(--pw) * 0.82); }
+  .gn-tablet { width: calc(var(--pw) * 1.75); }
+  .gn-devices .gm-phone:nth-child(odd) { margin-bottom: 48px; }
   .gn-system { grid-template-columns: repeat(12, 1fr); }
   .gn-card--color { grid-column: 1 / -1; }
   .gn-card--type { grid-column: 1 / -1; }
 }
 
 @media (min-width: 1024px) {
-  .gn-matrix li { grid-template-columns: 1fr 40px 1.3fr; align-items: center; gap: 32px; }
-  .gn-arrow { display: block; }
   .gn-ia { grid-template-columns: repeat(4, 1fr); }
   .gn-card { padding: 32px; }
   .gn-card--color { grid-column: span 7; }
   .gn-card--type { grid-column: span 5; display: flex; flex-direction: column; }
   .gn-card--type .gn-type-stage { flex: 1; }
-  .gn-devices { gap: 28px; }
-  .gn-devices .gm-phone { --w: calc(var(--pw) * 0.82); }
-  .gn-tablet { width: calc(var(--pw) * 1.75); }
-  .gn-devices .gm-phone:nth-child(odd) { margin-bottom: 48px; }
+  .gn-devices { --pw: inherit; }                                 /* 데스크톱: 페이지 원래 크기 그대로 (work-gut.css .gm-theme) */
+  .gn-devices .gm-phone:nth-child(n+4) { display: block; }         /* 5대 모두 */
 }
 
 @media (max-width: 767px) {
   .gn-rule-cols { grid-template-columns: 1fr; }
-  .gn-bp-labels span:nth-child(2), .gn-bp-labels span:nth-child(4) { top: 22px; }
-  .gn-bp-labels { height: 64px; }
+  /* 브레이크포인트 자: 좁은 화면에 맞게 막대를 낮추고, 라벨은 엇갈림 없이 한 줄로 눈금 아래에 */
+  .gn-bp { margin: 0 0 48px; }
+  .gn-bp-track { height: 32px; border-radius: 8px; }
+  .gn-bp-track i { border-right-width: 1.5px; }
+  .gn-bp-labels { height: 34px; margin-top: 8px; }
+  .gn-bp-labels span { padding-right: 3px; font-size: var(--t-micro); line-height: 1.3; }
+  .gn-bp-labels span b { margin-bottom: 2px; font-size: var(--t-sm); }
   .gn-devices { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; margin: 0 calc(var(--space-gutter) * -1); padding: 0 var(--space-gutter) 8px; scrollbar-width: none; }
   .gn-devices::-webkit-scrollbar { display: none; }
   .gn-devices .gm-phone, .gn-tablet { flex: none; }
