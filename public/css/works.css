@@ -103,13 +103,21 @@
   pointer-events: none;
 }
 
-/* 이름(왼쪽) + 태그(오른쪽) */
+/* 휴대폰: 정보 줄·이름 아래에 태그 (메인 Works 카드와 같은 내용)
+   768px~: 이름(왼쪽) + 태그(오른쪽) */
 .works-item-info {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 12px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
   width: 100%;
+}
+
+/* 이름 위 작은 정보 줄 (예: Corporate Website · 2025) */
+.works-item-meta {
+  margin-bottom: 6px;
+  font-size: var(--t-sm-r);
+  opacity: 0.8;
 }
 
 .works-item-name {
@@ -124,9 +132,7 @@
 .works-item-tags {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
   gap: 8px;
-  max-width: 58%;
 }
 
 .works-item-tags li {
@@ -157,6 +163,19 @@
 @media (min-width: 768px) {
   .works-item {
     aspect-ratio: 16 / 10;
+  }
+
+  /* 이름(왼쪽) + 태그(오른쪽) */
+  .works-item-info {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+  }
+
+  .works-item-tags {
+    justify-content: flex-end;
+    max-width: 58%;
   }
 }
 

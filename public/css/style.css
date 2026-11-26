@@ -221,10 +221,12 @@ h3 {
 }
 
 /* SVG 로고 (images/logo.svg, 296×48 비율 유지) */
-.logo img {
+.logo img,
+.logo svg {
   display: block;
   height: 1.25rem;  /* 모바일 20px */
   width: auto;
+  overflow: visible; /* 애니메이션 중 조각이 밖으로 나가도 잘리지 않게 */
 }
 
 /* 오른쪽 묶음: 텍스트 링크 + 메뉴 버튼 */
@@ -352,6 +354,11 @@ h3 {
 .menu-footer {
   display: grid;
   gap: 40px;
+}
+
+/* 메뉴 아래 "Contact" 버튼은 헤더의 Contact 와 같은 기능이라 숨김 (메일 주소만 남김) */
+.menu-footer > .arrow-link {
+  display: none;
 }
 
 .menu-meta {
@@ -1443,7 +1450,8 @@ em, i, cite, dfn, var, address { font-style: normal; }
   }
 
   /* 데스크톱 로고 높이: 1440px 에서 22px → 최대 24px */
-  .logo img {
+  .logo img,
+  .logo svg {
     height: min(1.53vw, 24px);
   }
 
