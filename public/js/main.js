@@ -324,17 +324,27 @@ if (worksStack) {
     await wait(SPREAD_TIME + last * STAGGER);
   };
 
-  // 맨 앞 카드 위에 마우스가 있는지 (있는 동안은 떨어뜨리지 않고 기다림)
-  let hovered = null;
-  worksStack.addEventListener('pointerover', (e) => { hovered = e.target.closest('.works-card'); });
-  worksStack.addEventListener('pointerleave', () => { hovered = null; });
+  // 맨 앞 카드 위에 마우스가 있는지 (있는 동안은 잠깐 더 기다림)
+  // - 예전엔 "마지막으로 올라간 카드"를 기억해 두는 방식이라, 마우스를 가만히 두면
+  //   카드가 밑에서 바뀌어도 기억이 안 바뀌어서 그 카드가 다시 맨 앞에 오면 영영 멈췄음
+  // - 이제는 마우스 좌표만 기억해 두고, 확인할 때마다 그 자리에 실제로 어떤 카드가 있는지 다시 봄
+  let pointer = null;
+  worksStack.addEventListener('pointermove', (e) => { pointer = { x: e.clientX, y: e.clientY }; });
+  worksStack.addEventListener('pointerleave', () => { pointer = null; });
+  const isOver = (card) => {
+    if (!pointer) return false;
+    const el = document.elementFromPoint(pointer.x, pointer.y);
+    return !!el && card.contains(el);
+  };
+  const HOVER_MAX = 3000;   // 마우스를 올려 둬도 이 시간이 지나면 다시 움직임 (영영 멈추지 않게)
 
   // 2)~4) 멈췄다가 맨 앞 카드 떨어뜨리고 맨 뒤로 보내기
   const drop = async () => {
     const cards = getCards();
     const front = cards[cards.length - 1];
     await wait(HOLD_TIME);
-    while (hovered === front) await wait(200);       // 마우스를 올려 두면 뗄 때까지 멈춤
+    // 맨 앞 카드에 마우스가 올라가 있으면 최대 HOVER_MAX 동안 더 멈춤
+    for (let t = 0; t < HOVER_MAX && isOver(front); t += 200) await wait(200);
     moveCard(front, Number(front.dataset.y) + 150, Number(front.dataset.z), {
       duration: DROP_TIME,
       easing: EASE_IN,
