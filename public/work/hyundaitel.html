@@ -196,7 +196,8 @@
 
         <div class="ht-flow" data-reveal>
           <div class="ht-flow-scroll">
-            <svg class="ht-flow-svg" viewBox="140 180 1000 420" role="img" aria-labelledby="ht-flow-title">
+            <!-- 태블릿·데스크톱용 가로 흐름도 (모바일에서는 숨기고 아래 세로 흐름도를 보여 줌) -->
+            <svg class="ht-flow-svg ht-flow-svg--d" viewBox="140 180 1000 420" role="img" aria-labelledby="ht-flow-title">
               <title id="ht-flow-title">방문자 감지 → (안내 메시지 설정 시) 안내 메시지 2초 → 얼굴인증 → 인증 성공 시 출입메시지, 3회 실패 시 방범메시지. 안내 메시지 미설정 시 얼굴인식 가이드를 거쳐 출입메시지.</title>
               <defs>
                 <marker id="ht-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
@@ -232,6 +233,49 @@
                 <g class="ht-node ht-node--core"><rect x="504" y="376" width="272" height="120" rx="22"/><circle cx="640" cy="420" r="15"/><text x="640" y="470">얼굴인증</text></g>
                 <g class="ht-node"><rect x="504" y="528" width="272" height="56" rx="14"/><text x="640" y="562">출입 메시지</text></g>
                 <g class="ht-node ht-node--alert"><rect x="840" y="528" width="272" height="56" rx="14"/><text x="976" y="562">방범 메시지</text></g>
+              </g>
+            </svg>
+
+            <!-- 모바일용 세로 흐름도: 좌우 2칸으로 다시 배치해서 옆으로 밀지 않아도 한눈에 보임
+                 왼쪽 칸 = 안내 메시지 → 얼굴인증 → 방범 메시지
+                 오른쪽 칸 = 얼굴인식 가이드 → 출입 메시지
+                 (위쪽 흐름도와 연결선은 같고, 선이 서로 엇갈리지 않게 위치만 바꿈) -->
+            <svg class="ht-flow-svg ht-flow-svg--m" viewBox="0 0 340 404" role="img" aria-labelledby="ht-flow-title-m">
+              <title id="ht-flow-title-m">방문자 감지 → (안내 메시지 설정 시) 안내 메시지 2초 → 얼굴인증 → 인증 성공 시 출입메시지, 3회 실패 시 방범메시지. 안내 메시지 미설정 시 얼굴인식 가이드를 거쳐 출입메시지.</title>
+              <defs>
+                <!-- 위 흐름도가 숨겨지면 그 안의 화살촉도 안 보여서, 모바일용 화살촉을 따로 둠 -->
+                <marker id="ht-arrow-m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                  <path d="M1 1 L9 5 L1 9" fill="none" stroke="#7F8FB0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </marker>
+                <marker id="ht-arrow-alert-m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                  <path d="M1 1 L9 5 L1 9" fill="none" stroke="#FF6B6B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </marker>
+              </defs>
+
+              <g class="ht-flow-lines" marker-end="url(#ht-arrow-m)">
+                <path pathLength="1" d="M84 52 V98"/>                                   <!-- 방문자 감지 → 안내 메시지 -->
+                <path pathLength="1" d="M300 52 V98"/>                                  <!-- 방문자 감지 → 얼굴인식 가이드 -->
+                <path pathLength="1" d="M164 124 H186"/>                                <!-- 안내 메시지 → 얼굴인식 가이드 -->
+                <path pathLength="1" d="M84 148 V194"/>                                 <!-- 안내 메시지 → 얼굴인증 -->
+                <path pathLength="1" d="M164 276 H202 Q214 276 214 288 V350"/>          <!-- 얼굴인증 → 출입 메시지 -->
+                <path pathLength="1" class="is-alert" marker-end="url(#ht-arrow-alert-m)" d="M84 300 V350"/> <!-- 얼굴인증 → 방범 메시지 -->
+                <path pathLength="1" d="M310 148 V350"/>                                <!-- 얼굴인식 가이드 → 출입 메시지 -->
+              </g>
+
+              <g class="ht-flow-labels">
+                <text x="94" y="80">설정 시</text>
+                <text x="290" y="80" text-anchor="end">미설정 시</text>
+                <text x="224" y="322">인증 성공</text>
+                <text x="94" y="330" class="is-alert">3회 인증 실패</text>
+              </g>
+
+              <g class="ht-flow-nodes">
+                <g class="ht-node ht-node--start"><rect x="4" y="4" width="332" height="48" rx="14"/><text x="170" y="33">방문자 감지</text></g>
+                <g class="ht-node"><rect x="4" y="100" width="160" height="48" rx="14"/><text x="84" y="129">안내 메시지 <tspan class="ht-node-sub">2초간</tspan></text></g>
+                <g class="ht-node"><rect x="188" y="100" width="148" height="48" rx="14"/><text x="262" y="129">얼굴인식 가이드</text></g>
+                <g class="ht-node ht-node--core"><rect x="4" y="196" width="160" height="104" rx="20"/><circle cx="84" cy="234" r="13"/><text x="84" y="280">얼굴인증</text></g>
+                <g class="ht-node ht-node--alert"><rect x="4" y="352" width="160" height="48" rx="14"/><text x="84" y="381">방범 메시지</text></g>
+                <g class="ht-node"><rect x="188" y="352" width="148" height="48" rx="14"/><text x="262" y="381">출입 메시지</text></g>
               </g>
             </svg>
           </div>

@@ -417,6 +417,20 @@
   padding-bottom: 16px;
 }
 
+/* 모바일 (~767px): 가로 흐름도 대신 세로로 다시 배치한 흐름도를 보여 줌
+   → 옆으로 밀 필요가 없어서 "← Scroll →" 안내도 숨김 */
+.ht-flow-svg--d,
+.ht-flow-hint { display: none; }
+.ht-flow-svg--m { min-width: 0; max-width: 420px; margin: 0 auto; }
+.ht-flow-svg--m .ht-node text { font-size: 15px; }
+.ht-flow-svg--m .ht-node--core text { font-size: 17px; }
+
+/* 태블릿·데스크톱 (768px~): 원래 가로 흐름도 */
+@media (min-width: 768px) {
+  .ht-flow-svg--d { display: block; }
+  .ht-flow-svg--m { display: none; }
+}
+
 .ht-map {
   margin: 48px 0 0;
   /* 맵 그림만 떠 보이지 않게 넓은 배경 패널로 영역을 잡아 줌 */
@@ -704,13 +718,13 @@
 .ht-states {
   list-style: none;
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 40px 24px;
+  grid-template-columns: repeat(2, 1fr); /* 모바일도 2열 (좁은 칸이라 간격·여백을 조금 줄임) */
+  gap: 32px 16px;
 }
 
 .ht-states figure {
-  margin: 0 0 18px;
-  border-radius: 12px;
+  margin: 0 0 12px;
+  border-radius: 8px;
   overflow: hidden;
   aspect-ratio: 678 / 384;
   background: var(--ht-navy);
@@ -905,7 +919,8 @@
   .ht-cover { margin-top: 64px; border-radius: 28px; }
 
   .ht-columns { grid-template-columns: 1fr 1fr; gap: 48px; }
-  .ht-states { grid-template-columns: repeat(2, 1fr); }
+  .ht-states { gap: 40px 24px; }               /* 태블릿부터는 원래 간격 */
+  .ht-states figure { margin-bottom: 18px; border-radius: 12px; }
   .ht-guide-list { grid-template-columns: repeat(4, 1fr); }
   .ht-msg-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
   .ht-flow-hint { display: none; }

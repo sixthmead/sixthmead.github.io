@@ -215,6 +215,13 @@ h3 {
   height: var(--header-h);
 }
 
+/* 왼쪽 묶음(로고): 모바일에서도 flex 로 세로 가운데 정렬
+   (그냥 두면 로고가 글자 줄처럼 기준선에 앉아, 아래 여백만큼 살짝 위로 떠 보임) */
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
 .logo {
   display: inline-flex;
   align-items: center;

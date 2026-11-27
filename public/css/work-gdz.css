@@ -277,3 +277,6 @@
 .gdz-theme .gm-phone--scroll.is-play .gm-phone-screen img.gm-nav {
   animation: none;
 }
+
+/* ---------- 화면 모음 띠 배경: 브랜드 보라(#6432AF)보다 한 단계 어둡게 (Violet-800) ---------- */
+.gdz-theme .gm-wall { background: var(--gm-green-d); }
